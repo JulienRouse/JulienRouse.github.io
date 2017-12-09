@@ -1,8 +1,8 @@
 extends layout.pug
 
-block append head
-    - var title = 'titre'
-    - var description = 'ma description'
+block head-more
+    - var title = 'Welcome!'
+    - var description = 'Here we learn for fun'
     meta(name='description' content=description)
     title #{title}
 
@@ -14,21 +14,46 @@ block content
                 h2.brand-tagline Creating a blog layout using Pure
 
                 nav.nav
-                ul.nav-list
-                    li.nav-item
-                        a.pure-button(href="http://purecss.io") Pure
-                    li.nav-item
-                        a.pure-button(href="http://yuilibrary.com") YUI Library
-    .content.pure-u-1.pure-u-md-3-4
-        div
-            div.posts
-                h1.content-subhead Pinned Post
-                section.post
-                    header.post-header
-                        img.post-avatar(width="48" height="48" alt="Tilo Mitra's avatar" src="img/common/tilo-avatar")
+                    ul.nav-list
+                        li.nav-item
+                            a.pure-button(href="http://purecss.io") Pure
+                        li.nav-item
+                            a.pure-button(href="http://yuilibrary.com") YUI Library
+        .content.pure-u-1.pure-u-md-3-4
+            div
+                div.posts
+                    h1.content-subhead Pinned Post
+                    section.post
+                        header.post-header
+                            img.post-avatar(width="48" height="48" alt="Tilo Mitra's avatar" src="img/common/tilo-avatar")
 
-                        h2.post-title Introducing Pure
+                            h2.post-title Introducing Pure
 
-                        p.post-meta By
-                            a.post-author Tilo Mitra
+                            p.post-meta
+                                a.post-author By Julien under
+                                a.post-category.post-category-js(href='#') Javascript
 
+                        .post-description
+                            p Super post, commencencement tout ca tout ca
+                .posts
+                    h1.content-subhead Recent Posts
+                    section.post
+                        header.post-header
+                            img.post-avatar(width=48 height=48 alt="Avatar" src="img/common/ericf-avatar.png")
+                            h2.post-title Post recent
+                            p.post-meta
+                                a.post-author By Julien under
+                                a.post-category.post-category-js(href='#') Javascript
+
+                        .post-description
+                             p Super post, hh
+                    section.post
+                        header.post-header
+                            img.post-avatar(width=48 height=48 alt="Avatar" src="img/common/ddavatar.png")
+                            h2.post-title kljl
+                            p.post-meta
+                                a.post-author By Julien under
+                                a.post-category.post-category-js(href='#') Javascript
+
+                        .post-description
+                            p Super post, 4656546
