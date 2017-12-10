@@ -4,13 +4,19 @@ Today let's dive into the topic of regular expressions, and more specifically, t
 
 ### Regular Expression in Computer Science ###
 
-If you want to know the difference between PCRE and the strict definition of Regular expression defined in computer science, you can go see in the article on [wikipedia: Regular expression](https://en.wikipedia.org/wiki/Regular_expression), more specifically [this section](https://en.wikipedia.org/wiki/Regular_expression#Patterns_for_non-regular_languages).
+If you want to know the difference between PCRE and the strict definition of Regular expression defined in computer science, you can go see the article on wikipedia [Regular expression](https://en.wikipedia.org/wiki/Regular_expression), more specifically [this section](https://en.wikipedia.org/wiki/Regular_expression#Patterns_for_non-regular_languages).
 
 ### What is it? ###
 
 A regular expression is a sequence of character that define a search pattern, used to find, or find and replace text. More simply, it's a terse way to write text search like:
 
-> Search for 
+> Search for all words containing the letter **a** 
+> 
+> Search for all the words that are not containing the letter **b**
+>
+> Search for all words beginning by the letter **a**
+>
+> Search for all words ending by a number
 
 ### Basics ###
 
@@ -24,3 +30,8 @@ On the linked page, you can see that if the pattern is **/a/** , you match words
 - [regex101.com](https://regex101.com/) is a place where you can test your regexes live. It support many flavour of regex, explain step by step what the regex you wrote is supposed to do, and contains also a documentation explaining many features existing for many flavour of regexes. Try it out, it works very well! 
 - TODO
 - TODO
+
+### Links ###
+- [https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions](https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions)
+- [https://pcre.org](https://pcre.org)
+- [stackoverflow](https://stackoverflow.com/questions/tagged/regex)
