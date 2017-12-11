@@ -1,19 +1,35 @@
 //- layout.pug
 doctype html
 html(lang='en')
-	block head
-		head
-			meta(charset='utf-8')
-			meta(name='viewport' content='width-device-width' initial-scale=1)
-			
-		
-		block scripts
-			script(src='/jquery.js')
-	body
-		block content
-	
-	block foot
-		#footer
-		p some footer content
+    block head
+        head
+            meta(charset='utf-8')
+            meta(name='viewport' content='width=device-width, initial-scale=1.0')
+            link(rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css")
+            link(rel="stylesheet" href="css/layouts/blog.css")
+            <!--[if lte IE 8]>
+            link(rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css")
+            <![endif]-->
+            <!--[if gt IE 8]><!-->
+            link(rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css")
+            <!--<![endif]-->
+            <!--[if lte IE 8]>
+            link(rel="stylesheet" href="css/layouts/blog-old-ie.css")
+            <![endif]-->
+            <!--[if gt IE 8]><!-->
+            link(rel="stylesheet" href="css/layouts/blog.css")
+            <!--<![endif]-->
+            block head-more
 
-	
+        block scripts
+            //script(src='/jquery.js')
+    body
+        block content
+        block foot
+            .footer
+                .pure-menu.pure-menu-horizontal
+                    ul
+                        li.pure-menu-item
+                            a.pure-menu-link(href="https://github.com/JulienRouse") Github
+                        li.pure-menu-item
+                            a.pure-menu-link(href="https://www.linkedin.com/in/julien-rous%C3%A9-073708102/") Linkedin

@@ -1,0 +1,60 @@
+extends template/layout.pug
+
+block head-more
+    - var title = 'Welcome!'
+    - var description = 'Here we learn for fun'
+    meta(name='description' content=description)
+    title #{title}
+
+block content
+    #layout.pure-g
+        .sidebar.pure-u-1.pure-u-md-1-4
+            .header
+                h1.brand-title Julien's Blog
+                h2.brand-tagline Learning for fun and profits!
+
+                nav.nav
+                    ul.nav-list
+                        li.nav-item
+                            a.pure-button(href="template/about.html") About
+                        li.nav-item
+                            a.pure-button(href="template/contact.html") Contact
+        .content.pure-u-1.pure-u-md-3-4
+            div
+                .posts
+                    h1.content-subhead Pinned Post
+                    section.post
+                        header.post-header
+                            img.post-avatar(width="48" height="48" alt="Julien's avatar" src="img/common/avatar_julien_cropped.jpg")
+
+                            h2.post-title Introducing the new blog!
+
+                            p.post-meta By
+                                |
+                                |
+                                a.post-author Julien
+                                |
+                                |
+                                span under
+                                a.post-category.post-category-js(href='#') News
+
+                        .post-description
+                            p The start of a new adventure!
+                .posts
+                    h1.content-subhead Recent Posts
+                    section.post
+                        header.post-header
+                            img.post-avatar(width=48 height=48 alt="Julien's avatar" src="img/common/avatar_julien_cropped.jpg")
+                            h2.post-title Introducing the new blog!
+                            p.post-meta By
+                                |
+                                |
+                                a.post-author Julien
+                                |
+                                |
+                                span under
+                                a.post-category.post-category-js(href='#') News
+
+                        .post-description
+                             p The start of a new adventure!
+
