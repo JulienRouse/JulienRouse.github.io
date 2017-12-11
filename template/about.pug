@@ -1,0 +1,10 @@
+extends layout.pug
+
+block head-more
+        - var title = 'Welcome!'
+        - var description = 'Here we learn for fun'
+        meta(name='description' content=description)
+        title #{title}
+
+block content
+    include:markdown-it ../articles_markdown/about.md
