@@ -1,3 +1,10 @@
 ## About ##
 
-Work in progress
+I like to learn something new everyday!
+
+
+I currently am a software developer at [Netim](http://www.netim.com), a french [domain name registrar](https://en.wikipedia.org/wiki/Domain_name_registrar).
+
+My interests includes: Functional programming, Lisp, Machine learning, Writing, and many more!
+
+If you have any questions or comments, please email me at **julien.rouse@netc.eu**
