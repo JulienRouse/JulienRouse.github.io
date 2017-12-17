@@ -7,4 +7,4 @@ Framasoft is aiming to be a gate to the world of open-source, a link between the
 To help achieve this goal, Framasoft offer a great deal of services, mostly online, like:
 
 - open-source softwares
-- 
+- w
