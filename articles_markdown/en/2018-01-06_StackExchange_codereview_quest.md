@@ -1,6 +1,6 @@
 ## The StackExchange quest ##
 
-### What is [StackExchange](https://stackexchange.com/)?### 
+### What is [StackExchange](https://stackexchange.com/)? ### 
 [StackExchange](https://stackexchange.com/) is a community of Q&A websites, the best known being [StackOverflow](https://stackoverflow.com/), a Q&A website for developers having broken code. It aims to be a reference of knowledge, to help people learn.
 
 The format of the Q&A is simple, you ask a question, try to explain clearly your problem and then hopefully someone will answer your question. If your question is well formatted, ask something not asked previously, and follow the rules of the [StackExchange](https://stackexchange.com/) community where you ask the question, some people might vote for your question, to show that the question is an interesting one. When people vote for your questions (and your answers to other questions), you gain points which acts as a reputation. The more reputation you have, the more privilege you gain (like voting, downvoting, editing other posts, deleting posts ...).  

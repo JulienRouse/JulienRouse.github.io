@@ -1,7 +1,7 @@
-extends template/layout.pug
+extends template/layoutFR.pug
 
 block head-more
-    - var title = "Julien's blog"
+    - var title = "Blog de Julien"
     - var description = 'Here we learn for fun and profits'
     meta(name='description' content=description)
     title #{title}
@@ -9,41 +9,40 @@ block head-more
 block content
     div
         .posts
-            h1.content-subhead Pinned Post
+            h1.content-subhead Post épinglé
             section.post
                 header.post-header
                     img.post-avatar(width="48" height="48" alt="Julien's avatar" src="img/common/avatar_julien_cropped.JPG")
 
                     h2.post-title
-                        a(href="template/articles/en/2018-01-06_StackExchange_codereview_quest.html" hreflang="en") The StackExchange code review quest.
+                        a(href="template/articles/fr/2018-01-06_StackExchange_codereview_quest.html" hreflang="fr") La quête de la revue de code sur StackExchange
 
-                    p.post-meta By
+                    p.post-meta Par
                         |
                         |
                         a.post-author Julien
                         |
                         |
-                        span under
+                        span pour
                         a.post-category.post-category-js(href='#') News
 
                 .post-description
-                    p Start of a 30 days challenge doing code reviews on StackExchange
+                    p Début d'un challenge de 30 jours avec pour but de faire des revues de code
         .posts
-            h1.content-subhead Recent Posts
+            h1.content-subhead Posts récents
             section.post
                 header.post-header
                     img.post-avatar(width=48 height=48 alt="Julien's avatar" src="img/common/avatar_julien_cropped.jpg")
                     h2.post-title
-                        a(href="template/articles/en/2018-01-06_StackExchange_codereview_quest.html" hreflang="en") The StackExchange code review quest.
-                    p.post-meta By
+                        a(href="template/articles/fr/2018-01-06_StackExchange_codereview_quest.html" hreflang="fr") La quête de la revue de code sur StackExchange
+                    p.post-meta Par
                         |
                         |
                         a.post-author Julien
                         |
                         |
-                        span under
+                        span pour
                         a.post-category.post-category-js(href='#') News
 
                 .post-description
-                     p Start of a 30 days challenge doing code reviews on StackExchange
-
+                    p Début d'un challenge de 30 jours avec pour but de faire des revues de code

@@ -1,0 +1,14 @@
+extends ../../layout
+
+
+block prepend head
+    base(href="../../..")
+    block head-more
+        - var title = 'The mighty StackExchange code review quest'
+        - var description = 'Start of a 30 days challenge doing code reviews on StackExchange'
+        meta(name='description' content=description)
+        title #{title}
+
+block content
+    include:markdown-it ../../../articles_markdown/en/2018-01-06_StackExchange_codereview_quest.md
+    

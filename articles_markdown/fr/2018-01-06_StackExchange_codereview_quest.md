@@ -1,6 +1,6 @@
-## La quête StackExchange##
+## La quête StackExchange ##
 
-### [StackExchange](https://stackexchange.com/), qu'est ce que c'est?###
+### [StackExchange](https://stackexchange.com/), qu'est ce que c'est? ###
 [StackExchange](https://stackexchange.com/) est une communauté de site web de Q&A (questions-réponses), le plus connu étant [StackOverflow](https://stackoverflow.com/), un site de Q&A à destination des développeurs/codeurs en tout genre ayant besoin d'aide sur des question techniques, et plus précisement sur du code. Ces sites de Q&A ont pour but de devenir une source de référence, pour aider les gens à apprendre.  
 
 Le format des Q&A est simple, tu poses une question, en essayant d'expliquer aussi clairement que possible ton problème, et ensuite avec un peu de chance une ou plusieurs personnes vont répondre à ta question. Si la question est bien écrite, est pertinente, inédite, et suit les régles de la communité [StackExchange](https://stackexchange.com/) à laquelle la question est posée, la question peut recevoir des votes positifs qui indiquent la qualité de la question. Quand les autres utilisateurs du site votent pour tes questions (et les réponses que tu as pu faire à d'autres questions), tu gagnes des points qui fonctionnent comme une réputation. Plus grande est ta réputation, plus tu gagnes des privilèges (comme voter, édité les questions ou les réponses d'autres utilisateurs, supprimer des questions ...). 
