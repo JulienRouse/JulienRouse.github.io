@@ -7,7 +7,7 @@ I currently am a software developer at [Netim](http://www.netim.com), a french [
 
 My interests includes: Functional programming, Lisp (Common lisp, Hy and Clojure mostly), machine learning, writing, fencing and many more!
 
-If you have any questions or comments, please email me at **julien.rouse@netc.eu**
+If you have any questions or comments, please email me at **blog@julienrouse.com**
 
 
 ## About the blog ##
