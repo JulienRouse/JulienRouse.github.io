@@ -133,6 +133,9 @@ h3 {
         background: #df2d4f;
     }
 
+.post-date {
+    font-style: italic;
+}
 .post-images {
     margin: 1em 0;
 }
