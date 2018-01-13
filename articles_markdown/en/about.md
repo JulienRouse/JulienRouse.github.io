@@ -13,3 +13,7 @@ If you have any questions or comments, please email me at **blog@julienrouse.com
 ## About the blog ##
 
 Static blog hosted on Github Pages, templating HTML with PUG, articles written in Markdown.
+
+## Credits ##
+
+ - French and US flags designed by Freepik on flaticon

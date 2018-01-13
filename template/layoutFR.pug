@@ -36,8 +36,10 @@ html(lang='fr')
                                 a.pure-button(href="indexFR.html") Accueil
                             li.nav-item
                                 a.pure-button(href="template/a_propos.html") A propos
-                            li.nav-item
-                                a.pure-button(href="index.html") Version anglaise
+                            block traduction
+                                li.nav-item.nav-item-traduction
+                                    a.pure-button(href="index.html")
+                                        img(src="img/common/001-united-states.png" alt="English version")
             .content.pure-u-1.pure-u-md-3-4
                 block content
         block foot

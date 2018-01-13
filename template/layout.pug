@@ -36,8 +36,10 @@ html(lang='en')
                                 a.pure-button(href="index.html") Home
                             li.nav-item
                                 a.pure-button(href="template/about.html") About
-                            li.nav-item
-                                a.pure-button(href="indexFR.html") French version
+                            block traduction
+                                li.nav-item.nav-item-traduction
+                                    a.pure-button(href="indexFR.html")
+                                        img(src="img/common/002-france.png" alt="Version française")
             .content.pure-u-1.pure-u-md-3-4
                 block content
         block foot

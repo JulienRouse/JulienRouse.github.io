@@ -11,3 +11,7 @@ Pour toutes questions ou commentaires, écrivez moi à **blog@julienrouse.com**
 ## A propos du blog ##
 
 Blog statique hébergé par Github Pages, templating HTML avec PUG, et les articles écrits en Markdown.
+
+## Crédits ##
+
+- Drapeaux français et états-unis, design par Freepik sur flaticon

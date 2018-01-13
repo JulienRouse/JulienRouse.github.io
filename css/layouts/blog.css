@@ -70,10 +70,16 @@ h3 {
     font-size: 85%;
 }
 .nav-item a:hover,
-.nav-item a:focus {
-    border: 2px solid rgb(61, 146, 201);
-    text-decoration: none;
+ .nav-item a:focus {
+     border: 2px solid rgb(61, 146, 201);
+     text-decoration: none;
+ }
+
+.nav-item-traduction a,
+.nav-item-traduction a:hover{
+    border : none;
 }
+
 
 .content-subhead {
     text-transform: uppercase;
@@ -120,16 +126,16 @@ h3 {
     background: #999;
     font-size: 80%;
 }
-    .post-category-design {
+    .post-category-culture {
         background: #5aba59;
     }
-    .post-category-pure {
+    .post-category-code {
         background: #4d85d1;
     }
-    .post-category-yui {
+    .post-category-news {
         background: #8156a7;
     }
-    .post-category-js {
+    .post-category-challenge {
         background: #df2d4f;
     }
 
