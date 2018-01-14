@@ -12,10 +12,10 @@ Les sites de la communauté sont sur des sujets très variés, qui vont de la [
 ### Quel rapport avec la quête héroïque? ###
 Oui, le titre de l'article est "La quête StackExchange", parlons un peu de ça. J'aspire à améliorer mes compétences de développeur, et pour atteindre ce but, je vais faire des revues de code sur [CodeReview](https://codereview.stackexchange.com/). Le principe est simple, c'est de lire, comprendre et même quand c'est possible tester le code de quelqu'un d'autre, et ensuite faire une critique constructive. Cela devrait m'aider à améliorer certaines compétences telles que:
 
-- Lire du code que je n'ai pas écrit, et le comprendre. C'est quelque chose que je fais pratiquement tous les jours au travail (PHP et JS), mais c'est assez dur et je prends tout l'entrainement que je peux avoir.
-- Apprendre les bonnes pratiques pour le langage dans lequel le code est écrit.
-- Améliorer du code (si l'occasion se présente), ce qui peut être encore plus dur que comprendre le code.
-- Et faire la revue en anglais, vu que la quasi-totalité des sites de la communauté [StackExchange](https://stackexchange.com/) est anglophone.
+ - Lire du code que je n'ai pas écrit, et le comprendre. C'est quelque chose que je fais pratiquement tous les jours au travail (PHP et JS), mais c'est assez dur et je prends tout l'entrainement que je peux avoir.
+ - Apprendre les bonnes pratiques pour le langage dans lequel le code est écrit.
+ - Améliorer du code (si l'occasion se présente), ce qui peut être encore plus dur que comprendre le code.
+ - Et faire la revue en anglais, vu que la quasi-totalité des sites de la communauté [StackExchange](https://stackexchange.com/) est anglophone.
 
 Pour une durée de 30 jours, à partir d'aujourd'hui (06/01/2018) mon but est de faire 5 revues de code. C'est un nombre assez bas mais je vais essayer de faire des revues de qualités, ces revues sont censées aider les personnes les demandant, donc la qualité doit primer sur la quantité.
 
