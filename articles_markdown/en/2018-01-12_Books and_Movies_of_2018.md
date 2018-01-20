@@ -2,12 +2,13 @@
 
 ### Reading ###
 
-For reading I will consider books, regardless of hardcover or digital. I will not consider blog posts, news, etc
+For reading I will consider books and novels, regardless of hardcover or digital. I will not consider blog posts, newspaper, etc.
 
  - **The Alchemist** by *Paulo Coelho*
  - **The swords of Night and Day** by *David Gemmell*
  - **Phèdre** by *Jean Racine*
- - **Nine princes in Amber** by *Roger Zelazny*, first book out of ten from *The chronicles of Amber* 
+ - **Nine princes in Amber** by *Roger Zelazny*, first book out of ten from *The chronicles of Amber*
+ - **Guns of Avalon** by *Roger Zelazny*, second book out of ten from *The chronicles of Amber*
 
 ### Movies ###
 
