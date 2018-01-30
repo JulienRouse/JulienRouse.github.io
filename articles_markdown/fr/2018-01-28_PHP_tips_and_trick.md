@@ -1,10 +1,9 @@
 ## PHP astuces et bizarreries ##
 
-Cette semaine j'ai appris deux choses nouvelles en PHP, je vais les partager ici (même si ce n'est pas quelque chose de nouveau pour PHP, seuelement nouveau pour moi). Aussi, de même que tout ce que je prévois d'écrire dans ce blog, c'est une manière de m'en rappeler dans le futur et de pouvoir y faire référence plus tard. 
+Cette semaine j'ai appris deux choses nouvelles en PHP, je vais les partager ici (même si ce n'est pas quelque chose de nouveau pour PHP, seulement nouveau pour moi). Aussi, de même que tout ce que je prévois d'écrire dans ce blog, c'est une manière de m'en rappeler dans le futur et de pouvoir y faire référence plus tard. 
 
 ## Astuce: Utilisation de `empty` en conjonction avec `isset` ##
 
-I came to see this [StackOverflow post](https://stackoverflow.com/q/4559925/3729797), which basically asked
 Je suis tombé sur ce [post StackOverflow](https://stackoverflow.com/q/4559925/3729797), et la question est:
 
 > Est-ce redondant d'écrire `isset($var) AND !empty($var)`?
@@ -34,11 +33,11 @@ Et [ici les opcodes](https://3v4l.org/oCGDk/vld#output) pour
     if(!empty($var))
         echo $var;
 
-Le premier bout de code génère 8 opcodes alors que le second seulement 5.La plupart du temps ça n'a aucun impact mais j'imagine qu'il vaut mieux être conscient de la différence tout de même.
+Le premier bout de code génère 8 opcodes alors que le second seulement 5. La plupart du temps ça n'a aucun impact mais j'imagine qu'il vaut mieux être conscient de la différence tout de même.
 
 ## Bizarrerie ##
 
-La bizarrerie dont je veux parler succinctement, je l'ai trouvé sur Reddit, et fait partie des comportements étranges de PHP.
+La bizarrerie dont je veux parler succinctement, je l'ai trouvée sur Reddit, et elle fait partie des comportements étranges de PHP.
 Essaye de deviner le résultat de ce code:
 
 
@@ -60,9 +59,10 @@ Si tu as deviné:
 
 Tu as raison! Mais tu as probablement triché ou tu étais déjà au courant de ce résultat étrange!
 
-Une très bonne explication(en anglais) sur le pourquoi de ce comportement se trouve [ici](https://gist.github.com/nikic/6699370). En très très bref, ca vient d'une optimization qui est apparu dans PHP5.1, et qui se comporte étrangement dans ce cas précis.
+Une très bonne explication(en anglais) sur le pourquoi de ce comportement se trouve [ici](https://gist.github.com/nikic/6699370). En très très bref, ça vient d'une optimisation qui est apparue dans PHP5.1, et qui se comporte étrangement dans ce cas précis.
 
-C'est un résultat curieux, et ça peut être très compliqué de le débuguer! Va voir le lien pour l'explication, c'est très bien écrit. Et pour découvrir plus de curiosité sur PHP, tu peux voir [ce subreddit](https://www.reddit.com/r/lolphp/), certains posts sont vraiments intéressants.
+C'est un résultat curieux, et ça peut être très compliqué de le débuguer! Va voir le lien pour l'explication, c'est très bien écrit. Et pour découvrir plus de curiosité sur PHP, tu peux voir [ce subreddit](https://www.reddit.com/r/lolphp/), certains posts sont vraiment intéressants.
+
 ----------
 
-That's all for today. Being relatively new to PHP (I started to write code in PHP at the start of September 2017, 4 months ago), I discover a lot of those tips and quirks and I'll share those interesting bits of knowledge as I learn about them.
+C'est tout pour aujourd'hui. Étant relativement novice en PHP (j'ai commencé à utiliser PHP au début de septembre 2017, il y a 4 mois), je découvre souvent des astuces (et aussi des bizarreries) et je partagerais mes découvertes intéressantes au fur et à mesure que je les découvrirais.
