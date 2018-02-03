@@ -5,7 +5,7 @@ This post is a follow-up on the post I made at the start of January. It's probab
 
 ### Results ###
 
-I made **5** code reviews from January 6 to February 6:
+I made **5** code reviews from January 6 to February 4:
 
  - [A review in Python of a stack inplementation](https://codereview.stackexchange.com/a/184444/87312)
  - [A review in Java of the implementation of Conway's Game of life](https://codereview.stackexchange.com/a/184519/87312)
@@ -22,8 +22,6 @@ For Python, it's been quite some time I haven't done anything meaningful so I di
 Overall this review in Python reminded me some good practices, but mostly that I am out of practice in Python and need to code again seriously with it before trying to help others. (unless on basic stuff, or non-language dependant concepts).
 
 
-As for Java, I have mixed feelings. In those reviews, I spotted bad naming, code that could be refactored, good and bad uses of `Exception`, bad uses of documentation/comments. But others answers provided insights that I did miss like a better way of solving the problem, when there was too much (useless) comments, and also post that were maybe more opinion based but that were contrary to what I wrote. It means a few things: sometimes, coding is opinion based, which is fine. Also I need to try to see the problem in the big picture, to not miss when problem can be solved more efficiently.
+As for Java, I have mixed feelings. In those reviews, I spotted bad naming, code that could be refactored, good and bad uses of `Exception`, bad uses of documentation/comments. But others answers provided insights that I did miss like a better way of solving the problem, when there was too much (useless) comments, and also post that were maybe more opinion based but that were contrary to what I wrote. It means a few things: sometimes, coding is opinion based, which is fine. Also I need to try to take a step back and look at the problem in the big picture, to not miss when problem can be solved more efficiently by changing the overall way of doing it, instead of trying to improve locally a suboptimal way of solving a problem.
 
-
-
-
+Reading Java code again and trying to understand and improve on it was hard, I'll start to practice soon again to get better at it.
