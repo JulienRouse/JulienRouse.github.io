@@ -15,6 +15,11 @@
  - Framasoft
  - What is programming? Explain your job
  - Review about books/ list of books
+ - Git / Github / Gitlab
+ - Clojure / Lisp 
+ - Functional programming
 
 ### Improvement ###
  -  RSS feed / ATOM feed
+ -  Color of the theme?
+ -  Icon for github, hackerrank and linkedin links
