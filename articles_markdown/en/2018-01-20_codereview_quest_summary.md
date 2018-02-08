@@ -25,3 +25,7 @@ Overall this review in Python reminded me some good practices, but mostly that I
 As for Java, I have mixed feelings. In those reviews, I spotted bad naming, code that could be refactored, good and bad uses of `Exception`, bad uses of documentation/comments. But others answers provided insights that I did miss like a better way of solving the problem, when there was too much (useless) comments, and also post that were maybe more opinion based but that were contrary to what I wrote. It means a few things: sometimes, coding is opinion based, which is fine. Also I need to try to take a step back and look at the problem in the big picture, to not miss when problem can be solved more efficiently by changing the overall way of doing it, instead of trying to improve locally a suboptimal way of solving a problem.
 
 Reading Java code again and trying to understand and improve on it was hard, I'll start to practice soon again to get better at it.
+
+### Conclusion ###
+
+It was a good experience reading others people code, I should definitely do it again to keep improving mu reviewing skill.
