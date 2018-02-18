@@ -16,10 +16,13 @@
  - What is programming? Explain your job
  - Review about books/ list of books
  - Git / Github / Gitlab
- - Clojure / Lisp 
+ - Clojure / Lisp / Hy
  - Functional programming
+ - Take a look at new languages? Erlang/Elixir, Haskell, Elm, Go, Rust... Piet, BrainFuck, J?
+ -  Algorithmic trading?
 
 ### Improvement ###
  -  RSS feed / ATOM feed
  -  Color of the theme?
  -  Icon for github, hackerrank and linkedin links
+ -  Automatization of the workflow?

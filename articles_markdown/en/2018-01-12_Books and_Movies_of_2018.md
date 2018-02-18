@@ -9,9 +9,14 @@ For reading I will consider books and novels, regardless of hardcover or digital
  - **Phèdre** by *Jean Racine*
  - **Nine princes in Amber** by *Roger Zelazny*, first book out of ten from *The chronicles of Amber*
  - **Guns of Avalon** by *Roger Zelazny*, second book out of ten from *The chronicles of Amber*
-
+ - **The Buried Geant** by *Kazuo Ishiguro*
+ - **Sign of the Unicorn** by *Roger Zelazny*, third book out of ten from *The chronicles of Amber*
+ - **The Hand of Oberon** by *Roger Zelazny*, fourth book out of ten from *The chronicles of Amber*
+ - **The Courts of Chaos** by *Roger Zelazny*, fifth book out of ten from *The chronicles of Amber*
+ - **The Call of Cthulhu** by H.P. Lovecraft
 ### Movies ###
 
 I'll consider only those I've seen at the theater
 
- - ???
+ - **The Post** (In french **Pentagon Papers**), by *Steven Spielberg*
+ - 
