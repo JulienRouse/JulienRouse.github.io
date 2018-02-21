@@ -22,7 +22,45 @@ There are primitives types
 String is a class but with special meaning. `String s = 'toto';` will do the same as `String s = new String('toto');`
  
 #### Loop ####
+
+There are several ways of looping in Java. We are going to print the numbers from 0 to 9 to show each looping construct.
+
+##### For loop #####
+A **for** loop:
+
+    for(int i=0;i<10;i++)
+	    System.out.println(i);
+
+##### While loop #####
+A **while** loop:
+
+	int i = 0;
+	while(i<10)
+	{
+		System.out.println(i);
+		i++;
+	}
+
+##### Do...While loop #####
+A **do..while** loop:
+
+	int i = 0;
+	do
+	{
+		System.out.println(i);
+		i++;
+	}while(i<10)
+
+	
+##### Bonus on loop #####
+There are two keywords that interact with the flow of a loop, `break` and `continue`
+
 #### Conditionnal statement ####
+
+if then
+if then else
+switch
+ternary operator
 
 ### Classes ###
 
@@ -35,5 +73,63 @@ String is a class but with special meaning. `String s = 'toto';` will do the sam
 ### UML? ###
 
 ### Keywords ###
+
+www.codejava.net/java-core/the-java-language/java-keywords
+- abstract
+- assert
+- boolean
+- break
+- byte
+- case
+- catch
+- char
+- class
+- const
+- continue
+- default
+- do
+- double
+- else
+- enum
+- extends
+- final
+- finally
+- float
+- for
+- goto
+- if
+- implements
+- import
+- instanceof
+- int
+- interface	
+- long	
+- native
+- new
+- package
+- private
+- protected
+- public
+- return	
+- short	
+- static
+- strictfp
+- super
+- switch
+- synchronized
+- this
+- throw
+- throws
+- transient
+- try
+- void
+- volatile
+- while
+
+Some noteworthy points regarding Java keywords:
+
+    - const and goto are resevered words but not used.
+    - true, false and null are literals, not keywords.
+    - all keywords are in lower-case.
 
 ### Conclusion ### 
