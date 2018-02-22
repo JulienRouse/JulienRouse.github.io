@@ -28,3 +28,5 @@ Reading Java code again and trying to understand and improve on it was hard, I'l
 ### Conclusion ###
 
 It was a good experience reading other people code, I should definitely do it again to keep improving my reviewing skill. 
+
+If you read it all, Yeah! You should definitely try as well the code review experience on [codereview](https://codereview.stackexchange.com/).
