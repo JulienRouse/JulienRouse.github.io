@@ -1,8 +1,5 @@
-## Learning OOP with Java ##
+## Reference sheet about Java ##
 
-### Basics ###
-
-#### Hello world ####
 #### Data Types ####
 
 [DOC ORACLE on DATA TYPES](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
@@ -20,49 +17,10 @@ There are primitives types
  - `char` 16-bit Unicode character. ['\u0000';'\ufff'] . default = '\u0000'
  
 String is a class but with special meaning. `String s = 'toto';` will do the same as `String s = new String('toto');`
- 
-#### Loop ####
 
-There are several ways of looping in Java. We are going to print the numbers from 0 to 9 to show each looping construct.
+### OOP ###
 
-##### For loop #####
-A **for** loop:
-
-    for(int i=0;i<10;i++)
-	    System.out.println(i);
-
-##### While loop #####
-A **while** loop:
-
-	int i = 0;
-	while(i<10)
-	{
-		System.out.println(i);
-		i++;
-	}
-
-##### Do...While loop #####
-A **do..while** loop:
-
-	int i = 0;
-	do
-	{
-		System.out.println(i);
-		i++;
-	}while(i<10)
-
-	
-##### Bonus on loop #####
-There are two keywords that interact with the flow of a loop, `break` and `continue`
-
-#### Conditionnal statement ####
-
-if then
-if then else
-switch
-ternary operator
-
-### Classes ###
+Java support class and object, interfaces, abstract classes, simple inheritance between class.
 
 ### Methods ###
 
@@ -71,6 +29,45 @@ ternary operator
 ### Abstract ###
 
 ### UML? ###
+
+
+### Operator listed by precedence ###
+Lower precedence means evaluted first. 
+
+#### Precedence 0 ####
+- `new`: Not officially an operator, as it is only used in one context, followed just after by  class name.
+
+#### Precedence 1 #### 
+- (prefix) ++: The preincrement operator (add 1)
+- (prefix) --: The predecrement operator (substract 1)
+- (unary) +
+- (unary) -
+- (unary) ~: Bitwise not for `int`
+- (unary) !: Bolean not
+- (cast): Not officially an operator, as multitude of purposes, all united under the term casting
+- (postfix) ++: The postincrement operator (add 1)
+- (postfix) --: The postdecrement operator (substract 1)
+
+#### Precedence 2 ####
+- *: Integer multiplication for `int` and floating point multiplication for `double`
+- /: Integer division for `int` and floating point division for `double`
+- %: Remainder operator (often miscalled the *modulus*)
+#### Precedence 3 ####
+- +: Integer addition for `int` and floating point addition for `double`. Is also the concatenation operator for `String`
+- -: Integer substraction for `int` and floating point substraction for `double`
+#### Precedence 4 ####
+- <<: 
+- >>:
+- >>>:
+#### Precedence 5 ####
+#### Precedence 6 ####
+#### Precedence 7 ####
+#### Precedence 8 ####
+#### Precedence 9 ####
+#### Precedence 10 ####
+#### Precedence 11 ####
+#### Precedence 12 ####
+#### Precedence 13 ####
 
 ### Keywords ###
 
