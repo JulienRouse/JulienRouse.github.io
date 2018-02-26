@@ -1,5 +1,7 @@
 ## Reference sheet about Java ##
 
+This one is a WIP about Java, I'm trying to put informations and links about Java all in the same place. For now it's not visually appealing but it's not the priority. Should I add snippet of code also?
+
 #### Data Types ####
 
 [DOC ORACLE on DATA TYPES](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
@@ -98,10 +100,10 @@ See [this post](https://stackoverflow.com/a/2811372/3729797) for more detailed e
 
 ### Keywords ###
 
-www.codejava.net/java-core/the-java-language/java-keywords
+[List of keyword](www.codejava.net/java-core/the-java-language/java-keywords)
 
 - `abstract`
-- `assert`
+- `assert`: [Oracle doc](https://docs.oracle.com/javase/7/docs/technotes/guides/language/assert.html), [SO](https://stackoverflow.com/q/2758224/3729797)
 - `boolean`
 - `break`
 - `byte`
@@ -129,7 +131,7 @@ www.codejava.net/java-core/the-java-language/java-keywords
 - `int`
 - `interface`
 - `long`
-- `native`
+- `native`: [SO](https://stackoverflow.com/questions/6101311/what-is-the-native-keyword-in-java-for) in short to design FFI methods
 - `new`
 - `package`
 - `private`
@@ -138,17 +140,17 @@ www.codejava.net/java-core/the-java-language/java-keywords
 - `return`
 - `short`
 - `static`
-- `strictfp`
+- `strictfp`:class keyword. Compute floats/doubles using a fixed precision, for portability. Usually less precise on newer computer.
 - `super`
 - `switch`
-- `synchronized`
+- `synchronized`: [oracle](https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html), [link](https://javamex.com/tutorials/synchronization_concurrency_synchronized1.shtml)
 - `this`
 - `throw`
 - `throws`
-- `transient`
+- `transient`: When serialising an object, all fields marked as `transient` are ignored
 - `try`
 - `void`
-- `volatile`
+- `volatile`: Updating value when writing on it for other threads. See [this](https://stackoverflow.com/a/106787/3729797) and [this](https://www.ibm.com/developerworks/java/library/j-jtp06197/) and [this](http://tutorials.jenkov.com/java-concurrency/volatile.html) and [this](https://javamex.com/tutorials/synchronization_volatile.shtml)
 - `while`
 
 Some noteworthy points regarding Java keywords:
@@ -160,6 +162,3 @@ Some noteworthy points regarding Java keywords:
 ### Ressources ###
 
 [Java Language and Virtual Machine Specification](https://docs.oracle.com/javase/specs/#15.19)
-
-
-### Conclusion ### 
