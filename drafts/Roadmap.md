@@ -17,6 +17,7 @@
  - Review about books/ list of books
  - Git / Github / Gitlab
  - Clojure / Lisp / Hy
+   - klipse!
  - Functional programming
  - Take a look at new languages? Erlang/Elixir, Haskell, Elm, Go, Rust... Piet, BrainFuck, J?
  -  Algorithmic trading?

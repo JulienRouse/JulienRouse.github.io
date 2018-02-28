@@ -1,6 +1,6 @@
 ## Reference sheet about Java ##
 
-This one is a WIP about Java, I'm trying to put informations and links about Java all in the same place. For now it's not visually appealing but it's not the priority. Should I add snippet of code also?
+This one is a WIP about Java, I'm trying to put informations and links about Java all in the same place. For now it's not visually appealing but it's not the priority.
 
 #### Data Types ####
 
@@ -20,19 +20,6 @@ There are primitives types
  - `char` 16-bit Unicode character. ['\u0000';'\ufff'] . default = '\u0000'
  
 String is a class but with special meaning. `String s = 'toto';` will do the same as `String s = new String('toto');`
-
-### OOP ###
-
-Java support class and object, interfaces, abstract classes, simple inheritance between class.
-
-### Methods ###
-
-### Interfaces ###
-
-### Abstract ###
-
-### UML? ###
-
 
 ### Operator listed by precedence ###
 Lower precedence means evaluted first. 
