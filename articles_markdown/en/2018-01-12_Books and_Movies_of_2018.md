@@ -14,6 +14,10 @@ For reading I will consider books and novels, regardless of hardcover or digital
  - **The Hand of Oberon** by *Roger Zelazny*, fourth book out of ten from *The chronicles of Amber*
  - **The Courts of Chaos** by *Roger Zelazny*, fifth book out of ten from *The chronicles of Amber*
  - **The Call of Cthulhu** by H.P. Lovecraft
+ - **The long Earth** by *Terry Pratchett* and *Stephen Baxter*
+ - **The Rook: On Her Majesty’s Supernatural Secret Service** by *Daniel O'Malley*
+ - **The long War** by *Terry Pratchett* and *Stephen Baxter*
+ 
 ### Movies ###
 
 I'll consider only those I've seen at the theater
