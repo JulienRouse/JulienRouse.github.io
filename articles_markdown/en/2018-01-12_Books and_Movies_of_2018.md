@@ -1,6 +1,6 @@
-## My 2018 list of reading and viewing ##
+## My 2018 list of books and movies ##
 
-### Reading ###
+### Books ###
 
 For reading I will consider books and novels, regardless of hardcover or digital. I will not consider blog posts, newspaper, etc.
 
@@ -23,4 +23,4 @@ For reading I will consider books and novels, regardless of hardcover or digital
 I'll consider only those I've seen at the theater
 
  - **The Post** (In french **Pentagon Papers**), by *Steven Spielberg*
- - 
+
