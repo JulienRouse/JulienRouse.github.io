@@ -16,10 +16,10 @@
 
 <pre><code class="language-reagent">
 (ns my.reagent-examples
-  (:require [reagent.core :as reagent]))
+  (:require [reagent.core :as r]))
 
 (when-let [element (js/document.getElementById "app")]
-  (reagent/render-component [component] element))
+  (r/render-component [component] element))
  
 (defn greetings []
    [:p "Hello world"])
@@ -37,7 +37,11 @@
 
 (defn buy [atom1 key1 qtty]
   (fn [e]
-  	(swap! atom1 merge {key1 (- (@atom1 key1) qtty)})))
+    (swap! atom1 merge {key1 (- (@atom1 key1) qtty)})))
+
+(defn container-green [component]
+  [:div {:style {:color "green" }}
+   component])
 
 (defn t []
   (let [{:keys [pv pvmax mana] :as datadata} @data])
@@ -57,8 +61,14 @@
    [:p (str (@data :pv) "pv" )]
    [:p (str (@data :mana) "mana" )]
    ])
+
+(defn tt []
+  (container-green (t)))
 </code></pre>
 
+<pre><code class="language-reagent">
+(ns my.reagent-examples)
+</code></pre>
 
 <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
 </body>
