@@ -36,8 +36,10 @@
   [:div {:value :value :style {:color "red" :width (str (int (* (/ pv pvmax) 100)) "%") :background-color "blue" :border "1px solid black"}} (str (int (* (/ pv pvmax) 100)) "%")])
 
 (defn buy [atom1 key1 qtty]
-  (fn [e]
-    (swap! atom1 merge {key1 (- (@atom1 key1) qtty)})))
+    (swap! atom1 merge {key1 (- (@atom1 key1) qtty)}))
+
+(defn sell [atom1 key1 qtty]
+    (swap! atom1 merge {key1 (+ (@atom1 key1) qtty)}))
 
 (defn container-green [component]
   [:div {:style {:color "green" }}
@@ -55,7 +57,7 @@
    [:input {:type "button" :value "lose health" :on-click (fn [e] (swap! datapv dec)) } ]
    [:input {:type "button" :value "gain health" :on-click (fn [e] (swap! data merge {:pv (+ (@data :pv) 10)})) } ]
    [:input {:type "button" :value "increase max health" :on-click (fn [e] (swap! data merge {:pvmax (+ (@data :pvmax) 50)}))}]
-   [:input {:type "button" :value "buy 1" :on-click (buy data :mana 5)}]
+   [:input {:type "button" :value "buy 1" :on-click #(buy data :mana 5)}]
    [:p @datapv]
    [:p (str (@data :pvmax) "pvmax")]
    [:p (str (@data :pv) "pv" )]
@@ -67,7 +69,39 @@
 </code></pre>
 
 <pre><code class="language-reagent">
-(ns my.reagent-examples)
+(ns my.reagent-examples
+  (:require [reagent.core :as r]))
+
+(def dataCotCot (r/atom {:currency 20 :lvl1 0 :lvl2 0}))
+
+(defn calc-cost [qtty initial-cost lvl]
+  (if (= qtty 0)
+    initial-cost
+    (int (Math/pow initial-cost (+ 1 (/ qtty 10) (/ lvl 10))))))
+
+(defn buyCotCot [myatom currencykey lvlkey qtty]
+  (when (<= qtty (@myatom currencykey)) 
+    (fn [e]
+      (buy dataCotCot currencykey qtty)
+      (sell dataCotCot lvlkey 1))))
+
+(defn update-ressource [atom1]
+  (swap! atom1 merge {:currency (+ (@atom1 :currency) (+ (@atom1 :lvl1) (* (@atom1 :lvl2) 100)))}))
+
+(defonce timer-update-ressource
+  (js/setInterval #(update-ressource dataCotCot) 1000)) ;; Increment app-state every 1000ms
+
+
+(defn cotcotidle []
+  [:div
+   [:input {:type "button" :value "buy 1 Poulette" :on-click (buyCotCot  dataCotCot :currency :lvl1 (calc-cost (@dataCotCot :lvl1) 10 1))}]
+   [:input {:type "button" :value "buy 1 Poulette gold" :on-click (buyCotCot  dataCotCot :currency :lvl2 (calc-cost (@dataCotCot :lvl2) 1000 2))}]
+   [:p (str (@dataCotCot :currency) " Oeuf(s)")]
+   [:p (str (@dataCotCot :lvl1) " Poulette!")]
+   [:p (str (@dataCotCot :lvl2) " Poulette gold?")]
+   [:p (str "cost for lvl1 is " (calc-cost (@dataCotCot :lvl1) 10 1))]
+   [:p (str "cost for lvl2 is " (calc-cost (@dataCotCot :lvl2) 1000 2))]
+   ])
 </code></pre>
 
 <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
