@@ -71,8 +71,14 @@
 <pre><code class="language-reagent">
 (ns my.reagent-examples
   (:require [reagent.core :as r]))
+  
+(defn make-cotcot 
+  [initial-cost cost-multiplier] 
+  {:initial-cost initial-cost :cost-multiplier cost-multiplier :quantity 0 :max-quantity 0})
 
-(def dataCotCot (r/atom {:currency 20 :lvl1 0 :lvl2 0}))
+(defonce dataCotCot (r/atom {:currency 20 :lvl1 0 :lvl2 0}))
+(def test (r/atom [(make-cotcot 10 2) (make-cotcot 100 3)]))
+
 
 (defn calc-cost [qtty initial-cost lvl]
   (if (= qtty 0)
@@ -86,7 +92,7 @@
       (sell dataCotCot lvlkey 1))))
 
 (defn update-ressource [atom1]
-  (swap! atom1 merge {:currency (+ (@atom1 :currency) (+ (@atom1 :lvl1) (* (@atom1 :lvl2) 100)))}))
+  (swap! atom1 merge {:currency (+ (@atom1 :currency) (+ (@atom1 :lvl1) (* (@atom1 :lvl2) 10)))}))
 
 (defonce timer-update-ressource
   (js/setInterval #(update-ressource dataCotCot) 1000)) ;; Increment app-state every 1000ms
@@ -95,12 +101,13 @@
 (defn cotcotidle []
   [:div
    [:input {:type "button" :value "buy 1 Poulette" :on-click (buyCotCot  dataCotCot :currency :lvl1 (calc-cost (@dataCotCot :lvl1) 10 1))}]
-   [:input {:type "button" :value "buy 1 Poulette gold" :on-click (buyCotCot  dataCotCot :currency :lvl2 (calc-cost (@dataCotCot :lvl2) 1000 2))}]
+   [:input {:type "button" :value "buy 1 Poulette gold" :on-click (buyCotCot  dataCotCot :currency :lvl2 (calc-cost (@dataCotCot :lvl2) 100 2))}]
    [:p (str (@dataCotCot :currency) " Oeuf(s)")]
    [:p (str (@dataCotCot :lvl1) " Poulette!")]
    [:p (str (@dataCotCot :lvl2) " Poulette gold?")]
    [:p (str "cost for lvl1 is " (calc-cost (@dataCotCot :lvl1) 10 1))]
-   [:p (str "cost for lvl2 is " (calc-cost (@dataCotCot :lvl2) 1000 2))]
+   [:p (str "cost for lvl2 is " (calc-cost (@dataCotCot :lvl2) 100 2))]
+   [:p (str "test " @test)]
    ])
 </code></pre>
 
