@@ -77,7 +77,7 @@
   {:initial-cost initial-cost :cost-multiplier cost-multiplier :quantity 0})
 
 (defonce dataCotCot (r/atom {:currency 20 :lvl1 0 :lvl2 0}))
-(defonce test (r/atom {:currency 20 :lvl1 (make-cotcot 10 1.07) :lvl2 (make-cotcot 100 1.1) :lvl3 (make-cotcot 1000 1.13)}))
+(def test (r/atom {:currency 20 :lvl1 (make-cotcot 10 1.07) :lvl2 (make-cotcot 100 1.1) :lvl3 (make-cotcot 1000 1.13)}))
 
 
 (defn calc-cost [qtty initial-cost lvl]
