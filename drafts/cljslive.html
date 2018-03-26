@@ -77,7 +77,13 @@
   {:initial-cost initial-cost :cost-multiplier cost-multiplier :initial-earning initial-earning :quantity 0 :description description})
 
 (defonce dataCotCot (r/atom {:currency 20 :lvl1 0 :lvl2 0}))
-(def test (r/atom {:currency 20 :lvl1 (make-cotcot 10 1.07 1 "petite poulette") :lvl2 (make-cotcot 100 1.1 5 "moyenne poulette") :lvl3 (make-cotcot 1000 1.13 10 "grande poulette")}))
+(def test (r/atom {:currency 20 
+                   :lvl1 (make-cotcot 10 1.07 0.5 "petite poulette") 
+                   :lvl2 (make-cotcot 100 1.1 2 "moyenne poulette") 
+                   :lvl3 (make-cotcot 1000 1.13 10 "grande poulette")
+                   :lvl4 (make-cotcot 100000 1.14 100 "mega poulette")
+                   :upgrade-multiplier 1
+                   :reset-multiplier 1}))
 
 
 (defn calc-cost [qtty initial-cost lvl]
@@ -116,12 +122,19 @@
         (sell2 my-atom lvl-key 1)))))
 
 (defn value-per-tick [my-atom lvl-key]
-  (* ((@my-atom lvl-key) :quantity) ((@my-atom lvl-key) :initial-earning)))
+  (let [lvl-stat (@my-atom lvl-key)
+        upgrade-multiplier (@my-atom :upgrade-multiplier)
+        reset-multiplier (@my-atom :reset-multiplier)]
+	(* (lvl-stat :quantity) (lvl-stat :initial-earning) upgrade-multiplier reset-multiplier)))
+
+(defn total-earning-per-tick [my-atom my-keys]
+	(map value-per-tick (repeat my-atom) my-keys))
+  ;(map value-per-tick  my-atom my-keys))
 
 (defn update-ressource [atom1]
   (swap! atom1 merge {:currency (+ (@atom1 :currency) (+ (@atom1 :lvl1) (* (@atom1 :lvl2) 10)))}))
 (defn update-ressource2 [atom1]
-  (swap! atom1 merge {:currency (+ (@atom1 :currency) (value-per-tick atom1 :lvl1) (value-per-tick atom1 :lvl2) (value-per-tick atom1 :lvl3))}))
+  (swap! atom1 merge {:currency (+ (@atom1 :currency) (total-earning-per-tick atom1 [:lvl1 :lvl2 :lvl3 :lvl4]))}))
 
 (defonce timer-update-ressource
   (js/setInterval #(update-ressource dataCotCot) 1000)) ;; Increment app-state every 1000ms
@@ -149,16 +162,18 @@
    [cotcot-component test :lvl1]
    [cotcot-component test :lvl2]
    [cotcot-component test :lvl3]
+   [cotcot-component test :lvl4]
    ;[:input {:type "button" :value "buy 1 lvl1" :on-click (buyCotCot2 test :currency :lvl1)}]
    ;[:input {:type "button" :value "buy 1 lvl2" :on-click (buyCotCot2 test :currency :lvl2)}]
    ;[:input {:type "button" :value "buy 1 lvl3" :on-click (buyCotCot2 test :currency :lvl3)}]
-   [:p (str (@test :currency) " Oeuf(s)")]
+   [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
    ;[:p (str ((@test :lvl1) :quantity) " Poulette lvl1!")]
    ;[:p (str ((@test :lvl2) :quantity) " Poulette lvl2!")]
    ;[:p (str ((@test :lvl3) :quantity) " Poulette lvl3!")]
    ;[:p (str (calc-cost2-1 test :lvl1) " cost lvl1!")]
    ;[:p (str (calc-cost2-1 test :lvl2) " cost lvl2!")]
    ;[:p (str (calc-cost2-1 test :lvl3) " cost lvl3!")]
+   [:p (str "earning per tick" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3]))]
    [:p (str "test: " @test)]
    ])
 </code></pre>
