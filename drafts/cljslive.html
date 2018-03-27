@@ -80,11 +80,14 @@
 
 <pre><code class="language-reagent">
 (ns my.reagent-examples
-        (:require [reagent.core :as r]))
+	(:require 
+            [reagent.core :as r]
+            [goog.string :as gstring]
+            [goog.string.format]))
 
 (defn make-cotcot 
-        [initial-cost cost-multiplier initial-earning description] 
-        {:initial-cost initial-cost :cost-multiplier cost-multiplier :initial-earning initial-earning :quantity 0 :description description})
+        [initial-cost cost-multiplier initial-earning name description] 
+        {:initial-cost initial-cost :cost-multiplier cost-multiplier :initial-earning initial-earning :quantity 0 :name name :description description})
 
 (defn make-upgrade
         [name description cost benefit]
@@ -93,10 +96,10 @@
 (defonce dataCotCot (r/atom {:currency 20 :lvl1 0 :lvl2 0}))
 (def test (r/atom {:currency 20
                    :lifetime-earning 0
-                   :lvl1 (make-cotcot 10 1.07 0.5 "petite poulette") 
-                   :lvl2 (make-cotcot 100 1.1 2 "moyenne poulette") 
-                   :lvl3 (make-cotcot 1000 1.13 10 "grande poulette")
-                   :lvl4 (make-cotcot 100000 1.14 100 "mega poulette")
+                   :lvl1 (make-cotcot 10 1.07 0.5 "petite poulette" "cute little poulette") 
+                   :lvl2 (make-cotcot 100 1.1 2 "moyenne poulette" "cute medium poulette") 
+                   :lvl3 (make-cotcot 1000 1.13 10 "grande poulette" "cute big poulette")
+                   :lvl4 (make-cotcot 100000 1.14 100 "mega poulette" "waouw")
                    :upgrade-multiplier 1
                    :upgrades {:upgrade1 (make-upgrade "upgrade1" "description1 blabla" 10 0.01)
                               :upgrade2 (make-upgrade "upgrade2" "description2 bloblo" 100 0.1)}
@@ -139,6 +142,11 @@
                         (fn [e]
                                 (buy my-atom currency-key cost)
                                 (sell2 my-atom lvl-key 1)))))
+(defn value-per-tick-for-one [my-atom lvl-key]
+        (let [lvl-stat (@my-atom lvl-key)
+              upgrade-multiplier (@my-atom :upgrade-multiplier)
+              reset-multiplier (@my-atom :reset-multiplier)]
+                (* (lvl-stat :initial-earning) upgrade-multiplier reset-multiplier)))
 
 (defn value-per-tick [my-atom lvl-key]
         (let [lvl-stat (@my-atom lvl-key)
@@ -160,7 +168,17 @@
         (js/setInterval #(update-ressource2 test) 1000)) ;; Increment app-state every 1000ms
 
 (defn cotcot-component [my-atom lvl-key]
-        [:input {:type "button" :value (str "Buy 1 " ((@my-atom lvl-key) :description) " for " (calc-cost2-1 my-atom lvl-key) "$(" ((@my-atom lvl-key) :quantity) ")") :on-click (buyCotCot2 my-atom :currency lvl-key)}])
+        [:div 
+         [:input {:type "button"
+                  :disabled (>= (calc-cost2-1 my-atom lvl-key) (@my-atom :currency))
+                  :value (str "Buy 1 " ((@my-atom lvl-key) :name) " for " (calc-cost2-1 my-atom lvl-key) "$(" ((@my-atom lvl-key) :quantity) ")") 
+                  :on-click (buyCotCot2 my-atom :currency lvl-key)}]
+         [:label (str " " ((@my-atom lvl-key) :description) ". Base earning is " (value-per-tick-for-one my-atom lvl-key) "$/tick. All cotcot earns " (value-per-tick my-atom lvl-key) "$/tick. (" 
+ 					(gstring/format "%.2f" (double (* 100 (/ (value-per-tick my-atom lvl-key)
+						(if (> (total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4]) 0)
+         					(total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4])
+                            1)))))
+                      "% of total.)")]])
 
 (defn upgrade-component [my-atom upgrade-key]
         (let [upgrade ((@my-atom :upgrades) upgrade-key)]
@@ -192,11 +210,12 @@
          [cotcot-component test :lvl3]
          [cotcot-component test :lvl4]
          [:div 
-          [:p "upgrade"]
+          [:p "upgrade(s)"]
           [upgrade-component test :upgrade1]
+          [upgrade-component test :upgrade2]
           ]
          [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
-         [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3]))]
+         [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3 :lvl4]))]
          [:p (str "test: " @test)]
          ])
 </code></pre>
