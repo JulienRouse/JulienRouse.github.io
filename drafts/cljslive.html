@@ -90,12 +90,12 @@
 (defn set-item!
         "Set `key' in browser's localStorage to `val`."
         [key val]
-        (.setItem (.-localStorage js/window) key val))
+        (.setItem (.-localStorage js/window) key (pr-str val)))
 
 (defn get-item
         "Returns value of `key' from browser's localStorage."
         [key]
-        (.getItem (.-localStorage js/window) key))
+        (cljs.reader/read-string (.getItem (.-localStorage js/window) key)))
 
 (defn remove-item!
         "Remove the browser's localStorage value for the given `key`"
@@ -207,8 +207,8 @@
           ]
          [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
          [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3 :lvl4]))]
-         [:input {:type "button" :value "Save on local storage" :on-click (fn [] (set-item! :save (pr-str @test)))}]
-         [:input {:type "button" :value "Use previous save" :on-click (fn [] (swap! test merge (cljs.reader/read-string (get-item :save))))}]
+         [:input {:type "button" :value "Save on local storage" :on-click (fn [] (set-item! :save @test))}]
+         [:input {:type "button" :value "Use previous save" :on-click (fn [] (swap! test merge (get-item :save)))}]
          [:input {:type "button" :value "Delete local storage" :on-click (fn [] (remove-item! :save))}]
          [:p (str "local storage: " (get-item :save))]
          [:p (str "test: " @test)]
