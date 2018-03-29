@@ -95,7 +95,10 @@
 (defn get-item
         "Returns value of `key' from browser's localStorage."
         [key]
-        (cljs.reader/read-string (.getItem (.-localStorage js/window) key)))
+        (let [val (.getItem (.-localStorage js/window) key)]
+        	(cljs.reader/read-string (if (string? val)
+                                         val
+                                         ""))))
 
 (defn remove-item!
         "Remove the browser's localStorage value for the given `key`"
