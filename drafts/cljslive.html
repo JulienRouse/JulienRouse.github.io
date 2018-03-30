@@ -96,9 +96,9 @@
         "Returns value of `key' from browser's localStorage."
         [key]
         (let [val (.getItem (.-localStorage js/window) key)]
-        	(cljs.reader/read-string (if (string? val)
-                                         val
-                                         ""))))
+                (cljs.reader/read-string (if (string? val)
+                                                 val
+                                                 ""))))
 
 (defn remove-item!
         "Remove the browser's localStorage value for the given `key`"
@@ -164,7 +164,8 @@
 
 
 (defn update-ressource [my-atom]
-        (swap! my-atom merge {:currency (+ (@my-atom :currency) (total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4]))}))
+  (let [money (total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4])]
+    (swap! my-atom merge {:currency (+ (@my-atom :currency) money) :lifetime-earning (+ (@my-atom :lifetime-earning) money)})))
 
 ;;;; TIMER
 
@@ -173,28 +174,33 @@
 
 ;;;; COMPONENTS
 (defn cotcot-component [my-atom lvl-key]
+  (let [cotcot (@my-atom lvl-key)]
+    (when (or (<= (cotcot :initial-cost) 10) (>= (@my-atom :lifetime-earning) (cotcot :initial-cost)))
         [:div 
          [:input {:type "button"
                   :disabled (>= (calc-cost my-atom lvl-key) (@my-atom :currency))
-                  :value (str "Buy 1 " ((@my-atom lvl-key) :name) " for " (calc-cost my-atom lvl-key) "$(" ((@my-atom lvl-key) :quantity) ")") 
+                  :value (str "Buy 1 " (cotcot :name) " for " (calc-cost my-atom lvl-key) "$(" (cotcot :quantity) ")") 
                   :on-click (buyCotCot my-atom :currency lvl-key)}]
-         [:label (str " " ((@my-atom lvl-key) :description) ". Base earning is " (value-per-tick-for-one my-atom lvl-key) "$/tick. All cotcot earns " (value-per-tick my-atom lvl-key) "$/tick. (" 
+         [:label (str " " (cotcot :description) ". Base earning is " (value-per-tick-for-one my-atom lvl-key) "$/tick. All cotcot earns " (value-per-tick my-atom lvl-key) "$/tick. (" 
                       (gstring/format "%.2f" (double (* 100 (/ (value-per-tick my-atom lvl-key)
                                                                (if (> (total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4]) 0)
                                                                        (total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4])
                                                                        1)))))
-                      "% of total.)")]])
+                      "% of total.)")]])))
 
 (defn upgrade-component [my-atom upgrade-key]
         (let [upgrade ((@my-atom :upgrades) upgrade-key)]
-                (when-not (upgrade :bought)
-                        [:input {:type "button" 
+                (when-not (or (upgrade :bought) (< (@my-atom :lifetime-earning) (upgrade :cost)))
+                        [:div
+                        	[:input {:type "button" 
                                  :value (upgrade :name)
                                  :disabled (>= (upgrade :cost) (@my-atom :currency))
                                  :on-click (fn [e]
                                                    (swap! my-atom update-in [:upgrades upgrade-key :bought] (fn [e] true))
                                                    (buy my-atom :currency (upgrade :cost))
-                                                   (add-upgrade-mult my-atom (upgrade :benefit)))}])))
+                                                   (add-upgrade-mult my-atom (upgrade :benefit)))}]
+                        	[:label (str (upgrade :description))]
+                         ])))
 
 ;;;; APP
 (defn cotcotidle []
@@ -203,8 +209,8 @@
          [cotcot-component test :lvl2]
          [cotcot-component test :lvl3]
          [cotcot-component test :lvl4]
-         [:div 
-          [:p "upgrade(s)"]
+         [:div
+          [:p ""]
           [upgrade-component test :upgrade1]
           [upgrade-component test :upgrade2]
           ]
