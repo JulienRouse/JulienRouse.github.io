@@ -1,6 +1,21 @@
-
+.clear{
+	clear: both;
+}
 
 /* HEADER */
+.header-container{
+	margin-bottom: 5px;
+	border-bottom: 1px solid black;
+}
+.header-title {
+	display: inline;
+	font-weight: normal;
+	font-size: 14px; 
+}
+.header-span{
+	float: right;
+	margin: 0 10px;
+}
 .header-input{
 	background-color: white;
 	cursor: pointer;

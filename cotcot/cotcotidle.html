@@ -123,29 +123,28 @@
                 (swap! my-atom merge {:currency (+ (@my-atom :currency) money) :lifetime-earning (+ (@my-atom :lifetime-earning) money)})))
 
 ;;;; TIMER
-
 (defonce timer-update-ressource
         (js/setInterval #(update-ressource test) 1000)) ;; Increment app-state every 1000ms
 
 ;;;; COMPONENTS
 (defn header-message-component [message]
-        [:span {:style {:float "right" :margin "0 10px"}} message] )
+        [:span.header-span message] )
 
 (defn header-button-component [value fn]
         [header-message-component 
-         [:input {:class "header-input"
-                  :type "button" 
-                  :value value 
-                  :on-click fn}]])
+         [:input.header-input 
+          {:type "button" 
+           :value value 
+           :on-click fn}]])
 
 (defn header-component []
-        [:div {:style {:margin-bottom "5px" :border-bottom "1px solid black"}}
+        [:div.header-container
          [:div
-          [:h1 {:style {:display "inline" :font-weight "normal" :font-size "14px"}}"CotCot Idle"]
+          [:h1.header-title "CotCot Idle"]
           [:span " by "]
           [:a {:href "http://www.julienrouse.com" :target "_blank" :style {:text-decoration "underline" }} "Julien"]
           [header-message-component "News"]
-          
+
           [header-button-component "Delete" (fn [] (remove-item! :save))]
           [header-button-component "Save" (fn [] (set-item! :save @test))]
           [header-message-component (str (@test :currency) "$")]
