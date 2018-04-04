@@ -1,0 +1,13 @@
+
+
+/* HEADER */
+.header-input{
+	background-color: white;
+	cursor: pointer;
+	border: none;
+	padding: 0;
+}
+.header-input:hover{
+	text-decoration: underline;
+}
+/* FIN HEADER */
