@@ -172,8 +172,8 @@
 (defn buyCotCot2 [my-atom currency-key lvl-key]
         (let [cost (calc-cost my-atom lvl-key)]
                 (when (<= cost (@my-atom :currency))
-                                (buy my-atom currency-key cost)
-                                (sell my-atom lvl-key 1))))
+                        (buy my-atom currency-key cost)
+                        (sell my-atom lvl-key 1))))
 
 (defn value-per-tick-for-one [my-atom lvl-key]
         (let [lvl-stat (@my-atom lvl-key)
@@ -201,21 +201,32 @@
         (js/setInterval #(update-ressource test) 1000)) ;; Increment app-state every 1000ms
 
 ;;;; COMPONENTS
+(defn header-message-component [message]
+  [:span {:style {:float "right" :margin "0 10px"}} message] )
 
-(defn bouton-component [my-fn value bool]
-        [:input 
-         :type "button"
-         {:style {:background-color "transparent"}}
-         :value value
-         :on-click (fn [] my-fn)
-         :disabled bool])
+(defn header-button-component [value fn]
+  [header-message-component 
+    [:input {:type "button" 
+             :value value 
+             :on-click fn
+             :style {:background-color "white"
+                     :cursor "pointer"}}]])
+
+(defn header-component []
+  [:div {:style {:margin-bottom "5px" :border-bottom "1px solid black"}}
+    [:h1 {:style {:display "inline" :font-weight "normal" :font-size "14px"}}"CotCot Idle"]
+    [:span " by "]
+    [:a {:href "http://www.julienrouse.com" :target "_blank"} "Julien"]
+    [header-message-component "News"]
+    [header-message-component "News"]
+    [header-button-component "News" (fn [] (set-item! :save @test))]
+   ])
 
 (defn cotcot-component [my-atom lvl-key]
         (let [cotcot (@my-atom lvl-key)]
                 (when (or (<= (cotcot :initial-cost) 10) (>= (@my-atom :lifetime-earning) (cotcot :initial-cost)))
                         [:div
                          {:style {:margin "5px 0px 0px 5px"}}
-                         ;[bouton (buyCotCot2 my-atom :currency lvl-key) (str "Buy 1 " (cotcot :name) " for " (calc-cost my-atom lvl-key) "$(" (cotcot :quantity) ")") (>= (calc-cost my-atom lvl-key) (@my-atom :currency))]
                          [:input {:type "button"
                                   :disabled (>= (calc-cost my-atom lvl-key) (@my-atom :currency))
                                   :value (str "Buy 1 " (cotcot :name) " for " (calc-cost my-atom lvl-key) "$(" (cotcot :quantity) ")") 
@@ -245,9 +256,10 @@
 ;;;; APP
 (defn cotcotidle []
         [:div {:style {:margin "5px"}}
+         [header-component ]
          [:div {:style {:width "10%" :float "left" }}
-           [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
-           [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3 :lvl4]))]]
+          [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
+          [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3 :lvl4]))]]
          [:div {:style {:width "40%"  :outline "1px solid black" :margin-right "5px":float "left" :min-height "300px"}}
           [cotcot-component test :lvl1]
           [cotcot-component test :lvl2]
@@ -262,7 +274,6 @@
          [:input {:type "button" :value "Delete local storage" :on-click (fn [] (remove-item! :save))}]
          [:p (str "local storage: " (get-item :save))]
          [:p (str "test: " @test)]
-         ;[bouton-component (str "toto") (str "value") true]
          ])
 </code></pre>
 
