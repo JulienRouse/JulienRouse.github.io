@@ -202,25 +202,29 @@
 
 ;;;; COMPONENTS
 (defn header-message-component [message]
-  [:span {:style {:float "right" :margin "0 10px"}} message] )
+        [:span {:style {:float "right" :margin "0 10px"}} message] )
 
 (defn header-button-component [value fn]
-  [header-message-component 
-    [:input {:type "button" 
-             :value value 
-             :on-click fn
-             :style {:background-color "white"
-                     :cursor "pointer"}}]])
+        [header-message-component 
+         [:input {:class "header-input"
+                  :type "button" 
+                  :value value 
+                  :on-click fn
+                  :style {:background-color "white"
+                          :cursor "pointer"
+                          :border "none"
+                          :padding "0"}}]])
 
-(defn header-component []
+(defn header-component [app-state]
   [:div {:style {:margin-bottom "5px" :border-bottom "1px solid black"}}
-    [:h1 {:style {:display "inline" :font-weight "normal" :font-size "14px"}}"CotCot Idle"]
-    [:span " by "]
-    [:a {:href "http://www.julienrouse.com" :target "_blank"} "Julien"]
-    [header-message-component "News"]
-    [header-message-component "News"]
-    [header-button-component "News" (fn [] (set-item! :save @test))]
-   ])
+     [:div
+      [:h1 {:style {:display "inline" :font-weight "normal" :font-size "14px"}}"CotCot Idle"]
+      [:span " by "]
+      [:a {:href "http://www.julienrouse.com" :target "_blank" :style {:text-decoration "underline" }} "Julien"]
+      [header-message-component "News"]
+      [header-message-component (str (app-state :currency) "$")]
+      [header-button-component "News" (fn [] (set-item! :save @test))]]
+     [:div {:class "clear" :style {:clear "both"}}]])        
 
 (defn cotcot-component [my-atom lvl-key]
         (let [cotcot (@my-atom lvl-key)]
@@ -255,8 +259,8 @@
 
 ;;;; APP
 (defn cotcotidle []
-        [:div {:style {:margin "5px"}}
-         [header-component ]
+        [:div {:style {:margin "5px" :cursor "default"}}
+         [header-component @test]
          [:div {:style {:width "10%" :float "left" }}
           [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
           [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3 :lvl4]))]]
