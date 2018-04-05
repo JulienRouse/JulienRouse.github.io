@@ -24,7 +24,7 @@
 <body>
 
 <pre><code class="language-reagent">
-(ns my.reagent-examples
+(ns my.cotcot
         (:require 
                 [reagent.core :as r]
                 [goog.string :as gstring]
@@ -142,7 +142,7 @@
          [:div
           [:h1.header-title "CotCot Idle"]
           [:span " by "]
-          [:a {:href "http://www.julienrouse.com" :target "_blank" :style {:text-decoration "underline" }} "Julien"]
+          [:a.header-link {:href "http://www.julienrouse.com" :target "_blank" :style {:text-decoration "underline" }} "Julien"]
           [header-message-component "News"]
 
           [header-button-component "Delete" (fn [] (remove-item! :save))]
@@ -184,7 +184,7 @@
 
 ;;;; APP
 (defn cotcotidle []
-        [:div {:style {:margin "5px" :cursor "default"}}
+        [:div.app-container
          [header-component ]
          [:div {:style {:width "10%" :float "left" }}
           [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
