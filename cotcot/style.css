@@ -50,6 +50,10 @@
 	min-width: 150px;
 	float:left;
 }
+.center{
+	max-width: 1000px;
+	margin: 0 auto;
+}
 .container-box{
 	min-height: 300px;
 	margin: 5px; 

@@ -65,10 +65,10 @@
 
 (def test (r/atom {:currency 20
                    :lifetime-earning 0
-                   :lvl1 (make-cotcot 10 1.07 0.5 "petite poulette" "cute little poulette") 
-                   :lvl2 (make-cotcot 100 1.1 2 "moyenne poulette" "cute medium poulette") 
-                   :lvl3 (make-cotcot 1000 1.13 10 "grande poulette" "cute big poulette")
-                   :lvl4 (make-cotcot 100000 1.14 100 "mega poulette" "waouw")
+                   :lvl1 (make-cotcot 10 1.07 0.5 "little poulette" "cute little poulette") 
+                   :lvl2 (make-cotcot 100 1.1 2 "medium poulette" "cute medium poulette") 
+                   :lvl3 (make-cotcot 1000 1.13 10 "big poulette" "cute big poulette")
+                   :lvl4 (make-cotcot 100000 1.14 100 "XXL poulette" "waouw")
                    :upgrade-multiplier 1
                    :upgrades {:upgrade1 (make-upgrade "upgrade1" "description1 blabla" 10 0.01)
                               :upgrade2 (make-upgrade "upgrade2" "description2 bloblo" 100 0.1)}
@@ -163,11 +163,11 @@
                                   :value (str "Buy 1 " (cotcot :name) " for " (calc-cost my-atom lvl-key) "$(" (cotcot :quantity) ")") 
                                   :on-click (buyCotCot my-atom :currency lvl-key)}]
                          ;[:label (str " " (cotcot :description) ". Base earning is " (value-per-tick-for-one my-atom lvl-key) "$/tick. All cotcot earns " (value-per-tick my-atom lvl-key) "$/tick. (" 
-                                      ;(gstring/format "%.2f" (double (* 100 (/ (value-per-tick my-atom lvl-key)
-                                                                               ;(if (> (total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4]) 0)
-                                                                                       ;(total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4])
-                                                                                      ; 1)))))
-                                      ;"% of total.)")]
+                         ;(gstring/format "%.2f" (double (* 100 (/ (value-per-tick my-atom lvl-key)
+                         ;(if (> (total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4]) 0)
+                         ;(total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4])
+                         ; 1)))))
+                         ;"% of total.)")]
                          ])))
 
 (defn upgrade-component [my-atom upgrade-key]
@@ -187,21 +187,23 @@
                          ])))
 
 ;;;; APP
+;;;; APP
 (defn cotcotidle []
         [:div.app-container
          [header-component ]
-         [:div.container
-          [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
-          [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3 :lvl4]))]]
-         [:div.container.container-box
-          [cotcot-component test :lvl1]
-          [cotcot-component test :lvl2]
-          [cotcot-component test :lvl3]
-          [cotcot-component test :lvl4]]
-         [:div.container.container-box 
-          [upgrade-component test :upgrade1]
-          [upgrade-component test :upgrade2]]
-         [:div {:style {:clear "both"}}]
+         [:div.center
+          [:div.container
+           [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
+           [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3 :lvl4]))]]
+          [:div.container.container-box
+           [cotcot-component test :lvl1]
+           [cotcot-component test :lvl2]
+           [cotcot-component test :lvl3]
+           [cotcot-component test :lvl4]]
+          [:div.container.container-box 
+           [upgrade-component test :upgrade1]
+           [upgrade-component test :upgrade2]]
+          [:div {:style {:clear "both"}}]]
          ;[:input {:type "button" :value "Save on local storage" :on-click (fn [] (set-item! :save @test))}]
          ;[:input {:type "button" :value "Use previous save" :on-click (fn [] (swap! test merge (get-item :save)))}]
          ;[:input {:type "button" :value "Delete local storage" :on-click (fn [] (remove-item! :save))}]
