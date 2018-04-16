@@ -56,6 +56,7 @@
 
 ;;;; State
 (defn make-cotcot 
+        "Create the main cotcot component"
         [initial-cost cost-multiplier initial-earning name description] 
         {:initial-cost initial-cost :cost-multiplier cost-multiplier :initial-earning initial-earning :quantity 0 :name name :description description})
 
@@ -73,6 +74,8 @@
                    :upgrades {:upgrade1 (make-upgrade "upgrade1" "description1 blabla" 10 0.01)
                               :upgrade2 (make-upgrade "upgrade2" "description2 bloblo" 100 0.1)}
                    :reset-multiplier 1}))
+
+(def all-time-stats (r/atom {}))
 
 ;;;; FN
 (defn calc-cost [my-atom lvl-key]
@@ -194,7 +197,12 @@
          [:div.center
           [:div.container
            [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
-           [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3 :lvl4]))]]
+           [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3 :lvl4]))]
+           [:input {
+                    :type "button" 
+                    :value "Reset"
+                    :disabled false
+                    }]]
           [:div.container.container-box
            [cotcot-component test :lvl1]
            [cotcot-component test :lvl2]
