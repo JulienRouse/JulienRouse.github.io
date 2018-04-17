@@ -64,7 +64,7 @@
         [name description cost benefit]
         {:name name :description description :cost cost :benefit benefit :bought false})
 
-(def test (r/atom {:currency 20
+(def new-state {:currency 20
                    :lifetime-earning 0
                    :lvl1 (make-cotcot 10 1.07 0.5 "little poulette" "cute little poulette") 
                    :lvl2 (make-cotcot 100 1.1 2 "medium poulette" "cute medium poulette") 
@@ -73,7 +73,9 @@
                    :upgrade-multiplier 1
                    :upgrades {:upgrade1 (make-upgrade "upgrade1" "description1 blabla" 10 0.01)
                               :upgrade2 (make-upgrade "upgrade2" "description2 bloblo" 100 0.1)}
-                   :reset-multiplier 1}))
+                   :reset-multiplier 1})
+
+(def test (r/atom new-state))
 
 (def all-time-stats (r/atom {}))
 
@@ -124,6 +126,14 @@
 (defn update-ressource [my-atom]
         (let [money (total-earning-per-tick my-atom [:lvl1 :lvl2 :lvl3 :lvl4])]
                 (swap! my-atom merge {:currency (+ (@my-atom :currency) money) :lifetime-earning (+ (@my-atom :lifetime-earning) money)})))
+
+(defn reset-game []
+        "Hard reset on the game state"
+        (reset! test new-state))
+
+(defn prestige []
+        "Soft reset, with a bonus"
+        nil)
 
 ;;;; TIMER
 (defonce timer-update-ressource
@@ -199,10 +209,10 @@
            [:p (str (Math/floor (@test :currency)) " Oeuf(s)")]
            [:p (str "$/tick:" (total-earning-per-tick test [:lvl1 :lvl2 :lvl3 :lvl4]))]
            [:input {
-                    :type "button" 
-                    :value "Reset"
-                    :disabled false
-                    }]]
+                           :type "button" 
+                           :value "Reset"
+                           :disabled false
+                           :on-click (fn [] (reset-game))}]]
           [:div.container.container-box
            [cotcot-component test :lvl1]
            [cotcot-component test :lvl2]
