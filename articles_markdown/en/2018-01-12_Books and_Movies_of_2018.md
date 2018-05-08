@@ -17,10 +17,17 @@ For reading I will consider books and novels, regardless of hardcover or digital
  - **The long Earth** by *Terry Pratchett* and *Stephen Baxter*
  - **The Rook: On Her Majesty’s Supernatural Secret Service** by *Daniel O'Malley*
  - **The long War** by *Terry Pratchett* and *Stephen Baxter*
- 
+ - **Trumps of Doom** by *Roger Zelazny*, sixth book out of ten from *The chronicles of Amber* 
+ - **Blood of Amber** by *Roger Zelazny*, seventh book out of ten from *The chronicles of Amber* 
+ - **Sign of Chaos** by *Roger Zelazny*, eighth book out of ten from *The chronicles of Amber* 
+ - **Knight of Shadows** by *Roger Zelazny*, ninth book out of ten from *The chronicles of Amber* 
+ - **Prince of Chaos** by *Roger Zelazny*, tenth book out of ten from *The chronicles of Amber* 
+ - **The long Mars** by *Terry Pratchett* and *Stephen Baxter*
+
+
 ### Movies ###
 
 I'll consider only those I've seen at the theater
 
  - **The Post** (In french **Pentagon Papers**), by *Steven Spielberg*
-
+ - **Isle of dogs** (In french **L'île aux chiens**), by *Wes Anderson*
