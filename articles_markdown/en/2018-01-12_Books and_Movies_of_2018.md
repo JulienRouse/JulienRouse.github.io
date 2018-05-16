@@ -23,6 +23,11 @@ For reading I will consider books and novels, regardless of hardcover or digital
  - **Knight of Shadows** by *Roger Zelazny*, ninth book out of ten from *The chronicles of Amber* 
  - **Prince of Chaos** by *Roger Zelazny*, tenth book out of ten from *The chronicles of Amber* 
  - **The long Mars** by *Terry Pratchett* and *Stephen Baxter*
+ - **A Distant Neighborhood** by *Jiro Taniguchi*
+ - **L'orme du caucase** by *Jiro Taniguchi* ([wikipedia](https://fr.wikipedia.org/wiki/L%27Orme_du_Caucase))
+ - **My Father's Journal**  by *Jiro Taniguchi*
+ - **Yeruldelgger** by *Ian Manook*
+ - **The Art of War** by *Sun Tzu*
 
 
 ### Movies ###
