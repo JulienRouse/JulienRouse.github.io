@@ -1,4 +1,4 @@
-## Roadmap for articles and idea ##
+## Roadmap for articles and ideas ##
 
 ### Articles ###
  - Java and OOP by doing a project?
