@@ -222,11 +222,6 @@
            [upgrade-component test :upgrade1]
            [upgrade-component test :upgrade2]]
           [:div {:style {:clear "both"}}]]
-         ;[:input {:type "button" :value "Save on local storage" :on-click (fn [] (set-item! :save @test))}]
-         ;[:input {:type "button" :value "Use previous save" :on-click (fn [] (swap! test merge (get-item :save)))}]
-         ;[:input {:type "button" :value "Delete local storage" :on-click (fn [] (remove-item! :save))}]
-         ;[:p (str "local storage: " (get-item :save))]
-         ;[:p (str "test: " @test)]
          ])
 </code></pre>
 
