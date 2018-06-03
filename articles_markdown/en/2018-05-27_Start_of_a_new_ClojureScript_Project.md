@@ -42,4 +42,4 @@ Some other interesting libraries I might want to use for this project (or a new 
 
 ### The prototype ###
 
-Below you can play with the early prototype.
+Below you can play with the early prototype. ( If you see an error message at the bottom of the page, try to disable your adblocker and reload the page, that should do the trick. I had the problem with uBlock but maybe others behave the same. Sorry for the inconvenience).
