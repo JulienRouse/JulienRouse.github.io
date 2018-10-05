@@ -31,7 +31,6 @@ For reading I will consider books and novels, regardless of hardcover or digital
  - **Wool**(**Silo** in french) by *Hugh Howey*
  - **The Rook: Double Agent** by *Daniel O'Malley*
 
-
 ### Movies ###
 
 I'll consider only those I've seen at the theater
