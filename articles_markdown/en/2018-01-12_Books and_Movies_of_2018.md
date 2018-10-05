@@ -30,7 +30,6 @@ For reading I will consider books and novels, regardless of hardcover or digital
  - **The Art of War** by *Sun Tzu*
  - **Wool**(**Silo** in french) by *Hugh Howey*
 
-
 ### Movies ###
 
 I'll consider only those I've seen at the theater
