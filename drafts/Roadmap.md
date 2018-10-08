@@ -28,3 +28,4 @@
  -  Icon for github, hackerrank and linkedin links
  -  Automatization of the workflow?
  -??
+ - Switch over to wordpress
