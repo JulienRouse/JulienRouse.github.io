@@ -9,7 +9,7 @@
   -  Designs patterns
   -  Tests, TDD, Mutations testings
  - Spring MVC
- - Software craftmanship?
+ - Software craftmanship? TDD and all that
  - Python, vizualisation? ML, DataScience?
  - Ecotree, sponso corail, lilo, reforesaction.com, ecosia
  - Framasoft
@@ -29,3 +29,4 @@
  -  Automatization of the workflow?
  -??
  - Switch over to wordpress
+ - 
