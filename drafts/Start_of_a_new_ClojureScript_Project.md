@@ -42,4 +42,4 @@ Some other interestings libraries I might want to use for this project (or a new
 
 ### The prototype ###
 
-Below you can play with the early prototype.
+Below you can play with the early prototype. (add-blockers might block it)
