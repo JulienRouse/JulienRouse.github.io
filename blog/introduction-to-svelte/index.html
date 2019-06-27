@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Introduction to Svelte</title>
+  <meta property="og:title" content="Introduction to Svelte" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!">
+  <meta property="og:description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.55.0" />
+  
+   
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/introduction-to-svelte/">Introduction to Svelte</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">Introduction to Svelte</span></h2>
+    <span class="text-primary">June 8, 2019</span>
+	
+	
+	<div id="toc-blog">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#introduction-to-svelte">Introduction to Svelte</a>
+<ul>
+<li><a href="#svelte">Svelte</a>
+<ul>
+<li><a href="#pros">PROS</a></li>
+<li><a href="#cons">CONS</a></li>
+</ul></li>
+<li><a href="#practicing-svelte-by-building-a-game">Practicing Svelte by building a game</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div> 
+	
+    
+	
+
+<h1 id="introduction-to-svelte">Introduction to Svelte</h1>
+
+<p>I wanted to try out Svelte<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> so I made a little clone of a game called Derivative Clicker<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>. Following is a very quick presentation of what is Svelte (and how it compares to other reactive framework like React<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>, Angular<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup>, etc) then a multi part tutorial on how to make a little game app with Svelte.</p>
+
+<ul>
+<li><a href="/blog/introduction-to-svelte/">introduction to Svelte</a></li>
+<li><a href="/blog/tutorial-for-idle-game-svelte-part1/">part1: Start of the tutorial: making a Derivative Idle clone with Svelte</a></li>
+<li><strong>part2: Going further with Svelte using components and props</strong>: Coming soon</li>
+</ul>
+
+<h2 id="svelte">Svelte</h2>
+
+<p>Svelte is in competition with React, Angular and other framework to build  reactive Single Page Application, but the difference is Svelte shifts the work from the browser to the compiler. It still delivers Reactive Single page application but with a very reduced size. Similar initiative can be found as well with Aurelia<sup class="footnote-ref" id="fnref:5"><a href="#fn:5">5</a></sup>.</p>
+
+<p>The project went to version 3 a month ago (early may 2019), I think it&rsquo;s a good time to try it out :)</p>
+
+<h3 id="pros">PROS</h3>
+
+<p>The Svelte tutorial<sup class="footnote-ref" id="fnref:6"><a href="#fn:6">6</a></sup> is great, it takes about an hour or so and is very well done. It uses the Svelte REPL<sup class="footnote-ref" id="fnref:7"><a href="#fn:7">7</a></sup> and it introduces concepts very smoothly. Also it uses mostly the same concepts as React, Vue<sup class="footnote-ref" id="fnref:8"><a href="#fn:8">8</a></sup> and Angular. If you know at least one of those you should pick it up quickly. (Component, reactive bindings, props, event forwarding, state store, component life cycle and slots to name a few concepts used) .</p>
+
+<p>Also the Svelte website features a very nice REPL that you can use to test Svelte app without installing anything. When you are ready for the next step, the <em>get started section</em><sup class="footnote-ref" id="fnref:9"><a href="#fn:9">9</a></sup> is handy. It&rsquo;s just a matter of cloning a template from a git<sup class="footnote-ref" id="fnref:10"><a href="#fn:10">10</a></sup> repository and use the tools you are used to: <code>npm</code><sup class="footnote-ref" id="fnref:11"><a href="#fn:11">11</a></sup> or <code>yarn</code><sup class="footnote-ref" id="fnref:12"><a href="#fn:12">12</a></sup>, <code>webpack</code><sup class="footnote-ref" id="fnref:13"><a href="#fn:13">13</a></sup>, <code>rollup</code><sup class="footnote-ref" id="fnref:14"><a href="#fn:14">14</a></sup> or <code>browserify</code><sup class="footnote-ref" id="fnref:15"><a href="#fn:15">15</a></sup>. And for the deployment, there are instructions a quick setup with Now<sup class="footnote-ref" id="fnref:16"><a href="#fn:16">16</a></sup> and Surge<sup class="footnote-ref" id="fnref:17"><a href="#fn:17">17</a></sup> or you can choose you favorite deployment option as you would for any other JS or TypeScript project.</p>
+
+<p>Another pro, look at this article for a <a href="https://medium.freecodecamp.org/a-realworld-comparison-of-front-end-frameworks-with-benchmarks-2019-update-4be0d3c78075">RealWorld benchmark</a> to get a feel of how Svelte can be very slim compared to its rivals. (Note that the benchmark was done with Svelte v2, and right now it is already Svelte v3, so take it with a grain of salt).</p>
+
+<h3 id="cons">CONS</h3>
+
+<p>I think it got traction recently but it still is not widely used so there not much educational material yet. If you can&rsquo;t do with only the official tutorial and API documentation, you should wait a bit more.</p>
+
+<p>Also Svelte miss features like routing (but this is apparently addressed in the sister framework Sapper<sup class="footnote-ref" id="fnref:18"><a href="#fn:18">18</a></sup> which aims to be a replacement for Next.js<sup class="footnote-ref" id="fnref:19"><a href="#fn:19">19</a></sup>).</p>
+
+<p>And last but not least, it has some weird syntax choices. The dollar sign <code>$</code> has two different uses dependent on the context.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">doubled</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>; <span style="color:#75715e">// here doubled is a &#39;derived&#39; value on &#39;count&#39;, it will automatically recalculate itself if count changes
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span>&gt; My name is {$name} &lt;/<span style="color:#f92672">p</span>&gt; 
+<span style="color:#75715e">&lt;!-- Here $name is a reference to name, a value in a state store --&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>I don&rsquo;t like that choice. Note also that the second syntax is a shorthand syntax, you can subscribe manually to values in the store and name them without the <code>$</code> so if you really care about that you can opt out (at the price of 3-4 lines of manual wiring).</p>
+
+<p>And syntax for conditional in template is also not very sexy:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ #if condition }}
+ &lt;<span style="color:#f92672">p</span>&gt; Inside the if &lt;/<span style="color:#f92672">p</span>&gt;
+{{ /if}}  </code></pre></td></tr></table>
+</div>
+</div>
+<p>But I guess it&rsquo;s more a matter of personal taste.</p>
+
+<h2 id="practicing-svelte-by-building-a-game">Practicing Svelte by building a game</h2>
+
+<p>To continue onto the first part of the tutorial you can follow this link: <a href="/blog/tutorial-for-idle-game-svelte-part1/">Start of the tutorial: making a Derivative Idle clone with Svelte</a></p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1"><a href="https://svelte.dev/">https://svelte.dev/</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2"><a href="http://gzgreg.github.io/DerivativeClicker/">http://gzgreg.github.io/DerivativeClicker/</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3"><a href="https://reactjs.org/">https://reactjs.org/</a>
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4"><a href="https://angular.io/">https://angular.io/</a>
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+<li id="fn:5"><a href="https://aurelia.io/">https://aurelia.io/</a>
+ <a class="footnote-return" href="#fnref:5"><sup>[return]</sup></a></li>
+<li id="fn:6"><a href="https://svelte.dev/tutorial/basics">https://svelte.dev/tutorial/basics</a>
+ <a class="footnote-return" href="#fnref:6"><sup>[return]</sup></a></li>
+<li id="fn:7"><a href="https://svelte.dev/repl/hello-world?version=3.5.1">https://svelte.dev/repl/hello-world?version=3.5.1</a>
+ <a class="footnote-return" href="#fnref:7"><sup>[return]</sup></a></li>
+<li id="fn:8"><a href="https://vuejs.org/">https://vuejs.org/</a>
+ <a class="footnote-return" href="#fnref:8"><sup>[return]</sup></a></li>
+<li id="fn:9"><a href="https://svelte.dev/blog/the-easiest-way-to-get-started">https://svelte.dev/blog/the-easiest-way-to-get-started</a>
+ <a class="footnote-return" href="#fnref:9"><sup>[return]</sup></a></li>
+<li id="fn:10"><a href="https://git-scm.com/">https://git-scm.com/</a>
+ <a class="footnote-return" href="#fnref:10"><sup>[return]</sup></a></li>
+<li id="fn:11"><a href="https://www.npmjs.com/">https://www.npmjs.com/</a>
+ <a class="footnote-return" href="#fnref:11"><sup>[return]</sup></a></li>
+<li id="fn:12"><a href="https://yarnpkg.com/en/">https://yarnpkg.com/en/</a>
+ <a class="footnote-return" href="#fnref:12"><sup>[return]</sup></a></li>
+<li id="fn:13"><a href="https://webpack.js.org/">https://webpack.js.org/</a>
+ <a class="footnote-return" href="#fnref:13"><sup>[return]</sup></a></li>
+<li id="fn:14"><a href="https://rollupjs.org/guide/en/">https://rollupjs.org/guide/en/</a>
+ <a class="footnote-return" href="#fnref:14"><sup>[return]</sup></a></li>
+<li id="fn:15"><a href="http://browserify.org/">http://browserify.org/</a>
+ <a class="footnote-return" href="#fnref:15"><sup>[return]</sup></a></li>
+<li id="fn:16"><a href="https://zeit.co/now">https://zeit.co/now</a>
+ <a class="footnote-return" href="#fnref:16"><sup>[return]</sup></a></li>
+<li id="fn:17"><a href="https://surge.sh/">https://surge.sh/</a>
+ <a class="footnote-return" href="#fnref:17"><sup>[return]</sup></a></li>
+<li id="fn:18"><a href="https://sapper.svelte.dev/">https://sapper.svelte.dev/</a>
+ <a class="footnote-return" href="#fnref:18"><sup>[return]</sup></a></li>
+<li id="fn:19"><a href="https://github.com/zeit/next.js">https://github.com/zeit/next.js</a>
+ <a class="footnote-return" href="#fnref:19"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/svelte">svelte</a></li>
+    
+      <li><a class="tag" href="/tags/spa">SPA</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=XX-123446-01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'XX-123446-01');
+  </script>
+  
+
+  
+</body>
+</html>
