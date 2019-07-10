@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on Learning for fun and profits</title>
+    <link>https://www.julienrouse.com/tags/javascript/</link>
+    <description>Recent content in javascript on Learning for fun and profits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Jul 2019 20:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://www.julienrouse.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Webpack-cli crashes only on Monday</title>
+      <link>https://www.julienrouse.com/blog/webpack-cli-crashes-only-on-monday/</link>
+      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/webpack-cli-crashes-only-on-monday/</guid>
+      <description>How subtle bugs can be sometimes&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>

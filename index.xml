@@ -33,6 +33,15 @@ The problem was that when looking at blog post with full resolution on my laptop
     </item>
     
     <item>
+      <title>Webpack-cli crashes only on Monday</title>
+      <link>https://www.julienrouse.com/blog/webpack-cli-crashes-only-on-monday/</link>
+      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/webpack-cli-crashes-only-on-monday/</guid>
+      <description>How subtle bugs can be sometimes&amp;hellip;</description>
+    </item>
+    
+    <item>
       <title>Tutorial for an Idle game with Svelte (Part1)</title>
       <link>https://www.julienrouse.com/blog/tutorial-for-idle-game-svelte-part1/</link>
       <pubDate>Sat, 22 Jun 2019 20:00:00 +0000</pubDate>
