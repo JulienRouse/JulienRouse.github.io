@@ -47,14 +47,5 @@
       <description>Reflection on how I got my PSD1 certification and what you can learn from my success and failures.</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://www.julienrouse.com/blog/3_final-thougth-on-svelte-and-the-tutorial/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/blog/3_final-thougth-on-svelte-and-the-tutorial/</guid>
-      <description>Final thougth on Svelte and the tutorial Additional Resources TODO add some blog post / documentation on store, subscription, component, (Redux, re-frame) on svelte react idle game mechanic</description>
-    </item>
-    
   </channel>
 </rss>
