@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Tutorial for an Idle game with Svelte (Part2)</title>
+  <meta property="og:title" content="Tutorial for an Idle game with Svelte (Part2)" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!">
+  <meta property="og:description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.55.0" />
+  
+   
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/tutorial-for-idle-game-svelte-part2/">Tutorial for an Idle game with Svelte (Part2)</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">Tutorial for an Idle game with Svelte (Part2)</span></h2>
+    <span class="text-primary">October 12, 2019</span>
+	
+	
+	<div id="toc-blog">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#part2-going-further-with-svelte-using-components-and-props">Part2: Going further with Svelte using components and props</a>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#objectives-for-this-part">Objectives for this part</a>
+<ul>
+<li><a href="#make-more-buildings-using-components">Make more buildings using components</a></li>
+<li><a href="#using-the-store-to-handle-global-state">Using the store to handle global state</a>
+<ul>
+<li><a href="#read-from-the-store">Read from the store</a></li>
+<li><a href="#write-to-the-store-if-the-value-is-a-writable">Write to the store (if the value is a <code>writable</code>)</a></li>
+<li><a href="#going-back-to-our-project">Going back to our project</a></li>
+</ul></li>
+<li><a href="#naming-our-building-with-props">Naming our building with props</a></li>
+<li><a href="#digging-a-bit-about-what-props-enable">Digging a bit about what props enable</a></li>
+<li><a href="#building-producing-proofs">Building producing proofs</a></li>
+<li><a href="#fixing-the-ui">Fixing the UI</a></li>
+<li><a href="#building-producing-buildings">Building producing buildings</a></li>
+</ul></li>
+<li><a href="#recap">Recap</a></li>
+<li><a href="#objectives-for-the-next-parts">Objectives for the next parts</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div> 
+	
+    
+	
+
+<h1 id="part2-going-further-with-svelte-using-components-and-props">Part2: Going further with Svelte using components and props</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This article is the second part of a tutorial aiming at discovering Svelte[1] while building a game. I also wrote a very short post on Svelte and the idea behind this tutorial. Below you can find the links to check those posts or other parts of the tutorial.</p>
+
+<ul>
+<li><a href="/blog/introduction-to-svelte/">introduction to Svelte</a></li>
+<li><a href="/blog/tutorial-for-idle-game-svelte-part1/">part1: Start of the tutorial: making a Derivative Idle clone with Svelte</a></li>
+<li><a href="/blog/tutorial-for-idle-game-svelte-part2/">part2: Going further with Svelte using components and props</a></li>
+<li><a href="">part3: Adding upgrades to the game</a></li>
+</ul>
+
+<h2 id="objectives-for-this-part">Objectives for this part</h2>
+
+<p>In this part we will learn how to use <em>components</em>, <em>props</em> and a <em>state store</em> to grow our game further.</p>
+
+<h3 id="make-more-buildings-using-components">Make more buildings using components</h3>
+
+<p>Right now we have one building producing money. That&rsquo;s a start but it is not enough. What we want now is to make many more buildings.</p>
+
+<p>One way to do that would be to copy-paste the following code to add a new building:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">--</span> <span style="color:#a6e22e">App</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">svelte</span> <span style="color:#a6e22e">--</span>&gt;
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} buildings bought, next one cost {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;You gain {productionPerTick}$ / tick.&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} buildings bought, next one cost {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;You gain {productionPerTick}$ / tick.&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>Try it yourself, it makes a second building. The problem is that the two buildings are identical, and they share their internal state. The number of building bought, the cost of it, how much money it generates each tick&hellip;</p>
+
+<p>We need a way to encapsulate those information locally to have each building handle this for itself.</p>
+
+<p>And that is what components are for! (It&rsquo;s the same concept in React[2] and Angular[3]). When you need to repeat the same independent elements (with slight variations) in different places, components are the way to go. They are also a nice way to have <em>building block</em> (think Lego) for your application. Usually you can have big components for the header, footer and main page. Then you can have smaller components like forms and menus that you can reuse in bigger components. And you can also compose your smaller components from even smaller components. It creates a tree architecture, with the root being often named <code>App</code>, the main entry point to your app, and then the leaf and nodes are other components used to build your app.</p>
+
+<p>To create one,  you need to create a <code>.svelte</code> file. (You can see that <code>App.svelte</code> is our root component here).Then inside the component you can declare some logic inside the <code>&lt;script&gt;</code> tag, some style inside the <code>&lt;style&gt;</code> tag and then a html template. The script and style part are local to the component by default. You can declare a new component <code>Test.svelte</code> that look like that:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Test.svelte --&gt;</span>
+&lt;<span style="color:#f92672">style</span>&gt;
+  <span style="color:#f92672">button</span> {
+    <span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">red</span>;
+  }
+&lt;/<span style="color:#f92672">style</span>&gt;
+
+&lt;<span style="color:#f92672">button</span>&gt;Test button&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>Then import it in our <code>App.svelte</code> to use it:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  ...
+  <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Test</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Test.svelte&#39;</span>;
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+  <span style="color:#f92672">...</span>
+&lt;/<span style="color:#f92672">style</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} buildings bought, next one cost {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;You gain {productionPerTick}$ / tick.&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} buildings bought, next one cost {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;You gain {productionPerTick}$ / tick.&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;
+
+&lt;<span style="color:#f92672">Test</span>&gt;&lt;/<span style="color:#f92672">Test</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>And the result:</p>
+
+<figure>
+    <img src="/img/blog_3_part2_component_local_style.png"
+         alt="Showing components have scoped css"/> 
+</figure>
+
+
+<p>You see that even so we declared a red background for <code>&lt;button&gt;</code>, because we declared it inside the component, the CSS is scoped and don&rsquo;t interfere with the other elements on the page.</p>
+
+<p>Let&rsquo;s go back to making a component for our buildings. You can delete <code>Test.svelte</code>.  You can also delete in <code>App.svelte</code> the import to <code>Test.svelte</code> and the <code>&lt;Test&gt;&lt;/Test&gt;</code> code in the template.</p>
+
+<p>Now let&rsquo;s create a component for our building. Create a file named <code>Building.svelte</code> and we are gonna remove every parts relating to our building from <code>App.svelte</code> to put it inside <code>Building.svelte</code>.</p>
+
+<p>We are gonna remove everything from <code>App.svelte</code> except we gonna import the Building component, keep the declaration for money and in the template keep the title and insert two Building components.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Building</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Building.svelte&#39;</span>;
+    
+  <span style="color:#75715e">// variable declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+    
+  <span style="color:#75715e">// reactive declarations
+</span><span style="color:#75715e"></span>  
+  <span style="color:#75715e">// function declarations
+</span><span style="color:#75715e"></span>   
+  <span style="color:#75715e">// lifecycle functions
+</span><span style="color:#75715e"></span>&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+&lt;/<span style="color:#f92672">style</span>&gt;
+
+&lt;<span style="color:#f92672">h1</span>&gt;You have {money} $!&lt;/<span style="color:#f92672">h1</span>&gt;
+
+&lt;<span style="color:#f92672">Building</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;
+&lt;<span style="color:#f92672">Building</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>And inside the <code>Building.svelte</code> we have now:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Building.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">onMount</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte&#39;</span>;
+    
+  <span style="color:#75715e">// variable declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">buildingProduction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// $ produced per building per tick
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tickSpeed</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
+    
+  <span style="color:#75715e">// reactive declarations
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cantBuy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">money</span>;
+  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>;
+  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">productionPerTick</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">buildingProduction</span>;
+  
+  <span style="color:#75715e">// function declarations
+</span><span style="color:#75715e"></span>  
+  <span style="color:#75715e">// update the values of `money` and `numberBuildings`
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateNumbers</span>(){
+    <span style="color:#a6e22e">money</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">cost</span>;
+    <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+  }
+    
+  <span style="color:#75715e">// update `money` with `productionPerTick` and set a timeout to call itself after `tickSpeed` ms
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateMoney</span>(){
+    <span style="color:#a6e22e">money</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">productionPerTick</span>;
+    <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">updateMoney</span>, <span style="color:#a6e22e">tickSpeed</span>);
+  }
+  
+  <span style="color:#75715e">// lifecycle functions
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">onMount</span>(() =&gt; {
+    <span style="color:#a6e22e">updateMoney</span>();
+  }); 
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+  <span style="color:#f92672">button</span> {
+    <span style="color:#66d9ef">outline</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">black</span>;
+    <span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">aliceblue</span>;
+    <span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">pointer</span>;
+  }
+
+  <span style="color:#f92672">button</span>.<span style="color:#a6e22e">cantbuy</span> {
+    <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#555</span>;
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#DDD</span>;
+    <span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">default</span>;
+  }
+&lt;/<span style="color:#f92672">style</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} buildings bought, next one cost {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;You gain {productionPerTick}$ / tick.&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>You can see we have kept only one <code>&lt;button&gt;</code> inside <code>Building.svelte</code> but we have inserted <code>&lt;Building&gt;&lt;/Building&gt;</code> twice in <code>App.svelte</code> to have two independent buildings.</p>
+
+<p>That&rsquo;s great! But if you test if, you&rsquo;ll see a new problem. To highlight, let&rsquo;s alter slightly the building to show for each building their <code>money</code> variable:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Building.svelte --&gt;</span>
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;Money: {money}$&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} buildings bought, next one cost {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;You gain {productionPerTick}$ / tick.&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>When you click on the buildings, you see that they are independent, but a bit too much! They don&rsquo;t share a common <code>money</code> value anymore, each one use its own, and when they produce, it only goes to their own <code>money</code> stash as well. That is not what we want. We would like for them to have a shared <code>money</code> value, and then handle the rest of their state independently.</p>
+
+<h3 id="using-the-store-to-handle-global-state">Using the store to handle global state</h3>
+
+<p>One way to have some global state that can be shared among components is to have a <em>store</em> with value that components can subscribe to. They can also update the value if you allow them to, and any change to the value are propagated back to other component subscribing to that value as well. It is the same idea that React/Redux uses (or Reagent/re-frame<a href="4" title="https://github.com/Day8/re-frame
+">4</a> in the ClojureScript ecosystem) .</p>
+
+<p>Let&rsquo;s create our store, we need a JS file that we will call <code>store.js</code> and put some code in it: (I use <code>/* store.js */</code> instead of <code>&lt;!-- store.js --&gt;</code> to show you that the code belongs to <code>store.js</code> because it&rsquo;s no longer a template file, but a proper JS file. It allows you to copy paste my snippet without having an error into your editor.)</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/* store.js */</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">writable</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte/store&#39;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">20</span>);
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>And now we can use it inside our <code>App.svelte</code> and <code>Building.svelte</code>.</p>
+
+<p>In <code>App.svelte</code>, we need to import it, remove the local variable declaration and change slightly the template where we used it.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  ...
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
+  
+  <span style="color:#75715e">// variable declarations
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// we removed let money = 20;
+</span><span style="color:#75715e"></span>  ...
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">h1</span>&gt;You have {$money} $!&lt;/<span style="color:#f92672">h1</span>&gt;
+
+&lt;<span style="color:#f92672">Building</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;
+&lt;<span style="color:#f92672">Building</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="read-from-the-store">Read from the store</h4>
+
+<p>To reference a value from the store, you prepend the dollar sign <code>$</code> before it&rsquo;s name. Here to access the value of <code>money</code> in the template we use <code>$money</code>. What it does in reality is auto-subscribe to the store value, and unsubscribe to it when the component is destroyed using the <code>onDestroy</code> lifecycle functions. <code>onDestroy</code> is kind of the opposite of <code>onMount</code>, it is called just after the component is unmounted from the DOM.</p>
+
+<p>You can also opt out of the automatic subscribe and unsubscribe by doing it yourself, which allow more control over it. Let see what it would have looked like:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- ManualSubscribeToMoney.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">onDestroy</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte&#39;</span>
+    
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">money_value</span>;
+
+  <span style="color:#75715e">// here we subscribe to &#39;money&#39; and assign it&#39;s value to &#39;money_value&#39;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// each time &#39;money&#39; change, it send it&#39;s new value to &#39;money_value&#39; to keep it up to date.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">unsubscribe</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">money</span>.<span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">value</span> =&gt; {
+    <span style="color:#a6e22e">money_value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">value</span>;
+  });
+    
+  <span style="color:#75715e">// here we unsubscribe to &#39;money&#39; when the component is unmounted.
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">onDestroy</span>(<span style="color:#a6e22e">unsubscribe</span>);
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+<span style="color:#75715e">&lt;!-- and here we can use &#39;money_value&#39; instead of $money. --&gt;</span>
+&lt;<span style="color:#f92672">h1</span>&gt;You have {money_value} $!&lt;/<span style="color:#f92672">h1</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p><em>Because it&rsquo;s much shorter to use the shorthand, I&rsquo;ll use for the rest of the tutorial. But keep in mind of what it does behind the scene.</em></p>
+
+<h4 id="write-to-the-store-if-the-value-is-a-writable">Write to the store (if the value is a <code>writable</code>)</h4>
+
+<p>You can&rsquo;t update the value of the store like this: <code>$money += 1</code>. You need to use the methods <code>update</code> or <code>set</code>. For example if you want to update the value of money to add 1:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// n refer to the old value of money, and n + 1 will be the new value 
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">money</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">n</span> =&gt; <span style="color:#a6e22e">n</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>And if you want to give a totally new value to it you can use <code>set</code>:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// set money to the greatest number ever
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">money</span>.<span style="color:#a6e22e">set</span>(<span style="color:#ae81ff">42</span>)
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>For more information on the store: <a href="https://svelte.dev/tutorial/writable-stores">Svelte store tutorial</a> first and later <a href="https://svelte.dev/docs#svelte_store">Svelte doc</a> to have more information on Writable, Readable, derived store value and <code>get()</code>.</p>
+
+<h4 id="going-back-to-our-project">Going back to our project</h4>
+
+<p>Now that we know how to read and write to the store, we can update <code>Building.svelte</code>. We need to import the store, change every instance of <code>money</code> with <code>$money</code> and also change the way we change the value of  <code>money</code> using <code>update</code>.</p>
+
+<p>We are gonna declare a new function that will <em>hide</em> the fact that money is a store value.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// update the value of `money` to the store, adding `n` to it.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateMoney</span>(<span style="color:#a6e22e">n</span>){
+  <span style="color:#a6e22e">money</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">m</span> =&gt; <span style="color:#a6e22e">m</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>);
+}
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>But doing so, we need to rename the old <code>updateMoney</code>  that was launching the <code>setTimeout</code> to <code>launchSetTimeout</code>. The name was not good before, and it is still not good, if you have any suggestion, I&rsquo;ll gladly take it! And we can replace every instance where we add <code>money += something;</code> by <code>updateMoney(something);</code>.  After all the transformation the code look like that (keeping only the parts that changed):</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Building.svelte--&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  ...
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
+    
+  <span style="color:#75715e">// variable declarations
+</span><span style="color:#75715e"></span>  ...
+  
+  <span style="color:#75715e">// reactive declarations
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cantBuy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">$money</span>;
+  ...
+  
+  <span style="color:#75715e">// function declarations
+</span><span style="color:#75715e"></span>    
+  <span style="color:#75715e">// update the value of `money` to the store, adding `n` to it.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateMoney</span>(<span style="color:#a6e22e">n</span>){
+    <span style="color:#a6e22e">money</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">m</span> =&gt; <span style="color:#a6e22e">m</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>);
+  }
+    
+  <span style="color:#75715e">// update the values of `money` and `numberBuildings`
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateNumbers</span>(){
+    <span style="color:#a6e22e">updateMoney</span>(<span style="color:#f92672">-</span><span style="color:#a6e22e">cost</span>);
+    <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+  }
+    
+  <span style="color:#75715e">// update `money` with `productionPerTick` and set a timeout to call itself after `tickSpeed` ms
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">launchTimeout</span>(){
+    <span style="color:#a6e22e">updateMoney</span>(<span style="color:#a6e22e">productionPerTick</span>);
+    <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">launchTimeout</span>, <span style="color:#a6e22e">tickSpeed</span>);
+  }
+  
+  <span style="color:#75715e">// lifecycle functions
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">onMount</span>(() =&gt; {
+    <span style="color:#a6e22e">launchTimeout</span>();
+  }); 
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+  <span style="color:#f92672">...</span>
+&lt;/<span style="color:#f92672">style</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;Money: {$money}$&lt;/<span style="color:#f92672">p</span>&gt;
+  ...
+&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>Now you can see that both the value of <code>money</code> in <code>App.svelte</code> and both <code>Building.svelte</code> is shared, but each building keep their numbers local otherwise.</p>
+
+<figure>
+    <img src="/img/blog_3_part2_store_implemented.png"
+         alt="Money is synchronized between all components."/> 
+</figure>
+
+
+<h3 id="naming-our-building-with-props">Naming our building with props</h3>
+
+<p>A very short step, now that we have many buildings, it could be nice to give them a name.</p>
+
+<p>But remember that if we declare a variable inside a component, every instance of that component will have the same value for that variable. Not very helpful to have every building have the same name.</p>
+
+<p>What we need is called <strong>props</strong>. To draw an analogy, props are to a component what parameters are to a function. Props are used to initialize the component with some values. They are an essential building block because they allow to re-use component by giving them the flexibility they need.</p>
+
+<p>To declare a prop, it&rsquo;s like a variable declaration but with the keyword <code>export</code> added at the front of the declaration. And also we can replace on the template the reference to <code>money</code> with a reference to <code>name</code>.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Building.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  ...
+  <span style="color:#75715e">// variable declarations
+</span><span style="color:#75715e"></span>  ...
+  <span style="color:#75715e">// prop declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span>; <span style="color:#75715e">// you can also give default value to your prop: export let name = &#34;Producer&#34;;
+</span><span style="color:#75715e"></span>  ...
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">h3</span>&gt;{name}&lt;/<span style="color:#f92672">h3</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} buildings bought, next one cost {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;You gain {productionPerTick}$ / tick.&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>And to define the prop value, you define it like an HTML attribute on the <code>Building</code> tag.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
+
+&lt;<span style="color:#f92672">Building</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1th Derivative&#34;</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;
+&lt;<span style="color:#f92672">Building</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Combinatorics&#34;</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>And here is the result:</p>
+
+<figure>
+    <img src="/img/blog_3_part2_name_with_prop.png"
+         alt="Building with their names"/> 
+</figure>
+
+
+<h3 id="digging-a-bit-about-what-props-enable">Digging a bit about what props enable</h3>
+
+<p>Using props will allow us to customize a little more each building.</p>
+
+<p>We can now change many aspect of them like :</p>
+
+<ul>
+<li>their initial cost</li>
+<li>their initial number (we can imagine starting off with a few buildings already built after buying an upgrade)</li>
+<li>what they produce. Right now it&rsquo;s money but they could produce another currency or even other buildings!</li>
+<li>what they cost. Their cost could be another currency, another building or a combination of those. (Or even cost tick, accelerating or slowing down the game a you buy this building)</li>
+<li>they could also have a maximum number of unit. (Example no more than 30 &ldquo;Combinatorics&rdquo; buildings and no limit for the &ldquo;1th Derivative&rdquo; building).</li>
+<li>And a lot more!</li>
+</ul>
+
+<p>As a starting point, let&rsquo;s change what they produce.</p>
+
+<h3 id="building-producing-proofs">Building producing proofs</h3>
+
+<p>In the original <em>Derivative Clicker</em> game, the primary currency is money but there is a secondary currency named <strong>proofs</strong> that can be produced and is used to buy powerful buildings. (It is also one of the two element determining the amount of prestige currency you earn when you use the reset/prestige mechanic.).</p>
+
+<p>Let&rsquo;s implement proof :)</p>
+
+<p>For the same reason <em>money</em> was put into the store, we are gonna put <em>proofs</em> there too.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/* store.js */</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">writable</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte/store&#39;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">20</span>);
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">proofs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>We can then change the building component to replace explicit references to <code>money</code> to a generic <code>currencyProduced</code> that will can be either <code>money</code> or <code>proofs</code>.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Building.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  ...
+    
+  <span style="color:#75715e">// variable declarations
+</span><span style="color:#75715e"></span>  ...
+  
+  <span style="color:#75715e">// props declaration
+</span><span style="color:#75715e"></span>  ...
+  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currencyProduced</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">money</span> <span style="color:#75715e">// By default, building will produce money
+</span><span style="color:#75715e"></span>  
+  <span style="color:#75715e">// reactive declarations
+</span><span style="color:#75715e"></span>  ...
+  
+  <span style="color:#75715e">// function declarations
+</span><span style="color:#75715e"></span>  ...
+  
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateCurrencyProduced</span>(<span style="color:#a6e22e">n</span>){
+    <span style="color:#a6e22e">currencyProduced</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">m</span> =&gt; <span style="color:#a6e22e">m</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>);
+  }
+
+  ...
+    
+  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">launchTimeout</span>(){
+    <span style="color:#a6e22e">updateCurrencyProduced</span>(<span style="color:#a6e22e">productionPerTick</span>); <span style="color:#75715e">// change updateMoney to updateCurrencyProduced
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">launchTimeout</span>, <span style="color:#a6e22e">tickSpeed</span>);
+  }
+&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>Then to tie it up, in <code>App.svelte</code> we can import <code>proofs</code> from the store, and pass it as a prop to the building we want. (and update the display of the value as well).</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations  
+</span><span style="color:#75715e"></span>  ...
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span>, <span style="color:#a6e22e">proofs</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
+    
+  ...
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">h1</span>&gt;You have {$money}$ and {$proofs} proofs!&lt;/<span style="color:#f92672">h1</span>&gt;
+
+&lt;<span style="color:#f92672">Building</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1th Derivative&#34;</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;
+&lt;<span style="color:#f92672">Building</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Combinatorics&#34;</span> <span style="color:#a6e22e">currencyProduced</span><span style="color:#f92672">=</span><span style="color:#e6db74">{proofs}</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>Because gave a default value to <code>currencyProduced</code> for buildings, we don&rsquo;t need to use the prop for every building. But if we want to make it explicit, we can:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">Building</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1th Derivative&#34;</span> <span style="color:#a6e22e">currencyProduced</span><span style="color:#f92672">=</span><span style="color:#e6db74">{money}</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;
+&lt;<span style="color:#f92672">Building</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Combinatorics&#34;</span> <span style="color:#a6e22e">currencyProduced</span><span style="color:#f92672">=</span><span style="color:#e6db74">{proofs}</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>Note also that we did not need to import <code>proofs</code> into <code>Building.svelte</code> (and we only need to import <code>money</code> because we use it as the default value for <code>currencyProduced</code>). We just import it in <code>App.svelte</code> and pass either <code>money</code> or <code>proofs</code> to the buildings. Then we rely on the fact that every store object can be read with <code>$</code> and updated with the <code>update</code> method. The only constraint is that what we give as a props to the buildings must be a writable store reference on a number (because we update it with <code>+</code> inside the building component). To relax this constraint, we could fire an event in the building component that could be handled in his parent component, updating the currency however it wants to. But this feel a bit heavy, and we won&rsquo;t go this way (for now).</p>
+
+<h3 id="fixing-the-ui">Fixing the UI</h3>
+
+<p>Now our &ldquo;Combinatorics&rdquo; building produces proofs, but we still display that it produces money.</p>
+
+<p>We could do a function with lots of <code>if then else</code> to display either &ldquo;$&rdquo; or &ldquo;proof&rdquo; or &ldquo;proofs&rdquo; or something else depending on what currency the building produce. Or we could add another prop to handle that. It means that we could have two building producing the same currency but displaying it differently. I&rsquo;ll go with the first way of doing it because it will be quicker, but the second one is definitely more flexible (but I don&rsquo;t think that will be needed).</p>
+
+<p>And because we are fixing the UI, we will also make it closer to <em>Derivative Clicker</em>. (at least for buildings)</p>
+
+<p>So we want a function that will display the currency depending on what we produce. We will add it to a new file: <code>utils.js</code> because that function can be re-used in more than one component and is not tied to only one of them.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/* utils.js */</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span>, <span style="color:#a6e22e">proofs</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">currencyToString</span>(<span style="color:#a6e22e">currency</span>){
+  <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;?&#34;</span>;
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">currency</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">money</span>)
+      <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;$&#34;</span>;
+  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">currency</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">proofs</span>)
+      <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;proofs&#34;</span>
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+};
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>I use a <code>if else</code> here, but a <code>switch case</code> will probably scale better in readability if we get a lot more cases to handle. We will see how that pan out.</p>
+
+<p>Let&rsquo;s use that function in <code>Building.svelte</code>:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Building.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  ...
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">currencyToString</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./utils.js&#39;</span>; 
+  
+  ...
+
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+...
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">h3</span>&gt;{name}&lt;/<span style="color:#f92672">h3</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;{buildingProduction}{currencyToString(currencyProduced)}/tick: costs {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;Owned:{numberOfBuilding} ({numberOfBuilding})&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>To get closer to the original game I changed <code>buildingProductionPerTick</code> to <code>buildingProduction</code>. Both information are useful, we could display both, but I&rsquo;ll stick with the original design and display only <code>buildingProduction</code>.</p>
+
+<p>Also I used <code>&lt;p&gt;Owned:{numberOfBuilding} ({numberOfBuilding})&lt;/p&gt;</code>. It seems weird right now, but we will edit it later when we implement building producing buildings. Then it will be <code>&lt;p&gt;Owned:{numberOfBuildingTotal}  ({numberOfBuildingBought})&lt;/p&gt;</code>.</p>
+
+<p>In <code>App.svelte</code>, we can use the function as well:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  ...
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">currencyToString</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./utils.js&#39;</span>; 
+    
+  ...
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">h1</span>&gt;You have {$money}{currencyToString(money)} and {$proofs}{currencyToString(proofs)}!&lt;/<span style="color:#f92672">h1</span>&gt;
+
+...</code></pre></td></tr></table>
+</div>
+</div>
+<p>If you follow closely, you may have noticed that the currency for the cost of the building is still hardcoded as <code>$</code> and not <code>currencyToString(money)</code>. It&rsquo;s because for now we have not looked into buying building with other currency than money. We will change it when times come to implement that feature.</p>
+
+<p>Note also that <code>currencyToString()</code> might possibly have been a component. (And that might have been a better implementation choice, I&rsquo;m not sure). Try it out if you want!</p>
+
+<h3 id="building-producing-buildings">Building producing buildings</h3>
+
+<p>Now that we have building producing proofs, what about buildings producing buildings?</p>
+
+<p>To do that, we need to change a few things:</p>
+
+<ul>
+<li>in <code>store.js</code> we are gonna had new variables for each building we have so we can synchronize their number.</li>
+<li>in <code>Building.svelte</code> we need to use this new variable, and update it when needed. Be careful when updating as the new variable will be a <code>writable</code>, not a plain number. We will need to use <code>$</code> to dereference the value and <code>update()</code>to update it. We also need to define new props to use those variables.</li>
+<li>in <code>App.svelte</code> we have to update the props and the template html to add the second level of buildings.</li>
+</ul>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/* store.js */</span>
+
+...
+
+<span style="color:#75715e">// first level buildings
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firstDerivativeNum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">combinatoricsNum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
+
+<span style="color:#75715e">// second level buildings
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secondDerivativeNum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Building.js --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  ...
+    
+  <span style="color:#75715e">// variable declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">buildingProduction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// $ produced per building per tick
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tickSpeed</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
+    
+  <span style="color:#75715e">// props declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span>;
+  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currencyProduced</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">money</span>;
+  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfBuilding</span>;
+    
+  <span style="color:#75715e">// reactive declarations
+</span><span style="color:#75715e"></span>  ...
+  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">$numberOfBuilding</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>;
+  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">productionPerTick</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$numberOfBuilding</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">buildingProduction</span>;
+  
+  <span style="color:#75715e">// function declaration
+</span><span style="color:#75715e"></span>  ...
+  
+  <span style="color:#75715e">// update the values of `currencyProduced` and `numberBuildings`
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateNumbers</span>(){
+    <span style="color:#a6e22e">updateMoney</span>(<span style="color:#f92672">-</span><span style="color:#a6e22e">cost</span>);
+    <span style="color:#a6e22e">numberOfBuilding</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">n</span> =&gt; <span style="color:#a6e22e">n</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+  }
+  
+  ...
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+...
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">h3</span>&gt;{name}&lt;/<span style="color:#f92672">h3</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;{buildingProduction}{currencyToString(currencyProduced)}/tick: costs {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;Owned:{$numberOfBuilding} ({$numberOfBuilding})&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php+HTML" data-lang="php+HTML"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php+HTML" data-lang="php+HTML">&lt;!-- App.js --&gt;
+&lt;script&gt;
+  // import declarations
+  import Building from &#39;./Building.svelte&#39;;
+  import { money, proofs, firstDerivativeNum, secondDerivativeNum, combinatoricsNum } from &#39;./store.js&#39;;
+    import { currencyToString } from &#39;./utils.js&#39;;
+    
+  // variable declarations
+
+  // reactive declarations
+  
+  // function declarations
+    
+  // lifecycle functions
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+
+&lt;h1&gt;You have {$money}{currencyToString(money)} and {$proofs}{currencyToString(proofs)}!&lt;/h1&gt;
+
+&lt;Building name=&#34;1th Derivative&#34; numberOfBuilding={firstDerivativeNum}&gt;&lt;/Building&gt;
+&lt;Building name=&#34;Combinatorics&#34; currencyProduced={proofs} numberOfBuilding={combinatoricsNum}&gt;&lt;/Building&gt;
+&lt;Building name=&#34;2nde Derivative&#34; currencyProduced={firstDerivativeNum} numberOfBuilding={secondDerivativeNum}&gt;&lt;/Building&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>Now that we have that, we can generate other buildings :)</p>
+
+<p>A little tweak to fix the UI again, the &ldquo;2nd Derivative&rdquo; building display a <code>?</code> instead of the name of the building it produces. To fix that we need to update <code>utils.js</code>.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/* utils.js */</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span>, <span style="color:#a6e22e">proofs</span>, <span style="color:#a6e22e">firstDerivativeNum</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span> 
+
+<span style="color:#75715e">// Returns a string representing `currency`. If `currency` is not recognized, returns &#39;?&#39;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">currencyToString</span>(<span style="color:#a6e22e">c</span>){
+   ...
+   
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">firstDerivativeNum</span>)
+        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; 1st Derivative&#34;</span>
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+}
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>To be fair, the UI needs a lot more fixing but it will do for now ;)</p>
+
+<p>By doing this we introduced a ~bug~ feature with the costs of the buildings, if you start by buying a building that produces another building, this building&rsquo;s costs will go up even so we did not buy any manually. We will ~fix this bug~ reverse this feature in the next tutorial when we will implement upgrades.</p>
+
+<h2 id="recap">Recap</h2>
+
+<p>That&rsquo;s it for this second part of the tutorial. Below is the full code we have so far.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Building</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Building.svelte&#39;</span>;
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span>, <span style="color:#a6e22e">proofs</span>, <span style="color:#a6e22e">firstDerivativeNum</span>, <span style="color:#a6e22e">secondDerivativeNum</span>, <span style="color:#a6e22e">combinatoricsNum</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">currencyToString</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./utils.js&#39;</span>;
+    
+  <span style="color:#75715e">// variable declarations
+</span><span style="color:#75715e"></span>
+  <span style="color:#75715e">// reactive declarations
+</span><span style="color:#75715e"></span>  
+  <span style="color:#75715e">// function declarations
+</span><span style="color:#75715e"></span>    
+  <span style="color:#75715e">// lifecycle functions
+</span><span style="color:#75715e"></span>&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+&lt;/<span style="color:#f92672">style</span>&gt;
+
+&lt;<span style="color:#f92672">h1</span>&gt;You have {$money}{currencyToString(money)} and {$proofs}{currencyToString(proofs)}!&lt;/<span style="color:#f92672">h1</span>&gt;
+
+&lt;<span style="color:#f92672">Building</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1th Derivative&#34;</span> <span style="color:#a6e22e">numberOfBuilding</span><span style="color:#f92672">=</span><span style="color:#e6db74">{firstDerivativeNum}</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;
+&lt;<span style="color:#f92672">Building</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Combinatorics&#34;</span> <span style="color:#a6e22e">currencyProduced</span><span style="color:#f92672">=</span><span style="color:#e6db74">{proofs}</span> <span style="color:#a6e22e">numberOfBuilding</span><span style="color:#f92672">=</span><span style="color:#e6db74">{combinatoricsNum}</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;
+&lt;<span style="color:#f92672">Building</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2nde Derivative&#34;</span> <span style="color:#a6e22e">currencyProduced</span><span style="color:#f92672">=</span><span style="color:#e6db74">{firstDerivativeNum}</span> <span style="color:#a6e22e">numberOfBuilding</span><span style="color:#f92672">=</span><span style="color:#e6db74">{secondDerivativeNum}</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Building.svelte --&gt;</span>
+&lt;<span style="color:#f92672">script</span>&gt;
+  <span style="color:#75715e">// import declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">onMount</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte&#39;</span>;
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
+  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">currencyToString</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./utils.js&#39;</span>
+    
+  <span style="color:#75715e">// variable declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">buildingProduction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// $ produced per building per tick
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tickSpeed</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
+    
+  <span style="color:#75715e">// props declarations
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span>;
+  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currencyProduced</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">money</span>;
+  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfBuilding</span>;
+    
+  <span style="color:#75715e">// reactive declarations
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cantBuy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">$money</span>;
+  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">$numberOfBuilding</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>;
+  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">productionPerTick</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$numberOfBuilding</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">buildingProduction</span>;
+  
+  <span style="color:#75715e">// function declarations
+</span><span style="color:#75715e"></span>
+    <span style="color:#75715e">// update the value of `currencyProduced` to the store, adding `n` to it.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateMoney</span>(<span style="color:#a6e22e">n</span>){
+    <span style="color:#a6e22e">money</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">m</span> =&gt; <span style="color:#a6e22e">m</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>);
+  }
+    
+  <span style="color:#75715e">// update the value of `currencyProduced` to the store, adding `n` to it.
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateCurrencyProduced</span>(<span style="color:#a6e22e">n</span>){
+    <span style="color:#a6e22e">currencyProduced</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">m</span> =&gt; <span style="color:#a6e22e">m</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>);
+  }
+    
+  <span style="color:#75715e">// update the values of `currencyProduced` and `numberBuildings`
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateNumbers</span>(){
+    <span style="color:#a6e22e">updateMoney</span>(<span style="color:#f92672">-</span><span style="color:#a6e22e">cost</span>);
+    <span style="color:#a6e22e">numberOfBuilding</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">n</span> =&gt; <span style="color:#a6e22e">n</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+  }
+    
+   <span style="color:#75715e">// update `currencyProduced` with `productionPerTick` and set a timeout to call itself after `tickSpeed` ms
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">launchTimeout</span>(){
+    <span style="color:#a6e22e">updateCurrencyProduced</span>(<span style="color:#a6e22e">productionPerTick</span>);
+    <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">launchTimeout</span>, <span style="color:#a6e22e">tickSpeed</span>);
+  }
+  
+  <span style="color:#75715e">// lifecycle functions
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">onMount</span>(() =&gt; {
+    <span style="color:#a6e22e">launchTimeout</span>();
+  }); 
+&lt;/<span style="color:#f92672">script</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+  <span style="color:#f92672">button</span> {
+    <span style="color:#66d9ef">outline</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">black</span>;
+    <span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">aliceblue</span>;
+    <span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">pointer</span>;
+  }
+
+  <span style="color:#f92672">button</span>.<span style="color:#a6e22e">cantbuy</span> {
+    <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#555</span>;
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#DDD</span>;
+    <span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">default</span>;
+  }
+&lt;/<span style="color:#f92672">style</span>&gt;
+
+&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
+  &lt;<span style="color:#f92672">h3</span>&gt;{name}&lt;/<span style="color:#f92672">h3</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;{buildingProduction}{currencyToString(currencyProduced)}/tick: costs {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
+  &lt;<span style="color:#f92672">p</span>&gt;Owned:{$numberOfBuilding} ({$numberOfBuilding})&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/* store.js */</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">writable</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte/store&#39;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">20</span>);
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">proofs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
+
+<span style="color:#75715e">// first level buildings
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firstDerivativeNum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">combinatoricsNum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
+
+<span style="color:#75715e">// second level buildings
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secondDerivativeNum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/* utils.js */</span>
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span>, <span style="color:#a6e22e">proofs</span>, <span style="color:#a6e22e">firstDerivativeNum</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span> 
+
+<span style="color:#75715e">// Returns a string representing `currency`. If `currency` is not recognized, returns &#39;?&#39;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">currencyToString</span>(<span style="color:#a6e22e">c</span>){
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;?&#34;</span>;
+
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">money</span>)
+        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;$&#34;</span>;
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">proofs</span>)
+        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; proofs&#34;</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">firstDerivativeNum</span>)
+        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; 1st Derivative&#34;</span>
+
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+}
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>And below you can see the result:</p>
+
+<figure>
+    <img src="/img/blog_3_part2_final_recap.png"
+         alt="Result"/> 
+</figure>
+
+
+<h2 id="objectives-for-the-next-parts">Objectives for the next parts</h2>
+
+<p>There are quite a few things to implement still:</p>
+
+<ul>
+<li>Update the stats recap at the top</li>
+<li>Make buildings have varying costs</li>
+<li>Upgrades for our buildings</li>
+<li>Prestige layer</li>
+<li>Options (Save, Export Save, Load Save, Stats, number formatting</li>
+<li>Balancing the game</li>
+</ul>
+
+<p>We will continue in the next part: Coming soon.</p>
+
+<p>You can also <a href="https://svelte.dev/repl/230b7ab7fe774b31b1936a2aa2ebf050?version=3.4.2">play with the project in the Svelte REPL</a> or <a href="tuto-derivative-clicker-part2.surge.sh">play the game made so far</a> (hosted by Surge) .</p>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/svelte">svelte</a></li>
+    
+      <li><a class="tag" href="/tags/spa">SPA</a></li>
+    
+      <li><a class="tag" href="/tags/game">game</a></li>
+    
+      <li><a class="tag" href="/tags/tutorial">tutorial</a></li>
+    
+      <li><a class="tag" href="/tags/idle">idle</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=XX-123446-01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'XX-123446-01');
+  </script>
+  
+
+  
+</body>
+</html>

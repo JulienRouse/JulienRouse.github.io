@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Setting up Hugo, GithubPage and CircleCI to launch a blog</title>
+  <meta property="og:title" content="Setting up Hugo, GithubPage and CircleCI to launch a blog" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!">
+  <meta property="og:description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.55.0" />
+  
+   
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/setting_up_hugo_githubpage_and_circleci_to_launch_a_blog/">Setting up Hugo, GithubPage and CircleCI to launch a blog</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">Setting up Hugo, GithubPage and CircleCI to launch a blog</span></h2>
+    <span class="text-primary">May 26, 2019</span>
+	
+	
+	<div id="toc-blog">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#setting-up-the-blog">Setting up the blog</a>
+<ul>
+<li><a href="#setting-up-hugo">Setting up Hugo</a>
+<ul>
+<li><a href="#installing">Installing</a></li>
+<li><a href="#choosing-a-theme">Choosing a theme</a></li>
+<li><a href="#making-it-work">Making it work</a></li>
+<li><a href="#tweaks">Tweaks</a>
+<ul>
+<li><a href="#code-blocks">Code blocks</a></li>
+<li><a href="#gdpr-and-privacy-concerns">GDPR and privacy concerns</a></li>
+<li><a href="#table-of-content-for-blog-posts">Table of Content for blog posts</a></li>
+<li><a href="#adjust-color-of-the-site">Adjust color of the site</a></li>
+<li><a href="#fix-responsive-width-for-blog-post">Fix responsive width for blog post</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#github-pages">Github Pages</a></li>
+<li><a href="#circle-ci">Circle CI</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div> 
+	
+    
+	
+
+<h1 id="setting-up-the-blog">Setting up the blog</h1>
+
+<p>I decided to bring back to life my blog :) I chose <a href="https://gohugo.io/">Hugo</a> as the template engine because it seemed well-maintened, and had good documentation, <a href="https://pages.github.com/">Github Pages</a> to host it and <a href="https://circleci.com/">CircleCI</a> for automating deployment.</p>
+
+<h2 id="setting-up-hugo">Setting up Hugo</h2>
+
+<h3 id="installing">Installing</h3>
+
+<p>I followed the <a href="https://gohugo.io/getting-started/quick-start/">quickstart</a> section on the Hugo website, because I am on a Windows system I had to download an executable and put in somewhere on the PATH. So far so good.</p>
+
+<h3 id="choosing-a-theme">Choosing a theme</h3>
+
+<p>Then I spent countless hours inspecting many many <a href="https://themes.gohugo.io/">themes uploaded</a> and picked my favorite. Most of the themes have configuration variables specific to the theme, and they usually are documented.</p>
+
+<p>Personally I choose <a href="https://themes.gohugo.io/hugo-resume/">hugo-resume</a>, courtesy of <a href="https://edwardawebb.com/">Eddie Webb</a>. I was looking for::</p>
+
+<ul>
+<li>a blog section (with tags for blog posts)</li>
+<li>possibility to have sections to showcase projects</li>
+</ul>
+
+<p>And that theme fitted those criteria, and also went beyond that because it had support for many other features (A section for education, skills, open source contributions, etc). Maybe one thing I&rsquo;ll miss is the direct support for internationalization. I was thinking maybe translating some of my post to French, but maybe I&rsquo;ll manage with tags or I&rsquo;ll deal with it later on.</p>
+
+<p>To install a theme it&rsquo;s a matter of downloading the theme into the<code>theme/</code> folder (or use git submodule), and having a line in your config file to tell which theme to use if there is more than one in the <code>theme/</code>folder.</p>
+
+<h3 id="making-it-work">Making it work</h3>
+
+<p><code>hugo server</code> launch a server that serve your site and watch changes. It is useful to make changes to it.</p>
+
+<p>There are a few useful flags:
+  - <code>-D</code> include draft
+  - <code>-F</code> include pages with a publish date in the futur</p>
+
+<p>Then it&rsquo;s time to populate the website with content, congratulation :)</p>
+
+<p>Note that the expected folder names in <code>content/</code> are <code>blog/</code>, <code>projects/creations/</code>, <code>projetcs/contributions/</code> and <code>publications/</code>.</p>
+
+<h3 id="tweaks">Tweaks</h3>
+
+<p>Below is some modification I made to the site to suits my need.</p>
+
+<h4 id="code-blocks">Code blocks</h4>
+
+<p>I added the option to have syntax highlighting (and line numbers in my code blocks). You simply have to add:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">pygmentsCodefences</span> = <span style="color:#66d9ef">true</span> <span style="color:#75715e"># Allow syntax highlighting for code block</span>
+<span style="color:#a6e22e">pygmentsCodefencesGuessSyntax</span> = <span style="color:#66d9ef">true</span> <span style="color:#75715e"># Pygment will try to guess what language is in the code block to use the right highlighting</span>
+<span style="color:#a6e22e">pygmentsOptions</span> = <span style="color:#e6db74">&#34;linenos=table&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>to your config file.
+You can find more options to customize syntax highlighting in <a href="https://gohugo.io/content-management/syntax-highlighting/">the Hugo docs</a></p>
+
+<h4 id="gdpr-and-privacy-concerns">GDPR and privacy concerns</h4>
+
+<p>I tried to be as light on tracking as possible for my website so I disabled any tracking service.
+The only real downside is that I can&rsquo;t embed youtube videos anymore but that is a tradeoff I&rsquo;m willing to make.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">privacy</span>]
+  [<span style="color:#a6e22e">privacy</span>.<span style="color:#a6e22e">disqus</span>]
+    <span style="color:#a6e22e">disable</span> = <span style="color:#66d9ef">true</span>
+  [<span style="color:#a6e22e">privacy</span>.<span style="color:#a6e22e">googleAnalytics</span>]
+    <span style="color:#a6e22e">disable</span> = <span style="color:#66d9ef">true</span>
+  [<span style="color:#a6e22e">privacy</span>.<span style="color:#a6e22e">instagram</span>]
+    <span style="color:#a6e22e">disable</span> = <span style="color:#66d9ef">true</span>
+  [<span style="color:#a6e22e">privacy</span>.<span style="color:#a6e22e">twitter</span>]
+    <span style="color:#a6e22e">disable</span> = <span style="color:#66d9ef">true</span>
+  [<span style="color:#a6e22e">privacy</span>.<span style="color:#a6e22e">vimeo</span>]
+    <span style="color:#a6e22e">disable</span> = <span style="color:#66d9ef">true</span>
+  [<span style="color:#a6e22e">privacy</span>.<span style="color:#a6e22e">youtube</span>]
+    <span style="color:#a6e22e">disable</span> = <span style="color:#66d9ef">true</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>See <a href="https://gohugo.io/about/hugo-and-gdpr/">documentation about gdpr complicance</a> for more detailed options for each services.</p>
+
+<h4 id="table-of-content-for-blog-posts">Table of Content for blog posts</h4>
+
+<p>I wanted to display a table of content for my blog posts, but also being able to not display one for short posts that don&rsquo;t warrant one.</p>
+
+<p>It happens that this is really easy with Hugo :) With the help of this <a href="https://www.codeooze.com/webdesign/hugo-toc/">post from ooze.com</a> I managed to do it very quickly.</p>
+
+<p>Steps to do it are (for <code>hugo-resume</code> but should be fairly similar for other themes)::</p>
+
+<ol>
+<li><p>Create <code>/layout/blog/</code> (to match the structure of <code>/themes/hugo-resume/layout/blog/</code>)  then copy the file <code>/themes/hugo-resume/layout/blog/single.html</code> into <code>/layout/blog/single.html</code>. For other themes or for adding toc in other section of the website, you just have to find the right <code>single.html</code> file to edit.</p></li>
+
+<li><p>Then edit the <code>single.html</code> to add</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ if .Params.toc }}
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;toc-blog&#34;</span>&gt;
+    {{ .TableOfContents }}
+&lt;/<span style="color:#f92672">div</span>&gt; 
+{{ end }}</code></pre></td></tr></table>
+</div>
+</div>
+<p>above the <code>{{ .Content }}</code> tag.</p>
+
+<p>Before I had</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+{{ partial &#34;breadcrumbs&#34; . }}
+&lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;resume-section p-3 p-lg-5 d-flex d-column&#34;</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;my-auto&#34;</span>&gt;
+     &lt;<span style="color:#f92672">h2</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mb-0&#34;</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-primary&#34;</span>&gt;{{ .Title }}&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">h2</span>&gt;
+     &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-primary&#34;</span>&gt;{{ .Date.Format &#34;January 2, 2006&#34; }}&lt;/<span style="color:#f92672">span</span>&gt;
+     {{ .Content }}
+     {{ with .Params.link }}&lt;<span style="color:#f92672">p</span>&gt;Project link: &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ . }}&#34;</span>&gt;{{ . }}&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;{{ end }}
+     {{ partial &#34;techtags&#34; . }}
+  &lt;/<span style="color:#f92672">div</span>&gt;
+&lt;/<span style="color:#f92672">section</span>&gt;
+{{ end }}</code></pre></td></tr></table>
+</div>
+</div>
+<p>and after:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ define &#34;main&#34; }}
+{{ partial &#34;breadcrumbs&#34; . }}
+&lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;resume-section p-3 p-lg-5 d-flex d-column&#34;</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;my-auto&#34;</span>&gt;
+    &lt;<span style="color:#f92672">h2</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mb-0&#34;</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-primary&#34;</span>&gt;{{ .Title }}&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">h2</span>&gt;
+    &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-primary&#34;</span>&gt;{{ .Date.Format &#34;January 2, 2006&#34; }}&lt;/<span style="color:#f92672">span</span>&gt;
+    {{ if .Params.toc }}
+    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;toc-blog&#34;</span>&gt;
+      {{ .TableOfContents }}
+    &lt;/<span style="color:#f92672">div</span>&gt; 
+    {{ end }}
+    {{ .Content }}
+    {{ with .Params.link }}&lt;<span style="color:#f92672">p</span>&gt;Project link: &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ . }}&#34;</span>&gt;{{ . }}&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;{{ end }}
+    {{ partial &#34;techtags&#34; . }}
+  &lt;/<span style="color:#f92672">div</span>&gt;
+&lt;/<span style="color:#f92672">section</span>&gt;
+{{ end }}</code></pre></td></tr></table>
+</div>
+</div>
+<p>Adding the <code>{{ if .Params.toc}}</code> line will allow to define in the front matter of each post if we want to generate a toc.
+I also added a div tag with an id to style it.</p></li>
+
+<li><p>Style it! Let&rsquo;s find the css file. Copy <code>/themes/hugo-resume/static/css/tweaks.css</code> into <code>/static/css/tweaks.css</code> and edit it:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#75715e">/* Change rules for toc in blog posts */</span>
+#toc-blog {
+  <span style="color:#66d9ef">margin-top</span>:<span style="color:#ae81ff">25</span><span style="color:#66d9ef">px</span>;
+  <span style="color:#66d9ef">margin-bottom</span>:<span style="color:#ae81ff">25</span><span style="color:#66d9ef">px</span>;
+}
+#toc-blog <span style="color:#f92672">a</span> {
+  <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#0062cc</span>
+}</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+
+<h4 id="adjust-color-of-the-site">Adjust color of the site</h4>
+
+<p>TODO
+I found the color of the text a bit to light for my eyes so I changed it. In <code>/themes/hugo-resume/static/css/</code> I changed <code>resume.css</code>.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">body</span> {
+  <span style="color:#66d9ef">font-family</span>: <span style="color:#e6db74">&#39;Open Sans&#39;</span>, <span style="color:#66d9ef">serif</span>;
+  <span style="color:#66d9ef">padding-top</span>: <span style="color:#ae81ff">54</span><span style="color:#66d9ef">px</span>;
+  <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#33679a</span>; <span style="color:#75715e">/* was #868e96; */</span>
+}</code></pre></td></tr></table>
+</div>
+</div>
+<h4 id="fix-responsive-width-for-blog-post">Fix responsive width for blog post</h4>
+
+<p>TODO
+After tweaking blog posts a bit, I found out that they were some issues with responsiveness. Around the 1300px mark for width, if you shrink the size of the screen, the text overflow which render the page hard to read without scrolling a lot.</p>
+
+<p>After some googling (or <a href="https://duckduckgo.com/">duckduckgoing</a> in my case), it seems it is because the container for blog post user <code>box-sizing: border-box</code> but the child does not specify a width. Adding <code>width: 100%</code> on the inner div fix the problem for me.</p>
+
+<p>I added the following css rule in <code>tweaks.css</code></p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">.<span style="color:#a6e22e">my-auto</span> {
+  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>
+}</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="github-pages">Github Pages</h2>
+
+<p>TODO</p>
+
+<h2 id="circle-ci">Circle CI</h2>
+
+<p>TODO</p>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/hugo">hugo</a></li>
+    
+      <li><a class="tag" href="/tags/circleci">circleci</a></li>
+    
+      <li><a class="tag" href="/tags/blog">blog</a></li>
+    
+      <li><a class="tag" href="/tags/how-to">how-to</a></li>
+    
+      <li><a class="tag" href="/tags/github">github</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=XX-123446-01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'XX-123446-01');
+  </script>
+  
+
+  
+</body>
+</html>
