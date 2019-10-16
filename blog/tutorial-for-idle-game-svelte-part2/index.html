@@ -127,7 +127,7 @@
 
 <h2 id="introduction">Introduction</h2>
 
-<p>This article is the second part of a tutorial aiming at discovering Svelte[1] while building a game. I also wrote a very short post on Svelte and the idea behind this tutorial. Below you can find the links to check those posts or other parts of the tutorial.</p>
+<p>This article is the second part of a tutorial aiming at discovering Svelte while building a game. I also wrote a very short post on Svelte and the idea behind this tutorial. Below you can find the links to check those posts or other parts of the tutorial.</p>
 
 <ul>
 <li><a href="/blog/introduction-to-svelte/">introduction to Svelte</a></li>
@@ -458,8 +458,7 @@
 
 <h3 id="using-the-store-to-handle-global-state">Using the store to handle global state</h3>
 
-<p>One way to have some global state that can be shared among components is to have a <em>store</em> with value that components can subscribe to. They can also update the value if you allow them to, and any change to the value are propagated back to other component subscribing to that value as well. It is the same idea that React/Redux uses (or Reagent/re-frame<a href="4" title="https://github.com/Day8/re-frame
-">4</a> in the ClojureScript ecosystem) .</p>
+<p>One way to have some global state that can be shared among components is to have a <em>store</em> with value that components can subscribe to. They can also update the value if you allow them to, and any change to the value are propagated back to other component subscribing to that value as well. It is the same idea that React/Redux uses (or Reagent/re-frame<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">1</a></sup> in the ClojureScript ecosystem) .</p>
 
 <p>Let&rsquo;s create our store, we need a JS file that we will call <code>store.js</code> and put some code in it: (I use <code>/* store.js */</code> instead of <code>&lt;!-- store.js --&gt;</code> to show you that the code belongs to <code>store.js</code> because it&rsquo;s no longer a template file, but a proper JS file. It allows you to copy paste my snippet without having an error into your editor.)</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -1272,7 +1271,7 @@
 </div>
 <p>To be fair, the UI needs a lot more fixing but it will do for now ;)</p>
 
-<p>By doing this we introduced a ~bug~ feature with the costs of the buildings, if you start by buying a building that produces another building, this building&rsquo;s costs will go up even so we did not buy any manually. We will ~fix this bug~ reverse this feature in the next tutorial when we will implement upgrades.</p>
+<p>By doing this we introduced a <del>bug</del> feature with the costs of the buildings, if you start by buying a building that produces another building, this building&rsquo;s costs will go up even so we did not buy any manually. We will <del>fix this bug</del> reverse this feature in the next tutorial when we will implement upgrades.</p>
 
 <h2 id="recap">Recap</h2>
 
@@ -1568,6 +1567,15 @@
 <p>We will continue in the next part: Coming soon.</p>
 
 <p>You can also <a href="https://svelte.dev/repl/230b7ab7fe774b31b1936a2aa2ebf050?version=3.4.2">play with the project in the Svelte REPL</a> or <a href="tuto-derivative-clicker-part2.surge.sh">play the game made so far</a> (hosted by Surge) .</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:4"><a href="https://github.com/Day8/re-frame">https://github.com/Day8/re-frame</a>
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+</ol>
+</div>
 
     
     <ul class="tags">
