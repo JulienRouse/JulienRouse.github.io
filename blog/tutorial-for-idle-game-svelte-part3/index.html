@@ -89,7 +89,7 @@
 <section class="resume-section p-3 p-lg-5 d-flex d-column">
   <div class="my-auto">
     <h2 class="mb-0"><span class="text-primary">Tutorial for an Idle game with Svelte (Part3)</span></h2>
-    <span class="text-primary">June 29, 2019</span>
+    <span class="text-primary">October 18, 2019</span>
 	
 	
 	<div id="toc-blog">
@@ -375,22 +375,22 @@
   <span style="color:#75715e">// import declarations
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
   <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">currencyToString</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./utils.js&#39;</span>
-	
+    
   <span style="color:#75715e">// props declarations
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span>;
   <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfUpgradeBought</span>;
-	
+    
   <span style="color:#75715e">// reactive declarations
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cantBuy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">$money</span>;
   <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">$numberOfUpgradeBought</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>;
   
-  <span style="color:#75715e">// function declarations	
-</span><span style="color:#75715e"></span>	
+  <span style="color:#75715e">// function declarations  
+</span><span style="color:#75715e"></span>    
   <span style="color:#75715e">// update the value of `currencyProduced` to the store, adding `n` to it.
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateMoney</span>(<span style="color:#a6e22e">n</span>){
     <span style="color:#a6e22e">money</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">m</span> =&gt; <span style="color:#a6e22e">m</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>);
   }
-	
+    
   <span style="color:#75715e">// update the values of `currencyProduced` and `numberBuildings`
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateNumbers</span>(){
     <span style="color:#a6e22e">updateMoney</span>(<span style="color:#f92672">-</span><span style="color:#a6e22e">cost</span>);
@@ -472,13 +472,13 @@
   <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Upgrade</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Upgrade.svelte&#39;</span>;
   <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span>, <span style="color:#a6e22e">proofs</span>, <span style="color:#a6e22e">firstDerivativeNum</span>, <span style="color:#a6e22e">firstDerivativeBoughtNum</span>, <span style="color:#a6e22e">secondDerivativeNum</span>, <span style="color:#a6e22e">secondDerivativeBoughtNum</span>, <span style="color:#a6e22e">combinatoricsNum</span>, <span style="color:#a6e22e">combinatoricsBoughtNum</span>, <span style="color:#a6e22e">firstRowBoughtNum</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
   ...
-	
+    
   <span style="color:#75715e">// variable declarations
 </span><span style="color:#75715e"></span>
   <span style="color:#75715e">// reactive declarations
 </span><span style="color:#75715e"></span>  
   <span style="color:#75715e">// function declarations
-</span><span style="color:#75715e"></span>	
+</span><span style="color:#75715e"></span>    
   <span style="color:#75715e">// lifecycle functions
 </span><span style="color:#75715e"></span>&lt;/<span style="color:#f92672">script</span>&gt;
 
@@ -488,7 +488,7 @@
 ...
 
 &lt;<span style="color:#f92672">div</span>&gt;
-	&lt;<span style="color:#f92672">Upgrade</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;First row&#34;</span> <span style="color:#a6e22e">numberOfUpgradeBought</span><span style="color:#f92672">=</span><span style="color:#e6db74">{firstRowBoughtNum}</span>&gt;&lt;/<span style="color:#f92672">Upgrade</span>&gt;
+    &lt;<span style="color:#f92672">Upgrade</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;First row&#34;</span> <span style="color:#a6e22e">numberOfUpgradeBought</span><span style="color:#f92672">=</span><span style="color:#e6db74">{firstRowBoughtNum}</span>&gt;&lt;/<span style="color:#f92672">Upgrade</span>&gt;
 &lt;/<span style="color:#f92672">div</span>&gt;</code></pre></td></tr></table>
 </div>
 </div>
@@ -597,7 +597,7 @@
 &lt;<span style="color:#f92672">Building</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2nde Derivative&#34;</span> <span style="color:#a6e22e">currencyProduced</span><span style="color:#f92672">=</span><span style="color:#e6db74">{firstDerivativeNum}</span> <span style="color:#a6e22e">numberOfBuilding</span><span style="color:#f92672">=</span><span style="color:#e6db74">{secondDerivativeNum}</span> <span style="color:#a6e22e">numberOfBuildingBought</span><span style="color:#f92672">=</span><span style="color:#e6db74">{secondDerivativeBoughtNum}</span> <span style="color:#a6e22e">upgradeBonus</span><span style="color:#f92672">=</span><span style="color:#e6db74">{0}</span>&gt;&lt;/<span style="color:#f92672">Building</span>&gt;
 
 &lt;<span style="color:#f92672">div</span>&gt;
-	&lt;<span style="color:#f92672">Upgrade</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;First row&#34;</span> <span style="color:#a6e22e">numberOfUpgradeBought</span><span style="color:#f92672">=</span><span style="color:#e6db74">{firstRowUpgradeBoughtNum}</span>&gt;&lt;/<span style="color:#f92672">Upgrade</span>&gt;</code></pre></td></tr></table>
+    &lt;<span style="color:#f92672">Upgrade</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;First row&#34;</span> <span style="color:#a6e22e">numberOfUpgradeBought</span><span style="color:#f92672">=</span><span style="color:#e6db74">{firstRowUpgradeBoughtNum}</span>&gt;&lt;/<span style="color:#f92672">Upgrade</span>&gt;</code></pre></td></tr></table>
 </div>
 </div>
 <p>Great! Now we can buy upgrades for our first tier buildings :)</p>
@@ -903,7 +903,7 @@
   <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Upgrade</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Upgrade.svelte&#39;</span>;
   <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span>, <span style="color:#a6e22e">proofs</span>, <span style="color:#a6e22e">firstDerivativeNum</span>, <span style="color:#a6e22e">firstDerivativeBoughtNum</span>, <span style="color:#a6e22e">secondDerivativeNum</span>, <span style="color:#a6e22e">secondDerivativeBoughtNum</span>, <span style="color:#a6e22e">combinatoricsNum</span>, <span style="color:#a6e22e">combinatoricsBoughtNum</span>, <span style="color:#a6e22e">probabilityNum</span>, <span style="color:#a6e22e">probabilityBoughtNum</span>, <span style="color:#a6e22e">firstRowUpgradeBoughtNum</span>, <span style="color:#a6e22e">secondRowUpgradeBoughtNum</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
   <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">currencyToString</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./utils.js&#39;</span>;
-	
+    
   <span style="color:#75715e">// variable declarations
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">firstTierUpgradeBonusPerBuilding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">secondTierUpgradeBonusPerBuilding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
@@ -913,9 +913,9 @@
   <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">secondTierBuildingBought</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$secondDerivativeBoughtNum</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">$probabilityBoughtNum</span>;
   <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">firstTierBuildingUpgradeBonus</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">firstTierBuildingBought</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">firstTierUpgradeBonusPerBuilding</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">$firstRowUpgradeBoughtNum</span>;
   <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">secondTierBuildingUpgradeBonus</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">secondTierBuildingBought</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">secondTierUpgradeBonusPerBuilding</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">$secondRowUpgradeBoughtNum</span>;
-	
+    
   <span style="color:#75715e">// function declarations
-</span><span style="color:#75715e"></span>	
+</span><span style="color:#75715e"></span>    
   <span style="color:#75715e">// lifecycle functions
 </span><span style="color:#75715e"></span>&lt;/<span style="color:#f92672">script</span>&gt;
 
@@ -1025,17 +1025,17 @@
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">onMount</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte&#39;</span>;
   <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
   <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">currencyToString</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./utils.js&#39;</span>
-	
+    
   <span style="color:#75715e">// variable declarations
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tickSpeed</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
-	
+    
   <span style="color:#75715e">// props declarations
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span>;
   <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">currencyProduced</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">money</span>;
   <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfBuilding</span>;
-	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfBuildingBought</span>;
-	<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">upgradeBonus</span>;
-	
+    <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfBuildingBought</span>;
+    <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">upgradeBonus</span>;
+    
   <span style="color:#75715e">// reactive declarations
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cantBuy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">$money</span>;
   <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">$numberOfBuildingBought</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>;
@@ -1048,19 +1048,19 @@
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateMoney</span>(<span style="color:#a6e22e">n</span>){
     <span style="color:#a6e22e">money</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">m</span> =&gt; <span style="color:#a6e22e">m</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>);
   }
-	
+    
   <span style="color:#75715e">// update the value of `currencyProduced` to the store, adding `n` to it.
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateCurrencyProduced</span>(<span style="color:#a6e22e">n</span>){
     <span style="color:#a6e22e">currencyProduced</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">m</span> =&gt; <span style="color:#a6e22e">m</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>);
   }
-	
+    
   <span style="color:#75715e">// update the values of `currencyProduced` and `numberBuildings`
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateNumbers</span>(){
     <span style="color:#a6e22e">updateMoney</span>(<span style="color:#f92672">-</span><span style="color:#a6e22e">cost</span>);
     <span style="color:#a6e22e">numberOfBuilding</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">n</span> =&gt; <span style="color:#a6e22e">n</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
     <span style="color:#a6e22e">numberOfBuildingBought</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">n</span> =&gt; <span style="color:#a6e22e">n</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
   }
-	
+    
   <span style="color:#75715e">// update `currencyProduced` with `productionPerTick` and set a timeout to call itself after `tickSpeed` ms
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">launchTimeout</span>(){
     <span style="color:#a6e22e">updateCurrencyProduced</span>(<span style="color:#a6e22e">productionPerTick</span>);
@@ -1091,7 +1091,7 @@
   &lt;<span style="color:#f92672">h3</span>&gt;{name}&lt;/<span style="color:#f92672">h3</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;{buildingProduction}{currencyToString(currencyProduced)}/tick: costs {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;Owned:{$numberOfBuilding} ({$numberOfBuildingBought})&lt;/<span style="color:#f92672">p</span>&gt;
-	
+    
 &lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
 </div>
 </div>
@@ -1153,23 +1153,23 @@
   <span style="color:#75715e">// import declarations
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">money</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store.js&#39;</span>;
   <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">currencyToString</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./utils.js&#39;</span>
-	
+    
   <span style="color:#75715e">// props declarations
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span>;
   <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfUpgradeBought</span>;
   <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">initialCost</span>;
-	
+    
   <span style="color:#75715e">// reactive declarations
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cantBuy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">$money</span>;
   <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span>  <span style="color:#a6e22e">initialCost</span> <span style="color:#f92672">*</span> Math.<span style="color:#a6e22e">pow</span>(<span style="color:#ae81ff">100</span>, <span style="color:#a6e22e">$numberOfUpgradeBought</span>);
   
-  <span style="color:#75715e">// function declarations	
-</span><span style="color:#75715e"></span>	
+  <span style="color:#75715e">// function declarations  
+</span><span style="color:#75715e"></span>    
   <span style="color:#75715e">// update the value of `currencyProduced` to the store, adding `n` to it.
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateMoney</span>(<span style="color:#a6e22e">n</span>){
     <span style="color:#a6e22e">money</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">m</span> =&gt; <span style="color:#a6e22e">m</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">n</span>);
   }
-	
+    
   <span style="color:#75715e">// update the values of `currencyProduced` and `numberBuildings`
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateNumbers</span>(){
     <span style="color:#a6e22e">updateMoney</span>(<span style="color:#f92672">-</span><span style="color:#a6e22e">cost</span>);
@@ -1228,7 +1228,7 @@
 <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">writable</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte/store&#39;</span>;
 
 <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">20</span>);
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">proofs</span>	<span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">proofs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
 
 <span style="color:#75715e">// first level buildings
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">firstDerivativeNum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">writable</span>(<span style="color:#ae81ff">0</span>);
@@ -1276,18 +1276,18 @@
 
 <span style="color:#75715e">// Returns a string representing `currency`. If `currency` is not recognized, returns &#39;?&#39;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">currencyToString</span>(<span style="color:#a6e22e">c</span>){
-	<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;?&#34;</span>;
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;?&#34;</span>;
 
-	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">money</span>)
-		<span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;$&#34;</span>;
-	<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">proofs</span>)
-		<span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; proofs&#34;</span>
-	<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">firstDerivativeNum</span>)
-		<span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; 1st Derivative&#34;</span>
-	<span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">combinatoricsNum</span>)
-		<span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; Combinatorics&#34;</span>
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">money</span>)
+        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;$&#34;</span>;
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">proofs</span>)
+        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; proofs&#34;</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">firstDerivativeNum</span>)
+        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; 1st Derivative&#34;</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">c</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">combinatoricsNum</span>)
+        <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; Combinatorics&#34;</span>
 
-	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span>;
 }
 </code></pre></td></tr></table>
 </div>
@@ -1313,7 +1313,7 @@
 
 <h2 id="what-s-next">What&rsquo;s next?</h2>
 
-<p>Next time we will try our hands at implementing a prestige layer :) If you did not remember from the introduction or did not read it, you can go read about what is a prestige layer in the <a href="/blog/introduction-to-svelte/">introduction post</a>.</p>
+<p>Next article will be the conclusion on this tutorial, with resources for going further and my opinion on Svelte so far.</p>
 
 <p>The next part is here: COMING SOON</p>
 
