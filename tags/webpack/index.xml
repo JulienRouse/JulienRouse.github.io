@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>webpack on Learning for fun and profits</title>
@@ -8,7 +7,7 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Jul 2019 20:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.julienrouse.com/tags/webpack/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://www.julienrouse.com/tags/webpack/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,8 +16,40 @@
       <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/blog/webpack-cli-crashes-only-on-monday/</guid>
-      <description>How subtle bugs can be sometimes&amp;hellip;</description>
+      <description>
+
+&lt;h1 id=&#34;webpack-cli-crashes-for-windows-users-but-only-on-monday&#34;&gt;Webpack-cli crashes for Windows users, but only on Monday&lt;/h1&gt;
+
+&lt;p&gt;It seems like a headline from the Onion&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. But unfortunately it&amp;rsquo;s not.&lt;/p&gt;
+
+&lt;p&gt;Webpack-cli&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; had a bug&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; recently because it tried to display a message for donations on the terminal when using it. But that message was only displayed on Monday(because there were complaints about seeing the donation message every time you were running a build).&lt;/p&gt;
+
+&lt;p&gt;Then a bug was introduced into that code because it relies on &lt;code&gt;process.getuid&lt;/code&gt; which is not available on Windows, making the CLI crash but only on Windows and on Monday \(**)/.&lt;/p&gt;
+
+&lt;h2 id=&#34;similar-story&#34;&gt;Similar story&lt;/h2&gt;
+
+&lt;p&gt;If you like weird bug story, you can also read:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gyrovague.com/2015/07/29/crashes-only-on-wednesdays/&#34;&gt;Crashes only on Wednesday&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://catless.ncl.ac.uk/Risks/25.77.html#subj14&#34;&gt;Cannot print on Tuesday!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ibiblio.org/harris/500milemail.html&#34;&gt;The 500-mile mail&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;https://www.theonion.com/&#34;&gt;https://www.theonion.com/&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;&lt;a href=&#34;https://github.com/webpack/webpack-cli&#34;&gt;https://github.com/webpack/webpack-cli&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;&lt;a href=&#34;https://github.com/webpack/webpack-cli/issues/962&#34;&gt;https://github.com/webpack/webpack-cli/issues/962&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
   </channel>
-</rss>
+</rss>	

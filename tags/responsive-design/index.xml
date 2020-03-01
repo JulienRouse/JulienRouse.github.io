@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>responsive design on Learning for fun and profits</title>
@@ -7,7 +6,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://www.julienrouse.com/tags/responsive-design/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://www.julienrouse.com/tags/responsive-design/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -16,10 +15,31 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/projects/contributions/hugo-resume/</guid>
-      <description>It feels good to fix the theme I use for the blog, I give back to a tool I will use for some time hopefully :)
-The problem was that when looking at blog post with full resolution on my laptop, it displayed nicely. But when viewing it with smartphone resolution, it looked like this:
-  After some duckduckgoing, I stumbled upon box-sizing: border-box, an element I have not used before.</description>
+      <description>&lt;p&gt;It feels good to fix the theme I use for the blog, I give back to a tool I will use for some time hopefully :)&lt;/p&gt;
+
+&lt;p&gt;The problem was that when looking at blog post with full resolution on my laptop, it displayed nicely. But when viewing it with smartphone resolution, it looked like this:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.julienrouse.com/img/contributions_width_overflow.png&#34;
+         alt=&#34;blog post with text overflowing&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;After some duckduckgoing, I stumbled upon &lt;code&gt;box-sizing: border-box&lt;/code&gt;, an element I have not used before.I went to MDN to see what is was &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing&#34;&gt;MDN page on box-sizing&lt;/a&gt;, then looked around if it could be that element tripping me up.&lt;/p&gt;
+
+&lt;p&gt;But according to that doc, because the CSS used &lt;code&gt;border-box&lt;/code&gt; instead of &lt;code&gt;content-box&lt;/code&gt;, my content should have behaved nicely and not overflowing.&lt;/p&gt;
+
+&lt;p&gt;After more time looking around, &lt;a href=&#34;https://stackoverflow.com/a/38892861/3729797&#34;&gt;a StackOverflow response&lt;/a&gt; once again saved the day. When using &lt;code&gt;border-box&lt;/code&gt; on a container, you have to set the width on the inner child.&lt;/p&gt;
+
+&lt;p&gt;I added &lt;code&gt;width: 100%&lt;/code&gt; on the inner child, and &amp;ldquo;voila&amp;rdquo;:&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.julienrouse.com/img/contributions_without_width_overflow.png&#34;
+         alt=&#34;blog post with text overflowing&#34;/&gt; 
+&lt;/figure&gt;
+
+</description>
     </item>
     
   </channel>
-</rss>
+</rss>	

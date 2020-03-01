@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>scrum on Learning for fun and profits</title>
@@ -8,7 +7,7 @@
     <language>en-us</language>
     <lastBuildDate>Sat, 18 May 2019 18:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.julienrouse.com/tags/scrum/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://www.julienrouse.com/tags/scrum/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,8 +16,87 @@
       <pubDate>Sat, 18 May 2019 18:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/blog/professional-scrum-developer-certification-post-mortem/</guid>
-      <description>Reflection on how I got my PSD1 certification and what you can learn from my success and failures.</description>
+      <description>
+
+&lt;h1 id=&#34;professional-scrum-developer-certification-post-mortem&#34;&gt;Professional Scrum Developer certification post-mortem&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;I&amp;rsquo;m not sure post-mortem is the right expression.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Anyway, a few weeks ago I obtained the PSD1 certification from &lt;a href=&#34;https://www.scrum.org&#34;&gt;scrum.org&lt;/a&gt; and this is a recap on my learning experience. Also at the end there are tips for you if you want to try it as well!&lt;/p&gt;
+
+&lt;h2 id=&#34;disclaimer-about-certifications&#34;&gt;Disclaimer about certifications&lt;/h2&gt;
+
+&lt;p&gt;Certifications are a cash cow for the very lucrative professional training industry, no doubts. Some certifications are good, some are bad, some are total scams. And they are not well received in all organizations. Nevertheless sometimes they hold some value (even if it is only the value of motivating you to learn new things in exchange of a &lt;del&gt;useless&lt;/del&gt; shiny piece of (electronic) paper.)&lt;/p&gt;
+
+&lt;p&gt;As for PSD1, I have no idea which category it belongs to. It definitely is worth it if your employer pay for it or if it enable a raise and/or enable you to have access to more job opportunities (or mission opportunities for consultants).&lt;/p&gt;
+
+&lt;h2 id=&#34;motivations&#34;&gt;Motivations&lt;/h2&gt;
+
+&lt;p&gt;I had some spare time at work between missions so in parallel with getting myself up to date with front-end technologies (Flutter, Dart, NativeScript), I spent some times learning and training myself for this certification.&lt;/p&gt;
+
+&lt;p&gt;What I was hoping to get out of it:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Getting access to mission needing Agile/Scrum experience. I had some exposure to Scrum and Kanban during a 8 weeks summer job in an web agency in the past (using Java, Spring and some JavaScript and jQuery) but a few  times this year it was not enough to be selected for that mission.&lt;/li&gt;
+&lt;li&gt;Actually learning more about Scrum. As it turns out, I knew already most of the topics covered (more than what I anticipated).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As bonus motivation, I had the privilege to have my colleague Nathalie (a very experienced Agile coach) give me a training session on Scrum and Agility and when she was at the office she took the time to answer my questions which was very very valuable! Thanks very much to her!&lt;/p&gt;
+
+&lt;h2 id=&#34;my-journey&#34;&gt;My journey&lt;/h2&gt;
+
+&lt;p&gt;I first started practicing for this test back in October 2018.&lt;/p&gt;
+
+&lt;p&gt;I read the Scrum Guide in French, then practiced with the quiz on scrum.org (they call it &amp;ldquo;Open Assessments&amp;rdquo;) at least four times a day. I was doing mostly the &amp;ldquo;&lt;a href=&#34;https://www.scrum.org/open-assessments/scrum-developer-open&#34;&gt;Scrum Developer Open&lt;/a&gt;&amp;rdquo; one, but also the &amp;ldquo;&lt;a href=&#34;https://www.scrum.org/open-assessments/scrum-open&#34;&gt;Scrum Open&lt;/a&gt;&amp;rdquo; which is more generalist.&lt;/p&gt;
+
+&lt;p&gt;One caveat was that both the open assessments and the real test are in English and I had prepared in French. Most of the terms were understandable but sometimes I got confused and I began again reading and studying the Scrum Guide in English.&lt;/p&gt;
+
+&lt;p&gt;When my mission started I kept practicing, doing two to three quiz in the evening when I got home. I kept doing it for three weeks. After all that, I was scoring consistently above 95% (passing grades are 80%) so I was feeling pretty confident.&lt;/p&gt;
+
+&lt;p&gt;But then life happened, I stopped taking time for training and I stopped practicing altogether.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s only in the beginning of May 2019 that I came back to the certification (and after having completed a Coursera course &amp;ldquo;Learning how to learn&amp;rdquo; which gives some insight on how to learn more effectively). It was a good surprise to me when I started doing practice tests again that I still remembered a lot of the material and started scoring above 90% right away. In retrospective and with what I learned in the Coursera course, I think I remembered so much because I spaced my learning over the span of many weeks, and I took a lot of practice test. Both are good ways to enhance retention in long term memory.&lt;/p&gt;
+
+&lt;p&gt;Then after only a few day of being back to practice, I decided to attempt the certification. I was feeling ready and scored 100% at every test attempt for two days straight.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-exam&#34;&gt;The exam&lt;/h2&gt;
+
+&lt;p&gt;The exam is 80 questions, 60 minutes and you need 85% to pass (at most 12 errors allowed). It cost also 200$USD (269$CAD at the time I bought it), which is not a lot for a certification but still enough for being motivated to not screw it up.&lt;/p&gt;
+
+&lt;p&gt;And my impression on it was that it was hard! After acing every test I thought it would be a piece of cake but not at all.&lt;/p&gt;
+
+&lt;p&gt;While the exam focus on majority on what the practice exam test you on, there are also questions relevant to a Product Owner or a Scrum Master role in the scrum team. I did not prepare very well for Scrum Master nor Product Owner questions (out of all the tests I did, only 3 or 4 were about Scrum Master and 1 only about Product owner) because in the certification details they said to prepare with the 2 open assessments I used. It was a bad move on my part.&lt;/p&gt;
+
+&lt;p&gt;In the end, my two months summer job in a scrum team in 2012 helped me figure out some of the &amp;ldquo;hard&amp;rdquo; questions, and I passed the exam successfully.&lt;/p&gt;
+
+&lt;p&gt;If there is one lesson to remember here: &lt;em&gt;When preparing for any kind of exam, don&amp;rsquo;t prepare exclusively for the subject matter, open your perspective and learn more than what is expected.&lt;/em&gt; Also a side benefit is that you actually gain more knowledge and over the course of many months/years, it can be really significant to have pushed for a little more knowledge in term of your global comprehension.&lt;/p&gt;
+
+&lt;h2 id=&#34;tips-for-earning-the-psd1-certificate&#34;&gt;Tips for earning the PSD1 certificate&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Do a lot of open assessments: &lt;a href=&#34;https://www.scrum.org/open-assessments/scrum-developer-open&#34;&gt;Scrum Developper Open&lt;/a&gt; and &lt;a href=&#34;https://www.scrum.org/open-assessments/scrum-open&#34;&gt;Scrum Open&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Read the &lt;a href=&#34;https://www.scrumguides.org/index.html&#34;&gt;Scrum Guide&lt;/a&gt; (I recommend in English because the exam is exclusively in English)&lt;/li&gt;
+&lt;li&gt;Do a lot of open assessments again: &lt;a href=&#34;https://www.scrum.org/open-assessments/scrum-developer-open&#34;&gt;Scrum Developper Open&lt;/a&gt;, &lt;a href=&#34;https://www.scrum.org/open-assessments/scrum-open&#34;&gt;Scrum Open&lt;/a&gt; and also &lt;a href=&#34;https://www.scrum.org/open-assessments/product-owner-open&#34;&gt;Product Owner Open&lt;/a&gt; and &lt;a href=&#34;https://www.scrum.org/open-assessments/nexus-open&#34;&gt;Nexus Open&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Space out your learning, try to do it a little bit every day for at least 2-3 weeks instead of cramming all practice in 1-2 days. You might be able to take the exam successfully if you cram, but you won&amp;rsquo;t build long term memories about what you learn. And while having the certification is great, gaining the knowledge for a long time is more important.&lt;/li&gt;
+&lt;li&gt;Read books and articles about Scrum, Agility, TDD, refactoring, Continuous Integration, Continuous Deployment,  and more! The &lt;a href=&#34;http://agilemanifesto.org/&#34;&gt;Agile Manifesto&lt;/a&gt; is a good start, then look at the &lt;a href=&#34;https://www.scrum.org/resources/suggested-reading-professional-scrum-developer&#34;&gt;Suggested Read List for PSD&lt;/a&gt; on scrum.org. (Mind that most of those are affiliate links.)&lt;/li&gt;
+&lt;li&gt;If you have experienced scrum practitioners around you available to help you, jump on the occasion. As with most discipline, the insights of an experienced peer can really help you increase your knowledge very quickly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additionally if you have the means, there are &lt;a href=&#34;https://www.scrum.org/courses&#34;&gt;training sessions&lt;/a&gt; but it is very expensive. A 3 day session in Ottawa for preparing PSD is approximatively 2000$CAD (1482$USD at the time of writing). O_O&lt;/p&gt;
+
+&lt;p&gt;There are also other website offering training sessions as an alternative if you want to shop for a better price.&lt;/p&gt;
+
+&lt;p&gt;My opinion on training for PSD is that it is probably not worth it (even if your employer pays for it) as the learning material is very abundant and the open assessments gives you 75% of what you need to know.&lt;/p&gt;
+
+&lt;h2 id=&#34;bragging&#34;&gt;Bragging :)&lt;/h2&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.julienrouse.com/img/blog_2_PSDI_Certification.png&#34;
+         alt=&#34;PSD1 certificate of Julien Rousé&#34;/&gt; 
+&lt;/figure&gt;
+
+</description>
     </item>
     
   </channel>
-</rss>
+</rss>	
