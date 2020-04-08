@@ -263,6 +263,24 @@
     </item>
     
     <item>
+      <title>documentation</title>
+      <link>https://www.julienrouse.com/tags/documentation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/documentation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gc</title>
+      <link>https://www.julienrouse.com/tags/gc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/gc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>hugo-resume</title>
       <link>https://www.julienrouse.com/tags/hugo-resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -277,6 +295,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/tags/lisp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ocaml</title>
+      <link>https://www.julienrouse.com/tags/ocaml/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/ocaml/</guid>
       <description></description>
     </item>
     
