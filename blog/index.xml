@@ -2777,9 +2777,9 @@
 &lt;li&gt;Balancing the game&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;We will continue in the next part: Coming soon.&lt;/p&gt;
+&lt;p&gt;We will continue in the next part:&lt;a href=&#34;https://www.julienrouse.com/blog/tutorial-for-idle-game-svelte-part3/&#34;&gt;part3: Adding upgrades to the game&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;You can also &lt;a href=&#34;https://svelte.dev/repl/230b7ab7fe774b31b1936a2aa2ebf050?version=3.4.2&#34;&gt;play with the project in the Svelte REPL&lt;/a&gt; or &lt;a href=&#34;tuto-derivative-clicker-part2.surge.sh&#34;&gt;play the game made so far&lt;/a&gt; (hosted by Surge) .&lt;/p&gt;
+&lt;p&gt;You can also &lt;a href=&#34;https://svelte.dev/repl/230b7ab7fe774b31b1936a2aa2ebf050?version=3.4.2&#34;&gt;play with the project in the Svelte REPL&lt;/a&gt; or &lt;a href=&#34;http://tuto-derivative-clicker-part2.surge.sh&#34;&gt;play the game made so far&lt;/a&gt; (hosted by Surge) .&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;
@@ -3606,7 +3606,7 @@ To solve that little problem, we are going to use reactive declarations&lt;sup c
 
 &lt;p&gt;You can also &lt;a href=&#34;http://tuto-derivative-clicker-part1.surge.sh/&#34;&gt;play the game we made so far here&lt;/a&gt; (hosted by Surge&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:21&#34;&gt;&lt;a href=&#34;#fn:21&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;).&lt;/p&gt;
 
-&lt;p&gt;To continue the tutorial, &lt;strong&gt;part2: Going further with Svelte using components and props&lt;/strong&gt; (coming soon) :) We will build more than one building, create components to isolate our logic around buildings and continue to implement the game mechanics.&lt;/p&gt;
+&lt;p&gt;To continue the tutorial, &lt;a href=&#34;https://www.julienrouse.com/blog/tutorial-for-idle-game-svelte-part2/&#34;&gt;part2: Going further with Svelte using components and props&lt;/a&gt; :) We will build more than one building, create components to isolate our logic around buildings and continue to implement the game mechanics.&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;
