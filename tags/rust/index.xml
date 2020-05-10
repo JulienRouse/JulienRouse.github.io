@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rust on Learning for fun and profits</title>
+    <title>rust on Learning for fun and profits</title>
     <link>https://www.julienrouse.com/tags/rust/</link>
-    <description>Recent content in Rust on Learning for fun and profits</description>
+    <description>Recent content in rust on Learning for fun and profits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 05 Apr 2020 19:00:00 +0000</lastBuildDate>

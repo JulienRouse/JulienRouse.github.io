@@ -29,15 +29,49 @@
   </url>
   
   <url>
-    <loc>https://www.julienrouse.com/tags/aesthetics/</loc>
-    <lastmod>2020-04-05T19:00:00+00:00</lastmod>
+    <loc>https://www.julienrouse.com/blog/</loc>
+    <lastmod>2020-05-09T19:00:00+00:00</lastmod>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/blog/introduction_to_mutation_testing/</loc>
+    <lastmod>2020-05-09T19:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/tags/</loc>
+    <lastmod>2020-05-09T19:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.julienrouse.com/blog/</loc>
+    <loc>https://www.julienrouse.com/tags/mutation-testing/</loc>
+    <lastmod>2020-05-09T19:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/tags/quality/</loc>
+    <lastmod>2020-05-09T19:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/tags/test-automation/</loc>
+    <lastmod>2020-05-09T19:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/blog/rust_tla&#43;_and_more/</loc>
     <lastmod>2020-04-05T19:00:00+00:00</lastmod>
-    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/tags/aesthetics/</loc>
+    <lastmod>2020-04-05T19:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -53,18 +87,7 @@
   </url>
   
   <url>
-    <loc>https://www.julienrouse.com/blog/rust_tla&#43;_and_more/</loc>
-    <lastmod>2020-04-05T19:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.julienrouse.com/tags/tla&#43;/</loc>
-    <lastmod>2020-04-05T19:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.julienrouse.com/tags/</loc>
     <lastmod>2020-04-05T19:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

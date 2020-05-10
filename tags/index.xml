@@ -5,13 +5,40 @@
     <description>Recent content in Tags on Learning for fun and profits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Apr 2020 19:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2020 19:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://www.julienrouse.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Aesthetics</title>
+      <title>mutation-testing</title>
+      <link>https://www.julienrouse.com/tags/mutation-testing/</link>
+      <pubDate>Sat, 09 May 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/mutation-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quality</title>
+      <link>https://www.julienrouse.com/tags/quality/</link>
+      <pubDate>Sat, 09 May 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/quality/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>test-automation</title>
+      <link>https://www.julienrouse.com/tags/test-automation/</link>
+      <pubDate>Sat, 09 May 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/test-automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aesthetics</title>
       <link>https://www.julienrouse.com/tags/aesthetics/</link>
       <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
       
@@ -20,7 +47,7 @@
     </item>
     
     <item>
-      <title>Book</title>
+      <title>book</title>
       <link>https://www.julienrouse.com/tags/book/</link>
       <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
       
@@ -29,7 +56,7 @@
     </item>
     
     <item>
-      <title>Rust</title>
+      <title>rust</title>
       <link>https://www.julienrouse.com/tags/rust/</link>
       <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
       
@@ -38,7 +65,7 @@
     </item>
     
     <item>
-      <title>TLA&#43;</title>
+      <title>tla&#43;</title>
       <link>https://www.julienrouse.com/tags/tla&#43;/</link>
       <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
       

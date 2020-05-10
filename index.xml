@@ -71,6 +71,339 @@
     </item>
     
     <item>
+      <title>Introduction to Mutation Testing</title>
+      <link>https://www.julienrouse.com/blog/introduction_to_mutation_testing/</link>
+      <pubDate>Sat, 09 May 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/introduction_to_mutation_testing/</guid>
+      <description>
+
+&lt;h1 id=&#34;mutation-testing&#34;&gt;Mutation Testing&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Why slaying mutants is good for measuring the quality of your tests.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;the-problem-assessing-test-quality&#34;&gt;The problem: assessing test quality&lt;/h2&gt;
+
+&lt;p&gt;Test automation of a piece of software is a well developed practice these day. But assessing the quality of those tests is not easy. One really big mistake is to rely on coverage because you can have 100% (or close to) coverage but still having really low test quality.&lt;/p&gt;
+
+&lt;p&gt;Say you have a beautiful function &lt;code&gt;foo&lt;/code&gt; defined as&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* Return the answer to life, the universe and everything */&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;(){
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;42&lt;/span&gt;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;And your test looks like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// very basic version of a test, hopefully very far from a real-life example
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;resultFoo&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;foo&lt;/span&gt;();
+&lt;span style=&#34;color:#a6e22e&#34;&gt;assert&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;result of foo should be 42&amp;#39;&lt;/span&gt;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;If you run the test with your favourite test runner, it will pass! (obviously because we passed &lt;code&gt;true&lt;/code&gt; in the &lt;code&gt;assert&lt;/code&gt; function call) You get the greenlight. Even sadder, you also get a 100% coverage for this function because we called it in the test (even if we don&amp;rsquo;t use the result of that call to determine if the test pass or not).&lt;/p&gt;
+
+&lt;p&gt;Of course this is a contrived example to put emphasis on my point above that coverage is not a reliable metric for code quality. (At the bottom of the article I link to a Kata revolving exactly around this idea of false coverage, and about fixing bad tests)&lt;/p&gt;
+
+&lt;h2 id=&#34;a-solution-mutation-testing&#34;&gt;A solution: mutation testing&lt;/h2&gt;
+
+&lt;p&gt;One way to get more confidence into you test suite is to use Mutation testing. The way it works is by changing a tiny bit of your code, say replace &lt;code&gt;==&lt;/code&gt; by &lt;code&gt;!=&lt;/code&gt; in one place in your code, then run your test suite against the modified version of your code.&lt;/p&gt;
+
+&lt;p&gt;This new version of your code is called a &lt;em&gt;mutant&lt;/em&gt;. If all your tests pass on the mutant, it means your test quality is not good enough because it did not catch this change. In this case the &lt;em&gt;mutant&lt;/em&gt; is sometimes called a &lt;em&gt;zombie&lt;/em&gt; because it lives (did not get &amp;lsquo;killed&amp;rsquo; by the test suite).&lt;/p&gt;
+
+&lt;p&gt;Then you repeat the process of introducing another mutation from the original code to create another &lt;em&gt;mutant&lt;/em&gt; (say this time you replace &lt;code&gt;let c = new Foo()&lt;/code&gt; by  &lt;code&gt;let c = null&lt;/code&gt;) then you run the test suite again and you determine if the mutant has been killed.&lt;/p&gt;
+
+&lt;p&gt;Rinse and repeat a lot, then you count how many mutant you killed in relation to how many were produced. This ratio is called the mutation score, and should be as close to 1 as possible. Mutation testing allows to be more confident in the test you write.&lt;/p&gt;
+
+&lt;h2 id=&#34;mutation-operator&#34;&gt;Mutation operator&lt;/h2&gt;
+
+&lt;p&gt;The changes in the code (replacing &lt;code&gt;==&lt;/code&gt; by &lt;code&gt;!=&lt;/code&gt; like in the first example)  are called &lt;em&gt;mutations&lt;/em&gt;, and they are defined by &lt;em&gt;mutation operator&lt;/em&gt;. There are many different families of &lt;em&gt;mutation operator&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;You have operator on (non-exhaustive list):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;boolean: &lt;code&gt;==&lt;/code&gt; and &lt;code&gt;!=&lt;/code&gt;, &lt;code&gt;||&lt;/code&gt; and &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt; with &lt;code&gt;&amp;lt;=&lt;/code&gt;, &lt;code&gt;&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;gt;=&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;arithmetic: &lt;code&gt;*&lt;/code&gt; with &lt;code&gt;+&lt;/code&gt;, &lt;code&gt;-&lt;/code&gt; and &lt;code&gt;/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;statement deletion&lt;/li&gt;
+&lt;li&gt;statement duplication&lt;/li&gt;
+&lt;li&gt;OOP: replacing call for object constructor by &lt;code&gt;null&lt;/code&gt;, changing method and field scope&lt;/li&gt;
+&lt;li&gt;operator specialized for specific features of a programming language (like C++) &lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;operators for security purposes&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;pitfalls&#34;&gt;Pitfalls&lt;/h2&gt;
+
+&lt;p&gt;Of course it&amp;rsquo;s not all good, if it was we&amp;rsquo;d be using it in every project since it was invented (in the 70&amp;rsquo;s!)&lt;/p&gt;
+
+&lt;h3 id=&#34;instability-of-the-mutations&#34;&gt;Instability of the mutations&lt;/h3&gt;
+
+&lt;p&gt;Because we mutate pieces of code, it happens that mutant causes a crash or an infinite loop (when say you change the condition on a loop) and that hinders the tests.&lt;/p&gt;
+
+&lt;p&gt;Some mutation testing framework deal with that by letting you disable some classes of mutations operator if it does not play well with your codebase.&lt;/p&gt;
+
+&lt;p&gt;In most cases you get a timeout for that mutant, so you don&amp;rsquo;t get a clear result. And it can slow down considerably your mutation testing run.&lt;/p&gt;
+
+&lt;h3 id=&#34;performance&#34;&gt;Performance&lt;/h3&gt;
+
+&lt;p&gt;Another negative thing (and, from what I understand, until recently the major drawback that prevented spreading of mutation testing) is that for even a small code base you can generate hundred or thousands of mutants. Then you need to tests every one of them. That&amp;rsquo;s a huge resource sink, that could only be overcome for small projects or medium-big projects with huge resources. (Remember the idea was first devised in the 70&amp;rsquo;s)&lt;/p&gt;
+
+&lt;p&gt;Now we have much more resources at hand so it is less a problem but still, that can quickly add time to your test pipeline (especially if your test suite is slow). To help the performance aspect, there are numerous optimizations that have been devised, like only generating mutation for line of code that are covered by at least a test, testing the mutants by running only the specifics tests that covers the line with the mutation instead of the whole test suite etc. This make using mutation testing a possibility.&lt;/p&gt;
+
+&lt;p&gt;Another option is to use extreme mutation (the paper &amp;lsquo;Will My Tests Tell Me If I Break This Code?&amp;rsquo;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; is a good read). Basically extreme mutation will remove any code from a tested function, and replace it with a value of the type of the method.&lt;/p&gt;
+
+&lt;p&gt;This generates less mutant so is quicker to test. You can find &lt;a href=&#34;https://github.com/STAMP-project/pitest-descartes/blob/master/docs/performance-comparison.md&#34;&gt;here&lt;/a&gt; a comparison of regular mutation vs extreme mutation testing of various java library with the framework Pit using a standard generator (called Gregor) and a extreme mutation generator (called Descartes).&lt;/p&gt;
+
+&lt;p&gt;Below you can find the result of that comparison:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Descartes&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Gregor&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Project&lt;/td&gt;
+&lt;td&gt;Time&lt;/td&gt;
+&lt;td&gt;Mutants&lt;/td&gt;
+&lt;td&gt;Time&lt;/td&gt;
+&lt;td&gt;Mutants&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/authzforce/core.git&#34;&gt;authzforce&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:08:00&lt;/td&gt;
+&lt;td&gt;626&lt;/td&gt;
+&lt;td&gt;1:23:50&lt;/td&gt;
+&lt;td&gt;7296&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/aws/aws-sdk-java&#34;&gt;aws-sdk-java&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;1:32:23&lt;/td&gt;
+&lt;td&gt;161758&lt;/td&gt;
+&lt;td&gt;6:11:22&lt;/td&gt;
+&lt;td&gt;2141689&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/apache/commons-cli&#34;&gt;commons-cli&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:00:13&lt;/td&gt;
+&lt;td&gt;271&lt;/td&gt;
+&lt;td&gt;0:01:26&lt;/td&gt;
+&lt;td&gt;2560&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/apache/commons-codec&#34;&gt;commons-codec&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:02:02&lt;/td&gt;
+&lt;td&gt;979&lt;/td&gt;
+&lt;td&gt;0:07:57&lt;/td&gt;
+&lt;td&gt;9233&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/apache/commons-collections&#34;&gt;commons-collections&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:01:41&lt;/td&gt;
+&lt;td&gt;3558&lt;/td&gt;
+&lt;td&gt;0:05:41&lt;/td&gt;
+&lt;td&gt;20394&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/apache/commons-io&#34;&gt;commons-io&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:02:16&lt;/td&gt;
+&lt;td&gt;1164&lt;/td&gt;
+&lt;td&gt;0:12:48&lt;/td&gt;
+&lt;td&gt;8809&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/apache/commons-lang&#34;&gt;commons-lang&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:02:07&lt;/td&gt;
+&lt;td&gt;3872&lt;/td&gt;
+&lt;td&gt;0:21:02&lt;/td&gt;
+&lt;td&gt;30361&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/apache/flink/tree/master/flink-core&#34;&gt;flink-core&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:14:04&lt;/td&gt;
+&lt;td&gt;4935&lt;/td&gt;
+&lt;td&gt;2:29:45&lt;/td&gt;
+&lt;td&gt;43619&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/google/gson&#34;&gt;gson&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:01:08&lt;/td&gt;
+&lt;td&gt;848&lt;/td&gt;
+&lt;td&gt;0:05:34&lt;/td&gt;
+&lt;td&gt;7353&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/imagej/imagej-common&#34;&gt;imagej-common&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:08:07&lt;/td&gt;
+&lt;td&gt;1947&lt;/td&gt;
+&lt;td&gt;0:29:09&lt;/td&gt;
+&lt;td&gt;15592&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/jaxen-xpath/jaxen&#34;&gt;jaxen&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:01:31&lt;/td&gt;
+&lt;td&gt;1252&lt;/td&gt;
+&lt;td&gt;0:24:40&lt;/td&gt;
+&lt;td&gt;12210&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/jfree/jfreechart&#34;&gt;jfreechart&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:05:48&lt;/td&gt;
+&lt;td&gt;7210&lt;/td&gt;
+&lt;td&gt;0:41:28&lt;/td&gt;
+&lt;td&gt;89592&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/eclipse/jgit&#34;&gt;jgit&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;1:30:08&lt;/td&gt;
+&lt;td&gt;7152&lt;/td&gt;
+&lt;td&gt;16:02:03&lt;/td&gt;
+&lt;td&gt;78316&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/JodaOrg/joda-time&#34;&gt;joda-time&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:03:39&lt;/td&gt;
+&lt;td&gt;4525&lt;/td&gt;
+&lt;td&gt;0:16:32&lt;/td&gt;
+&lt;td&gt;31233&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/jopt-simple/jopt-simple&#34;&gt;jopt-simple&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:00:37&lt;/td&gt;
+&lt;td&gt;412&lt;/td&gt;
+&lt;td&gt;0:01:36&lt;/td&gt;
+&lt;td&gt;2271&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/jhy/jsoup&#34;&gt;jsoup&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:02:43&lt;/td&gt;
+&lt;td&gt;1566&lt;/td&gt;
+&lt;td&gt;0:12:49&lt;/td&gt;
+&lt;td&gt;14054&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/apache/pdfbox&#34;&gt;sat4j-core&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:53:09&lt;/td&gt;
+&lt;td&gt;2304&lt;/td&gt;
+&lt;td&gt;10:55:50&lt;/td&gt;
+&lt;td&gt;17163&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://gitlab.ow2.org/sat4j/sat4j/tree/master/org.sat4j.core&#34;&gt;pdfbox&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:44:07&lt;/td&gt;
+&lt;td&gt;7559&lt;/td&gt;
+&lt;td&gt;6:20:25&lt;/td&gt;
+&lt;td&gt;79763&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/scifio/scifio&#34;&gt;scifio&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:24:14&lt;/td&gt;
+&lt;td&gt;3627&lt;/td&gt;
+&lt;td&gt;3:12:11&lt;/td&gt;
+&lt;td&gt;62768&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/INRIA/spoon&#34;&gt;spoon&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;2:24:55&lt;/td&gt;
+&lt;td&gt;4713&lt;/td&gt;
+&lt;td&gt;56:47:57&lt;/td&gt;
+&lt;td&gt;43916&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/urbanairship/java-library&#34;&gt;urbanairship&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:07:25&lt;/td&gt;
+&lt;td&gt;3082&lt;/td&gt;
+&lt;td&gt;0:11:31&lt;/td&gt;
+&lt;td&gt;17345&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://github.com/xwiki/xwiki-rendering&#34;&gt;xwiki-rendering&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;0:10:56&lt;/td&gt;
+&lt;td&gt;5534&lt;/td&gt;
+&lt;td&gt;2:07:19&lt;/td&gt;
+&lt;td&gt;112605&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;You can see that going from extreme mutation to standard mutation testing is roughly an order of magnitude in number of mutant generated and time taken to test every mutant.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Try it sometime, for me it was really fun and eye opening to catch bad tests I wrote!&lt;/p&gt;
+
+&lt;p&gt;And remember:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Software testing proves the existence of bugs not their absence.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;bonus-resources-to-dig-deeper&#34;&gt;Bonus: resources to dig deeper&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The original paper that first described mutation testing: &lt;a href=&#34;You can also also read the original paper named https://www.researchgate.net/publication/2957629_Hints_on_Test_Data_Selection_Help_for_the_Practicing_Programmer&#34;&gt;R. A. DeMillo, R. J. Lipton and F. G. Sayward, &amp;ldquo;Hints on Test Data Selection: Help for the Practicing Programmer,&amp;rdquo; in &lt;em&gt;Computer&lt;/em&gt;, vol. 11, no. 4, pp. 34-41, April 1978, doi: 10.1109/C-M.1978.218136.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;If you are interesting to know a bit more about different techniques and different tradeoffs to implement mutation testing, the &lt;a href=&#34;https://pitest.org/&#34;&gt;PIT&lt;/a&gt; library (Java) has a good overview on &lt;a href=&#34;https://pitest.org/java_mutation_testing_systems/#mutant-generation&#34;&gt;mutant generation&lt;/a&gt;, &lt;a href=&#34;https://pitest.org/java_mutation_testing_systems/#test-selection&#34;&gt;test selection&lt;/a&gt;, &lt;a href=&#34;https://pitest.org/java_mutation_testing_systems/#mutant-insertion&#34;&gt;mutant insertion&lt;/a&gt; and &lt;a href=&#34;https://pitest.org/java_mutation_testing_systems/#mutant-detection&#34;&gt;mutant detection&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A &lt;a href=&#34;https://github.com/vmzakharov/mutate-test-kata&#34;&gt;Kata&lt;/a&gt; (using Java) to see and test yourself the fact that coverage is not a reliable metric, and practicing hand-on to fix tests.&lt;/li&gt;
+&lt;li&gt;The &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutation_testing&#34;&gt;English Wikipedia page&lt;/a&gt; on mutation testing&lt;/li&gt;
+&lt;li&gt;The Descartes engine &lt;a href=&#34;https://github.com/STAMP-project/pitest-descartes&#34;&gt;github page&lt;/a&gt; (the engine implementing extreme mutation testing)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;https://arxiv.org/pdf/2004.04206.pdf&#34;&gt;Parsai, A., Demeyer, S., De Busser, S.: C++&lt;sup&gt;11&lt;/sup&gt;&amp;frasl;&lt;sub&gt;14&lt;/sub&gt; Mutation operators Based on Common Fault Patterns(2004)&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;&lt;a href=&#34;https://ieeexplore.ieee.org/abstract/document/5770613&#34;&gt;Dadeau, F., Héam, P-C., Kheddam, R.: Mutation-Based Test Generation from Security Protocols in HLPSL(2011) in: 2011 Fourth IEEE International Conference on Software Testing, Verification and Validation&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;&lt;a href=&#34;https://arxiv.org/pdf/1611.07163.pdf&#34;&gt;Niedermayr, R., Jurgens, E., Wagner, S.: Will My Tests Tell Me If I Break This Code? (2016) in: Proceedings of the International Workshop on Continuous Software Evolution and Delivery (CSED ’16)&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Rust, TLA&#43;, Aesthetics and more</title>
       <link>https://www.julienrouse.com/blog/rust_tla&#43;_and_more/</link>
       <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>

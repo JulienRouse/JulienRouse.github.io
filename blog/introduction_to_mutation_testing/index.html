@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Introduction to Mutation Testing</title>
+  <meta property="og:title" content="Introduction to Mutation Testing" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!">
+  <meta property="og:description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.55.0" />
+  
+   
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/introduction_to_mutation_testing/">Introduction to Mutation Testing</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">Introduction to Mutation Testing</span></h2>
+    <span class="text-primary">May 9, 2020</span>
+	
+	
+	<div id="toc-blog">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#mutation-testing">Mutation Testing</a>
+<ul>
+<li><a href="#the-problem-assessing-test-quality">The problem: assessing test quality</a></li>
+<li><a href="#a-solution-mutation-testing">A solution: mutation testing</a></li>
+<li><a href="#mutation-operator">Mutation operator</a></li>
+<li><a href="#pitfalls">Pitfalls</a>
+<ul>
+<li><a href="#instability-of-the-mutations">Instability of the mutations</a></li>
+<li><a href="#performance">Performance</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a>
+<ul>
+<li><a href="#bonus-resources-to-dig-deeper">Bonus: resources to dig deeper</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div> 
+	
+    
+	
+
+<h1 id="mutation-testing">Mutation Testing</h1>
+
+<p><em>Why slaying mutants is good for measuring the quality of your tests.</em></p>
+
+<h2 id="the-problem-assessing-test-quality">The problem: assessing test quality</h2>
+
+<p>Test automation of a piece of software is a well developed practice these day. But assessing the quality of those tests is not easy. One really big mistake is to rely on coverage because you can have 100% (or close to) coverage but still having really low test quality.</p>
+
+<p>Say you have a beautiful function <code>foo</code> defined as</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">/* Return the answer to life, the universe and everything */</span>
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">foo</span>(){
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">42</span>;
+}
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>And your test looks like:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// very basic version of a test, hopefully very far from a real-life example
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">resultFoo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">foo</span>();
+<span style="color:#a6e22e">assert</span>(<span style="color:#66d9ef">true</span>, <span style="color:#e6db74">&#39;result of foo should be 42&#39;</span>);
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>If you run the test with your favourite test runner, it will pass! (obviously because we passed <code>true</code> in the <code>assert</code> function call) You get the greenlight. Even sadder, you also get a 100% coverage for this function because we called it in the test (even if we don&rsquo;t use the result of that call to determine if the test pass or not).</p>
+
+<p>Of course this is a contrived example to put emphasis on my point above that coverage is not a reliable metric for code quality. (At the bottom of the article I link to a Kata revolving exactly around this idea of false coverage, and about fixing bad tests)</p>
+
+<h2 id="a-solution-mutation-testing">A solution: mutation testing</h2>
+
+<p>One way to get more confidence into you test suite is to use Mutation testing. The way it works is by changing a tiny bit of your code, say replace <code>==</code> by <code>!=</code> in one place in your code, then run your test suite against the modified version of your code.</p>
+
+<p>This new version of your code is called a <em>mutant</em>. If all your tests pass on the mutant, it means your test quality is not good enough because it did not catch this change. In this case the <em>mutant</em> is sometimes called a <em>zombie</em> because it lives (did not get &lsquo;killed&rsquo; by the test suite).</p>
+
+<p>Then you repeat the process of introducing another mutation from the original code to create another <em>mutant</em> (say this time you replace <code>let c = new Foo()</code> by  <code>let c = null</code>) then you run the test suite again and you determine if the mutant has been killed.</p>
+
+<p>Rinse and repeat a lot, then you count how many mutant you killed in relation to how many were produced. This ratio is called the mutation score, and should be as close to 1 as possible. Mutation testing allows to be more confident in the test you write.</p>
+
+<h2 id="mutation-operator">Mutation operator</h2>
+
+<p>The changes in the code (replacing <code>==</code> by <code>!=</code> like in the first example)  are called <em>mutations</em>, and they are defined by <em>mutation operator</em>. There are many different families of <em>mutation operator</em>.</p>
+
+<p>You have operator on (non-exhaustive list):</p>
+
+<ul>
+<li>boolean: <code>==</code> and <code>!=</code>, <code>||</code> and <code>&amp;&amp;</code>, <code>&lt;</code> with <code>&lt;=</code>, <code>&gt;</code> and <code>&gt;=</code></li>
+<li>arithmetic: <code>*</code> with <code>+</code>, <code>-</code> and <code>/</code></li>
+<li>statement deletion</li>
+<li>statement duplication</li>
+<li>OOP: replacing call for object constructor by <code>null</code>, changing method and field scope</li>
+<li>operator specialized for specific features of a programming language (like C++) <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></li>
+<li>operators for security purposes<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup></li>
+</ul>
+
+<h2 id="pitfalls">Pitfalls</h2>
+
+<p>Of course it&rsquo;s not all good, if it was we&rsquo;d be using it in every project since it was invented (in the 70&rsquo;s!)</p>
+
+<h3 id="instability-of-the-mutations">Instability of the mutations</h3>
+
+<p>Because we mutate pieces of code, it happens that mutant causes a crash or an infinite loop (when say you change the condition on a loop) and that hinders the tests.</p>
+
+<p>Some mutation testing framework deal with that by letting you disable some classes of mutations operator if it does not play well with your codebase.</p>
+
+<p>In most cases you get a timeout for that mutant, so you don&rsquo;t get a clear result. And it can slow down considerably your mutation testing run.</p>
+
+<h3 id="performance">Performance</h3>
+
+<p>Another negative thing (and, from what I understand, until recently the major drawback that prevented spreading of mutation testing) is that for even a small code base you can generate hundred or thousands of mutants. Then you need to tests every one of them. That&rsquo;s a huge resource sink, that could only be overcome for small projects or medium-big projects with huge resources. (Remember the idea was first devised in the 70&rsquo;s)</p>
+
+<p>Now we have much more resources at hand so it is less a problem but still, that can quickly add time to your test pipeline (especially if your test suite is slow). To help the performance aspect, there are numerous optimizations that have been devised, like only generating mutation for line of code that are covered by at least a test, testing the mutants by running only the specifics tests that covers the line with the mutation instead of the whole test suite etc. This make using mutation testing a possibility.</p>
+
+<p>Another option is to use extreme mutation (the paper &lsquo;Will My Tests Tell Me If I Break This Code?&rsquo;<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup> is a good read). Basically extreme mutation will remove any code from a tested function, and replace it with a value of the type of the method.</p>
+
+<p>This generates less mutant so is quicker to test. You can find <a href="https://github.com/STAMP-project/pitest-descartes/blob/master/docs/performance-comparison.md">here</a> a comparison of regular mutation vs extreme mutation testing of various java library with the framework Pit using a standard generator (called Gregor) and a extreme mutation generator (called Descartes).</p>
+
+<p>Below you can find the result of that comparison:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Descartes</th>
+<th></th>
+<th>Gregor</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Project</td>
+<td>Time</td>
+<td>Mutants</td>
+<td>Time</td>
+<td>Mutants</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/authzforce/core.git">authzforce</a></td>
+<td>0:08:00</td>
+<td>626</td>
+<td>1:23:50</td>
+<td>7296</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/aws/aws-sdk-java">aws-sdk-java</a></td>
+<td>1:32:23</td>
+<td>161758</td>
+<td>6:11:22</td>
+<td>2141689</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/apache/commons-cli">commons-cli</a></td>
+<td>0:00:13</td>
+<td>271</td>
+<td>0:01:26</td>
+<td>2560</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/apache/commons-codec">commons-codec</a></td>
+<td>0:02:02</td>
+<td>979</td>
+<td>0:07:57</td>
+<td>9233</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/apache/commons-collections">commons-collections</a></td>
+<td>0:01:41</td>
+<td>3558</td>
+<td>0:05:41</td>
+<td>20394</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/apache/commons-io">commons-io</a></td>
+<td>0:02:16</td>
+<td>1164</td>
+<td>0:12:48</td>
+<td>8809</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/apache/commons-lang">commons-lang</a></td>
+<td>0:02:07</td>
+<td>3872</td>
+<td>0:21:02</td>
+<td>30361</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/apache/flink/tree/master/flink-core">flink-core</a></td>
+<td>0:14:04</td>
+<td>4935</td>
+<td>2:29:45</td>
+<td>43619</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/google/gson">gson</a></td>
+<td>0:01:08</td>
+<td>848</td>
+<td>0:05:34</td>
+<td>7353</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/imagej/imagej-common">imagej-common</a></td>
+<td>0:08:07</td>
+<td>1947</td>
+<td>0:29:09</td>
+<td>15592</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/jaxen-xpath/jaxen">jaxen</a></td>
+<td>0:01:31</td>
+<td>1252</td>
+<td>0:24:40</td>
+<td>12210</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/jfree/jfreechart">jfreechart</a></td>
+<td>0:05:48</td>
+<td>7210</td>
+<td>0:41:28</td>
+<td>89592</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/eclipse/jgit">jgit</a></td>
+<td>1:30:08</td>
+<td>7152</td>
+<td>16:02:03</td>
+<td>78316</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/JodaOrg/joda-time">joda-time</a></td>
+<td>0:03:39</td>
+<td>4525</td>
+<td>0:16:32</td>
+<td>31233</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/jopt-simple/jopt-simple">jopt-simple</a></td>
+<td>0:00:37</td>
+<td>412</td>
+<td>0:01:36</td>
+<td>2271</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/jhy/jsoup">jsoup</a></td>
+<td>0:02:43</td>
+<td>1566</td>
+<td>0:12:49</td>
+<td>14054</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/apache/pdfbox">sat4j-core</a></td>
+<td>0:53:09</td>
+<td>2304</td>
+<td>10:55:50</td>
+<td>17163</td>
+</tr>
+
+<tr>
+<td><a href="https://gitlab.ow2.org/sat4j/sat4j/tree/master/org.sat4j.core">pdfbox</a></td>
+<td>0:44:07</td>
+<td>7559</td>
+<td>6:20:25</td>
+<td>79763</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/scifio/scifio">scifio</a></td>
+<td>0:24:14</td>
+<td>3627</td>
+<td>3:12:11</td>
+<td>62768</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/INRIA/spoon">spoon</a></td>
+<td>2:24:55</td>
+<td>4713</td>
+<td>56:47:57</td>
+<td>43916</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/urbanairship/java-library">urbanairship</a></td>
+<td>0:07:25</td>
+<td>3082</td>
+<td>0:11:31</td>
+<td>17345</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/xwiki/xwiki-rendering">xwiki-rendering</a></td>
+<td>0:10:56</td>
+<td>5534</td>
+<td>2:07:19</td>
+<td>112605</td>
+</tr>
+</tbody>
+</table>
+
+<p>You can see that going from extreme mutation to standard mutation testing is roughly an order of magnitude in number of mutant generated and time taken to test every mutant.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Try it sometime, for me it was really fun and eye opening to catch bad tests I wrote!</p>
+
+<p>And remember:</p>
+
+<p><em>Software testing proves the existence of bugs not their absence.</em></p>
+
+<h3 id="bonus-resources-to-dig-deeper">Bonus: resources to dig deeper</h3>
+
+<ul>
+<li>The original paper that first described mutation testing: <a href="You can also also read the original paper named https://www.researchgate.net/publication/2957629_Hints_on_Test_Data_Selection_Help_for_the_Practicing_Programmer">R. A. DeMillo, R. J. Lipton and F. G. Sayward, &ldquo;Hints on Test Data Selection: Help for the Practicing Programmer,&rdquo; in <em>Computer</em>, vol. 11, no. 4, pp. 34-41, April 1978, doi: 10.1109/C-M.1978.218136.</a></li>
+<li>If you are interesting to know a bit more about different techniques and different tradeoffs to implement mutation testing, the <a href="https://pitest.org/">PIT</a> library (Java) has a good overview on <a href="https://pitest.org/java_mutation_testing_systems/#mutant-generation">mutant generation</a>, <a href="https://pitest.org/java_mutation_testing_systems/#test-selection">test selection</a>, <a href="https://pitest.org/java_mutation_testing_systems/#mutant-insertion">mutant insertion</a> and <a href="https://pitest.org/java_mutation_testing_systems/#mutant-detection">mutant detection</a>.</li>
+<li>A <a href="https://github.com/vmzakharov/mutate-test-kata">Kata</a> (using Java) to see and test yourself the fact that coverage is not a reliable metric, and practicing hand-on to fix tests.</li>
+<li>The <a href="https://en.wikipedia.org/wiki/Mutation_testing">English Wikipedia page</a> on mutation testing</li>
+<li>The Descartes engine <a href="https://github.com/STAMP-project/pitest-descartes">github page</a> (the engine implementing extreme mutation testing)</li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1"><a href="https://arxiv.org/pdf/2004.04206.pdf">Parsai, A., Demeyer, S., De Busser, S.: C++<sup>11</sup>&frasl;<sub>14</sub> Mutation operators Based on Common Fault Patterns(2004)</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2"><a href="https://ieeexplore.ieee.org/abstract/document/5770613">Dadeau, F., Héam, P-C., Kheddam, R.: Mutation-Based Test Generation from Security Protocols in HLPSL(2011) in: 2011 Fourth IEEE International Conference on Software Testing, Verification and Validation</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3"><a href="https://arxiv.org/pdf/1611.07163.pdf">Niedermayr, R., Jurgens, E., Wagner, S.: Will My Tests Tell Me If I Break This Code? (2016) in: Proceedings of the International Workshop on Continuous Software Evolution and Delivery (CSED ’16)</a>
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/test-automation">test-automation</a></li>
+    
+      <li><a class="tag" href="/tags/quality">quality</a></li>
+    
+      <li><a class="tag" href="/tags/mutation-testing">mutation-testing</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=XX-123446-01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'XX-123446-01');
+  </script>
+  
+
+  
+</body>
+</html>
