@@ -4451,62 +4451,6 @@ To solve that little problem, we are going to use reactive declarations&lt;sup c
     </item>
     
     <item>
-      <title></title>
-      <link>https://www.julienrouse.com/blog/11_the_art_of_code/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/blog/11_the_art_of_code/</guid>
-      <description>
-
-&lt;h1 id=&#34;the-art-of-code&#34;&gt;The Art of Code&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=6avJHaC3C2U&amp;amp;feature=emb_logo&#34;&gt;https://www.youtube.com/watch?v=6avJHaC3C2U&amp;amp;feature=emb_logo&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;In this talk, Dylan Beattie does a really good recap about what kind of  art has been enabled by using computers.&lt;/p&gt;
-
-&lt;p&gt;From Conway&amp;rsquo;s Game of Life, to Mandelbrot set, then going on about the use of CGI in the movie industry, then moving on to code as an art like the Obsfucated C Challenge, the magic of Quines (program that prints themselves when run). It goes on about esoteric programming languages, Whitespace, Piet, Shakespeare and then the last part is dedicated to his own eso-lang, Rockstar.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://www.julienrouse.com/blog/12_project_filesharing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/blog/12_project_filesharing/</guid>
-      <description>
-
-&lt;h1 id=&#34;project-filesharing&#34;&gt;Project filesharing&lt;/h1&gt;
-
-&lt;h2 id=&#34;scope&#34;&gt;scope&lt;/h2&gt;
-
-&lt;p&gt;Through a web interface, being able to download/upload files, to have them accessible anywhere you have internet (pretty much a POC of dropbox).&lt;/p&gt;
-
-&lt;p&gt;Only one aws region&lt;/p&gt;
-
-&lt;p&gt;a rough web interface: a bit of html / js, maybe jquery or something&lt;/p&gt;
-
-&lt;h2 id=&#34;technologies&#34;&gt;technologies&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;aws s3 (maybe in the future the ability to choose the storage?) / also s3 for a simple static website?&lt;/li&gt;
-&lt;li&gt;aws EC2 / lambda depending what is possible&lt;/li&gt;
-&lt;li&gt;aws IAM&lt;/li&gt;
-&lt;li&gt;Python: flask or pyramid&lt;/li&gt;
-&lt;li&gt;I probably need something like cloudfront / route 53 to handle the incoming traffic, not sure of that&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;problems&#34;&gt;problems&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;If s3 is used to store things, may I use one bucket per user, with the permissions dealt with aws IAM?
-Or do I need 1 big bucket and I deal with the permission myself? (say separating user by having a folder by user)
-The former seems cleaner but I don&amp;rsquo;t know if it is possible (I presume it is though)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Search Results</title>
       <link>https://www.julienrouse.com/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
