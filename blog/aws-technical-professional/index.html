@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>AWS Technical Professional</title>
+  <meta property="og:title" content="AWS Technical Professional" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!">
+  <meta property="og:description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.55.0" />
+  
+   
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/aws-technical-professional/">AWS Technical Professional</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">AWS Technical Professional</span></h2>
+    <span class="text-primary">November 25, 2019</span>
+	
+	
+	<div id="toc-blog">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#aws-technical-professional">AWS Technical Professional</a>
+<ul>
+<li><a href="#module-2-core-services">Module 2: Core Services</a>
+<ul>
+<li><a href="#compute">Compute</a>
+<ul>
+<li><a href="#ec2">EC2</a></li>
+<li><a href="#ecs">ECS</a></li>
+<li><a href="#lambda-i-e-serverless">Lambda (i.e. Serverless)</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul></li>
+<li><a href="#storage">Storage</a>
+<ul>
+<li><a href="#ebs-elastic-block-storage">EBS: Elastic Block Storage</a></li>
+<li><a href="#s3">S3</a></li>
+<li><a href="#glacier">Glacier</a></li>
+<li><a href="#snowball">Snowball</a></li>
+<li><a href="#cloudfront">CloudFront</a></li>
+</ul></li>
+<li><a href="#database">Database</a>
+<ul>
+<li><a href="#rds-relational-database-service">RDS (Relational Database Service)</a></li>
+<li><a href="#dynamo-db">Dynamo DB</a></li>
+<li><a href="#database-migration-service">Database Migration Service</a></li>
+<li><a href="#redshift">Redshift</a></li>
+</ul></li>
+<li><a href="#networking">Networking</a>
+<ul>
+<li><a href="#vpc">VPC</a></li>
+<li><a href="#direct-connect">Direct Connect</a></li>
+<li><a href="#route-53">Route 53</a></li>
+</ul></li>
+<li><a href="#management-tools">Management Tools</a>
+<ul>
+<li><a href="#cloudwatch">CloudWatch</a></li>
+<li><a href="#cloudformation">CloudFormation</a></li>
+<li><a href="#trusted-advisor">Trusted Advisor</a></li>
+</ul></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#iot">IoT</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div> 
+	
+    
+	
+
+<h1 id="aws-technical-professional">AWS Technical Professional</h1>
+
+<h2 id="module-2-core-services">Module 2: Core Services</h2>
+
+<h3 id="compute">Compute</h3>
+
+<h4 id="ec2">EC2</h4>
+
+<h4 id="ecs">ECS</h4>
+
+<h4 id="lambda-i-e-serverless">Lambda (i.e. Serverless)</h4>
+
+<p>Event-driven task compute service.</p>
+
+<p>Zero administration.</p>
+
+<p>Pay for compute time consumed</p>
+
+<h4 id="summary">Summary</h4>
+
+<p>EC2 vs ECS vs Lambda</p>
+
+<h3 id="storage">Storage</h3>
+
+<h4 id="ebs-elastic-block-storage">EBS: Elastic Block Storage</h4>
+
+<p>Similar to a <em>hard drive</em>, you can attach it to EC2 instances.</p>
+
+<p>One EBS can only extend one EC2, but one EC2 can have many EBS attached.</p>
+
+<p>1GB to 16TB per volume.</p>
+
+<p>Suited for apps that require:</p>
+
+<ul>
+<li>Database</li>
+<li>File system</li>
+<li>Block-level storage</li>
+</ul>
+
+<p>Automatic replIcation inside its AZ</p>
+
+<p>Snapshot back-up to Amazon S3</p>
+
+<p>You can provision a specific level of I/O performance, or select a burstable performance model.</p>
+
+<h4 id="s3">S3</h4>
+
+<p>Bucket of static files</p>
+
+<ul>
+<li>Static website content</li>
+<li>Backups</li>
+<li>Storage (data store for analytics : Hadoop for instance)</li>
+</ul>
+
+<h4 id="glacier">Glacier</h4>
+
+<p>Archiving and backup. Eleven 9 of durability (99.99999999999% durability)</p>
+
+<p>Starting from $0.004 per GB/month</p>
+
+<p>One-way transition from S3 to Glacier</p>
+
+<h4 id="snowball">Snowball</h4>
+
+<p>Petabyte-scale data transport solution</p>
+
+<ul>
+<li>Cloud Migration</li>
+<li>Disaster Recovery</li>
+<li>Datacenter Decommission</li>
+<li>Content Distribution</li>
+</ul>
+
+<h4 id="cloudfront">CloudFront</h4>
+
+<p>Global CDN (Content Delivery Network)</p>
+
+<p>Delivers content using global network of edge locations</p>
+
+<h3 id="database">Database</h3>
+
+<h4 id="rds-relational-database-service">RDS (Relational Database Service)</h4>
+
+<p>Can use:</p>
+
+<ul>
+<li>SQL</li>
+<li>MySQL</li>
+<li>Oracle</li>
+<li>PostgreSQL</li>
+</ul>
+
+<p>Key benefits:</p>
+
+<ul>
+<li>Elastic</li>
+<li>Flexible</li>
+<li>Secure</li>
+</ul>
+
+<h4 id="dynamo-db">Dynamo DB</h4>
+
+<p>NoSQL, fully managed, support document and key-value store</p>
+
+<h4 id="database-migration-service">Database Migration Service</h4>
+
+<p>Heterogenous and heterogeneous migrations</p>
+
+<p>Stream data to redshift from supported sources</p>
+
+<h4 id="redshift">Redshift</h4>
+
+<p>Data Warehouse and Analytics</p>
+
+<p>BI</p>
+
+<h3 id="networking">Networking</h3>
+
+<h4 id="vpc">VPC</h4>
+
+<p>virtual network on the cloud.</p>
+
+<p>Public and private subnets, network topologies, route tabes and network gateway configuration, control access and security groups</p>
+
+<ul>
+<li>Elastic (200 subnets per VPC)</li>
+<li>Flexible</li>
+<li>Secure</li>
+</ul>
+
+<h4 id="direct-connect">Direct Connect</h4>
+
+<p>Establish a dedicated connection from your on-premises to AWS</p>
+
+<p>Private connectivity between AWS and your datacenter</p>
+
+<p>Use the same connection to access public and private ressources</p>
+
+<ul>
+<li>Reduce bandwith cost</li>
+<li>Consistent network performance</li>
+<li>Elastic</li>
+</ul>
+
+<h4 id="route-53">Route 53</h4>
+
+<p>Scalable DNS</p>
+
+<ul>
+<li>Latency Based Routing</li>
+<li>Weighted Round Robin</li>
+<li>DNS Fallover</li>
+</ul>
+
+<p>Integrated Elastic Load Balancer</p>
+
+<h3 id="management-tools">Management Tools</h3>
+
+<h4 id="cloudwatch">CloudWatch</h4>
+
+<h4 id="cloudformation">CloudFormation</h4>
+
+<h4 id="trusted-advisor">Trusted Advisor</h4>
+
+<h3 id="security">Security</h3>
+
+<h3 id="iot">IoT</h3>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/aws">AWS</a></li>
+    
+      <li><a class="tag" href="/tags/cloud">Cloud</a></li>
+    
+      <li><a class="tag" href="/tags/learning-path">Learning Path</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=XX-123446-01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'XX-123446-01');
+  </script>
+  
+
+  
+</body>
+</html>

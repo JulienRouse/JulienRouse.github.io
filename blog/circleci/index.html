@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>CircleCI presentation</title>
+  <meta property="og:title" content="CircleCI presentation" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!">
+  <meta property="og:description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.55.0" />
+  
+   
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/circleci/">CircleCI presentation</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">CircleCI presentation</span></h2>
+    <span class="text-primary">June 16, 2020</span>
+	
+	
+	<div id="toc-blog">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#circleci">CircleCI</a>
+<ul>
+<li><a href="#why-circleci">Why CircleCI?</a>
+<ul>
+<li><a href="#replacing-ci-in-context">Replacing CI in context</a></li>
+</ul></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#workflow">Workflow</a></li>
+<li><a href="#first-class-docker-support">First class Docker support</a></li>
+<li><a href="#sidenote">Sidenote</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div> 
+	
+    
+	
+
+<h1 id="circleci">CircleCI</h1>
+
+<p>I attended a presentation given by Chris Black today about CircleCI. I know about the product and company since a few years, initially I found them because they use Clojure :) CircleCI is a continuous integration tool (the CI in the acronym CI/CD <em>continuous integration/continuous deployment</em>).</p>
+
+<p>Below is some of the notes I took about it, and I&rsquo;ll put a link of the video as soon as they publish it publicly.</p>
+
+<h2 id="why-circleci">Why CircleCI?</h2>
+
+<p>Software development went from custom code, custom deployment 10+years ago to dockerization/containerization that has standardized deployment a lot. Also idea like Continuous Integration, Continuous Delivery, were very new when CircleCI launched but are now a big thing.</p>
+
+<p>Also almost every company now is a software company, willing or not. They have to handle deploying software.</p>
+
+<p>That&rsquo;s were CircleCI comes in, offering a powerful, cloud native and highly customizable continuous integration environment. We will go around a few of the nice features it has to offer.</p>
+
+<h3 id="replacing-ci-in-context">Replacing CI in context</h3>
+
+<p>Quick note about where CI/CD: code -&gt; VCS(git, mercurial, etc) webhook -&gt; circleci</p>
+
+<p>Then :</p>
+
+<p>circleci -&gt; apps integration (sending a message on a chat when the build fail, a mail when the build needs approval, etc)</p>
+
+<p>circleci -&gt; code coverage</p>
+
+<p>circleci -&gt; security analysis</p>
+
+<p>circleci -&gt; building code</p>
+
+<p>!!!! find the image that goes with that? !!!!!</p>
+
+<h2 id="security">Security</h2>
+
+<p>The emphasis on security is because they provide a deterministic build, in a fresh environment (with network isolation)  for each build.</p>
+
+<p><a href="https://circleci.com/docs/2.0/security/">https://circleci.com/docs/2.0/security/</a></p>
+
+<h2 id="workflow">Workflow</h2>
+
+<p>Workflow are pipelines. They define the orchestrations for the jobs (or builds). Workflows are DAGs (Directed Acyclic Graphs) ??benefit??</p>
+
+<p>The workflow are highly customizable: you can define jobs to run in parallel, sequential, and with both you can define if a job depends on another&rsquo;s success, and reciprocally if another job depends on the job&rsquo;s success afterward. Also the ability to filter jobs by branch level, and to restart a workflow from the start or from the point of failure to have a faster build. They have a nice diagram page to explain visually what is possible <a href="https://circleci.com/lightbox/workflows/">here</a>, along with the configuration that allow this kind of workflow.</p>
+
+<p>The configuration file are YAML files, so no surprises here.</p>
+
+<h2 id="first-class-docker-support">First class Docker support</h2>
+
+<p>One thing Chris put a lot of emphasis on, is the fact that if you have some software that run inside a Docker container, you can use CircleCI to test/build/deploy it.   You can also use pre-build images built and maintained by CircleCI</p>
+
+<h2 id="sidenote">Sidenote</h2>
+
+<p>Their competency matrix is interesting, look at it some more! <a href="https://docs.google.com/spreadsheets/d/131XZCEb8LoXqy79WWrhCX4sBnGhCM1nAIz4feFZJsEo/edit#gid=0">https://docs.google.com/spreadsheets/d/131XZCEb8LoXqy79WWrhCX4sBnGhCM1nAIz4feFZJsEo/edit#gid=0</a></p>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/circleci">circleci</a></li>
+    
+      <li><a class="tag" href="/tags/continuous-integration">continuous-integration</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=XX-123446-01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'XX-123446-01');
+  </script>
+  
+
+  
+</body>
+</html>

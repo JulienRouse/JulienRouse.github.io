@@ -1,25 +1,76 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Continuous Integration on Learning for fun and profits</title>
+    <title>continuous-integration on Learning for fun and profits</title>
     <link>https://www.julienrouse.com/tags/continuous-integration/</link>
-    <description>Recent content in Continuous Integration on Learning for fun and profits</description>
+    <description>Recent content in continuous-integration on Learning for fun and profits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 Nov 2045 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2020 19:00:00 +0400</lastBuildDate>
     
-	<atom:link href="https://www.julienrouse.com/tags/continuous-integration/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://www.julienrouse.com/tags/continuous-integration/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>My superbe talk</title>
-      <link>https://www.julienrouse.com/publications/test/</link>
-      <pubDate>Wed, 08 Nov 2045 00:00:00 +0000</pubDate>
+      <title>CircleCI presentation</title>
+      <link>https://www.julienrouse.com/blog/circleci/</link>
+      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
       
-      <guid>https://www.julienrouse.com/publications/test/</guid>
-      <description>here goes the description for the presentation
-and below you can see how to embed youtube video</description>
+      <guid>https://www.julienrouse.com/blog/circleci/</guid>
+      <description>
+
+&lt;h1 id=&#34;circleci&#34;&gt;CircleCI&lt;/h1&gt;
+
+&lt;p&gt;I attended a presentation given by Chris Black today about CircleCI. I know about the product and company since a few years, initially I found them because they use Clojure :) CircleCI is a continuous integration tool (the CI in the acronym CI/CD &lt;em&gt;continuous integration/continuous deployment&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Below is some of the notes I took about it, and I&amp;rsquo;ll put a link of the video as soon as they publish it publicly.&lt;/p&gt;
+
+&lt;h2 id=&#34;why-circleci&#34;&gt;Why CircleCI?&lt;/h2&gt;
+
+&lt;p&gt;Software development went from custom code, custom deployment 10+years ago to dockerization/containerization that has standardized deployment a lot. Also idea like Continuous Integration, Continuous Delivery, were very new when CircleCI launched but are now a big thing.&lt;/p&gt;
+
+&lt;p&gt;Also almost every company now is a software company, willing or not. They have to handle deploying software.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s were CircleCI comes in, offering a powerful, cloud native and highly customizable continuous integration environment. We will go around a few of the nice features it has to offer.&lt;/p&gt;
+
+&lt;h3 id=&#34;replacing-ci-in-context&#34;&gt;Replacing CI in context&lt;/h3&gt;
+
+&lt;p&gt;Quick note about where CI/CD: code -&amp;gt; VCS(git, mercurial, etc) webhook -&amp;gt; circleci&lt;/p&gt;
+
+&lt;p&gt;Then :&lt;/p&gt;
+
+&lt;p&gt;circleci -&amp;gt; apps integration (sending a message on a chat when the build fail, a mail when the build needs approval, etc)&lt;/p&gt;
+
+&lt;p&gt;circleci -&amp;gt; code coverage&lt;/p&gt;
+
+&lt;p&gt;circleci -&amp;gt; security analysis&lt;/p&gt;
+
+&lt;p&gt;circleci -&amp;gt; building code&lt;/p&gt;
+
+&lt;p&gt;!!!! find the image that goes with that? !!!!!&lt;/p&gt;
+
+&lt;h2 id=&#34;security&#34;&gt;Security&lt;/h2&gt;
+
+&lt;p&gt;The emphasis on security is because they provide a deterministic build, in a fresh environment (with network isolation)  for each build.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://circleci.com/docs/2.0/security/&#34;&gt;https://circleci.com/docs/2.0/security/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;workflow&#34;&gt;Workflow&lt;/h2&gt;
+
+&lt;p&gt;Workflow are pipelines. They define the orchestrations for the jobs (or builds). Workflows are DAGs (Directed Acyclic Graphs) ??benefit??&lt;/p&gt;
+
+&lt;p&gt;The workflow are highly customizable: you can define jobs to run in parallel, sequential, and with both you can define if a job depends on another&amp;rsquo;s success, and reciprocally if another job depends on the job&amp;rsquo;s success afterward. Also the ability to filter jobs by branch level, and to restart a workflow from the start or from the point of failure to have a faster build. They have a nice diagram page to explain visually what is possible &lt;a href=&#34;https://circleci.com/lightbox/workflows/&#34;&gt;here&lt;/a&gt;, along with the configuration that allow this kind of workflow.&lt;/p&gt;
+
+&lt;p&gt;The configuration file are YAML files, so no surprises here.&lt;/p&gt;
+
+&lt;h2 id=&#34;first-class-docker-support&#34;&gt;First class Docker support&lt;/h2&gt;
+
+&lt;p&gt;One thing Chris put a lot of emphasis on, is the fact that if you have some software that run inside a Docker container, you can use CircleCI to test/build/deploy it.   You can also use pre-build images built and maintained by CircleCI&lt;/p&gt;
+
+&lt;h2 id=&#34;sidenote&#34;&gt;Sidenote&lt;/h2&gt;
+
+&lt;p&gt;Their competency matrix is interesting, look at it some more! &lt;a href=&#34;https://docs.google.com/spreadsheets/d/131XZCEb8LoXqy79WWrhCX4sBnGhCM1nAIz4feFZJsEo/edit#gid=0&#34;&gt;https://docs.google.com/spreadsheets/d/131XZCEb8LoXqy79WWrhCX4sBnGhCM1nAIz4feFZJsEo/edit#gid=0&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>
-</rss>
+</rss>	

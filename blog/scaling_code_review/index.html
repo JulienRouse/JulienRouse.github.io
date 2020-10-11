@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Scaling Code Review</title>
+  <meta property="og:title" content="Scaling Code Review" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!">
+  <meta property="og:description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.55.0" />
+  
+   
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/scaling_code_review/">Scaling Code Review</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">Scaling Code Review</span></h2>
+    <span class="text-primary">October 10, 2020</span>
+	
+	
+	<div id="toc-blog">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#scaling-code-review">Scaling Code Review</a>
+<ul>
+<li><a href="#context">Context</a></li>
+<li><a href="#our-code-review-process">Our Code review Process</a></li>
+<li><a href="#problems-that-we-won-t-solve-this-time">Problems that we won&rsquo;t solve this time</a>
+<ul>
+<li><a href="#diffents-views-on-what-is-clean-code-code-that-can-go-to-production">Diffents views on what is clean code / code that can go to production</a></li>
+</ul></li>
+<li><a href="#metrics">Metrics</a>
+<ul>
+<li><a href="#measuring-time-to-close-pr">Measuring time to close PR</a></li>
+<li><a href="#measuring-day-of-the-sprint-the-pr-are-closed">Measuring day of the sprint the PR are closed</a></li>
+<li><a href="#number-of-comments-on-each-pr">Number of comments on each PR</a></li>
+<li><a href="#data-in-image">Data in image</a></li>
+</ul></li>
+<li><a href="#ideas-to-improve-the-process">Ideas to improve the process</a>
+<ul>
+<li><a href="#instead-of-putting-everybody-as-a-reviewer-on-each-pr-we-could-only-put-two-peoples">Instead of putting everybody as a reviewer on each PR, we could only put two peoples.</a></li>
+<li><a href="#put-one-person-in-charge-of-all-pr">Put one person in charge of all PR</a></li>
+<li><a href="#put-one-person-in-charge-of-one-pr">Put one person in charge of one PR</a></li>
+<li><a href="#put-one-person-in-charge-of-merging-all-pr-related-to-one-repository">Put one person in charge of MERGING all PR related to one repository</a></li>
+<li><a href="#don-t-commit-uninvited-to-someone-else-s-branch">Don&rsquo;t commit uninvited to someone else&rsquo;s branch</a></li>
+<li><a href="#flag-comment-in-pr-with-priority">Flag comment in PR with priority</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div> 
+	
+    
+	
+
+<h1 id="scaling-code-review">Scaling Code Review</h1>
+
+<p>Recently I hit a problem with my team. Our code review process did not scale up with our team growing (especially in the last weeks). Here are some reflexions on that problem and some reflexions on what we choose to do to see if it improves our process.</p>
+
+<h2 id="context">Context</h2>
+
+<p>We started as 3 developers more than one year ago, and grew to 6 developers now (and the occasional intern that I will not take into account in my rambling, even though it adds a bit of noise on the line). Our professional experiences range from 3 years to 20+ years as developer.</p>
+
+<h2 id="our-code-review-process">Our Code review Process</h2>
+
+<p>The process went a bit like this:</p>
+
+<ul>
+<li>you finish a task</li>
+<li>you commit/push your final code on a feature branch</li>
+<li>you open a pull request</li>
+<li>you assign the whole team as reviewer</li>
+<li>you wait for someone to notice (or you go bug people around on the next daily scrum)</li>
+<li>the rest of the team look at it (eventually), add comments if they feel necessary</li>
+<li>you address the comments either by making a change in the code or by responding to the comments (can include a live discussion if there is a lot of clarification to do, or a strong disagreement)</li>
+<li>repeat the last two steps until we can come to an agreement</li>
+<li>anybody merges the code if there is an approval (or decline the PR if appropriate)</li>
+</ul>
+
+<p>For small task it was mostly OK, and on bigger task we would have a lot of back and forth but pretty often we would end up on a meeting just to chat and agree on what needed to be done or not. Not too time consuming.</p>
+
+<p><em>Side note: we also have a document/checklist with what should be done for a PR to be merged, like presence of unit tests, does it pass all criteria for the task, respect rules in <a href="https://www.sonarqube.org/">sonarqube</a> etc. I really like that we have this kind of explicit checklist, even if it is not enforced as hard as we probably should.</em></p>
+
+<p>Until four people it stayed kinda OK, but the fifth started to push the limit of this process.</p>
+
+<p>What happened most of the time is that at the start of our two-week sprint, everybody went on to take tasks, code happily, and pull requests are opened. Then people started to look at other people&rsquo;s pull request a bit, comment on some things, then go start a new task and sometimes start to address some of the comments on their own pull request. Pull requests took a long time to be closed, and there was always more PR being opened than PR being closed. Then at some point, the pile of stuff to do was empty so people started to look again at the PR, but by that time there was a lot of them, and keeping track of everything was hard.</p>
+
+<p>Code reviews became frustrating and also a bottleneck because QA was waiting for the new features to come out to test them but they had the first week of the sprint almost empty, and the second week very busy. This is far from ideal.</p>
+
+<p>To try to fix it, we added a new rule that as a team we MUST close PR as fast as possible. It&rsquo;s a vague requirement but the intent was for people to try to close their PR before taking some more work. It helped but it was not enough, and the sixth developer came shortly after we introduced this rule, and it became unbearable again.</p>
+
+<p>Now I&rsquo;m looking to scale up our process, with some suggestion and input from the team.</p>
+
+<h2 id="problems-that-we-won-t-solve-this-time">Problems that we won&rsquo;t solve this time</h2>
+
+<h3 id="diffents-views-on-what-is-clean-code-code-that-can-go-to-production">Diffents views on what is clean code / code that can go to production</h3>
+
+<p>One aspect that takes a lot of time is discussing what is acceptable or not.</p>
+
+<p>Some of us are really strict in how much unit testing must be done, how good naming is important, how conventions should be followed to form a coherent code base (not only convention enforced by linter).</p>
+
+<p>And some of us are more &ldquo;result focused&rdquo; or &ldquo;output focused&rdquo; as they like to say. If it &ldquo;works&rdquo;, even if it&rsquo;s a horrible hack, you can ship it.</p>
+
+<p><em>I lean strongly on the first camp, can you tell? My biggest pet peeve is naming. But I also recognize that sometime shipping working code sooner is more important than polishing it for 3 months. As always, you must find a good balance and context can have a huge influence on how much time you have to refactor/clean your code</em></p>
+
+<p>I think this problem is kind of tangential to our time problem. We need to align people better on what production code should look like, but that is not our main problem in this case I believe (<em>but I could be terribly terribly wrong.</em>)</p>
+
+<p>I watched a few of <a href="https://www.youtube.com/results?search_query=kevlin+henney">Kevlin Henney&rsquo;s talk</a> recently and I think he has some good bit on this aspect of programming (and many other, go take a look).</p>
+
+<p>And of the course the obligatory xkcd comic:</p>
+
+<p><img src="https://imgs.xkcd.com/comics/code_quality.png" alt="Code Quality" /></p>
+
+<h2 id="metrics">Metrics</h2>
+
+<p>First step: to solve this problem I want to gather data, to be able to tell in the future if the changes we implemented as a team works or not. (<em>But be cautious that when you introduce metrics, people find way to abuse them.</em>)</p>
+
+<h3 id="measuring-time-to-close-pr">Measuring time to close PR</h3>
+
+<p>One metric I am interested to improve is time elapsed between opening the PR and closing it. (To be more accurate, one would need to count only business day, that&rsquo;s what I intend to do.)</p>
+
+<p>If a PR is opened and closed on the same day, I will count the time as 0 day. I&rsquo;m not interested to be more precise than a day here but one could also count it in hour. I don&rsquo;t think it will benefit us though as our PR stay open almost always more than a day I guesstimate <em>spoiler alert: I was mostly wrong on that guess</em></p>
+
+<h3 id="measuring-day-of-the-sprint-the-pr-are-closed">Measuring day of the sprint the PR are closed</h3>
+
+<p>Another thing I am interested is on which day PR are closed. If we close all our PR on the last two days of the sprint, it leaves very little room for QA to do her job properly. It&rsquo;s also a very frustrating experience to have fixes incoming, just before the demo or even live during a demo. It&rsquo;s nerve wrecking, and not how I envision to work as professionally as possible.</p>
+
+<h3 id="number-of-comments-on-each-pr">Number of comments on each PR</h3>
+
+<p>This one is mostly curiosity on my part: does amount of comment correlate closely with time to close PR?</p>
+
+<p>Intuitively I think that it would be the case but sometimes you get surprise with intuition so I wanted to know. <em>spoiler alert: it kind of does correlate but much more weakly that what I thought</em></p>
+
+<h3 id="data-in-image">Data in image</h3>
+
+<p>I took advantage of 35 min before the last meeting of the week, on a Friday morning to gather the data on our sprint. I did it &ldquo;by hand&rdquo;, opening every PR that was closed since the start of the current sprint and filling a table in Excel. I think it took me around 20 min to get all the data. If I had to do that every week, I would like to automate this process. Maybe Bitbucket has an API or a plugin? But for now I intend to do it at most three times so I do not see the need to automate it.</p>
+
+<p>Here are three graphics I plotted in Excel with the data I freshly gathered (<em>with some French in it</em>):</p>
+
+<p>The first one is the number of days to close a PR on the x-axis, and number of PR that were closed in that many days in the y-axis.</p>
+
+<figure>
+    <img src="/img/blog_15_pr_data_correlation_comments_vs_time_to_close_a_PR.png"
+         alt="Number of days to close a PR"/> 
+</figure>
+
+
+<p>This shows that contrary to my guesstimate above, we do close quite a lot of PR in less than one day. Obviously those includes configuration changes, very small fixes and people merging their own PR without waiting code review to go fast&hellip; But still, it&rsquo;s a decent number.</p>
+
+<p>On the opposite spectrum, we have some PR that took more than 2 days to close. (The one that took 11+ days was a draft PR opened at the start of the previous sprint, and closed at the beginning of the current sprint, so kinda an outlier but I kept it anyway). Those are the one we are looking to get rid of.</p>
+
+<p>The second plot is the frequency of PR merged by day. x-axis is the day of the week (in French but you can probably work with it ;) ), with the week number as a suffix. &ldquo;1&rdquo; for the first week of the sprint, &ldquo;2&rdquo; for the second week.</p>
+
+<figure>
+    <img src="/img/blog_15_pr_data_frequency_of_PR_merged_by_day_of_sprint.png"
+         alt="Frequency of PR merged by day of the sprint"/> 
+</figure>
+
+
+<p>This one is not too surprising I think, lots of PR being closed on the last 3 days before the demo on the last Friday of the sprint.</p>
+
+<p>And the last one, the number of comments on the y-axis and the time it took to close a PR in day on the x-axis.</p>
+
+<figure>
+    <img src="/img/blog_15_pr_data_correlation_comments_vs_time_to_close_a_PR.png"
+         alt="Correlation number of comments vs time to close a PR"/> 
+</figure>
+
+
+<p>This did surprise me a bit more. You can still see that every PR that stayed open more than 2 days have some comment in it.</p>
+
+<p>But we have also PR with 30 comments that were closed in one day.</p>
+
+<p>I don&rsquo;t know how to interpret this one yet, I will wait for the next time to see if I can get more insight. Maybe I&rsquo;m also needing more context on each PR to better understand what this graph shows?</p>
+
+<h2 id="ideas-to-improve-the-process">Ideas to improve the process</h2>
+
+<p>Here I will present some of the ideas we brainstormed, the one we decided to try to implement and the one we did not pick.</p>
+
+<h3 id="instead-of-putting-everybody-as-a-reviewer-on-each-pr-we-could-only-put-two-peoples">Instead of putting everybody as a reviewer on each PR, we could only put two peoples.</h3>
+
+<p>Benefits would be:</p>
+
+<ul>
+<li>to reduce noise (less cooperation needed, less time spent finding a time where everybody is available)</li>
+<li>allows to have a tie when disagreeing (two reviewers and the one opening the PR)</li>
+<li>faster agreement</li>
+<li>time spent overall for the team on one pull request should be divided by a factor X, with X probably in the range [1.5, 3] if I&rsquo;m being optimistic. There is nothing scientific in that estimation, only gut feeling</li>
+</ul>
+
+<p>Cons are:</p>
+
+<ul>
+<li>people not reviewing the code will be less familiar with the whole code base (unless they go read the PR for themselves but restrain from commenting unless big mistake).</li>
+<li>how to choose the pair to review
+I&rsquo;d like to try this one, but I&rsquo;m a bit torn on how to choose the pair of reviewers. It is always the same people together? Random pair? Familiarity? Time available at the time of deciding who&rsquo;s gonna take care of it?</li>
+</ul>
+
+<h3 id="put-one-person-in-charge-of-all-pr">Put one person in charge of all PR</h3>
+
+<p>One developer main task for a sprint could be to review and approve/fix - we decided against this. The goal is still to share knowledge for the whole team.</p>
+
+<h3 id="put-one-person-in-charge-of-one-pr">Put one person in charge of one PR</h3>
+
+<p>Each PR has one main reviewer - We are gonna try this.</p>
+
+<p>We put everybody as a reviewer on the PR in Bitbucket, but only one of use is responsible for accepting/declining. Everybody is still welcome (and encouraged) to go take a look at the PR, and comment on things that are major flaws.</p>
+
+<h3 id="put-one-person-in-charge-of-merging-all-pr-related-to-one-repository">Put one person in charge of MERGING all PR related to one repository</h3>
+
+<p>This one was - in my eyes - an interesting suggestion.</p>
+
+<p>Sometimes the main bottleneck was that 3 or 4 PR landed on the same repository, for many different features and write in the same files. Without someone in charge for the coordination, it looks like a mess to merge everything.</p>
+
+<p>We decided to go with this one, and to keep things light, to just decide at the daily scrum in the morning if we needed to have people step up for the merge-coordination duty.</p>
+
+<h3 id="don-t-commit-uninvited-to-someone-else-s-branch">Don&rsquo;t commit uninvited to someone else&rsquo;s branch</h3>
+
+<p>This one should be kinda a non-brainer but if you push things on somebody else&rsquo;s branch without communicating/cooperating, bad things might happen. At the very least, it can be frustrating.</p>
+
+<p>While obvious, I (and others on the team) have been doing it on some occasion so we are trying to reiterate on the fact that we should really avoid doing this.</p>
+
+<h3 id="flag-comment-in-pr-with-priority">Flag comment in PR with priority</h3>
+
+<p>Some people were complaining that sometimes we would not close PR because there were comments that nobody answered, but those comments were irrelevant, only rhetorical or not important.</p>
+
+<p>So we decided to add a little flag like &ldquo;question:&ldquo;, &ldquo;important:&rdquo; in our comment when applicable to help the reviewer get a feel for when everything important is fixed.</p>
+
+<p>This one I have mixed-feeling about, I&rsquo;m sure most of the team will forget about it in the first 2 days, me included. It&rsquo;s a nice-to-have, but I have a feeling it will take a long time before everybody follow this.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>So we are trying right now all of this, but we are also doing the biggest release in production for the project since 18 months so I expect that we won&rsquo;t follow half of what we set out to do.</p>
+
+<p>Still now we have some really nice ideas to improve, and when things settle down I expect the team to abide by the new rules we set for ourselves.</p>
+
+<p>As an aside, the team did a really good job to come up with ideas on how to improve, and the process was very smooth. All the frustration from the previous weeks on this topic turned into a very productive 30 min meeting on getting better at it.</p>
+
+<p>It does not always end up so well, but I think it is also the result of our team growing together. Whatever the outcome of our experiment, we are still a better team this week that the previous one and that is an amazing to witness it.</p>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/code-review">code-review</a></li>
+    
+      <li><a class="tag" href="/tags/improving">improving</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=XX-123446-01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'XX-123446-01');
+  </script>
+  
+
+  
+</body>
+</html>

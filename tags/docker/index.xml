@@ -1,0 +1,44 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Learning for fun and profits</title>
+    <link>https://www.julienrouse.com/tags/docker/</link>
+    <description>Recent content in Docker on Learning for fun and profits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 01 Jan 2019 19:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.julienrouse.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker Workshop</title>
+      <link>https://www.julienrouse.com/blog/docker-workshop/</link>
+      <pubDate>Tue, 01 Jan 2019 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/docker-workshop/</guid>
+      <description>
+
+&lt;h1 id=&#34;workshop&#34;&gt;Workshop&lt;/h1&gt;
+
+&lt;h2 id=&#34;a-little-context&#34;&gt;A little context&lt;/h2&gt;
+
+&lt;p&gt;At work I was very fortunate to participate in a introductory workshop about Docker made by my colleague Damien (thanks to him!). As consultant in the IT industry, it is our duty (and often our pleasure) to stay relevant in the field. To accomplish this goal, at work we have 2.5 hours per week dedicated to self-learning. It can be almost anything we want, as long as it helps us grow in our careers. This time, Damien had prepared a nice workshop for our team.&lt;/p&gt;
+
+&lt;p&gt;Personally I had very few hands-on experiences with Docker prior to this workshop. My current project use Docker (and Kubernetes) but it was mostly a setup done once and is used to build the various environments we need our project to run on. Locally we installed everything ourselves, without relying on Docker at all (which is mostly because none of my teammates were comfortable with Docker either. If we had to start the project now, I think we might at least consider using Docker for our local development as well).&lt;/p&gt;
+
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+
+&lt;p&gt;Before talking about what we did, let&amp;rsquo;s try to recap a bit what I know/understand about Docker.&lt;/p&gt;
+
+&lt;p&gt;Docker is a virtualization &lt;strong&gt;container&lt;/strong&gt; running on top of the host operating system, like a lightweight VM. In that container, you define the OS to run, you install the dependencies for the application you are building, and then you package it.&lt;/p&gt;
+
+&lt;p&gt;Doing it that way allows to run the application anywhere that support Docker (maybe we can see it like the JVM, a layer on top of an OS to &lt;em&gt;write once, run anywhere&lt;/em&gt;).&lt;/p&gt;
+
+&lt;h2 id=&#34;workshop-1&#34;&gt;Workshop&lt;/h2&gt;
+
+&lt;p&gt;The base for the workshop was the &lt;a href=&#34;https://docker-curriculum.com/#hello-world&#34;&gt;Docker Curriculum&lt;/a&gt; and we stopped before the section on working with Docker on AWS.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>	

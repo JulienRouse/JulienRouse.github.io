@@ -1,0 +1,54 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ergodox on Learning for fun and profits</title>
+    <link>https://www.julienrouse.com/tags/ergodox/</link>
+    <description>Recent content in ergodox on Learning for fun and profits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 May 2020 11:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.julienrouse.com/tags/ergodox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About my custom keyboard layout</title>
+      <link>https://www.julienrouse.com/blog/about_my_keyboard_layout/</link>
+      <pubDate>Sun, 03 May 2020 11:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/about_my_keyboard_layout/</guid>
+      <description>
+
+&lt;h1 id=&#34;about-my-custom-keyboard-layout&#34;&gt;About my custom keyboard layout&lt;/h1&gt;
+
+&lt;p&gt;Since June 2019 I use an Ergodox keyboard (black and non printed). I spend a bit of time changing my layout to accomodate my usage.&lt;/p&gt;
+
+&lt;p&gt;In this post I&amp;rsquo;ll share my thought process about the layout I crafted, what I learned doing so and how I see it evolve in the near futur.&lt;/p&gt;
+
+&lt;p&gt;If your not familiar with reprogrammable keyboard, layer, and dual-keys you might want to go look on the &lt;a href=&#34;https://ergodox-ez.com/#opensource&#34;&gt;ergodox-ez website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;my-layout&#34;&gt;My layout&lt;/h2&gt;
+
+&lt;p&gt;You can find my &lt;a href=&#34;https://configure.ergodox-ez.com/ergodox-ez/layouts/YErj4/latest/0&#34;&gt;layout here&lt;/a&gt; to follow along. The website Ergodox-ez is really well made to visualize and modify the layout, it can also be used to view layout others have devised.&lt;/p&gt;
+
+&lt;h3 id=&#34;qwerty-vs-azerty-vs-bepo-vs-colemak-vs-dvorak&#34;&gt;Qwerty vs Azerty vs Bepo vs Colemak vs Dvorak&lt;/h3&gt;
+
+&lt;p&gt;I went with Qwerty because I&amp;rsquo;m familiar with it and my laptop is also Qwerty so it&amp;rsquo;s easier to switch to it. But Azerty would have been totally fine too in most cases because in France we are used to our french-flavored azerty.&lt;/p&gt;
+
+&lt;p&gt;I looked at Bepo, Colemak and Dvorak but there was one major pain point: shortcuts.  When switching to those layout you pretty much have to remap every software you use to reflect the layout and that&amp;rsquo;s something I was not inclined to do. (Especially not for Emacs, which has already a very tough learning curve, I wanted to be able to follow guide and tutorials if needed without that complexity added).&lt;/p&gt;
+
+&lt;p&gt;Without that, I think Colemak or Dvorak would have been fine. Bepo a bit less because, even so having french letters easily accessible is really nice, I believe I type french less than 50% of the time so it&amp;rsquo;s probably more important to have a keyboard that help me type english (and code) more efficiently.&lt;/p&gt;
+
+&lt;h3 id=&#34;french-symbols&#34;&gt;French  symbols&lt;/h3&gt;
+
+&lt;p&gt;While I said I type french less than 50% of the time, I still need to access easily to french symbol (like é, è, ê, ç, à, ù, ë&amp;hellip;) so I use a layout dedicated to those. I put the à, é, ù respectively on top of a, e, u for more ease.&lt;/p&gt;
+
+&lt;p&gt;For the circonflex and the trema, I use a diacritic. I type ^ then e and it gives me ê. It&amp;rsquo;s ok, if I could have ê directly that might be nice but it&amp;rsquo;s not terribly inefficient.&lt;/p&gt;
+
+&lt;p&gt;What I miss the most is capitalized and accentued letter in one touch (something that Bepo, and now the new Azerty is providing!) . I need to introduce more diacritic to combine accent with capitalized letters.&lt;/p&gt;
+
+&lt;h3 id=&#34;symbols-or-programmation-symbols&#34;&gt;Symbols (or programmation symbols)&lt;/h3&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>	

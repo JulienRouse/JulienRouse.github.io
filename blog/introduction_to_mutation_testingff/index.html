@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>blabla</title>
+  <meta property="og:title" content="blabla" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!">
+  <meta property="og:description" content="Software Developer with varied interests like functional programing, Lisp languages, security and more!" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.55.0" />
+  
+   
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/introduction_to_mutation_testingff/">blabla</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">blabla</span></h2>
+    <span class="text-primary">May 9, 2020</span>
+	
+	
+	<div id="toc-blog">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#docker-file-for-rust">Docker file for Rust</a>
+<ul>
+<li><a href="#steps">Steps</a></li>
+<li><a href="#rust-game-with-bracket-lib-formerly-known-as-rltk">Rust game with bracket-lib (formerly known as RLTK)</a>
+<ul>
+<li><a href="#run-locally-with-wasm-target">Run locally with WASM target</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div> 
+	
+    
+	
+
+<h1 id="docker-file-for-rust">Docker file for Rust</h1>
+
+<h2 id="steps">Steps</h2>
+
+<ul>
+<li>open <a href="https://docker-curriculum.com/">docker currirculum</a></li>
+<li>open <a href="toto">docker toolbox</a></li>
+<li><code>docker run hello-world</code></li>
+<li>remember that docker is not saving image in the right place (because not much disk space left)</li>
+<li>SO <a href="https://stackoverflow.com/questions/42250222/what-is-docker-image-location-on-windows-10">https://stackoverflow.com/questions/42250222/what-is-docker-image-location-on-windows-10</a>, change $MACHINE_STORAGE_SPACE, go to Virtualbox, delete the default machine, restart docker toolbox</li>
+<li><code>docker pull busybox</code> to follow the tuto</li>
+<li><code>docker images</code> to get all the images</li>
+<li><code>docker run busybox</code> to run the image name busybox, nothing happen.</li>
+<li><code>docker run busybox echo 'hello'</code> to see &lsquo;hello&rsquo; printed</li>
+<li><code>docker ps -a</code> to see all containers that we ran.</li>
+<li><code>docker rm [ID]</code> to delete a container we don&rsquo;t neet anymore</li>
+<li>Write a Dockerfile</li>
+<li></li>
+<li>(for GUI) install VcXsrv Windows X Server from <a href="https://cuneyt.aliustaoglu.biz/en/running-gui-applications-in-docker-on-windows-linux-mac-hosts/">https://cuneyt.aliustaoglu.biz/en/running-gui-applications-in-docker-on-windows-linux-mac-hosts/</a></li>
+<li>run <code>ipconfig</code> to get the IP address (or 192.168.99.101 like docker took tell)</li>
+<li><code>docker run --rm -it -e DISPLAY=192.168.99.1:0.0 julienrouse/roguelike</code></li>
+</ul>
+
+<h2 id="rust-game-with-bracket-lib-formerly-known-as-rltk">Rust game with bracket-lib (formerly known as RLTK)</h2>
+
+<h3 id="run-locally-with-wasm-target">Run locally with WASM target</h3>
+
+<p>First of all installing <code>wasm-bindgen</code> cli with <code>cargo install wasm-bindgen-cli</code>. Then build toward wasm and run it locally on a webpage with the following command (I&rsquo;m at the root of my project):</p>
+
+<ul>
+<li><p><code>cargo build --release --target wasm32-unknown-unknown --release</code></p></li>
+
+<li><p><code>wasm-bindgen ./target/wasm32-unknown-unknown/release/rltk-roguelike.wasm --out-dir . --no-modules --no-typescript</code> (here replace <em>rltk-roguelike</em> with the name of your project, and I use <code>--out-dir .</code> to generate them in the root directory of my project but you can choose a path of your liking)</p></li>
+
+<li><p>You create an index.html with this code</p></li>
+</ul>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">html</span>&gt;
+  &lt;<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/html;charset=utf-8&#34;</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Content-Type&#34;</span> /&gt;
+  &lt;/<span style="color:#f92672">head</span>&gt;
+  &lt;<span style="color:#f92672">body</span>&gt;
+    &lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;canvas&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;640&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;480&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
+    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./rltk-roguelike.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+    &lt;<span style="color:#f92672">script</span>&gt;
+      window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;load&#34;</span>, <span style="color:#66d9ef">async</span> () =&gt; {
+        <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">wasm_bindgen</span>(<span style="color:#e6db74">&#34;./rltk-roguelike_bg.wasm&#34;</span>);
+      });
+    &lt;/<span style="color:#f92672">script</span>&gt;
+
+  &lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;</code></pre></td></tr></table>
+</div>
+</div>
+<p>You can replace <em>rltk-roguelike.js</em> and <em>rltk-roguelike_bg.wasm</em> by the name of the js generated at the step below</p>
+
+<ul>
+<li>If you try to open your index.html in your web browser, most likely it won&rsquo;t run because of CORS policy. To bypass that, launch <code>python -m SimpleHTTPServer</code> in the directory of the <em>index.html</em> and open <code>localhost:8000</code> in my browser</li>
+</ul>
+
+<p>You can try it here</p>
+
+<p><canvas id="canvas" width="640" height="480"></canvas>
+<script type="application/javascript" src="js/rltk-roguelike/rltk-roguelike.js" ></script>
+<script>
+window.addEventListener(&ldquo;load&rdquo;, async () =&gt; {
+await wasm_bindgen(&ldquo;js/rltk-roguelike/rltk-roguelike_bg.wasm);
+});
+</script></p>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/test-automation">test-automation</a></li>
+    
+      <li><a class="tag" href="/tags/quality">quality</a></li>
+    
+      <li><a class="tag" href="/tags/mutation-testing">mutation-testing</a></li>
+    
+</ul>
+
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=XX-123446-01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'XX-123446-01');
+  </script>
+  
+
+  
+</body>
+</html>

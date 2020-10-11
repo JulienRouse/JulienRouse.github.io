@@ -1,0 +1,194 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud on Learning for fun and profits</title>
+    <link>https://www.julienrouse.com/tags/cloud/</link>
+    <description>Recent content in Cloud on Learning for fun and profits</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Nov 2019 19:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.julienrouse.com/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AWS Technical Professional</title>
+      <link>https://www.julienrouse.com/blog/aws-technical-professional/</link>
+      <pubDate>Mon, 25 Nov 2019 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/aws-technical-professional/</guid>
+      <description>
+
+&lt;h1 id=&#34;aws-technical-professional&#34;&gt;AWS Technical Professional&lt;/h1&gt;
+
+&lt;h2 id=&#34;module-2-core-services&#34;&gt;Module 2: Core Services&lt;/h2&gt;
+
+&lt;h3 id=&#34;compute&#34;&gt;Compute&lt;/h3&gt;
+
+&lt;h4 id=&#34;ec2&#34;&gt;EC2&lt;/h4&gt;
+
+&lt;h4 id=&#34;ecs&#34;&gt;ECS&lt;/h4&gt;
+
+&lt;h4 id=&#34;lambda-i-e-serverless&#34;&gt;Lambda (i.e. Serverless)&lt;/h4&gt;
+
+&lt;p&gt;Event-driven task compute service.&lt;/p&gt;
+
+&lt;p&gt;Zero administration.&lt;/p&gt;
+
+&lt;p&gt;Pay for compute time consumed&lt;/p&gt;
+
+&lt;h4 id=&#34;summary&#34;&gt;Summary&lt;/h4&gt;
+
+&lt;p&gt;EC2 vs ECS vs Lambda&lt;/p&gt;
+
+&lt;h3 id=&#34;storage&#34;&gt;Storage&lt;/h3&gt;
+
+&lt;h4 id=&#34;ebs-elastic-block-storage&#34;&gt;EBS: Elastic Block Storage&lt;/h4&gt;
+
+&lt;p&gt;Similar to a &lt;em&gt;hard drive&lt;/em&gt;, you can attach it to EC2 instances.&lt;/p&gt;
+
+&lt;p&gt;One EBS can only extend one EC2, but one EC2 can have many EBS attached.&lt;/p&gt;
+
+&lt;p&gt;1GB to 16TB per volume.&lt;/p&gt;
+
+&lt;p&gt;Suited for apps that require:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Database&lt;/li&gt;
+&lt;li&gt;File system&lt;/li&gt;
+&lt;li&gt;Block-level storage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Automatic replIcation inside its AZ&lt;/p&gt;
+
+&lt;p&gt;Snapshot back-up to Amazon S3&lt;/p&gt;
+
+&lt;p&gt;You can provision a specific level of I/O performance, or select a burstable performance model.&lt;/p&gt;
+
+&lt;h4 id=&#34;s3&#34;&gt;S3&lt;/h4&gt;
+
+&lt;p&gt;Bucket of static files&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Static website content&lt;/li&gt;
+&lt;li&gt;Backups&lt;/li&gt;
+&lt;li&gt;Storage (data store for analytics : Hadoop for instance)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;glacier&#34;&gt;Glacier&lt;/h4&gt;
+
+&lt;p&gt;Archiving and backup. Eleven 9 of durability (99.99999999999% durability)&lt;/p&gt;
+
+&lt;p&gt;Starting from $0.004 per GB/month&lt;/p&gt;
+
+&lt;p&gt;One-way transition from S3 to Glacier&lt;/p&gt;
+
+&lt;h4 id=&#34;snowball&#34;&gt;Snowball&lt;/h4&gt;
+
+&lt;p&gt;Petabyte-scale data transport solution&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Cloud Migration&lt;/li&gt;
+&lt;li&gt;Disaster Recovery&lt;/li&gt;
+&lt;li&gt;Datacenter Decommission&lt;/li&gt;
+&lt;li&gt;Content Distribution&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;cloudfront&#34;&gt;CloudFront&lt;/h4&gt;
+
+&lt;p&gt;Global CDN (Content Delivery Network)&lt;/p&gt;
+
+&lt;p&gt;Delivers content using global network of edge locations&lt;/p&gt;
+
+&lt;h3 id=&#34;database&#34;&gt;Database&lt;/h3&gt;
+
+&lt;h4 id=&#34;rds-relational-database-service&#34;&gt;RDS (Relational Database Service)&lt;/h4&gt;
+
+&lt;p&gt;Can use:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SQL&lt;/li&gt;
+&lt;li&gt;MySQL&lt;/li&gt;
+&lt;li&gt;Oracle&lt;/li&gt;
+&lt;li&gt;PostgreSQL&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Key benefits:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Elastic&lt;/li&gt;
+&lt;li&gt;Flexible&lt;/li&gt;
+&lt;li&gt;Secure&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;dynamo-db&#34;&gt;Dynamo DB&lt;/h4&gt;
+
+&lt;p&gt;NoSQL, fully managed, support document and key-value store&lt;/p&gt;
+
+&lt;h4 id=&#34;database-migration-service&#34;&gt;Database Migration Service&lt;/h4&gt;
+
+&lt;p&gt;Heterogenous and heterogeneous migrations&lt;/p&gt;
+
+&lt;p&gt;Stream data to redshift from supported sources&lt;/p&gt;
+
+&lt;h4 id=&#34;redshift&#34;&gt;Redshift&lt;/h4&gt;
+
+&lt;p&gt;Data Warehouse and Analytics&lt;/p&gt;
+
+&lt;p&gt;BI&lt;/p&gt;
+
+&lt;h3 id=&#34;networking&#34;&gt;Networking&lt;/h3&gt;
+
+&lt;h4 id=&#34;vpc&#34;&gt;VPC&lt;/h4&gt;
+
+&lt;p&gt;virtual network on the cloud.&lt;/p&gt;
+
+&lt;p&gt;Public and private subnets, network topologies, route tabes and network gateway configuration, control access and security groups&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Elastic (200 subnets per VPC)&lt;/li&gt;
+&lt;li&gt;Flexible&lt;/li&gt;
+&lt;li&gt;Secure&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;direct-connect&#34;&gt;Direct Connect&lt;/h4&gt;
+
+&lt;p&gt;Establish a dedicated connection from your on-premises to AWS&lt;/p&gt;
+
+&lt;p&gt;Private connectivity between AWS and your datacenter&lt;/p&gt;
+
+&lt;p&gt;Use the same connection to access public and private ressources&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Reduce bandwith cost&lt;/li&gt;
+&lt;li&gt;Consistent network performance&lt;/li&gt;
+&lt;li&gt;Elastic&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;route-53&#34;&gt;Route 53&lt;/h4&gt;
+
+&lt;p&gt;Scalable DNS&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Latency Based Routing&lt;/li&gt;
+&lt;li&gt;Weighted Round Robin&lt;/li&gt;
+&lt;li&gt;DNS Fallover&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Integrated Elastic Load Balancer&lt;/p&gt;
+
+&lt;h3 id=&#34;management-tools&#34;&gt;Management Tools&lt;/h3&gt;
+
+&lt;h4 id=&#34;cloudwatch&#34;&gt;CloudWatch&lt;/h4&gt;
+
+&lt;h4 id=&#34;cloudformation&#34;&gt;CloudFormation&lt;/h4&gt;
+
+&lt;h4 id=&#34;trusted-advisor&#34;&gt;Trusted Advisor&lt;/h4&gt;
+
+&lt;h3 id=&#34;security&#34;&gt;Security&lt;/h3&gt;
+
+&lt;h3 id=&#34;iot&#34;&gt;IoT&lt;/h3&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>	

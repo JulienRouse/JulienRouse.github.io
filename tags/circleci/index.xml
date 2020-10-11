@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>circleci on Learning for fun and profits</title>
@@ -6,10 +5,72 @@
     <description>Recent content in circleci on Learning for fun and profits</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 May 2019 14:54:04 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2020 19:00:00 +0400</lastBuildDate>
     
-	<atom:link href="https://www.julienrouse.com/tags/circleci/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://www.julienrouse.com/tags/circleci/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CircleCI presentation</title>
+      <link>https://www.julienrouse.com/blog/circleci/</link>
+      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/circleci/</guid>
+      <description>
+
+&lt;h1 id=&#34;circleci&#34;&gt;CircleCI&lt;/h1&gt;
+
+&lt;p&gt;I attended a presentation given by Chris Black today about CircleCI. I know about the product and company since a few years, initially I found them because they use Clojure :) CircleCI is a continuous integration tool (the CI in the acronym CI/CD &lt;em&gt;continuous integration/continuous deployment&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;Below is some of the notes I took about it, and I&amp;rsquo;ll put a link of the video as soon as they publish it publicly.&lt;/p&gt;
+
+&lt;h2 id=&#34;why-circleci&#34;&gt;Why CircleCI?&lt;/h2&gt;
+
+&lt;p&gt;Software development went from custom code, custom deployment 10+years ago to dockerization/containerization that has standardized deployment a lot. Also idea like Continuous Integration, Continuous Delivery, were very new when CircleCI launched but are now a big thing.&lt;/p&gt;
+
+&lt;p&gt;Also almost every company now is a software company, willing or not. They have to handle deploying software.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s were CircleCI comes in, offering a powerful, cloud native and highly customizable continuous integration environment. We will go around a few of the nice features it has to offer.&lt;/p&gt;
+
+&lt;h3 id=&#34;replacing-ci-in-context&#34;&gt;Replacing CI in context&lt;/h3&gt;
+
+&lt;p&gt;Quick note about where CI/CD: code -&amp;gt; VCS(git, mercurial, etc) webhook -&amp;gt; circleci&lt;/p&gt;
+
+&lt;p&gt;Then :&lt;/p&gt;
+
+&lt;p&gt;circleci -&amp;gt; apps integration (sending a message on a chat when the build fail, a mail when the build needs approval, etc)&lt;/p&gt;
+
+&lt;p&gt;circleci -&amp;gt; code coverage&lt;/p&gt;
+
+&lt;p&gt;circleci -&amp;gt; security analysis&lt;/p&gt;
+
+&lt;p&gt;circleci -&amp;gt; building code&lt;/p&gt;
+
+&lt;p&gt;!!!! find the image that goes with that? !!!!!&lt;/p&gt;
+
+&lt;h2 id=&#34;security&#34;&gt;Security&lt;/h2&gt;
+
+&lt;p&gt;The emphasis on security is because they provide a deterministic build, in a fresh environment (with network isolation)  for each build.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://circleci.com/docs/2.0/security/&#34;&gt;https://circleci.com/docs/2.0/security/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;workflow&#34;&gt;Workflow&lt;/h2&gt;
+
+&lt;p&gt;Workflow are pipelines. They define the orchestrations for the jobs (or builds). Workflows are DAGs (Directed Acyclic Graphs) ??benefit??&lt;/p&gt;
+
+&lt;p&gt;The workflow are highly customizable: you can define jobs to run in parallel, sequential, and with both you can define if a job depends on another&amp;rsquo;s success, and reciprocally if another job depends on the job&amp;rsquo;s success afterward. Also the ability to filter jobs by branch level, and to restart a workflow from the start or from the point of failure to have a faster build. They have a nice diagram page to explain visually what is possible &lt;a href=&#34;https://circleci.com/lightbox/workflows/&#34;&gt;here&lt;/a&gt;, along with the configuration that allow this kind of workflow.&lt;/p&gt;
+
+&lt;p&gt;The configuration file are YAML files, so no surprises here.&lt;/p&gt;
+
+&lt;h2 id=&#34;first-class-docker-support&#34;&gt;First class Docker support&lt;/h2&gt;
+
+&lt;p&gt;One thing Chris put a lot of emphasis on, is the fact that if you have some software that run inside a Docker container, you can use CircleCI to test/build/deploy it.   You can also use pre-build images built and maintained by CircleCI&lt;/p&gt;
+
+&lt;h2 id=&#34;sidenote&#34;&gt;Sidenote&lt;/h2&gt;
+
+&lt;p&gt;Their competency matrix is interesting, look at it some more! &lt;a href=&#34;https://docs.google.com/spreadsheets/d/131XZCEb8LoXqy79WWrhCX4sBnGhCM1nAIz4feFZJsEo/edit#gid=0&#34;&gt;https://docs.google.com/spreadsheets/d/131XZCEb8LoXqy79WWrhCX4sBnGhCM1nAIz4feFZJsEo/edit#gid=0&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Setting up Hugo, GithubPage and CircleCI to launch a blog</title>
@@ -17,8 +78,284 @@
       <pubDate>Sun, 26 May 2019 14:54:04 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/blog/setting_up_hugo_githubpage_and_circleci_to_launch_a_blog/</guid>
-      <description>How Hugo, Github Pages and CircleCI helped me bring back to life my blog.</description>
+      <description>
+
+&lt;h1 id=&#34;setting-up-the-blog&#34;&gt;Setting up the blog&lt;/h1&gt;
+
+&lt;p&gt;I decided to bring back to life my blog :) I chose &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; as the template engine because it seemed well-maintened, and had good documentation, &lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Pages&lt;/a&gt; to host it and &lt;a href=&#34;https://circleci.com/&#34;&gt;CircleCI&lt;/a&gt; for automating deployment.&lt;/p&gt;
+
+&lt;h2 id=&#34;setting-up-hugo&#34;&gt;Setting up Hugo&lt;/h2&gt;
+
+&lt;h3 id=&#34;installing&#34;&gt;Installing&lt;/h3&gt;
+
+&lt;p&gt;I followed the &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34;&gt;quickstart&lt;/a&gt; section on the Hugo website, because I am on a Windows system I had to download an executable and put in somewhere on the PATH. So far so good.&lt;/p&gt;
+
+&lt;h3 id=&#34;choosing-a-theme&#34;&gt;Choosing a theme&lt;/h3&gt;
+
+&lt;p&gt;Then I spent countless hours inspecting many many &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;themes uploaded&lt;/a&gt; and picked my favorite. Most of the themes have configuration variables specific to the theme, and they usually are documented.&lt;/p&gt;
+
+&lt;p&gt;Personally I choose &lt;a href=&#34;https://themes.gohugo.io/hugo-resume/&#34;&gt;hugo-resume&lt;/a&gt;, courtesy of &lt;a href=&#34;https://edwardawebb.com/&#34;&gt;Eddie Webb&lt;/a&gt;. I was looking for::&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;a blog section (with tags for blog posts)&lt;/li&gt;
+&lt;li&gt;possibility to have sections to showcase projects&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And that theme fitted those criteria, and also went beyond that because it had support for many other features (A section for education, skills, open source contributions, etc). Maybe one thing I&amp;rsquo;ll miss is the direct support for internationalization. I was thinking maybe translating some of my post to French, but maybe I&amp;rsquo;ll manage with tags or I&amp;rsquo;ll deal with it later on.&lt;/p&gt;
+
+&lt;p&gt;To install a theme it&amp;rsquo;s a matter of downloading the theme into the&lt;code&gt;theme/&lt;/code&gt; folder (or use git submodule), and having a line in your config file to tell which theme to use if there is more than one in the &lt;code&gt;theme/&lt;/code&gt;folder.&lt;/p&gt;
+
+&lt;h3 id=&#34;making-it-work&#34;&gt;Making it work&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;hugo server&lt;/code&gt; launch a server that serve your site and watch changes. It is useful to make changes to it.&lt;/p&gt;
+
+&lt;p&gt;There are a few useful flags:
+  - &lt;code&gt;-D&lt;/code&gt; include draft
+  - &lt;code&gt;-F&lt;/code&gt; include pages with a publish date in the futur&lt;/p&gt;
+
+&lt;p&gt;Then it&amp;rsquo;s time to populate the website with content, congratulation :)&lt;/p&gt;
+
+&lt;p&gt;Note that the expected folder names in &lt;code&gt;content/&lt;/code&gt; are &lt;code&gt;blog/&lt;/code&gt;, &lt;code&gt;projects/creations/&lt;/code&gt;, &lt;code&gt;projetcs/contributions/&lt;/code&gt; and &lt;code&gt;publications/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;tweaks&#34;&gt;Tweaks&lt;/h3&gt;
+
+&lt;p&gt;Below is some modification I made to the site to suits my need.&lt;/p&gt;
+
+&lt;h4 id=&#34;code-blocks&#34;&gt;Code blocks&lt;/h4&gt;
+
+&lt;p&gt;I added the option to have syntax highlighting (and line numbers in my code blocks). You simply have to add:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;pygmentsCodefences&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# Allow syntax highlighting for code block&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;pygmentsCodefencesGuessSyntax&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# Pygment will try to guess what language is in the code block to use the right highlighting&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;pygmentsOptions&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;linenos=table&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;to your config file.
+You can find more options to customize syntax highlighting in &lt;a href=&#34;https://gohugo.io/content-management/syntax-highlighting/&#34;&gt;the Hugo docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;gdpr-and-privacy-concerns&#34;&gt;GDPR and privacy concerns&lt;/h4&gt;
+
+&lt;p&gt;I tried to be as light on tracking as possible for my website so I disabled any tracking service.
+The only real downside is that I can&amp;rsquo;t embed youtube videos anymore but that is a tradeoff I&amp;rsquo;m willing to make.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;privacy&lt;/span&gt;]
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;privacy&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;disqus&lt;/span&gt;]
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;disable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;privacy&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;googleAnalytics&lt;/span&gt;]
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;disable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;privacy&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;instagram&lt;/span&gt;]
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;disable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;privacy&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;twitter&lt;/span&gt;]
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;disable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;privacy&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;vimeo&lt;/span&gt;]
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;disable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+  [&lt;span style=&#34;color:#a6e22e&#34;&gt;privacy&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;youtube&lt;/span&gt;]
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;disable&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;See &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;documentation about gdpr complicance&lt;/a&gt; for more detailed options for each services.&lt;/p&gt;
+
+&lt;h4 id=&#34;table-of-content-for-blog-posts&#34;&gt;Table of Content for blog posts&lt;/h4&gt;
+
+&lt;p&gt;I wanted to display a table of content for my blog posts, but also being able to not display one for short posts that don&amp;rsquo;t warrant one.&lt;/p&gt;
+
+&lt;p&gt;It happens that this is really easy with Hugo :) With the help of this &lt;a href=&#34;https://www.codeooze.com/webdesign/hugo-toc/&#34;&gt;post from ooze.com&lt;/a&gt; I managed to do it very quickly.&lt;/p&gt;
+
+&lt;p&gt;Steps to do it are (for &lt;code&gt;hugo-resume&lt;/code&gt; but should be fairly similar for other themes)::&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Create &lt;code&gt;/layout/blog/&lt;/code&gt; (to match the structure of &lt;code&gt;/themes/hugo-resume/layout/blog/&lt;/code&gt;)  then copy the file &lt;code&gt;/themes/hugo-resume/layout/blog/single.html&lt;/code&gt; into &lt;code&gt;/layout/blog/single.html&lt;/code&gt;. For other themes or for adding toc in other section of the website, you just have to find the right &lt;code&gt;single.html&lt;/code&gt; file to edit.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Then edit the &lt;code&gt;single.html&lt;/code&gt; to add&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;{{ if .Params.toc }}
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;toc-blog&amp;#34;&lt;/span&gt;&amp;gt;
+    {{ .TableOfContents }}
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt; 
+{{ end }}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;above the &lt;code&gt;{{ .Content }}&lt;/code&gt; tag.&lt;/p&gt;
+
+&lt;p&gt;Before I had&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;{{ define &amp;#34;main&amp;#34; }}
+{{ partial &amp;#34;breadcrumbs&amp;#34; . }}
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;section&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;resume-section p-3 p-lg-5 d-flex d-column&amp;#34;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;my-auto&amp;#34;&lt;/span&gt;&amp;gt;
+     &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mb-0&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text-primary&amp;#34;&lt;/span&gt;&amp;gt;{{ .Title }}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;span&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+     &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text-primary&amp;#34;&lt;/span&gt;&amp;gt;{{ .Date.Format &amp;#34;January 2, 2006&amp;#34; }}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;span&lt;/span&gt;&amp;gt;
+     {{ .Content }}
+     {{ with .Params.link }}&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;Project link: &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{{ . }}&amp;#34;&lt;/span&gt;&amp;gt;{{ . }}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;{{ end }}
+     {{ partial &amp;#34;techtags&amp;#34; . }}
+  &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;section&lt;/span&gt;&amp;gt;
+{{ end }}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;and after:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;14
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;15
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;16
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;{{ define &amp;#34;main&amp;#34; }}
+{{ partial &amp;#34;breadcrumbs&amp;#34; . }}
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;section&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;resume-section p-3 p-lg-5 d-flex d-column&amp;#34;&lt;/span&gt;&amp;gt;
+  &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;my-auto&amp;#34;&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mb-0&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text-primary&amp;#34;&lt;/span&gt;&amp;gt;{{ .Title }}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;span&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h2&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;span&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;class&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;text-primary&amp;#34;&lt;/span&gt;&amp;gt;{{ .Date.Format &amp;#34;January 2, 2006&amp;#34; }}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;span&lt;/span&gt;&amp;gt;
+    {{ if .Params.toc }}
+    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;toc-blog&amp;#34;&lt;/span&gt;&amp;gt;
+      {{ .TableOfContents }}
+    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt; 
+    {{ end }}
+    {{ .Content }}
+    {{ with .Params.link }}&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;Project link: &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;href&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;{{ . }}&amp;#34;&lt;/span&gt;&amp;gt;{{ . }}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt;&amp;gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;{{ end }}
+    {{ partial &amp;#34;techtags&amp;#34; . }}
+  &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;section&lt;/span&gt;&amp;gt;
+{{ end }}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Adding the &lt;code&gt;{{ if .Params.toc}}&lt;/code&gt; line will allow to define in the front matter of each post if we want to generate a toc.
+I also added a div tag with an id to style it.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Style it! Let&amp;rsquo;s find the css file. Copy &lt;code&gt;/themes/hugo-resume/static/css/tweaks.css&lt;/code&gt; into &lt;code&gt;/static/css/tweaks.css&lt;/code&gt; and edit it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;/* Change rules for toc in blog posts */&lt;/span&gt;
+#toc-blog {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;margin-top&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;margin-bottom&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;;
+}
+#toc-blog &lt;span style=&#34;color:#f92672&#34;&gt;a&lt;/span&gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;color&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;#0062cc&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;adjust-color-of-the-site&#34;&gt;Adjust color of the site&lt;/h4&gt;
+
+&lt;p&gt;TODO
+I found the color of the text a bit to light for my eyes so I changed it. In &lt;code&gt;/themes/hugo-resume/static/css/&lt;/code&gt; I changed &lt;code&gt;resume.css&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;font-family&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Open Sans&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;serif&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;padding-top&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;54&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;px&lt;/span&gt;;
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;color&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;#33679a&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;/* was #868e96; */&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;fix-responsive-width-for-blog-post&#34;&gt;Fix responsive width for blog post&lt;/h4&gt;
+
+&lt;p&gt;TODO
+After tweaking blog posts a bit, I found out that they were some issues with responsiveness. Around the 1300px mark for width, if you shrink the size of the screen, the text overflow which render the page hard to read without scrolling a lot.&lt;/p&gt;
+
+&lt;p&gt;After some googling (or &lt;a href=&#34;https://duckduckgo.com/&#34;&gt;duckduckgoing&lt;/a&gt; in my case), it seems it is because the container for blog post user &lt;code&gt;box-sizing: border-box&lt;/code&gt; but the child does not specify a width. Adding &lt;code&gt;width: 100%&lt;/code&gt; on the inner div fix the problem for me.&lt;/p&gt;
+
+&lt;p&gt;I added the following css rule in &lt;code&gt;tweaks.css&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;my-auto&lt;/span&gt; {
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;width&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;%&lt;/span&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;github-pages&#34;&gt;Github Pages&lt;/h2&gt;
+
+&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;h2 id=&#34;circle-ci&#34;&gt;Circle CI&lt;/h2&gt;
+
+&lt;p&gt;TODO&lt;/p&gt;
+</description>
     </item>
     
   </channel>
-</rss>
+</rss>	
