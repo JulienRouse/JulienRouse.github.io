@@ -35,19 +35,25 @@
   </url>
   
   <url>
-    <loc>https://www.julienrouse.com/blog/open_invite/</loc>
+    <loc>https://www.julienrouse.com/blog/open-invite/</loc>
     <lastmod>2020-10-17T19:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/tags/</loc>
+    <lastmod>2020-10-17T19:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/tags/open-invite/</loc>
+    <lastmod>2020-10-17T19:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://www.julienrouse.com/blog/scaling_code_review/</loc>
     <lastmod>2020-10-10T19:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.julienrouse.com/tags/</loc>
-    <lastmod>2020-10-10T19:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
