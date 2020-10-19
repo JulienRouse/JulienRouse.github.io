@@ -1,14 +1,65 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on I break things often and sometimes I manage to fix them</title>
+    <title>Blog on I break things often. Sometimes I manage to fix them</title>
     <link>https://www.julienrouse.com/blog/</link>
-    <description>Recent content in Blog on I break things often and sometimes I manage to fix them</description>
+    <description>Recent content in Blog on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Oct 2020 19:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2020 19:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://www.julienrouse.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Open Invite</title>
+      <link>https://www.julienrouse.com/blog/open_invite/</link>
+      <pubDate>Sat, 17 Oct 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/open_invite/</guid>
+      <description>&lt;p&gt;I enjoy programming, fencing (especially sabre), history and sustainable development.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Open invite&lt;/strong&gt;. If you want to talk about any of those subject, or if you are looking for help solving a problem, feel free to reach out to me and let&amp;rsquo;s have a chat, I want to talk to you. &lt;a href=&#34;mailto:conta-remove-ct@julienrouse.com&#34;&gt;Email me at conta&lt;span style=&#34;display:none&#34;&gt;-remove-&lt;/span&gt;ct@julienrouse.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Doing so, I follow the steps of &lt;a href=&#34;https://www.kalzumeus.com/standing-invitation/&#34;&gt;patio11&lt;/a&gt;, &lt;a href=&#34;https://lars.hupel.info/about/&#34;&gt;Lars&lt;/a&gt; and &lt;a href=&#34;https://www.hillelwayne.com/open-invite/&#34;&gt;Hillel&lt;/a&gt; (and probably more people I am not aware of). More than one time I was wondering if I could bother someone to exchange about a piece they wrote but I could not muster the courage. These guys make it very clear that you are welcome to reach out to them and it is awesome.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;I like getting email&lt;/strong&gt;. I can&amp;rsquo;t promess you I&amp;rsquo;ll reply quickly, nor that I will reply at all but I usually read all of my mail. If I don&amp;rsquo;t respond in a timely manner, don&amp;rsquo;t hesitate to send me another mail&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;I like a good discussion&lt;/strong&gt;. I like people challenging me, telling me about things I did not know, challenging them back and exchanging ideas.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;I like sharing experiences&lt;/strong&gt;. The nicest interactions I had in the past are usually having a experienced peer help me grow, or me helping a younger peer get on the right track to solve their problem. If you like that kind of exchange, talk to me!&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;I like meeting people&lt;/strong&gt; If you are around Montreal, hit me up, we might get a tea or an ice-cream and talk. (Edit: when COVID will be less of a problem)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;I like programming and software&lt;/strong&gt;. This is even more true lately when I have to deal with something related to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Lisp (I&amp;rsquo;m a bit familiar with Common Lisp and Clojure but anything Lisp-related I&amp;rsquo;m interested)&lt;/li&gt;
+&lt;li&gt;Functionnal programming&lt;/li&gt;
+&lt;li&gt;Meta-programming&lt;/li&gt;
+&lt;li&gt;Esoteric programming languages (see Piet, brainfuck, J&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;Datalog (or query-language or database that are not mainstream but with a good foundation)&lt;/li&gt;
+&lt;li&gt;Type System and good/clever use of them&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Something you can help &lt;em&gt;me&lt;/em&gt; with:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I you see anything wrong with this website, please let me know!&lt;/li&gt;
+&lt;li&gt;If you want to react to anything I wrote on a post, please let me know!&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;m always interested to hear about new essays or papers on software engineering. If you have wrote one, or found one and you&amp;rsquo;d like to share, please let me know!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And also:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;I don&amp;rsquo;t like social media&lt;/strong&gt; Most of the time I would not want to have a nice exchange on a social media.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;I don&amp;rsquo;t like phone call&lt;/strong&gt; If you want to speak to me by phone, marry a Rousé.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Scaling Code Review</title>
@@ -202,6 +253,22 @@ I&amp;rsquo;d like to try this one, but I&amp;rsquo;m a bit torn on how to choos
 &lt;p&gt;As an aside, the team did a really good job to come up with ideas on how to improve, and the process was very smooth. All the frustration from the previous weeks on this topic turned into a very productive 30 min meeting on getting better at it.&lt;/p&gt;
 
 &lt;p&gt;It does not always end up so well, but I think it is also the result of our team growing together. Whatever the outcome of our experiment is, we are still a better team this week that the previous one and that is amazing to witness.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Review: the Art of Code</title>
+      <link>https://www.julienrouse.com/blog/presentation_the_art_of_code/</link>
+      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/presentation_the_art_of_code/</guid>
+      <description>
+
+&lt;h1 id=&#34;the-art-of-code-https-www-youtube-com-watch-v-6avjhac3c2u-feature-emb-logo&#34;&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=6avJHaC3C2U&amp;amp;feature=emb_logo&#34;&gt;The Art of Code&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=6avJHaC3C2U&amp;amp;feature=emb_logo&#34;&gt;In his talk&lt;/a&gt;, Dylan Beattie does a really good recap about what kind of art has been enabled by using computers.&lt;/p&gt;
+
+&lt;p&gt;From Conway&amp;rsquo;s Game of Life, to Mandelbrot set, then going on about the use of CGI in the movie industry, then moving on to code as an art like the Obsfucated C Challenge, the magic of Quines (program that prints themselves when run). It goes on about esoteric programming languages, Whitespace, Piet, Shakespeare and then the last part is dedicated to his own eso-lang, Rockstar.&lt;/p&gt;
 </description>
     </item>
     
@@ -4179,11 +4246,12 @@ To solve that little problem, we are going to use reactive declarations&lt;sup c
 &lt;li&gt;&lt;a href=&#34;https://www.julienrouse.com/blog/introduction-to-svelte/&#34;&gt;introduction to Svelte&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.julienrouse.com/blog/tutorial-for-idle-game-svelte-part1/&#34;&gt;part1: Start of the tutorial: making a Derivative Idle clone with Svelte&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.julienrouse.com/blog/tutorial-for-idle-game-svelte-part2/&#34;&gt;part2: Going further with Svelte using components and props&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.julienrouse.com/blog/tutorial-for-idle-game-svelte-part3/&#34;&gt;part3: Adding upgrade to the game&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;svelte&#34;&gt;Svelte&lt;/h2&gt;
 
-&lt;p&gt;Svelte is in competition with React, Angular and other framework to build  reactive Single Page Application, but the difference is Svelte shifts the work from the browser to the compiler. It still delivers Reactive Single page application but with a very reduced size. Similar initiative can be found as well with Aurelia&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Svelte is in competition with React, Angular and other framework to build reactive Single Page Application, but the difference is Svelte shifts the work from the browser to the compiler. It still delivers Reactive Single page application but with a very reduced size. Similar initiative can be found as well with Aurelia&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
 &lt;p&gt;The project went to version 3 a month ago (early may 2019), I think it&amp;rsquo;s a good time to try it out :)&lt;/p&gt;
 
@@ -4218,7 +4286,7 @@ To solve that little problem, we are going to use reactive declarations&lt;sup c
 &lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt; My name is {$name} &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt; 
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;My name is {$name}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- Here $name is a reference to name, a value in a state store --&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4233,8 +4301,8 @@ To solve that little problem, we are going to use reactive declarations&lt;sup c
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;{{ #if condition }}
- &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt; Inside the if &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
-{{ /if}}  &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;Inside the if&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+{{ /if}}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;But I guess it&amp;rsquo;s more a matter of personal taste.&lt;/p&gt;
@@ -4317,7 +4385,7 @@ To solve that little problem, we are going to use reactive declarations&lt;sup c
 &lt;p&gt;What I was hoping to get out of it:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Getting access to mission needing Agile/Scrum experience. I had some exposure to Scrum and Kanban during a 8 weeks summer job in an web agency in the past (using Java, Spring and some JavaScript and jQuery) but a few  times this year it was not enough to be selected for that mission.&lt;/li&gt;
+&lt;li&gt;Getting access to mission needing Agile/Scrum experience. I had some exposure to Scrum and Kanban during a 8 weeks summer job in an web agency in the past (using Java, Spring and some JavaScript and jQuery) but a few times this year it was not enough to be selected for that mission.&lt;/li&gt;
 &lt;li&gt;Actually learning more about Scrum. As it turns out, I knew already most of the topics covered (more than what I anticipated).&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -4358,7 +4426,7 @@ To solve that little problem, we are going to use reactive declarations&lt;sup c
 &lt;li&gt;Read the &lt;a href=&#34;https://www.scrumguides.org/index.html&#34;&gt;Scrum Guide&lt;/a&gt; (I recommend in English because the exam is exclusively in English)&lt;/li&gt;
 &lt;li&gt;Do a lot of open assessments again: &lt;a href=&#34;https://www.scrum.org/open-assessments/scrum-developer-open&#34;&gt;Scrum Developper Open&lt;/a&gt;, &lt;a href=&#34;https://www.scrum.org/open-assessments/scrum-open&#34;&gt;Scrum Open&lt;/a&gt; and also &lt;a href=&#34;https://www.scrum.org/open-assessments/product-owner-open&#34;&gt;Product Owner Open&lt;/a&gt; and &lt;a href=&#34;https://www.scrum.org/open-assessments/nexus-open&#34;&gt;Nexus Open&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Space out your learning, try to do it a little bit every day for at least 2-3 weeks instead of cramming all practice in 1-2 days. You might be able to take the exam successfully if you cram, but you won&amp;rsquo;t build long term memories about what you learn. And while having the certification is great, gaining the knowledge for a long time is more important.&lt;/li&gt;
-&lt;li&gt;Read books and articles about Scrum, Agility, TDD, refactoring, Continuous Integration, Continuous Deployment,  and more! The &lt;a href=&#34;http://agilemanifesto.org/&#34;&gt;Agile Manifesto&lt;/a&gt; is a good start, then look at the &lt;a href=&#34;https://www.scrum.org/resources/suggested-reading-professional-scrum-developer&#34;&gt;Suggested Read List for PSD&lt;/a&gt; on scrum.org. (Mind that most of those are affiliate links.)&lt;/li&gt;
+&lt;li&gt;Read books and articles about Scrum, Agility, TDD, refactoring, Continuous Integration, Continuous Deployment, and more! The &lt;a href=&#34;http://agilemanifesto.org/&#34;&gt;Agile Manifesto&lt;/a&gt; is a good start, then look at the &lt;a href=&#34;https://www.scrum.org/resources/suggested-reading-professional-scrum-developer&#34;&gt;Suggested Read List for PSD&lt;/a&gt; on scrum.org. (Mind that most of those are affiliate links.)&lt;/li&gt;
 &lt;li&gt;If you have experienced scrum practitioners around you available to help you, jump on the occasion. As with most discipline, the insights of an experienced peer can really help you increase your knowledge very quickly.&lt;/li&gt;
 &lt;/ul&gt;
 

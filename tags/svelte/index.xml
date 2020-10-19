@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>svelte on I break things often and sometimes I manage to fix them</title>
+    <title>svelte on I break things often. Sometimes I manage to fix them</title>
     <link>https://www.julienrouse.com/tags/svelte/</link>
-    <description>Recent content in svelte on I break things often and sometimes I manage to fix them</description>
+    <description>Recent content in svelte on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 18 Oct 2019 20:00:00 +0000</lastBuildDate>
@@ -3497,11 +3497,12 @@ To solve that little problem, we are going to use reactive declarations&lt;sup c
 &lt;li&gt;&lt;a href=&#34;https://www.julienrouse.com/blog/introduction-to-svelte/&#34;&gt;introduction to Svelte&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.julienrouse.com/blog/tutorial-for-idle-game-svelte-part1/&#34;&gt;part1: Start of the tutorial: making a Derivative Idle clone with Svelte&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.julienrouse.com/blog/tutorial-for-idle-game-svelte-part2/&#34;&gt;part2: Going further with Svelte using components and props&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.julienrouse.com/blog/tutorial-for-idle-game-svelte-part3/&#34;&gt;part3: Adding upgrade to the game&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;svelte&#34;&gt;Svelte&lt;/h2&gt;
 
-&lt;p&gt;Svelte is in competition with React, Angular and other framework to build  reactive Single Page Application, but the difference is Svelte shifts the work from the browser to the compiler. It still delivers Reactive Single page application but with a very reduced size. Similar initiative can be found as well with Aurelia&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Svelte is in competition with React, Angular and other framework to build reactive Single Page Application, but the difference is Svelte shifts the work from the browser to the compiler. It still delivers Reactive Single page application but with a very reduced size. Similar initiative can be found as well with Aurelia&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
 &lt;p&gt;The project went to version 3 a month ago (early may 2019), I think it&amp;rsquo;s a good time to try it out :)&lt;/p&gt;
 
@@ -3536,7 +3537,7 @@ To solve that little problem, we are going to use reactive declarations&lt;sup c
 &lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt; My name is {$name} &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt; 
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;My name is {$name}&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- Here $name is a reference to name, a value in a state store --&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3551,8 +3552,8 @@ To solve that little problem, we are going to use reactive declarations&lt;sup c
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;{{ #if condition }}
- &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt; Inside the if &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
-{{ /if}}  &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;Inside the if&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
+{{ /if}}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;But I guess it&amp;rsquo;s more a matter of personal taste.&lt;/p&gt;

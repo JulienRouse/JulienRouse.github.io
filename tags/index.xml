@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on I break things often and sometimes I manage to fix them</title>
+    <title>Tags on I break things often. Sometimes I manage to fix them</title>
     <link>https://www.julienrouse.com/tags/</link>
-    <description>Recent content in Tags on I break things often and sometimes I manage to fix them</description>
+    <description>Recent content in Tags on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 Oct 2020 19:00:00 +0000</lastBuildDate>
@@ -25,6 +25,24 @@
       <pubDate>Sat, 10 Oct 2020 19:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/tags/improving/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eso-lang</title>
+      <link>https://www.julienrouse.com/tags/eso-lang/</link>
+      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/eso-lang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>review</title>
+      <link>https://www.julienrouse.com/tags/review/</link>
+      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/review/</guid>
       <description></description>
     </item>
     

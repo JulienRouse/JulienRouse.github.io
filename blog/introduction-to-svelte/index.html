@@ -6,8 +6,8 @@
   <title>Introduction to Svelte</title>
   <meta property="og:title" content="Introduction to Svelte" />
   <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
-  <meta name="description" content="I break things often and sometimes I manage to fix them">
-  <meta property="og:description" content="I break things often and sometimes I manage to fix them" />
+  <meta name="description" content="I break things often. Sometimes I manage to fix them">
+  <meta property="og:description" content="I break things often. Sometimes I manage to fix them" />
   <meta name="author" content="Julien Rousé">
   
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -122,11 +122,12 @@
 <li><a href="/blog/introduction-to-svelte/">introduction to Svelte</a></li>
 <li><a href="/blog/tutorial-for-idle-game-svelte-part1/">part1: Start of the tutorial: making a Derivative Idle clone with Svelte</a></li>
 <li><a href="/blog/tutorial-for-idle-game-svelte-part2/">part2: Going further with Svelte using components and props</a></li>
+<li><a href="/blog/tutorial-for-idle-game-svelte-part3/">part3: Adding upgrade to the game</a></li>
 </ul>
 
 <h2 id="svelte">Svelte</h2>
 
-<p>Svelte is in competition with React, Angular and other framework to build  reactive Single Page Application, but the difference is Svelte shifts the work from the browser to the compiler. It still delivers Reactive Single page application but with a very reduced size. Similar initiative can be found as well with Aurelia<sup class="footnote-ref" id="fnref:5"><a href="#fn:5">5</a></sup>.</p>
+<p>Svelte is in competition with React, Angular and other framework to build reactive Single Page Application, but the difference is Svelte shifts the work from the browser to the compiler. It still delivers Reactive Single page application but with a very reduced size. Similar initiative can be found as well with Aurelia<sup class="footnote-ref" id="fnref:5"><a href="#fn:5">5</a></sup>.</p>
 
 <p>The project went to version 3 a month ago (early may 2019), I think it&rsquo;s a good time to try it out :)</p>
 
@@ -161,7 +162,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span>&gt; My name is {$name} &lt;/<span style="color:#f92672">p</span>&gt; 
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">p</span>&gt;My name is {$name}&lt;/<span style="color:#f92672">p</span>&gt;
 <span style="color:#75715e">&lt;!-- Here $name is a reference to name, a value in a state store --&gt;</span></code></pre></td></tr></table>
 </div>
 </div>
@@ -176,8 +177,8 @@
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{{ #if condition }}
- &lt;<span style="color:#f92672">p</span>&gt; Inside the if &lt;/<span style="color:#f92672">p</span>&gt;
-{{ /if}}  </code></pre></td></tr></table>
+&lt;<span style="color:#f92672">p</span>&gt;Inside the if&lt;/<span style="color:#f92672">p</span>&gt;
+{{ /if}}</code></pre></td></tr></table>
 </div>
 </div>
 <p>But I guess it&rsquo;s more a matter of personal taste.</p>
@@ -240,6 +241,9 @@
     
 </ul>
 
+
+  <div class="open-invite-blog">If you have questions, suggestions or want to discuss about this subject, 
+    I'd be more than happy if you reach me at <a href="mailto:conta-remove-ct@julienrouse.com">conta<span style="display:none">-remove-</span>ct@julienrouse.com</a>. See also my <a href="/blog/open_invite">open invite</a></div>
   </div>
 </section>
 

@@ -1,0 +1,30 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>review on I break things often. Sometimes I manage to fix them</title>
+    <link>https://www.julienrouse.com/tags/review/</link>
+    <description>Recent content in review on I break things often. Sometimes I manage to fix them</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jun 2020 19:00:00 +0400</lastBuildDate>
+    
+        <atom:link href="https://www.julienrouse.com/tags/review/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Review: the Art of Code</title>
+      <link>https://www.julienrouse.com/blog/presentation_the_art_of_code/</link>
+      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/presentation_the_art_of_code/</guid>
+      <description>
+
+&lt;h1 id=&#34;the-art-of-code-https-www-youtube-com-watch-v-6avjhac3c2u-feature-emb-logo&#34;&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=6avJHaC3C2U&amp;amp;feature=emb_logo&#34;&gt;The Art of Code&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=6avJHaC3C2U&amp;amp;feature=emb_logo&#34;&gt;In his talk&lt;/a&gt;, Dylan Beattie does a really good recap about what kind of art has been enabled by using computers.&lt;/p&gt;
+
+&lt;p&gt;From Conway&amp;rsquo;s Game of Life, to Mandelbrot set, then going on about the use of CGI in the movie industry, then moving on to code as an art like the Obsfucated C Challenge, the magic of Quines (program that prints themselves when run). It goes on about esoteric programming languages, Whitespace, Piet, Shakespeare and then the last part is dedicated to his own eso-lang, Rockstar.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>	
