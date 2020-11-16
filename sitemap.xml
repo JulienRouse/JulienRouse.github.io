@@ -103,6 +103,12 @@
   </url>
   
   <url>
+    <loc>https://www.julienrouse.com/tags/short/</loc>
+    <lastmod>2020-06-16T19:00:00+04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.julienrouse.com/blog/introduction_to_mutation_testing/</loc>
     <lastmod>2020-05-09T19:00:00+00:00</lastmod>
   </url>
@@ -213,12 +219,6 @@
   
   <url>
     <loc>https://www.julienrouse.com/tags/not-the-onion/</loc>
-    <lastmod>2019-07-06T20:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.julienrouse.com/tags/short/</loc>
     <lastmod>2019-07-06T20:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
