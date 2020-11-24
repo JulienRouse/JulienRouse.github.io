@@ -5,7 +5,7 @@
     <description>Recent content in Tags on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Nov 2020 19:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2020 19:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://www.julienrouse.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,9 +13,18 @@
     <item>
       <title>nanowrimo2020</title>
       <link>https://www.julienrouse.com/tags/nanowrimo2020/</link>
-      <pubDate>Sun, 01 Nov 2020 19:00:00 +0000</pubDate>
+      <pubDate>Sun, 22 Nov 2020 19:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/tags/nanowrimo2020/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>post-mortem</title>
+      <link>https://www.julienrouse.com/tags/post-mortem/</link>
+      <pubDate>Sun, 22 Nov 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/post-mortem/</guid>
       <description></description>
     </item>
     
@@ -241,15 +250,6 @@
       <pubDate>Sat, 18 May 2019 18:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/tags/certification/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>post-mortem</title>
-      <link>https://www.julienrouse.com/tags/post-mortem/</link>
-      <pubDate>Sat, 18 May 2019 18:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/post-mortem/</guid>
       <description></description>
     </item>
     

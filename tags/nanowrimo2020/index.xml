@@ -5,10 +5,270 @@
     <description>Recent content in nanowrimo2020 on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Nov 2020 19:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2020 19:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://www.julienrouse.com/tags/nanowrimo2020/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>&#34;Systemctl not found&#34; while installing MongoDB server</title>
+      <link>https://www.julienrouse.com/blog/systemctl_not_found_while_installing_mongodb_server/</link>
+      <pubDate>Sun, 22 Nov 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/systemctl_not_found_while_installing_mongodb_server/</guid>
+      <description>
+
+&lt;h1 id=&#34;post-mortem&#34;&gt;Post-mortem&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;This article was drafted during &lt;a href=&#34;https://www.julienrouse.com/blog/my-nanowrimo-in-2020/&#34;&gt;NaNoWriMo 2020&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I hit a frustrating problem while deploying to production at work so here is a little postmortem.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-problem&#34;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;The problem came from a Jenkins build, from a repository that had not been updated since a week. We wanted to deploy from a &lt;em&gt;release&lt;/em&gt; branch to &lt;em&gt;master&lt;/em&gt;. The error was from an installation of MongoDB server 4.2 in a Dockerfile (not an official Dockerfile from MongoDB but an install of MongoDB server in our own Dockerfile).&lt;/p&gt;
+
+&lt;h2 id=&#34;spoiler-a-solution&#34;&gt;Spoiler: a solution&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ll give right away a solution for people that don&amp;rsquo;t want to read all of it.&lt;/p&gt;
+
+&lt;p&gt;The problem was that MongoDB server 4.3 and 4.4 had a change in a post-installation script (only for Debian I think) that adds a call to &lt;code&gt;systemctl&lt;/code&gt;. That change was backported to MongoDB server 4.2 in October, and was part of an update to the &lt;code&gt;deb&lt;/code&gt; package &lt;code&gt;mongodb-server&lt;/code&gt; around November 15.&lt;/p&gt;
+
+&lt;p&gt;If &lt;code&gt;systemctl&lt;/code&gt; is not present (in my case, in the Docker container based of a Debian image) when the post-installation script is called, the installation of the package fails and the build breaks.&lt;/p&gt;
+
+&lt;p&gt;To circumvent that problem, you can run &lt;code&gt;ln -s /bin/true /usr/local/bin/systemctl&lt;/code&gt; (or &lt;code&gt;RUN -s /bin/true /usr/local/bin/systemctl&lt;/code&gt; in the Dockerfile) before trying to install &lt;code&gt;mongodb-server&lt;/code&gt;. This will skip the &lt;code&gt;systemctl&lt;/code&gt; call.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;You should probably not do that if you need &lt;code&gt;systemctl&lt;/code&gt; elsewhere in your system though.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;starting-the-investigation&#34;&gt;Starting the investigation&lt;/h2&gt;
+
+&lt;p&gt;At first I thought our deployment pipeline had a hiccup. The build was fine on the &lt;em&gt;develop&lt;/em&gt; branch and on the &lt;em&gt;release&lt;/em&gt; branch. It sat there for a full week with no problem. I also checked the last commit from the week before and it was a change to the frequency of a cron job. Not really a &lt;strong&gt;build-breaking&lt;/strong&gt; change usually.&lt;/p&gt;
+
+&lt;p&gt;I launched the build again. Our infrastructure is a bit weak, we have failing build every other day that can be successful by launching them again. This time it did not solve the problem. I also relaunched the build in &lt;em&gt;develop&lt;/em&gt; to see if it was a problem with the environment, but it also failed.&lt;/p&gt;
+
+&lt;p&gt;I could not pinpoint the problem yet but it seemed as if it were not from the new code, nor from the pipeline. Also, the Dockerfile used an official node image, with an exact version (like &lt;code&gt;node:X.X.X-slim&lt;/code&gt;) so I expected things to be pretty stable between each run. The &lt;code&gt;node&lt;/code&gt; image is itself based on &lt;code&gt;debian-stretch&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div style=&#34;width:100%;height:0;padding-bottom:56%;position:relative;&#34;&gt;&lt;iframe src=&#34;https://giphy.com/embed/l0MYM98IwMYDIn1fO&#34; width=&#34;100%&#34; height=&#34;100%&#34; style=&#34;position:absolute&#34; frameBorder=&#34;0&#34; class=&#34;giphy-embed&#34; allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://giphy.com/gifs/sherlock-bbc-one-l0MYM98IwMYDIn1fO&#34;&gt;&lt;/a&gt;&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;I summoned my inner &lt;em&gt;Sherlock Holmes&lt;/em&gt; and went investigating further.&lt;/p&gt;
+
+&lt;h2 id=&#34;looking-more-thoroughly-at-the-error-message&#34;&gt;Looking more thoroughly at the error message&lt;/h2&gt;
+
+&lt;p&gt;First tries did not work. Now I had to dig into the error message a little more.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;6
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lib&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dpkg&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;info&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;mongodb&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;org&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;server&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;postinst&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;43&lt;/span&gt;: &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lib&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dpkg&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;info&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;mongodb&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;org&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;server&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;postinst&lt;/span&gt;: &lt;span style=&#34;color:#a6e22e&#34;&gt;systemctl&lt;/span&gt;: &lt;span style=&#34;color:#a6e22e&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;found&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;dpkg&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;error&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;processing&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mongodb&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;org&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;server&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;--&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;configure&lt;/span&gt;):
+ &lt;span style=&#34;color:#a6e22e&#34;&gt;subprocess&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;installed&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;post&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;installation&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;script&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;returned&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;error&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;exit&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;status&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;127&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;dpkg&lt;/span&gt;: &lt;span style=&#34;color:#a6e22e&#34;&gt;dependency&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;problems&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;prevent&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;configuration&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;of&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mongodb&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;org&lt;/span&gt;:
+ &lt;span style=&#34;color:#a6e22e&#34;&gt;mongodb&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;org&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;depends&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;on&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mongodb&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;org&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;server&lt;/span&gt;; &lt;span style=&#34;color:#a6e22e&#34;&gt;however&lt;/span&gt;:
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;Package&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mongodb&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;org&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;server&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;is&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;configured&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;yet&lt;/span&gt;.&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The error message above contains some information:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Line 1: &lt;code&gt;/var/lib/dpkg/info/mongodb-org-server.postinst: 43: /var/lib/dpkg/info/mongodb-org-server.postinst: systemctl: not found&lt;/code&gt; means that at the line 43 of a file &lt;code&gt;mongodb-org-server.postinst&lt;/code&gt; there was a call to systemctl that failed because the program was not found&lt;/li&gt;
+&lt;li&gt;Line 2: &lt;code&gt;dpkg: error processing package mongodb-org-server (--configure):&lt;/code&gt; this one tell us that its the mongodb-org-server package called with the &lt;code&gt;--configure&lt;/code&gt; package that went badly&lt;/li&gt;
+&lt;li&gt;Line 3: &lt;code&gt;subprocess installed post-installation script returned error exit status 127&lt;/code&gt; a bit more detail for the line above, not too much info here. &lt;em&gt;This looks like a weirdly worded message&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Line 4-5-6: Other information that comes from the first messages above.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you put the first line of the error message &lt;code&gt;/var/lib/dpkg/info/mongodb-org-server.postinst: 43: /var/lib/dpkg/info/mongodb-org-server.postinst: systemctl: not found&lt;/code&gt; into a search engine, you find a SO post&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; that contained only an answer at the time and a post with a very similar error. His answer was cryptic to me, howewer, so I had to dig again.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.julienrouse.com/img/blog_19_unhelpful_SO_answer.png&#34;
+         alt=&#34;Answer that says &amp;#39;echo ln to /bin/systemctl&amp;#39;&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;In the SO post, there is a link to the official Dockerfile for MongoDB 4.4 so I went to take a look.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-truth-is-in-the-dockerfile&#34;&gt;The truth is in the Dockerfile&lt;/h2&gt;
+
+&lt;p&gt;After reading it a bit and searching for &lt;code&gt;systemctl&lt;/code&gt;, I found this line in the Dockerfile&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# starting with MongoDB 4.3, the postinst for server includes &amp;#34;systemctl daemon-reload&amp;#34; (and we don&amp;#39;t have &amp;#34;systemctl&amp;#34;)&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ln -s /bin/&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt; /usr/local/bin/systemctl \&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;So that was a good hint. Thanks to all the developers that comments their code :) I tried to add &lt;code&gt;RUN ln -s /bin/true /usr/local/bin/systemctl&lt;/code&gt; to my Dockerfile and it worked! The build was fine now.&lt;/p&gt;
+
+&lt;p&gt;But it&amp;rsquo;s not over. I had to understand it to see if it would come bite our project later or if this adds some constraints on the repository because we skipped a step in a post-install script.&lt;/p&gt;
+
+&lt;h2 id=&#34;understanding-why-that-fixed-the-problem&#34;&gt;Understanding why that fixed the problem&lt;/h2&gt;
+
+&lt;h3 id=&#34;the-post-install-script-and-systemctl&#34;&gt;The post-install script and systemctl&lt;/h3&gt;
+
+&lt;p&gt;The part that failed is here&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Check for changes to the service file&lt;/span&gt;
+systemctl daemon-reload&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;systemctl&lt;/code&gt; is a part of a group of software called &lt;code&gt;systemd&lt;/code&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;.
+&lt;code&gt;systemd&lt;/code&gt; &lt;em&gt;provides a system and service manager that runs as PID 1 and starts the rest of the system&lt;/em&gt; (from their website).&lt;/p&gt;
+
+&lt;h3 id=&#34;what-is-bin-true&#34;&gt;What is &lt;code&gt;/bin/true&lt;/code&gt;?&lt;/h3&gt;
+
+&lt;p&gt;I discovered &lt;code&gt;/bin/true&lt;/code&gt; as a command (&lt;code&gt;/bin/false&lt;/code&gt; exists too!). It&amp;rsquo;s a command that you can use to always return 0 (which is a truthy value in the shell). This is like using a constant for true in shell scripts.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-is-ln&#34;&gt;What is &lt;code&gt;ln&lt;/code&gt;?&lt;/h3&gt;
+
+&lt;p&gt;I knew about &lt;code&gt;ln&lt;/code&gt; for links between files on the system before but I never saw it used to replace the comportment of a command by another one.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ln -s /bin/true /usr/local/bin/systemctl&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This command creates a &lt;em&gt;symbolic link&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt; (not a &lt;em&gt;hard link&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;) from &lt;code&gt;systemctl&lt;/code&gt; to &lt;code&gt;/bin/true&lt;/code&gt;. Like a pointer to it: when you call &lt;code&gt;systemctl&lt;/code&gt;, it will redirect you to the &lt;code&gt;true&lt;/code&gt; command, and execute it instead.&lt;/p&gt;
+
+&lt;h3 id=&#34;putting-it-all-together&#34;&gt;Putting it all together&lt;/h3&gt;
+
+&lt;p&gt;So we have seen that using &lt;code&gt;ln&lt;/code&gt; in combination with &lt;code&gt;/bin/true&lt;/code&gt; and &lt;code&gt;/usr/local/bin/systemctl&lt;/code&gt; did work to allow the build to succeed. But is that right to make it build with a step that is skipped?&lt;/p&gt;
+
+&lt;p&gt;In fact, I don&amp;rsquo;t know this one for sure (if you know tell me please). My understanding is that the post-install script uses this command to update the configuration of a service &lt;em&gt;if it exists&lt;/em&gt;. But in my case I don&amp;rsquo;t have it so it should not matter if I don&amp;rsquo;t update it.&lt;/p&gt;
+
+&lt;h2 id=&#34;understanding-why-it-hits-us-today-and-not-before&#34;&gt;Understanding why it hits us today and not before?&lt;/h2&gt;
+
+&lt;p&gt;Another thing I would like to understand is why this happened to us this Thursday and not a week ago on the last build, or even a few months before? Maybe answering that could help prevent other build failure in the future.&lt;/p&gt;
+
+&lt;p&gt;As it turns out, looking around in the repository for the Dockerfile for MongoDB where I found the trick to solve my problem, there is a comment&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# starting with MongoDB 4.3 (and backported to 4.0 and 4.2??),&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# the postinst for server includes an unconditional &amp;#34;systemctl daemon-reload&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# (and we don&amp;#39;t have anything for &amp;#34;systemctl&amp;#34; to talk to leading to&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#  dbus errors and failed package installs)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;It indicates that the change for 4.3+ might have been backported, let&amp;rsquo;s find out.&lt;/p&gt;
+
+&lt;p&gt;The following commit&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;#fn:8&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.julienrouse.com/img/blog_19_call_to_systemctl_big.png&#34;
+         alt=&#34;Git history for the post-install script, version 4.2&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;is for the change in February and it has been backported to 4.2&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:9&#34;&gt;&lt;a href=&#34;#fn:9&#34;&gt;9&lt;/a&gt;&lt;/sup&gt; on October 15.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.julienrouse.com/img/blog_19_v4.2_history_big.png&#34;
+         alt=&#34;Git history for the post-install script, version 4.2&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;(and has been backported to 4.0&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:10&#34;&gt;&lt;a href=&#34;#fn:10&#34;&gt;10&lt;/a&gt;&lt;/sup&gt; then reverted on November 11)&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.julienrouse.com/img/blog_19_v4.0_history_big.png&#34;
+         alt=&#34;Git history for the post-install script, version 4.0&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;It&amp;rsquo;s getting closer but not quite, we last built our project successfully November 12, and it failed November 19. So what could have caused this?&lt;/p&gt;
+
+&lt;h3 id=&#34;finding-when-the-debian-package-was-updated&#34;&gt;Finding when the Debian package was updated&lt;/h3&gt;
+
+&lt;p&gt;My best guess right now is that the Debian package &lt;code&gt;mongodb-server&lt;/code&gt; we use in the Dockerfile was updated between the two dates.&lt;/p&gt;
+
+&lt;p&gt;I ended up looking at &lt;a href=&#34;https://packages.debian.org/stretch/database/mongodb-server&#34;&gt;a website for Debian package&lt;/a&gt;, trying to get the changelog but I hit a 404 on the changelog page. Not helpful.&lt;/p&gt;
+
+&lt;p&gt;I also found the &lt;a href=&#34;https://debian.pkgs.org/9/debian-main-amd64/mongodb-server_3.2.11-2+deb9u1_amd64.deb.html&#34;&gt;dpkg list&lt;/a&gt; for &lt;code&gt;mongodb-server&lt;/code&gt; but I dis not find a date of update in there.&lt;/p&gt;
+
+&lt;p&gt;Right now, I don&amp;rsquo;t know how to get the information apart from contacting a maintainer directly. I&amp;rsquo;ll edit the post when/if I find the response.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-couple-other-considerations&#34;&gt;A couple other considerations&lt;/h2&gt;
+
+&lt;h3 id=&#34;putting-it-in-the-so-post&#34;&gt;Putting it in the SO post&lt;/h3&gt;
+
+&lt;p&gt;I tried to &lt;a href=&#34;https://stackoverflow.com/a/64949118/3729797&#34;&gt;recap what I learned in the original SO post&lt;/a&gt; I found at first to help others in the same boat.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://www.julienrouse.com/img/blog_19_my_SO_answer.png&#34;
+         alt=&#34;My take on answering the SO post&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;Amusingly, the day just before I wrote my answer, someone answered as well in this question. It would have saved time to me but I would not have looked into the problem as much but I am glad I did, I discovered a lot of stuff.&lt;/p&gt;
+
+&lt;h3 id=&#34;not-deploying-into-master-at-4-30p-m&#34;&gt;Not deploying into master at 4.30p.m.&lt;/h3&gt;
+
+&lt;p&gt;This one should be common sense but we hit this problem around 4.30p.m. on a Thursday and that was not fun. It did not break anything but it add a lot of stress to break a build at the time when you just want to end your day.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;d like to thank my colleague Maxime who was with me at that time and did some initial investigation on the Jenkins builds with me.&lt;/p&gt;
+
+&lt;h3 id=&#34;maybe-another-solution&#34;&gt;Maybe another solution?&lt;/h3&gt;
+
+&lt;p&gt;While I looked around, I tried to search with &lt;code&gt;systemctl not found&lt;/code&gt; into a search engine and found another SO post&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:11&#34;&gt;&lt;a href=&#34;#fn:11&#34;&gt;11&lt;/a&gt;&lt;/sup&gt; that proposed to install &lt;code&gt;systemd&lt;/code&gt;. I did not try it but I expect it might have worked.&lt;/p&gt;
+
+&lt;p&gt;But it is not the relevant solution for me. We would not use &lt;code&gt;systemd&lt;/code&gt; or &lt;code&gt;systemctl&lt;/code&gt; in this repository so I feel it is better to skip this part of the script we don&amp;rsquo;t need, instead of installing a &amp;ldquo;dead&amp;rdquo; package.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;All in all, this problem took only a couple of hours to get fixed but it was annoying because of the circumstances. Having a build fail because of an external package being updated is never fun.&lt;/p&gt;
+
+&lt;p&gt;But it was a good learning experience, I discovered &lt;code&gt;/bin/true&lt;/code&gt; and &lt;code&gt;systemctl&lt;/code&gt;, I got to look at the MongoDB open-source repository and the docker-library repository and the impact stayed low on the project so not too bad. 😀&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;https://stackoverflow.com/q/63709096/3729797&#34;&gt;The initial SO post&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;&lt;a href=&#34;https://github.com/docker-library/mongo/blob/master/4.4/Dockerfile#L91&#34;&gt;Official DockerFile for MongoDB server&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;&lt;a href=&#34;https://github.com/mongodb/mongo/blob/0690089e24d1ae398b3cafc348a0b9c9f5f24527/debian/mongodb-org-server.postinst#L43&#34;&gt;mongodb-org-server.postinst l43&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;&lt;a href=&#34;https://systemd.io/&#34;&gt;&lt;code&gt;systemd&lt;/code&gt;&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:4&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Symbolic_link&#34;&gt;https://en.wikipedia.org/wiki/Symbolic_link&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:5&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:6&#34;&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hard_link&#34;&gt;https://en.wikipedia.org/wiki/Hard_link&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:6&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:7&#34;&gt;&lt;a href=&#34;https://github.com/docker-library/mongo/blob/8afebb1ef44b8076f9f4472c689409835707399d/update.sh#L163&#34;&gt;https://github.com/docker-library/mongo/blob/8afebb1ef44b8076f9f4472c689409835707399d/update.sh#L163&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:7&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:8&#34;&gt;&lt;a href=&#34;https://github.com/mongodb/mongo/commit/0690089e24d1ae398b3cafc348a0b9c9f5f24527#diff-2c47e73d74099557344473c7c23c11843015cfd12316d1d19ba5b008dfa6ece2&#34;&gt;https://github.com/mongodb/mongo/commit/0690089e24d1ae398b3cafc348a0b9c9f5f24527#diff-2c47e73d74099557344473c7c23c11843015cfd12316d1d19ba5b008dfa6ece2&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:8&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:9&#34;&gt;&lt;a href=&#34;https://github.com/mongodb/mongo/blob/v4.2/debian/mongodb-org-server.postinst&#34;&gt;https://github.com/mongodb/mongo/blob/v4.2/debian/mongodb-org-server.postinst&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:9&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:10&#34;&gt;&lt;a href=&#34;https://github.com/mongodb/mongo/blob/v4.0/debian/mongodb-org-server.postinst&#34;&gt;https://github.com/mongodb/mongo/blob/v4.0/debian/mongodb-org-server.postinst&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:10&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:11&#34;&gt;&lt;a href=&#34;https://askubuntu.com/q/988266&#34;&gt;https://askubuntu.com/q/988266&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:11&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>My NaNoWriMo of 2020</title>

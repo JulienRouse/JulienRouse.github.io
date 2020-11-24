@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>&#34;Systemctl not found&#34; while installing MongoDB server</title>
+  <meta property="og:title" content="&#34;Systemctl not found&#34; while installing MongoDB server" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="I break things often. Sometimes I manage to fix them">
+  <meta property="og:description" content="I break things often. Sometimes I manage to fix them" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.55.0" />
+  
+   
+  
+  
+  <script async defer data-domain="julienrouse.com" src="https://plausible.io/js/plausible.js"></script>
+
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/systemctl_not_found_while_installing_mongodb_server/">&#34;Systemctl not found&#34; while installing MongoDB server</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">&#34;Systemctl not found&#34; while installing MongoDB server</span></h2>
+    <span class="text-primary">November 22, 2020</span>
+	
+	
+	<div id="toc-blog">
+		<nav id="TableOfContents">
+<ul>
+<li><a href="#post-mortem">Post-mortem</a>
+<ul>
+<li><a href="#the-problem">The problem</a></li>
+<li><a href="#spoiler-a-solution">Spoiler: a solution</a></li>
+<li><a href="#starting-the-investigation">Starting the investigation</a></li>
+<li><a href="#looking-more-thoroughly-at-the-error-message">Looking more thoroughly at the error message</a></li>
+<li><a href="#the-truth-is-in-the-dockerfile">The truth is in the Dockerfile</a></li>
+<li><a href="#understanding-why-that-fixed-the-problem">Understanding why that fixed the problem</a>
+<ul>
+<li><a href="#the-post-install-script-and-systemctl">The post-install script and systemctl</a></li>
+<li><a href="#what-is-bin-true">What is <code>/bin/true</code>?</a></li>
+<li><a href="#what-is-ln">What is <code>ln</code>?</a></li>
+<li><a href="#putting-it-all-together">Putting it all together</a></li>
+</ul></li>
+<li><a href="#understanding-why-it-hits-us-today-and-not-before">Understanding why it hits us today and not before?</a>
+<ul>
+<li><a href="#finding-when-the-debian-package-was-updated">Finding when the Debian package was updated</a></li>
+</ul></li>
+<li><a href="#a-couple-other-considerations">A couple other considerations</a>
+<ul>
+<li><a href="#putting-it-in-the-so-post">Putting it in the SO post</a></li>
+<li><a href="#not-deploying-into-master-at-4-30p-m">Not deploying into master at 4.30p.m.</a></li>
+<li><a href="#maybe-another-solution">Maybe another solution?</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div> 
+	
+    
+	
+
+<h1 id="post-mortem">Post-mortem</h1>
+
+<p><em>This article was drafted during <a href="/blog/my-nanowrimo-in-2020/">NaNoWriMo 2020</a>.</em></p>
+
+<p>I hit a frustrating problem while deploying to production at work so here is a little postmortem.</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>The problem came from a Jenkins build, from a repository that had not been updated since a week. We wanted to deploy from a <em>release</em> branch to <em>master</em>. The error was from an installation of MongoDB server 4.2 in a Dockerfile (not an official Dockerfile from MongoDB but an install of MongoDB server in our own Dockerfile).</p>
+
+<h2 id="spoiler-a-solution">Spoiler: a solution</h2>
+
+<p>I&rsquo;ll give right away a solution for people that don&rsquo;t want to read all of it.</p>
+
+<p>The problem was that MongoDB server 4.3 and 4.4 had a change in a post-installation script (only for Debian I think) that adds a call to <code>systemctl</code>. That change was backported to MongoDB server 4.2 in October, and was part of an update to the <code>deb</code> package <code>mongodb-server</code> around November 15.</p>
+
+<p>If <code>systemctl</code> is not present (in my case, in the Docker container based of a Debian image) when the post-installation script is called, the installation of the package fails and the build breaks.</p>
+
+<p>To circumvent that problem, you can run <code>ln -s /bin/true /usr/local/bin/systemctl</code> (or <code>RUN -s /bin/true /usr/local/bin/systemctl</code> in the Dockerfile) before trying to install <code>mongodb-server</code>. This will skip the <code>systemctl</code> call.</p>
+
+<p><em>You should probably not do that if you need <code>systemctl</code> elsewhere in your system though.</em></p>
+
+<h2 id="starting-the-investigation">Starting the investigation</h2>
+
+<p>At first I thought our deployment pipeline had a hiccup. The build was fine on the <em>develop</em> branch and on the <em>release</em> branch. It sat there for a full week with no problem. I also checked the last commit from the week before and it was a change to the frequency of a cron job. Not really a <strong>build-breaking</strong> change usually.</p>
+
+<p>I launched the build again. Our infrastructure is a bit weak, we have failing build every other day that can be successful by launching them again. This time it did not solve the problem. I also relaunched the build in <em>develop</em> to see if it was a problem with the environment, but it also failed.</p>
+
+<p>I could not pinpoint the problem yet but it seemed as if it were not from the new code, nor from the pipeline. Also, the Dockerfile used an official node image, with an exact version (like <code>node:X.X.X-slim</code>) so I expected things to be pretty stable between each run. The <code>node</code> image is itself based on <code>debian-stretch</code>.</p>
+
+<p><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/l0MYM98IwMYDIn1fO" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/sherlock-bbc-one-l0MYM98IwMYDIn1fO"></a></p></p>
+
+<p>I summoned my inner <em>Sherlock Holmes</em> and went investigating further.</p>
+
+<h2 id="looking-more-thoroughly-at-the-error-message">Looking more thoroughly at the error message</h2>
+
+<p>First tries did not work. Now I had to dig into the error message a little more.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><span style="color:#f92672">/</span><span style="color:#66d9ef">var</span><span style="color:#f92672">/</span><span style="color:#a6e22e">lib</span><span style="color:#f92672">/</span><span style="color:#a6e22e">dpkg</span><span style="color:#f92672">/</span><span style="color:#a6e22e">info</span><span style="color:#f92672">/</span><span style="color:#a6e22e">mongodb</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">postinst</span>: <span style="color:#ae81ff">43</span>: <span style="color:#f92672">/</span><span style="color:#66d9ef">var</span><span style="color:#f92672">/</span><span style="color:#a6e22e">lib</span><span style="color:#f92672">/</span><span style="color:#a6e22e">dpkg</span><span style="color:#f92672">/</span><span style="color:#a6e22e">info</span><span style="color:#f92672">/</span><span style="color:#a6e22e">mongodb</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">postinst</span>: <span style="color:#a6e22e">systemctl</span>: <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">found</span>
+<span style="color:#a6e22e">dpkg</span>: <span style="color:#66d9ef">error</span> <span style="color:#a6e22e">processing</span> <span style="color:#f92672">package</span> <span style="color:#a6e22e">mongodb</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span> (<span style="color:#f92672">--</span><span style="color:#a6e22e">configure</span>):
+ <span style="color:#a6e22e">subprocess</span> <span style="color:#a6e22e">installed</span> <span style="color:#a6e22e">post</span><span style="color:#f92672">-</span><span style="color:#a6e22e">installation</span> <span style="color:#a6e22e">script</span> <span style="color:#a6e22e">returned</span> <span style="color:#66d9ef">error</span> <span style="color:#a6e22e">exit</span> <span style="color:#a6e22e">status</span> <span style="color:#ae81ff">127</span>
+<span style="color:#a6e22e">dpkg</span>: <span style="color:#a6e22e">dependency</span> <span style="color:#a6e22e">problems</span> <span style="color:#a6e22e">prevent</span> <span style="color:#a6e22e">configuration</span> <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">mongodb</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span>:
+ <span style="color:#a6e22e">mongodb</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span> <span style="color:#a6e22e">depends</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">mongodb</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span>; <span style="color:#a6e22e">however</span>:
+  <span style="color:#a6e22e">Package</span> <span style="color:#a6e22e">mongodb</span><span style="color:#f92672">-</span><span style="color:#a6e22e">org</span><span style="color:#f92672">-</span><span style="color:#a6e22e">server</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">configured</span> <span style="color:#a6e22e">yet</span>.</pre></td></tr></table>
+</div>
+</div>
+<p>The error message above contains some information:</p>
+
+<ul>
+<li>Line 1: <code>/var/lib/dpkg/info/mongodb-org-server.postinst: 43: /var/lib/dpkg/info/mongodb-org-server.postinst: systemctl: not found</code> means that at the line 43 of a file <code>mongodb-org-server.postinst</code> there was a call to systemctl that failed because the program was not found</li>
+<li>Line 2: <code>dpkg: error processing package mongodb-org-server (--configure):</code> this one tell us that its the mongodb-org-server package called with the <code>--configure</code> package that went badly</li>
+<li>Line 3: <code>subprocess installed post-installation script returned error exit status 127</code> a bit more detail for the line above, not too much info here. <em>This looks like a weirdly worded message</em></li>
+<li>Line 4-5-6: Other information that comes from the first messages above.</li>
+</ul>
+
+<p>If you put the first line of the error message <code>/var/lib/dpkg/info/mongodb-org-server.postinst: 43: /var/lib/dpkg/info/mongodb-org-server.postinst: systemctl: not found</code> into a search engine, you find a SO post<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> that contained only an answer at the time and a post with a very similar error. His answer was cryptic to me, howewer, so I had to dig again.</p>
+
+<figure>
+    <img src="/img/blog_19_unhelpful_SO_answer.png"
+         alt="Answer that says &#39;echo ln to /bin/systemctl&#39;"/> 
+</figure>
+
+
+<p>In the SO post, there is a link to the official Dockerfile for MongoDB 4.4 so I went to take a look.</p>
+
+<h2 id="the-truth-is-in-the-dockerfile">The truth is in the Dockerfile</h2>
+
+<p>After reading it a bit and searching for <code>systemctl</code>, I found this line in the Dockerfile<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># starting with MongoDB 4.3, the postinst for server includes &#34;systemctl daemon-reload&#34; (and we don&#39;t have &#34;systemctl&#34;)</span>
+<span style="color:#75715e">&amp;&amp;</span> ln -s /bin/<span style="color:#66d9ef">true</span> /usr/local/bin/systemctl \</code></pre></td></tr></table>
+</div>
+</div>
+<p>So that was a good hint. Thanks to all the developers that comments their code :) I tried to add <code>RUN ln -s /bin/true /usr/local/bin/systemctl</code> to my Dockerfile and it worked! The build was fine now.</p>
+
+<p>But it&rsquo;s not over. I had to understand it to see if it would come bite our project later or if this adds some constraints on the repository because we skipped a step in a post-install script.</p>
+
+<h2 id="understanding-why-that-fixed-the-problem">Understanding why that fixed the problem</h2>
+
+<h3 id="the-post-install-script-and-systemctl">The post-install script and systemctl</h3>
+
+<p>The part that failed is here<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Check for changes to the service file</span>
+systemctl daemon-reload</code></pre></td></tr></table>
+</div>
+</div>
+<p><code>systemctl</code> is a part of a group of software called <code>systemd</code><sup class="footnote-ref" id="fnref:4"><a href="#fn:4">4</a></sup>.
+<code>systemd</code> <em>provides a system and service manager that runs as PID 1 and starts the rest of the system</em> (from their website).</p>
+
+<h3 id="what-is-bin-true">What is <code>/bin/true</code>?</h3>
+
+<p>I discovered <code>/bin/true</code> as a command (<code>/bin/false</code> exists too!). It&rsquo;s a command that you can use to always return 0 (which is a truthy value in the shell). This is like using a constant for true in shell scripts.</p>
+
+<h3 id="what-is-ln">What is <code>ln</code>?</h3>
+
+<p>I knew about <code>ln</code> for links between files on the system before but I never saw it used to replace the comportment of a command by another one.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ln -s /bin/true /usr/local/bin/systemctl</code></pre></td></tr></table>
+</div>
+</div>
+<p>This command creates a <em>symbolic link<sup class="footnote-ref" id="fnref:5"><a href="#fn:5">5</a></sup></em> (not a <em>hard link<sup class="footnote-ref" id="fnref:6"><a href="#fn:6">6</a></sup></em>) from <code>systemctl</code> to <code>/bin/true</code>. Like a pointer to it: when you call <code>systemctl</code>, it will redirect you to the <code>true</code> command, and execute it instead.</p>
+
+<h3 id="putting-it-all-together">Putting it all together</h3>
+
+<p>So we have seen that using <code>ln</code> in combination with <code>/bin/true</code> and <code>/usr/local/bin/systemctl</code> did work to allow the build to succeed. But is that right to make it build with a step that is skipped?</p>
+
+<p>In fact, I don&rsquo;t know this one for sure (if you know tell me please). My understanding is that the post-install script uses this command to update the configuration of a service <em>if it exists</em>. But in my case I don&rsquo;t have it so it should not matter if I don&rsquo;t update it.</p>
+
+<h2 id="understanding-why-it-hits-us-today-and-not-before">Understanding why it hits us today and not before?</h2>
+
+<p>Another thing I would like to understand is why this happened to us this Thursday and not a week ago on the last build, or even a few months before? Maybe answering that could help prevent other build failure in the future.</p>
+
+<p>As it turns out, looking around in the repository for the Dockerfile for MongoDB where I found the trick to solve my problem, there is a comment<sup class="footnote-ref" id="fnref:7"><a href="#fn:7">7</a></sup>:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># starting with MongoDB 4.3 (and backported to 4.0 and 4.2??),</span>
+<span style="color:#75715e"># the postinst for server includes an unconditional &#34;systemctl daemon-reload&#34;</span>
+<span style="color:#75715e"># (and we don&#39;t have anything for &#34;systemctl&#34; to talk to leading to</span>
+<span style="color:#75715e">#  dbus errors and failed package installs)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>It indicates that the change for 4.3+ might have been backported, let&rsquo;s find out.</p>
+
+<p>The following commit<sup class="footnote-ref" id="fnref:8"><a href="#fn:8">8</a></sup></p>
+
+<figure>
+    <img src="/img/blog_19_call_to_systemctl_big.png"
+         alt="Git history for the post-install script, version 4.2"/> 
+</figure>
+
+
+<p>is for the change in February and it has been backported to 4.2<sup class="footnote-ref" id="fnref:9"><a href="#fn:9">9</a></sup> on October 15.</p>
+
+<figure>
+    <img src="/img/blog_19_v4.2_history_big.png"
+         alt="Git history for the post-install script, version 4.2"/> 
+</figure>
+
+
+<p>(and has been backported to 4.0<sup class="footnote-ref" id="fnref:10"><a href="#fn:10">10</a></sup> then reverted on November 11)</p>
+
+<figure>
+    <img src="/img/blog_19_v4.0_history_big.png"
+         alt="Git history for the post-install script, version 4.0"/> 
+</figure>
+
+
+<p>It&rsquo;s getting closer but not quite, we last built our project successfully November 12, and it failed November 19. So what could have caused this?</p>
+
+<h3 id="finding-when-the-debian-package-was-updated">Finding when the Debian package was updated</h3>
+
+<p>My best guess right now is that the Debian package <code>mongodb-server</code> we use in the Dockerfile was updated between the two dates.</p>
+
+<p>I ended up looking at <a href="https://packages.debian.org/stretch/database/mongodb-server">a website for Debian package</a>, trying to get the changelog but I hit a 404 on the changelog page. Not helpful.</p>
+
+<p>I also found the <a href="https://debian.pkgs.org/9/debian-main-amd64/mongodb-server_3.2.11-2+deb9u1_amd64.deb.html">dpkg list</a> for <code>mongodb-server</code> but I dis not find a date of update in there.</p>
+
+<p>Right now, I don&rsquo;t know how to get the information apart from contacting a maintainer directly. I&rsquo;ll edit the post when/if I find the response.</p>
+
+<h2 id="a-couple-other-considerations">A couple other considerations</h2>
+
+<h3 id="putting-it-in-the-so-post">Putting it in the SO post</h3>
+
+<p>I tried to <a href="https://stackoverflow.com/a/64949118/3729797">recap what I learned in the original SO post</a> I found at first to help others in the same boat.</p>
+
+<figure>
+    <img src="/img/blog_19_my_SO_answer.png"
+         alt="My take on answering the SO post"/> 
+</figure>
+
+
+<p>Amusingly, the day just before I wrote my answer, someone answered as well in this question. It would have saved time to me but I would not have looked into the problem as much but I am glad I did, I discovered a lot of stuff.</p>
+
+<h3 id="not-deploying-into-master-at-4-30p-m">Not deploying into master at 4.30p.m.</h3>
+
+<p>This one should be common sense but we hit this problem around 4.30p.m. on a Thursday and that was not fun. It did not break anything but it add a lot of stress to break a build at the time when you just want to end your day.</p>
+
+<p>I&rsquo;d like to thank my colleague Maxime who was with me at that time and did some initial investigation on the Jenkins builds with me.</p>
+
+<h3 id="maybe-another-solution">Maybe another solution?</h3>
+
+<p>While I looked around, I tried to search with <code>systemctl not found</code> into a search engine and found another SO post<sup class="footnote-ref" id="fnref:11"><a href="#fn:11">11</a></sup> that proposed to install <code>systemd</code>. I did not try it but I expect it might have worked.</p>
+
+<p>But it is not the relevant solution for me. We would not use <code>systemd</code> or <code>systemctl</code> in this repository so I feel it is better to skip this part of the script we don&rsquo;t need, instead of installing a &ldquo;dead&rdquo; package.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>All in all, this problem took only a couple of hours to get fixed but it was annoying because of the circumstances. Having a build fail because of an external package being updated is never fun.</p>
+
+<p>But it was a good learning experience, I discovered <code>/bin/true</code> and <code>systemctl</code>, I got to look at the MongoDB open-source repository and the docker-library repository and the impact stayed low on the project so not too bad. 😀</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1"><a href="https://stackoverflow.com/q/63709096/3729797">The initial SO post</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2"><a href="https://github.com/docker-library/mongo/blob/master/4.4/Dockerfile#L91">Official DockerFile for MongoDB server</a>
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3"><a href="https://github.com/mongodb/mongo/blob/0690089e24d1ae398b3cafc348a0b9c9f5f24527/debian/mongodb-org-server.postinst#L43">mongodb-org-server.postinst l43</a>
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:4"><a href="https://systemd.io/"><code>systemd</code></a>
+ <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+<li id="fn:5"><a href="https://en.wikipedia.org/wiki/Symbolic_link">https://en.wikipedia.org/wiki/Symbolic_link</a>
+ <a class="footnote-return" href="#fnref:5"><sup>[return]</sup></a></li>
+<li id="fn:6"><a href="https://en.wikipedia.org/wiki/Hard_link">https://en.wikipedia.org/wiki/Hard_link</a>
+ <a class="footnote-return" href="#fnref:6"><sup>[return]</sup></a></li>
+<li id="fn:7"><a href="https://github.com/docker-library/mongo/blob/8afebb1ef44b8076f9f4472c689409835707399d/update.sh#L163">https://github.com/docker-library/mongo/blob/8afebb1ef44b8076f9f4472c689409835707399d/update.sh#L163</a>
+ <a class="footnote-return" href="#fnref:7"><sup>[return]</sup></a></li>
+<li id="fn:8"><a href="https://github.com/mongodb/mongo/commit/0690089e24d1ae398b3cafc348a0b9c9f5f24527#diff-2c47e73d74099557344473c7c23c11843015cfd12316d1d19ba5b008dfa6ece2">https://github.com/mongodb/mongo/commit/0690089e24d1ae398b3cafc348a0b9c9f5f24527#diff-2c47e73d74099557344473c7c23c11843015cfd12316d1d19ba5b008dfa6ece2</a>
+ <a class="footnote-return" href="#fnref:8"><sup>[return]</sup></a></li>
+<li id="fn:9"><a href="https://github.com/mongodb/mongo/blob/v4.2/debian/mongodb-org-server.postinst">https://github.com/mongodb/mongo/blob/v4.2/debian/mongodb-org-server.postinst</a>
+ <a class="footnote-return" href="#fnref:9"><sup>[return]</sup></a></li>
+<li id="fn:10"><a href="https://github.com/mongodb/mongo/blob/v4.0/debian/mongodb-org-server.postinst">https://github.com/mongodb/mongo/blob/v4.0/debian/mongodb-org-server.postinst</a>
+ <a class="footnote-return" href="#fnref:10"><sup>[return]</sup></a></li>
+<li id="fn:11"><a href="https://askubuntu.com/q/988266">https://askubuntu.com/q/988266</a>
+ <a class="footnote-return" href="#fnref:11"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/nanowrimo2020">nanowrimo2020</a></li>
+    
+      <li><a class="tag" href="/tags/post-mortem">post-mortem</a></li>
+    
+</ul>
+
+
+  <div class="open-invite-blog">If you have questions, suggestions or want to discuss about this subject, 
+    I'd be more than happy if you reach me at <a href="mailto:conta-remove-ct@julienrouse.com">conta<span style="display:none">-remove-</span>ct@julienrouse.com</a>. See also my <a href="/blog/open_invite">open invite</a></div>
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+
+  
+
+  
+</body>
+</html>
