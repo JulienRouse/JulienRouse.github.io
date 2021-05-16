@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on I break things often. Sometimes I manage to fix them</title>
@@ -5,85 +6,13 @@
     <description>Recent content in Tags on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Oct 2020 19:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2020 19:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://www.julienrouse.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>open-invite</title>
-      <link>https://www.julienrouse.com/tags/open-invite/</link>
-      <pubDate>Sat, 17 Oct 2020 19:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/open-invite/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>code-review</title>
-      <link>https://www.julienrouse.com/tags/code-review/</link>
-      <pubDate>Sat, 10 Oct 2020 19:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/code-review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>improving</title>
-      <link>https://www.julienrouse.com/tags/improving/</link>
-      <pubDate>Sat, 10 Oct 2020 19:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/improving/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>eso-lang</title>
-      <link>https://www.julienrouse.com/tags/eso-lang/</link>
-      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/eso-lang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>review</title>
-      <link>https://www.julienrouse.com/tags/review/</link>
-      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mutation-testing</title>
-      <link>https://www.julienrouse.com/tags/mutation-testing/</link>
-      <pubDate>Sat, 09 May 2020 19:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/mutation-testing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>quality</title>
-      <link>https://www.julienrouse.com/tags/quality/</link>
-      <pubDate>Sat, 09 May 2020 19:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/quality/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>test-automation</title>
-      <link>https://www.julienrouse.com/tags/test-automation/</link>
-      <pubDate>Sat, 09 May 2020 19:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/test-automation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>aesthetics</title>
+      <title>Aesthetics</title>
       <link>https://www.julienrouse.com/tags/aesthetics/</link>
       <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
       
@@ -92,7 +21,7 @@
     </item>
     
     <item>
-      <title>book</title>
+      <title>Book</title>
       <link>https://www.julienrouse.com/tags/book/</link>
       <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
       
@@ -101,160 +30,7 @@
     </item>
     
     <item>
-      <title>rust</title>
-      <link>https://www.julienrouse.com/tags/rust/</link>
-      <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/rust/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tla&#43;</title>
-      <link>https://www.julienrouse.com/tags/tla&#43;/</link>
-      <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/tla&#43;/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SPA</title>
-      <link>https://www.julienrouse.com/tags/spa/</link>
-      <pubDate>Fri, 18 Oct 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/spa/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>game</title>
-      <link>https://www.julienrouse.com/tags/game/</link>
-      <pubDate>Fri, 18 Oct 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/game/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>idle</title>
-      <link>https://www.julienrouse.com/tags/idle/</link>
-      <pubDate>Fri, 18 Oct 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/idle/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>svelte</title>
-      <link>https://www.julienrouse.com/tags/svelte/</link>
-      <pubDate>Fri, 18 Oct 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/svelte/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tutorial</title>
-      <link>https://www.julienrouse.com/tags/tutorial/</link>
-      <pubDate>Fri, 18 Oct 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/tutorial/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bug</title>
-      <link>https://www.julienrouse.com/tags/bug/</link>
-      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/bug/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>javascript</title>
-      <link>https://www.julienrouse.com/tags/javascript/</link>
-      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>not-the-onion</title>
-      <link>https://www.julienrouse.com/tags/not-the-onion/</link>
-      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/not-the-onion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>short</title>
-      <link>https://www.julienrouse.com/tags/short/</link>
-      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/short/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>webpack</title>
-      <link>https://www.julienrouse.com/tags/webpack/</link>
-      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/webpack/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>webpack-cli</title>
-      <link>https://www.julienrouse.com/tags/webpack-cli/</link>
-      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/webpack-cli/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>certification</title>
-      <link>https://www.julienrouse.com/tags/certification/</link>
-      <pubDate>Sat, 18 May 2019 18:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/certification/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>post-mortem</title>
-      <link>https://www.julienrouse.com/tags/post-mortem/</link>
-      <pubDate>Sat, 18 May 2019 18:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/post-mortem/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>scrum</title>
-      <link>https://www.julienrouse.com/tags/scrum/</link>
-      <pubDate>Sat, 18 May 2019 18:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/scrum/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>scrum.org</title>
-      <link>https://www.julienrouse.com/tags/scrum.org/</link>
-      <pubDate>Sat, 18 May 2019 18:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/scrum.org/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bot</title>
+      <title>Bot</title>
       <link>https://www.julienrouse.com/tags/bot/</link>
       <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
       
@@ -263,61 +39,34 @@
     </item>
     
     <item>
-      <title>nltk</title>
-      <link>https://www.julienrouse.com/tags/nltk/</link>
-      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
+      <title>Bug</title>
+      <link>https://www.julienrouse.com/tags/bug/</link>
+      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
       
-      <guid>https://www.julienrouse.com/tags/nltk/</guid>
+      <guid>https://www.julienrouse.com/tags/bug/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>praw</title>
-      <link>https://www.julienrouse.com/tags/praw/</link>
-      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
+      <title>Certification</title>
+      <link>https://www.julienrouse.com/tags/certification/</link>
+      <pubDate>Sat, 18 May 2019 18:00:00 +0000</pubDate>
       
-      <guid>https://www.julienrouse.com/tags/praw/</guid>
+      <guid>https://www.julienrouse.com/tags/certification/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>python</title>
-      <link>https://www.julienrouse.com/tags/python/</link>
-      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
+      <title>Code Review</title>
+      <link>https://www.julienrouse.com/tags/code-review/</link>
+      <pubDate>Sat, 10 Oct 2020 19:00:00 +0000</pubDate>
       
-      <guid>https://www.julienrouse.com/tags/python/</guid>
+      <guid>https://www.julienrouse.com/tags/code-review/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>readthedocs.io</title>
-      <link>https://www.julienrouse.com/tags/readthedocs.io/</link>
-      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/readthedocs.io/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>reddit</title>
-      <link>https://www.julienrouse.com/tags/reddit/</link>
-      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/reddit/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>wordcloud</title>
-      <link>https://www.julienrouse.com/tags/wordcloud/</link>
-      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/wordcloud/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>common-lisp</title>
+      <title>Common Lisp</title>
       <link>https://www.julienrouse.com/tags/common-lisp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -326,7 +75,7 @@
     </item>
     
     <item>
-      <title>css</title>
+      <title>Css</title>
       <link>https://www.julienrouse.com/tags/css/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -335,7 +84,7 @@
     </item>
     
     <item>
-      <title>documentation</title>
+      <title>Documentation</title>
       <link>https://www.julienrouse.com/tags/documentation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -344,7 +93,34 @@
     </item>
     
     <item>
-      <title>gc</title>
+      <title>Emacs</title>
+      <link>https://www.julienrouse.com/tags/emacs/</link>
+      <pubDate>Sat, 15 May 2021 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/emacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Eso Lang</title>
+      <link>https://www.julienrouse.com/tags/eso-lang/</link>
+      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/eso-lang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Game</title>
+      <link>https://www.julienrouse.com/tags/game/</link>
+      <pubDate>Fri, 18 Oct 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/game/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gc</title>
       <link>https://www.julienrouse.com/tags/gc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -353,7 +129,7 @@
     </item>
     
     <item>
-      <title>hugo-resume</title>
+      <title>Hugo Resume</title>
       <link>https://www.julienrouse.com/tags/hugo-resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -362,7 +138,34 @@
     </item>
     
     <item>
-      <title>lisp</title>
+      <title>Idle</title>
+      <link>https://www.julienrouse.com/tags/idle/</link>
+      <pubDate>Fri, 18 Oct 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/idle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Improving</title>
+      <link>https://www.julienrouse.com/tags/improving/</link>
+      <pubDate>Sat, 10 Oct 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/improving/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>https://www.julienrouse.com/tags/javascript/</link>
+      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lisp</title>
       <link>https://www.julienrouse.com/tags/lisp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -371,7 +174,43 @@
     </item>
     
     <item>
-      <title>ocaml</title>
+      <title>Mutation Testing</title>
+      <link>https://www.julienrouse.com/tags/mutation-testing/</link>
+      <pubDate>Sat, 09 May 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/mutation-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nanowrimo2020</title>
+      <link>https://www.julienrouse.com/tags/nanowrimo2020/</link>
+      <pubDate>Sun, 22 Nov 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/nanowrimo2020/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nltk</title>
+      <link>https://www.julienrouse.com/tags/nltk/</link>
+      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/nltk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Not the Onion</title>
+      <link>https://www.julienrouse.com/tags/not-the-onion/</link>
+      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/not-the-onion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ocaml</title>
       <link>https://www.julienrouse.com/tags/ocaml/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -380,7 +219,70 @@
     </item>
     
     <item>
-      <title>responsive design</title>
+      <title>Open Invite</title>
+      <link>https://www.julienrouse.com/tags/open-invite/</link>
+      <pubDate>Sat, 17 Oct 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/open-invite/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Post Mortem</title>
+      <link>https://www.julienrouse.com/tags/post-mortem/</link>
+      <pubDate>Sun, 22 Nov 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/post-mortem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Praw</title>
+      <link>https://www.julienrouse.com/tags/praw/</link>
+      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/praw/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://www.julienrouse.com/tags/python/</link>
+      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Quality</title>
+      <link>https://www.julienrouse.com/tags/quality/</link>
+      <pubDate>Sat, 09 May 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/quality/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Readthedocs.io</title>
+      <link>https://www.julienrouse.com/tags/readthedocs.io/</link>
+      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/readthedocs.io/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reddit</title>
+      <link>https://www.julienrouse.com/tags/reddit/</link>
+      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/reddit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Responsive Design</title>
       <link>https://www.julienrouse.com/tags/responsive-design/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -389,11 +291,137 @@
     </item>
     
     <item>
-      <title>string</title>
+      <title>Review</title>
+      <link>https://www.julienrouse.com/tags/review/</link>
+      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rust</title>
+      <link>https://www.julienrouse.com/tags/rust/</link>
+      <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scrum</title>
+      <link>https://www.julienrouse.com/tags/scrum/</link>
+      <pubDate>Sat, 18 May 2019 18:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/scrum/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scrum.org</title>
+      <link>https://www.julienrouse.com/tags/scrum.org/</link>
+      <pubDate>Sat, 18 May 2019 18:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/scrum.org/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Short</title>
+      <link>https://www.julienrouse.com/tags/short/</link>
+      <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/short/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spa</title>
+      <link>https://www.julienrouse.com/tags/spa/</link>
+      <pubDate>Fri, 18 Oct 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/spa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>String</title>
       <link>https://www.julienrouse.com/tags/string/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/tags/string/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Svelte</title>
+      <link>https://www.julienrouse.com/tags/svelte/</link>
+      <pubDate>Fri, 18 Oct 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/svelte/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Test Automation</title>
+      <link>https://www.julienrouse.com/tags/test-automation/</link>
+      <pubDate>Sat, 09 May 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/test-automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tla&#43;</title>
+      <link>https://www.julienrouse.com/tags/tla&#43;/</link>
+      <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/tla&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>https://www.julienrouse.com/tags/tutorial/</link>
+      <pubDate>Fri, 18 Oct 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webpack</title>
+      <link>https://www.julienrouse.com/tags/webpack/</link>
+      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/webpack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webpack Cli</title>
+      <link>https://www.julienrouse.com/tags/webpack-cli/</link>
+      <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/webpack-cli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wordcloud</title>
+      <link>https://www.julienrouse.com/tags/wordcloud/</link>
+      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/wordcloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Writing</title>
+      <link>https://www.julienrouse.com/tags/writing/</link>
+      <pubDate>Sun, 01 Nov 2020 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/writing/</guid>
       <description></description>
     </item>
     

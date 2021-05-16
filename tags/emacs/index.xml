@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Emacs on I break things often. Sometimes I manage to fix them</title>
+    <link>https://www.julienrouse.com/tags/emacs/</link>
+    <description>Recent content in Emacs on I break things often. Sometimes I manage to fix them</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 15 May 2021 19:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.julienrouse.com/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Emacs again</title>
+      <link>https://www.julienrouse.com/blog/emacs-again/</link>
+      <pubDate>Sat, 15 May 2021 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/emacs-again/</guid>
+      <description>
+
+&lt;h1 id=&#34;emacs&#34;&gt;Emacs&lt;/h1&gt;
+
+&lt;p&gt;Since the start of January, I am trying to switch back to
+&lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;Here are some modes (packages/plugins in Emacs lingo) that I want to
+try.&lt;/p&gt;
+
+&lt;h2 id=&#34;org-mode&#34;&gt;org-mode&lt;/h2&gt;
+
+&lt;p&gt;I am really drawn out to &lt;a href=&#34;https://orgmode.org/&#34;&gt;Org Mode&lt;/a&gt;, a major mode
+(a mode is a plugin in Emacs) to help with todo-lists, planning,
+agendas, literate programming and a lot more!&lt;/p&gt;
+
+&lt;p&gt;I used it in the past with
+various success, but because I could not use Emacs at work. I stopped using Emacs altogether
+to stop switching between editor. I had
+settled for the &lt;a href=&#34;https://foambubble.github.io/foam/&#34;&gt;Foam plugin&lt;/a&gt; for
+VSCode, which offers some nices todo-list capabilities, an also a good
+base for growing a knowledge base in the
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Zettelkasten&#34;&gt;Zettelkasten&lt;/a&gt; way.&lt;/p&gt;
+
+&lt;p&gt;Since then, an extension for org-mode appeared:
+&lt;a href=&#34;https://www.orgroam.com/&#34;&gt;org-roam&lt;/a&gt;, wich looks like a serious
+contender I would like to try.&lt;/p&gt;
+
+&lt;p&gt;(And actually this post is written with org-mode, and exported to
+Markdown with &lt;a href=&#34;https://github.com/kawabata/ox-pandoc&#34;&gt;ox-pandoc&lt;/a&gt;, an
+extension to use the magnificent &lt;a href=&#34;https://pandoc.org/&#34;&gt;pandoc&lt;/a&gt; to export
+org files to various format.)&lt;/p&gt;
+
+&lt;h2 id=&#34;magit&#34;&gt;Magit&lt;/h2&gt;
+
+&lt;p&gt;This one is totally new to me, a
+&lt;a href=&#34;https://stackoverflow.com/a/6976506/3729797&#34;&gt;porcelain&lt;/a&gt; for Git really
+well integrated in Emacs.&lt;/p&gt;
+
+&lt;p&gt;I have heard a lot of good things on &lt;a href=&#34;https://magit.vc/&#34;&gt;Magit&lt;/a&gt;, so it
+is on my list of packages to try!&lt;/p&gt;
+
+&lt;h2 id=&#34;lsp-mode&#34;&gt;lsp-mode&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://emacs-lsp.github.io/lsp-mode/&#34;&gt;lsp-mode&lt;/a&gt; add support for
+&lt;a href=&#34;https://microsoft.github.io/language-server-protocol/&#34;&gt;language server
+protocol&lt;/a&gt; in
+Emacs. I think this idea came originally from Microsoft/VSCode to
+simplify the development of tooling for new language and editors. This
+looks nice and should allow to have a good experience for most
+programming language.&lt;/p&gt;
+
+&lt;p&gt;Additionally, there is some integration with popular packages like Helm,
+Ivy and other as well so it might help me to discover new packages.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/joaotavora/eglot&#34;&gt;eglot&lt;/a&gt; also add support for lsp in
+Emacs, but looks less complete at first glance.&lt;/p&gt;
+
+&lt;h2 id=&#34;other-packages-that-look-promising&#34;&gt;Other packages that look promising&lt;/h2&gt;
+
+&lt;p&gt;And some less well known packages:&lt;/p&gt;
+
+&lt;h3 id=&#34;docker-el&#34;&gt;docker.el&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/Silex/docker.el&#34;&gt;docker.el&lt;/a&gt; is unsurprinsigly a mode
+to work with Docker container in Emacs.&lt;/p&gt;
+
+&lt;h3 id=&#34;kubel&#34;&gt;kubel&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/abrochard/kubel&#34;&gt;kubel&lt;/a&gt;
+is a package for managing Kubernetes cluster.&lt;/p&gt;
+
+&lt;p&gt;I discovered it while watching this very very good video: &lt;a href=&#34;https://www.youtube.com/watch?v=w3krYEeqnyk&#34;&gt;Conquering
+Kubernetes with Emacs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I am back in Emacs land, so much to (re)discover.&lt;/p&gt;
+
+&lt;p&gt;And if you never heard of org-mode before (or
+&lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt;), make yourself a favor and
+go try it for yourself. It is such a different experience that you will
+learn something for sure.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>	
