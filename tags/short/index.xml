@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Short on I break things often. Sometimes I manage to fix them</title>
+    <title>short on I break things often. Sometimes I manage to fix them</title>
     <link>https://www.julienrouse.com/tags/short/</link>
-    <description>Recent content in Short on I break things often. Sometimes I manage to fix them</description>
+    <description>Recent content in short on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 15 May 2021 19:00:00 +0000</lastBuildDate>
@@ -17,22 +16,15 @@
       <pubDate>Sat, 15 May 2021 19:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/blog/emacs-again/</guid>
-      <description>
-
-&lt;h1 id=&#34;emacs&#34;&gt;Emacs&lt;/h1&gt;
-
+      <description>&lt;h1 id=&#34;emacs&#34;&gt;Emacs&lt;/h1&gt;
 &lt;p&gt;Since the start of January, I am trying to switch back to
 &lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt;!&lt;/p&gt;
-
 &lt;p&gt;Here are some modes (packages/plugins in Emacs lingo) that I want to
 try.&lt;/p&gt;
-
 &lt;h2 id=&#34;org-mode&#34;&gt;org-mode&lt;/h2&gt;
-
 &lt;p&gt;I am really drawn out to &lt;a href=&#34;https://orgmode.org/&#34;&gt;Org Mode&lt;/a&gt;, a major mode
 (a mode is a plugin in Emacs) to help with todo-lists, planning,
 agendas, literate programming and a lot more!&lt;/p&gt;
-
 &lt;p&gt;I used it in the past with
 various success, but because I could not use Emacs at work. I stopped using Emacs altogether
 to stop switching between editor. I had
@@ -40,27 +32,20 @@ settled for the &lt;a href=&#34;https://foambubble.github.io/foam/&#34;&gt;Foam 
 VSCode, which offers some nices todo-list capabilities, an also a good
 base for growing a knowledge base in the
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Zettelkasten&#34;&gt;Zettelkasten&lt;/a&gt; way.&lt;/p&gt;
-
 &lt;p&gt;Since then, an extension for org-mode appeared:
 &lt;a href=&#34;https://www.orgroam.com/&#34;&gt;org-roam&lt;/a&gt;, wich looks like a serious
 contender I would like to try.&lt;/p&gt;
-
 &lt;p&gt;(And actually this post is written with org-mode, and exported to
 Markdown with &lt;a href=&#34;https://github.com/kawabata/ox-pandoc&#34;&gt;ox-pandoc&lt;/a&gt;, an
 extension to use the magnificent &lt;a href=&#34;https://pandoc.org/&#34;&gt;pandoc&lt;/a&gt; to export
 org files to various format.)&lt;/p&gt;
-
 &lt;h2 id=&#34;magit&#34;&gt;Magit&lt;/h2&gt;
-
 &lt;p&gt;This one is totally new to me, a
 &lt;a href=&#34;https://stackoverflow.com/a/6976506/3729797&#34;&gt;porcelain&lt;/a&gt; for Git really
 well integrated in Emacs.&lt;/p&gt;
-
 &lt;p&gt;I have heard a lot of good things on &lt;a href=&#34;https://magit.vc/&#34;&gt;Magit&lt;/a&gt;, so it
 is on my lists of packages to try!&lt;/p&gt;
-
 &lt;h2 id=&#34;lsp-mode&#34;&gt;lsp-mode&lt;/h2&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://emacs-lsp.github.io/lsp-mode/&#34;&gt;lsp-mode&lt;/a&gt; add support for
 &lt;a href=&#34;https://microsoft.github.io/language-server-protocol/&#34;&gt;language server
 protocol&lt;/a&gt; in
@@ -68,34 +53,22 @@ Emacs. I think this idea came originally from Microsoft/VSCode to
 simplify the development of tooling for new language and editors. This
 looks nice and should allow to have a good experience for most
 programming language.&lt;/p&gt;
-
 &lt;p&gt;Additionally, there is some integration with popular packages like Helm,
 Ivy and other as well so it might help me to discover new packages.&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://github.com/joaotavora/eglot&#34;&gt;eglot&lt;/a&gt; also add support for lsp in
 Emacs, but looks less complete at first glance.&lt;/p&gt;
-
 &lt;h2 id=&#34;other-packages-that-look-promising&#34;&gt;Other packages that look promising&lt;/h2&gt;
-
 &lt;p&gt;And some less well known packages:&lt;/p&gt;
-
-&lt;h3 id=&#34;docker-el&#34;&gt;docker.el&lt;/h3&gt;
-
+&lt;h3 id=&#34;dockerel&#34;&gt;docker.el&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/Silex/docker.el&#34;&gt;docker.el&lt;/a&gt; is unsurprinsigly a mode
 to work with Docker container in Emacs.&lt;/p&gt;
-
 &lt;h3 id=&#34;kubel&#34;&gt;kubel&lt;/h3&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://github.com/abrochard/kubel&#34;&gt;kubel&lt;/a&gt;
 is a package for managing Kubernetes cluster.&lt;/p&gt;
-
 &lt;p&gt;I discovered it while watching this very very good video: &lt;a href=&#34;https://www.youtube.com/watch?v=w3krYEeqnyk&#34;&gt;Conquering
 Kubernetes with Emacs&lt;/a&gt;&lt;/p&gt;
-
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
-
 &lt;p&gt;I am back in Emacs land, so much to (re)discover.&lt;/p&gt;
-
 &lt;p&gt;And if you never heard of org-mode before (or
 &lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt;), make yourself a favor and
 go try it for yourself. It is such a different experience that you will
@@ -109,12 +82,8 @@ learn something for sure.&lt;/p&gt;
       <pubDate>Tue, 16 Jun 2020 19:00:00 +0400</pubDate>
       
       <guid>https://www.julienrouse.com/blog/presentation_the_art_of_code/</guid>
-      <description>
-
-&lt;h1 id=&#34;the-art-of-code-https-www-youtube-com-watch-v-6avjhac3c2u-feature-emb-logo&#34;&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=6avJHaC3C2U&amp;amp;feature=emb_logo&#34;&gt;The Art of Code&lt;/a&gt;&lt;/h1&gt;
-
+      <description>&lt;h1 id=&#34;the-art-of-codehttpswwwyoutubecomwatchv6avjhac3c2ufeatureemb_logo&#34;&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=6avJHaC3C2U&amp;amp;feature=emb_logo&#34;&gt;The Art of Code&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=6avJHaC3C2U&amp;amp;feature=emb_logo&#34;&gt;In his talk&lt;/a&gt;, Dylan Beattie does a really good recap about what kind of art has been enabled by using computers.&lt;/p&gt;
-
 &lt;p&gt;From Conway&amp;rsquo;s Game of Life, to Mandelbrot set, then going on about the use of CGI in the movie industry, then moving on to code as an art like the Obsfucated C Challenge, the magic of Quines (program that prints themselves when run). It goes on about esoteric programming languages, Whitespace, Piet, Shakespeare and then the last part is dedicated to his own eso-lang, Rockstar.&lt;/p&gt;
 </description>
     </item>
@@ -125,38 +94,31 @@ learn something for sure.&lt;/p&gt;
       <pubDate>Sat, 06 Jul 2019 20:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/blog/webpack-cli-crashes-only-on-monday/</guid>
-      <description>
-
-&lt;h1 id=&#34;webpack-cli-crashes-for-windows-users-but-only-on-monday&#34;&gt;Webpack-cli crashes for Windows users, but only on Monday&lt;/h1&gt;
-
-&lt;p&gt;It seems like a headline from the Onion&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. But unfortunately it&amp;rsquo;s not.&lt;/p&gt;
-
-&lt;p&gt;Webpack-cli&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; had a bug&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; recently because it tried to display a message for donations on the terminal when using it. But that message was only displayed on Monday(because there were complaints about seeing the donation message every time you were running a build).&lt;/p&gt;
-
-&lt;p&gt;Then a bug was introduced into that code because it relies on &lt;code&gt;process.getuid&lt;/code&gt; which is not available on Windows, making the CLI crash but only on Windows and on Monday \(**)/.&lt;/p&gt;
-
+      <description>&lt;h1 id=&#34;webpack-cli-crashes-for-windows-users-but-only-on-monday&#34;&gt;Webpack-cli crashes for Windows users, but only on Monday&lt;/h1&gt;
+&lt;p&gt;It seems like a headline from the Onion&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. But unfortunately it&amp;rsquo;s not.&lt;/p&gt;
+&lt;p&gt;Webpack-cli&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; had a bug&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; recently because it tried to display a message for donations on the terminal when using it. But that message was only displayed on Monday(because there were complaints about seeing the donation message every time you were running a build).&lt;/p&gt;
+&lt;p&gt;Then a bug was introduced into that code because it relies on &lt;code&gt;process.getuid &lt;/code&gt; which is not available on Windows, making the CLI crash but only on Windows and on Monday \(**)/.&lt;/p&gt;
 &lt;h2 id=&#34;similar-story&#34;&gt;Similar story&lt;/h2&gt;
-
 &lt;p&gt;If you like weird bug story, you can also read:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://gyrovague.com/2015/07/29/crashes-only-on-wednesdays/&#34;&gt;Crashes only on Wednesday&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://catless.ncl.ac.uk/Risks/25.77.html#subj14&#34;&gt;Cannot print on Tuesday!&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.ibiblio.org/harris/500milemail.html&#34;&gt;The 500-mile mail&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
 &lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;https://www.theonion.com/&#34;&gt;https://www.theonion.com/&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;&lt;a href=&#34;https://github.com/webpack/webpack-cli&#34;&gt;https://github.com/webpack/webpack-cli&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li id=&#34;fn:3&#34;&gt;&lt;a href=&#34;https://github.com/webpack/webpack-cli/issues/962&#34;&gt;https://github.com/webpack/webpack-cli/issues/962&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.theonion.com/&#34;&gt;https://www.theonion.com/&lt;/a&gt; &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/webpack/webpack-cli&#34;&gt;https://github.com/webpack/webpack-cli&lt;/a&gt; &lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/webpack/webpack-cli/issues/962&#34;&gt;https://github.com/webpack/webpack-cli/issues/962&lt;/a&gt; &lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;
+&lt;/section&gt;
 </description>
     </item>
     

@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tla&#43; on I break things often. Sometimes I manage to fix them</title>
+    <title>tla&#43; on I break things often. Sometimes I manage to fix them</title>
     <link>https://www.julienrouse.com/tags/tla&#43;/</link>
-    <description>Recent content in Tla&#43; on I break things often. Sometimes I manage to fix them</description>
+    <description>Recent content in tla&#43; on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 05 Apr 2020 19:00:00 +0000</lastBuildDate>
@@ -17,55 +16,32 @@
       <pubDate>Sun, 05 Apr 2020 19:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/blog/rust_tla&#43;_and_more/</guid>
-      <description>
-
-&lt;h1 id=&#34;rust-tla-aesthetics-and-more&#34;&gt;Rust, TLA+, Aesthetics and more&lt;/h1&gt;
-
+      <description>&lt;h1 id=&#34;rust-tla-aesthetics-and-more&#34;&gt;Rust, TLA+, Aesthetics and more&lt;/h1&gt;
 &lt;p&gt;It&amp;rsquo;s been a while I have not  put my thoughts in here, so this entry will be a mix of some of the papers or blogs I read recently, some thoughts about Rust and TLA+ because I started trying them both recently, and a few interesting talks I saw recently. The Aesthetics part will be discussed in the blog entry that I read recently and was an interesting reflection on how tools shape our way of thinking.&lt;/p&gt;
-
 &lt;h2 id=&#34;tla&#34;&gt;TLA+&lt;/h2&gt;
-
 &lt;p&gt;I&amp;rsquo;ll start by talking about TLA+ because it lead me to other subjects I&amp;rsquo;ll talk after. I discovered TLA+ after reading a few blog posts seen on &lt;a href=&#34;https://hn.algolia.com/?q=tla%2B&#34;&gt;HackerNews&lt;/a&gt;.&lt;/p&gt;
-
 &lt;p&gt;Basically the idea behind TLA+ is that writing software that is correct is extremely hard to do (more so is you include concurrency/parallelism in your software). TLA+ is a high-level language for modeling systems, that relies on math to check the correctness of the model. It has been used successfully by engineers in big company like Amazon and Intel to help them design robust systems.&lt;/p&gt;
-
 &lt;p&gt;TLA+ is mainly the work of &lt;a href=&#34;https://en.wikipedia.org/wiki/Leslie_Lamport&#34;&gt;Leslie Lamport&lt;/a&gt; (I did not know about him before), a fairly well-known computer scientist known for his work in distributed systems (and being the initial developer of &lt;a href=&#34;https://www.latex-project.org/&#34;&gt;LaTeX&lt;/a&gt;). He received many prizes including the Turing award in 2013.&lt;/p&gt;
-
 &lt;p&gt;On &lt;a href=&#34;http://lamport.azurewebsites.net/tla/tla.html&#34;&gt;The TLA+ Home Page&lt;/a&gt; there is lots of resources to start using it, links to the toolbox, an introductory video course and more information to get started. I am currently at the seventh lecture of the introductory course and it is an interesting concept that I&amp;rsquo;m willing to try to put in practice. I&amp;rsquo;ll probably come back writing back more on this.&lt;/p&gt;
-
 &lt;h2 id=&#34;rust&#34;&gt;Rust&lt;/h2&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://www.rust-lang.org/&#34;&gt;Rust&lt;/a&gt; is the &amp;ldquo;new&amp;rdquo; language (since 2010) developed by Mozilla with the goal to have a &amp;ldquo;safe&amp;rdquo;, low-level and performant programming language (as an alternative for C/C++). It features quite a few interesting ideas that I find intriguing and I decided to try it out.&lt;/p&gt;
-
 &lt;p&gt;What drew me in was:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;immutability: something that I really like about Clojure as well! In Rust it seems it&amp;rsquo;s an opt-out feature, if you declare a variable like &lt;code&gt;let x = 0&lt;/code&gt; it is immutable but you can opt-out with the keyword  &lt;code&gt;mut&lt;/code&gt;  (as in   &lt;code&gt;let mut x = 0&lt;/code&gt;)&lt;/li&gt;
 &lt;li&gt;low-level: I have a very limited exposure to low-level languages (and concepts). I did quite a lot of C in my university classes and an internship in C++ dealing with OpenGL but to be honest I forgot most of it. So that will be a good opportunity to get back to low-level programming.&lt;/li&gt;
 &lt;li&gt;no runtime: I read about that and I have no idea what does this mean in practice but I want to find out! Right now my idea of that is that Rust is embeddable is other programs via C/C++ FFI with no overhead. I hope to be able to call Clojure code from Rust and vice versa (I saw some repos and blog post about it so it seems definitely doable).&lt;/li&gt;
 &lt;li&gt;safe: It seems Rust does a lot of compile time checking to ensure safety and correctness (even for threaded/concurrent program). As far as I understand, it is thanks to is rich type system.&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;Another good point is that because Rust is a recent language (and good fundings), it has all the niceties like package manager (Cargo), utilities for documentation included (seriously running &lt;code&gt;cargo doc --open&lt;/code&gt; is really a nice experience!), nice integrations to the majors editors, installation is very straightforward, so far documentation is really high quality&amp;hellip;&lt;/p&gt;
-
 &lt;p&gt;I started the &lt;a href=&#34;https://doc.rust-lang.org/book/&#34;&gt;Rust book&lt;/a&gt;, very nicely done so far (I&amp;rsquo;m in the middle of chapter 3).&lt;/p&gt;
-
 &lt;p&gt;I will be progressing toward the end of this book and then try my hands with it. It should match very well with TLA+ as well.&lt;/p&gt;
-
 &lt;h2 id=&#34;blogs&#34;&gt;Blogs&lt;/h2&gt;
-
 &lt;p&gt;I won&amp;rsquo;t talk here about all the interesting blog posts I read since the last time I wrote in this blog (a few months ago) but I wanted to highlight and share some very interesting read I had this past few months:&lt;/p&gt;
-
-&lt;h3 id=&#34;software-aesthetics-and-craft-how-java-lisp-and-agile-shape-and-reflect-their-culture-https-www-infoq-com-articles-software-aesthetics-craft&#34;&gt;&lt;a href=&#34;https://www.infoq.com/articles/software-aesthetics-craft/&#34;&gt;Software, Aesthetics, and Craft: How Java, Lisp, and Agile Shape and Reflect Their Culture&lt;/a&gt;&lt;/h3&gt;
-
+&lt;h3 id=&#34;software-aesthetics-and-craft-how-java-lisp-and-agile-shape-and-reflect-their-culturehttpswwwinfoqcomarticlessoftware-aesthetics-craft&#34;&gt;&lt;a href=&#34;https://www.infoq.com/articles/software-aesthetics-craft/&#34;&gt;Software, Aesthetics, and Craft: How Java, Lisp, and Agile Shape and Reflect Their Culture&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;In this post, the author compare the difference between &amp;ldquo;classical&amp;rdquo; and &amp;ldquo;gothic&amp;rdquo; architecture (real architecture, not software architecture), the elements that characterize both (notably in how much freedom is given to the craftsman) and how we can think about programming language in the same way.&lt;/p&gt;
-
 &lt;p&gt;This piece is really nice and I really think you should read it too :)&lt;/p&gt;
-
-&lt;h3 id=&#34;how-i-became-a-better-programmer-https-jlongster-com-how-i-became-better-programmer-from-james-long-creator-of-prettier&#34;&gt;&lt;a href=&#34;https://jlongster.com/How-I-Became-Better-Programmer&#34;&gt;How I became a better programmer&lt;/a&gt; from James Long (creator of Prettier)&lt;/h3&gt;
-
+&lt;h3 id=&#34;how-i-became-a-better-programmerhttpsjlongstercomhow-i-became-better-programmer-from-james-long-creator-of-prettier&#34;&gt;&lt;a href=&#34;https://jlongster.com/How-I-Became-Better-Programmer&#34;&gt;How I became a better programmer&lt;/a&gt; from James Long (creator of Prettier)&lt;/h3&gt;
 &lt;p&gt;This post is like many others on the internet where the author describes how he try to be a better programmer. Very quickly his point his:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Find inspiration in other people put keep a critical eye on their work&lt;/li&gt;
 &lt;li&gt;Don&amp;rsquo;t feel pressured to work all the time, truly revolutionary stuff happens only every few year at best&lt;/li&gt;
@@ -73,9 +49,7 @@
 &lt;li&gt;Look for previous research about what you are trying to solve, it will probably change your mind in a lot of ways&lt;/li&gt;
 &lt;li&gt;Take on big projects. Get uncomfortable. By trying to accomplish new thing you learn much more&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;And then he list a few things that helped him be a better programmer:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;Learn C&lt;/li&gt;
 &lt;li&gt;Write a compiler&lt;/li&gt;
@@ -84,17 +58,11 @@
 &lt;li&gt;Understand continuations&lt;/li&gt;
 &lt;li&gt;Try a new language&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://jlongster.com/#posts&#34;&gt;His blog&lt;/a&gt; his overall pretty interesting too so go take a look :)&lt;/p&gt;
-
-&lt;h3 id=&#34;viability-of-unpopular-programming-languages-https-www-johndcook-com-blog-2018-04-17-unpopular-languages-by-john-d-cook&#34;&gt;&lt;a href=&#34;https://www.johndcook.com/blog/2018/04/17/unpopular-languages/&#34;&gt;Viability of unpopular programming languages&lt;/a&gt; by John D. Cook&lt;/h3&gt;
-
+&lt;h3 id=&#34;viability-of-unpopular-programming-languageshttpswwwjohndcookcomblog20180417unpopular-languages-by-john-d-cook&#34;&gt;&lt;a href=&#34;https://www.johndcook.com/blog/2018/04/17/unpopular-languages/&#34;&gt;Viability of unpopular programming languages&lt;/a&gt; by John D. Cook&lt;/h3&gt;
 &lt;p&gt;The blog posts of John are very interesting (and very short) so if you like a quick read go for it!&lt;/p&gt;
-
 &lt;p&gt;In this one he rants about how we rank programming language by popularity (whatever that means) but that does not define how viable that language is (taking Perl, Common Lisp, F# and Erlang as examples).&lt;/p&gt;
-
 &lt;h3 id=&#34;misc&#34;&gt;Misc&lt;/h3&gt;
-
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://muratbuffalo.blogspot.com/2018/10/debugging-designs-with-tla.html?m=1&#34;&gt;Debugging designs with tla+&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/heathermiller/dist-prog-book&#34;&gt;Programming Models for Distributed Computation&lt;/a&gt; Not a blog but a repo containing a book about distributed computation&lt;/li&gt;
@@ -103,19 +71,12 @@
 &lt;li&gt;&lt;a href=&#34;https://ambrevar.xyz/modern-common-lisp/index.html&#34;&gt;Modern Common Lisp&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://danielmiessler.com/study/&#34;&gt;Daniel Miessler Tutorials&lt;/a&gt; I read it mostly for the infoSec part&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;h2 id=&#34;videos&#34;&gt;Videos&lt;/h2&gt;
-
 &lt;p&gt;Here are a few conferences talks about Rust&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=DnT-LUQgc7s&#34;&gt;Considering Rust (Jon Gjengset)&lt;/a&gt; Making the case for Rust, while also putting emphasis on the weaknesses of it.&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=s19G6n0UjsM&#34;&gt;Rust at speed - building a fast concurrent database (Jon Gjengset)&lt;/a&gt; Discussion about the experience of writing Noria, a high-performance database prototype in Rust&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=2ajos-0OWts&#34;&gt;How Rust view tradeoffs(Stephen Klabnik)&lt;/a&gt; Great view about the Rust culture and decision making&lt;/p&gt;
-
 &lt;h2 id=&#34;books&#34;&gt;Books&lt;/h2&gt;
-
 &lt;p&gt;While reading about TLA+ and Leslie Lamport, I stumbled upon the &lt;a href=&#34;https://dl.acm.org/acmbooks&#34;&gt;ACM Digital Library&lt;/a&gt; which has free books on programming! Notably one of the latest book is a compilation of &lt;a href=&#34;https://dl.acm.org/doi/book/10.1145/3335772&#34;&gt;the work of Leslie Lamport on concurrency&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>

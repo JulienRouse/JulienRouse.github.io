@@ -20,7 +20,7 @@
   
   <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
   <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
   
    
   
@@ -96,38 +96,31 @@
 	
 	
     
-	
-
-<h1 id="webpack-cli-crashes-for-windows-users-but-only-on-monday">Webpack-cli crashes for Windows users, but only on Monday</h1>
-
-<p>It seems like a headline from the Onion<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>. But unfortunately it&rsquo;s not.</p>
-
-<p>Webpack-cli<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup> had a bug<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup> recently because it tried to display a message for donations on the terminal when using it. But that message was only displayed on Monday(because there were complaints about seeing the donation message every time you were running a build).</p>
-
-<p>Then a bug was introduced into that code because it relies on <code>process.getuid</code> which is not available on Windows, making the CLI crash but only on Windows and on Monday \(**)/.</p>
-
+	<h1 id="webpack-cli-crashes-for-windows-users-but-only-on-monday">Webpack-cli crashes for Windows users, but only on Monday</h1>
+<p>It seems like a headline from the Onion<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. But unfortunately it&rsquo;s not.</p>
+<p>Webpack-cli<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> had a bug<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> recently because it tried to display a message for donations on the terminal when using it. But that message was only displayed on Monday(because there were complaints about seeing the donation message every time you were running a build).</p>
+<p>Then a bug was introduced into that code because it relies on <code>process.getuid </code> which is not available on Windows, making the CLI crash but only on Windows and on Monday \(**)/.</p>
 <h2 id="similar-story">Similar story</h2>
-
 <p>If you like weird bug story, you can also read:</p>
-
 <ul>
 <li><a href="https://gyrovague.com/2015/07/29/crashes-only-on-wednesdays/">Crashes only on Wednesday</a></li>
 <li><a href="http://catless.ncl.ac.uk/Risks/25.77.html#subj14">Cannot print on Tuesday!</a></li>
 <li><a href="https://www.ibiblio.org/harris/500milemail.html">The 500-mile mail</a></li>
 </ul>
-<div class="footnotes">
-
-<hr />
-
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:1"><a href="https://www.theonion.com/">https://www.theonion.com/</a>
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
-<li id="fn:2"><a href="https://github.com/webpack/webpack-cli">https://github.com/webpack/webpack-cli</a>
- <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
-<li id="fn:3"><a href="https://github.com/webpack/webpack-cli/issues/962">https://github.com/webpack/webpack-cli/issues/962</a>
- <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://www.theonion.com/">https://www.theonion.com/</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://github.com/webpack/webpack-cli">https://github.com/webpack/webpack-cli</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://github.com/webpack/webpack-cli/issues/962">https://github.com/webpack/webpack-cli/issues/962</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
     
     <ul class="tags">

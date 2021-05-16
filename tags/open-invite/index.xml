@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Open Invite on I break things often. Sometimes I manage to fix them</title>
+    <title>open-invite on I break things often. Sometimes I manage to fix them</title>
     <link>https://www.julienrouse.com/tags/open-invite/</link>
-    <description>Recent content in Open Invite on I break things often. Sometimes I manage to fix them</description>
+    <description>Recent content in open-invite on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 17 Oct 2020 19:00:00 +0000</lastBuildDate>
@@ -18,20 +17,20 @@
       
       <guid>https://www.julienrouse.com/blog/open-invite/</guid>
       <description>&lt;p&gt;I enjoy programming, fencing (especially sabre), history and sustainable development.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Open invite&lt;/strong&gt;. If you want to talk about any of those subject, or if you are looking for help solving a problem, feel free to reach out to me and let&amp;rsquo;s have a chat, I want to talk to you. &lt;a href=&#34;mailto:conta-remove-ct@julienrouse.com&#34;&gt;Email me at conta&lt;span style=&#34;display:none&#34;&gt;-remove-&lt;/span&gt;ct@julienrouse.com&lt;/a&gt;.&lt;/p&gt;
-
+&lt;p&gt;&lt;strong&gt;Open invite&lt;/strong&gt;. If you want to talk about any of those subject, or if you are looking for help solving a problem, feel free to reach out to me and let&amp;rsquo;s have a chat, I want to talk to you. &lt;!-- raw HTML omitted --&gt;Email me at conta&lt;!-- raw HTML omitted --&gt;-remove-&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;mailto:ct@julienrouse.com&#34;&gt;ct@julienrouse.com&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;.&lt;/p&gt;
 &lt;p&gt;Doing so, I follow the steps of &lt;a href=&#34;https://www.kalzumeus.com/standing-invitation/&#34;&gt;patio11&lt;/a&gt;, &lt;a href=&#34;https://lars.hupel.info/about/&#34;&gt;Lars&lt;/a&gt; and &lt;a href=&#34;https://www.hillelwayne.com/open-invite/&#34;&gt;Hillel&lt;/a&gt; (and probably more people I am not aware of). More than one time I was wondering if I could bother someone to exchange about a piece they wrote but I could not muster the courage. These guys make it very clear that you are welcome to reach out to them and it is awesome.&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;I like getting email&lt;/strong&gt;. I can&amp;rsquo;t promess you I&amp;rsquo;ll reply quickly, nor that I will reply at all but I usually read all of my mail. If I don&amp;rsquo;t respond in a timely manner, don&amp;rsquo;t hesitate to send me another mail&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;I like a good discussion&lt;/strong&gt;. I like people challenging me, telling me about things I did not know, challenging them back and exchanging ideas.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;I like sharing experiences&lt;/strong&gt;. The nicest (software related) interactions I had in the past are usually having a experienced peer help me grow, or me helping a less-experienced peer get on the right track to solve their problem. If you like that kind of exchange, talk to me!&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;I like programming and software&lt;/strong&gt;. This is even more true lately when I have to deal with something related to:&lt;/p&gt;
-
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;I like getting email&lt;/strong&gt;. I can&amp;rsquo;t promess you I&amp;rsquo;ll reply quickly, nor that I will reply at all but I usually read all of my mail. If I don&amp;rsquo;t respond in a timely manner, don&amp;rsquo;t hesitate to send me another mail&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;I like a good discussion&lt;/strong&gt;. I like people challenging me, telling me about things I did not know, challenging them back and exchanging ideas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;I like sharing experiences&lt;/strong&gt;. The nicest (software related) interactions I had in the past are usually having a experienced peer help me grow, or me helping a less-experienced peer get on the right track to solve their problem. If you like that kind of exchange, talk to me!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;I like programming and software&lt;/strong&gt;. This is even more true lately when I have to deal with something related to:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Lisp (I&amp;rsquo;m a bit familiar with Common Lisp and Clojure but anything Lisp-related I&amp;rsquo;m interested)&lt;/li&gt;
 &lt;li&gt;Functionnal programming&lt;/li&gt;
@@ -39,25 +38,26 @@
 &lt;li&gt;Esoteric programming languages (see Piet, brainfuck, J&amp;hellip;)&lt;/li&gt;
 &lt;li&gt;Datalog (or query-language or database that are not mainstream but with a good foundation)&lt;/li&gt;
 &lt;li&gt;Type System and good/clever use of them&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Something you can help &lt;em&gt;me&lt;/em&gt; with:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;I you see anything wrong with this website, please let me know!&lt;/li&gt;
 &lt;li&gt;If you want to react to anything I wrote on a post, please let me know!&lt;/li&gt;
 &lt;li&gt;I&amp;rsquo;m always interested to hear about new essays or papers on software engineering. If you have wrote one, or found one and you&amp;rsquo;d like to share, please let me know!&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;And also:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;I don&amp;rsquo;t like social media&lt;/strong&gt; Most of the time I would not want to have a nice exchange on a social media.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;This is not an invite for recruiters&lt;/strong&gt; That&amp;rsquo;s why Linkedin exists.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;I don&amp;rsquo;t like phone call&lt;/strong&gt; If you want to speak to me by phone, marry a Rousé.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;I don&amp;rsquo;t like social media&lt;/strong&gt; Most of the time I would not want to have a nice exchange on a social media.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;This is not an invite for recruiters&lt;/strong&gt; That&amp;rsquo;s why Linkedin exists.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;I don&amp;rsquo;t like phone call&lt;/strong&gt; If you want to speak to me by phone, marry a Rousé.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

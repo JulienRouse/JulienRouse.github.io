@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Documentation on I break things often. Sometimes I manage to fix them</title>
+    <title>documentation on I break things often. Sometimes I manage to fix them</title>
     <link>https://www.julienrouse.com/tags/documentation/</link>
-    <description>Recent content in Documentation on I break things often. Sometimes I manage to fix them</description>
+    <description>Recent content in documentation on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -17,7 +16,6 @@
       
       <guid>https://www.julienrouse.com/projects/contributions/ocaml/</guid>
       <description>&lt;p&gt;While looking at an article explaining the new &amp;ldquo;best fit&amp;rdquo; GC strategy for OCaml &lt;a href=&#34;http://www.ocamlpro.com/2020/03/23/ocaml-new-best-fit-garbage-collector/&#34;&gt;here&lt;/a&gt;, they had a link toward the source code and I went to see what it looks like.&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://github.com/ocaml/ocaml/blob/trunk/runtime/freelist.c#L882&#34;&gt;Here is the source&lt;/a&gt; I was looking at, and the string documenting the struct did not have the same name for the field in the struct. It&amp;rsquo;s a tiny tiny thing but the kind that feels messy when you read the code.&lt;/p&gt;
 </description>
     </item>

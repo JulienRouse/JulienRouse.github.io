@@ -20,7 +20,7 @@
   
   <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
   <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
   
    
   
@@ -97,79 +97,49 @@
 	
 	<div id="toc-blog">
 		<nav id="TableOfContents">
-<ul>
-<li><a href="#making-a-derivative-idle-clone-with-svelte">Making a Derivative Idle clone with Svelte</a>
-<ul>
-<li><a href="#tutorial">Tutorial</a>
-<ul>
-<li><a href="#disclaimer">Disclaimer</a></li>
-<li><a href="#introduction-to-the-game-and-scope-of-the-tutorial">Introduction to the game and scope of the tutorial</a>
-<ul>
-<li><a href="#what-is-derivative-clicker">What is Derivative Clicker</a></li>
-<li><a href="#what-we-will-aim-for">What we will aim for</a></li>
-</ul></li>
-<li><a href="#hello-world">Hello World</a></li>
-<li><a href="#creating-the-first-building">Creating the first building</a></li>
-<li><a href="#buying-a-building-with-event-and-event-handler">Buying a building  with event and event handler</a></li>
-<li><a href="#restrict-buying-building-only-when-we-have-the-money">Restrict buying building only when we have the money</a></li>
-<li><a href="#refactoring-using-reactive-declarations">Refactoring using reactive declarations</a></li>
-<li><a href="#mid-tutorial-recap">Mid tutorial recap</a></li>
-<li><a href="#making-buildings-generates-money">Making buildings generates money</a></li>
-<li><a href="#changes-to-the-ui">Changes to the UI</a>
-<ul>
-<li><a href="#add-more-stats">Add more stats</a></li>
-<li><a href="#introducing-lifecycle-functions-onmount">Introducing lifecycle functions: <code>onMount</code></a></li>
-<li><a href="#adding-some-visual-cues">Adding some visual cues</a></li>
-</ul></li>
-<li><a href="#conclusion">Conclusion</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#tutorial">Tutorial</a>
+      <ul>
+        <li><a href="#disclaimer">Disclaimer</a></li>
+        <li><a href="#introduction-to-the-game-and-scope-of-the-tutorial">Introduction to the game and scope of the tutorial</a></li>
+        <li><a href="#hello-world">Hello World</a></li>
+        <li><a href="#creating-the-first-building">Creating the first building</a></li>
+        <li><a href="#buying-a-building--with-event-and-event-handler">Buying a building  with event and event handler</a></li>
+        <li><a href="#restrict-buying-building-only-when-we-have-the-money">Restrict buying building only when we have the money</a></li>
+        <li><a href="#refactoring-using-reactive-declarations">Refactoring using reactive declarations</a></li>
+        <li><a href="#mid-tutorial-recap">Mid tutorial recap</a></li>
+        <li><a href="#making-buildings-generates-money">Making buildings generates money</a></li>
+        <li><a href="#changes-to-the-ui">Changes to the UI</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 	</div> 
 	
     
-	
-
-<h1 id="making-a-derivative-idle-clone-with-svelte">Making a Derivative Idle clone with Svelte</h1>
-
-<p>This is the first part of a multi part tutorial on making a game with Svelte<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>. (If you have not read it already, I made an introduction to Svelte you can find right below).</p>
-
+	<h1 id="making-a-derivative-idle-clone-with-svelte">Making a Derivative Idle clone with Svelte</h1>
+<p>This is the first part of a multi part tutorial on making a game with Svelte<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. (If you have not read it already, I made an introduction to Svelte you can find right below).</p>
 <ul>
 <li><a href="/blog/introduction-to-svelte/">introduction to Svelte</a></li>
 <li><a href="/blog/tutorial-for-idle-game-svelte-part1/">part1: Start of the tutorial: making a Derivative Idle clone with Svelte</a></li>
 <li><a href="/blog/tutorial-for-idle-game-svelte-part2/">part2: Going further with Svelte using components and props</a></li>
 <li><a href="/blog/tutorial-for-idle-game-svelte-part3/">part3: Adding upgrades to the game</a></li>
 </ul>
-
 <h2 id="tutorial">Tutorial</h2>
-
-<p>Let&rsquo;s start the Derivative Clicker<sup class="footnote-ref" id="fnref:0"><a href="#fn:0">2</a></sup> tutorial :) I&rsquo;ll try to introduce concept as they come but you are expected to already know a bit of HTML, CSS and some programming concepts like variables, functions, loop and recursion.</p>
-
-<p>For the following tutorial I&rsquo;ll use the Svelte REPL<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">3</a></sup> but you can also follow instructions on the Svelte Getting Started<sup class="footnote-ref" id="fnref:8"><a href="#fn:8">4</a></sup> page  to set yourself up with your favorite editor.</p>
-
+<p>Let&rsquo;s start the Derivative Clicker<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> tutorial :) I&rsquo;ll try to introduce concept as they come but you are expected to already know a bit of HTML, CSS and some programming concepts like variables, functions, loop and recursion.</p>
+<p>For the following tutorial I&rsquo;ll use the Svelte REPL<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> but you can also follow instructions on the Svelte Getting Started<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> page  to set yourself up with your favorite editor.</p>
 <h3 id="disclaimer">Disclaimer</h3>
-
 <p>A little word of warning, it&rsquo;s my first Svelte project so I may do things that are not optimal.</p>
-
 <p>Also I will write some invalid HTML (invalid as in not W3C compliant) to not have to use CSS until the very end of the tutorial because it&rsquo;s not the focus of this project. I will take care of pointing out when I take those shortcuts.</p>
-
 <p>And also my English is far from perfect so hit me up with a message at <em>contact AT julienrouse.com</em> when you see an error so I can correct it and try to learn from my mistake to not do it again!</p>
-
 <h3 id="introduction-to-the-game-and-scope-of-the-tutorial">Introduction to the game and scope of the tutorial</h3>
-
 <h4 id="what-is-derivative-clicker">What is Derivative Clicker</h4>
-
 <p>Before trying to create a copy of a game, lets talk a bit about what is the essence of this particular game. Derivative Clicker is an idle game. The idle genre resolve around making a number go big, usually by buying things that generate some form of currency. Then with that currency you can buy more stuff that generate more currency. There is usually no end game, just the pleasure to see your number grow bigger and bigger (until the browser can&rsquo;t display your number because it&rsquo;s too big :) ). Sometimes the game continue to generate currency even when you are not online but not always (not in this case).</p>
-
 <p>Here you start with no cash and when you click on a button you gain some cash. Then after clicking a few times, with your hard earned cash you can buy something (I&rsquo;ll call it &ldquo;building&rdquo; in the rest of the tutorial) that will generate a little bit of cash every <em>tick</em>. There is a <em>tick</em> every 1000ms (1 second) but as you progress, <em>ticks</em> can go faster, accelerating production. Then as you go further into the game, you can buy more buildings that generate either more cash or more buildings. (Like Russian dolls, there is always an extra layer).</p>
-
 <p>You can also buy upgrades for your buildings that will make then more efficient, less costly or upgrades that will simulate clicks. (And some games have more elaborate ways of upgrading the game).</p>
-
 <p>Also because the cost of buildings will grow exponentially but the growth of cash production will be less than exponential, at some point we will hit a time wall where we can&rsquo;t buy new buildings before a long time. That is where <em>reset</em> comes in. The <em>reset</em> (or <em>prestige</em>) mechanic allow you to reset the game entirely from the start. But why would you do that? Because resetting gives you some form of bonus that helps you progress further into the game. Some elaborate games features more than one <em>prestige</em> layer. For our case, <em>prestige</em> gives us prestige currency that gives a percentage bonus to our building production. How many prestige currency you get depends on how big your numbers are at the time you reset. The prestige currency is also used to buy some powerful upgrades (for example unlocking new buildings) that allow to progress further. So you have to balance keeping the prestige currency for it&rsquo;s production boost or spending it to gain other bonuses.</p>
-
 <h4 id="what-we-will-aim-for">What we will aim for</h4>
-
 <ul>
 <li>Create buildings that generate cash</li>
 <li>Create buildings that generate other currencies</li>
@@ -179,225 +149,203 @@
 <li>Have some form of statistics for the game</li>
 <li>Use Svelte :) And discover its many features</li>
 </ul>
-
 <p>Also note that you can peak at the <a href="https://github.com/gzgreg/DerivativeClicker/tree/gh-pages">source code</a> of the game (itself forked from <a href="https://github.com/Icehawk78/DerivativeClicker/tree/gh-pages">here</a>). For this tutorial we won&rsquo;t follow this code, but create a game similar to it from scratch.</p>
-
 <h3 id="hello-world">Hello World</h3>
-
 <p><em>The first line  <code>&lt;!-- App.svelte --&gt;</code>  is to indicate the name of the file, here <code>App.svelte</code> and it&rsquo;s just for the tutorial. You do not need to include that line in your project, it&rsquo;s for helping you follow along the tutorial</em>.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">6
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;world&#39;</span>;
 &lt;/<span style="color:#f92672">script</span>&gt;
 
-&lt;<span style="color:#f92672">h1</span>&gt;Hello {name}!&lt;/<span style="color:#f92672">h1</span>&gt;</code></pre></td></tr></table>
+&lt;<span style="color:#f92672">h1</span>&gt;Hello {name}!&lt;/<span style="color:#f92672">h1</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>File ending in <code>.svelte</code> are kind of like <code>.html</code>.  They are mostly composed of HTML tags and components. (We will see after how to define our own components).</p>
-
+</div><p>File ending in <code>.svelte</code> are kind of like <code>.html</code>.  They are mostly composed of HTML tags and components. (We will see after how to define our own components).</p>
 <p>You can also define some logic inside <code>&lt;script&gt;&lt;/script&gt;</code> and reference it inside the html template. Above we declared a variable <code>name</code> and gave it the value <code>&quot;world&quot;</code>. Then inside the template we reference it with the syntax <code>{name}</code> to inject its value.</p>
-
 <p>If you use the REPL, you should see on the right side in the <code>result</code> pane a big bold <strong>Hello world!</strong>.</p>
-
 <figure>
     <img src="/img/blog_3_svelte_helloworld.png"
          alt="Svelte Hello World"/> 
 </figure>
 
-
 <h3 id="creating-the-first-building">Creating the first building</h3>
-
 <p>If you recall the little introduction on idle games, building are things that you can buy and then they generate something every tick. (or every X tick, or twice per tick or whenever. Here we will start by producing money every tick.)</p>
-
 <p>So for this first step we need to:</p>
-
 <ul>
 <li>keep track of cash (our primary currency)</li>
 <li>keep track of how many numbers of building we bought (cause the price of the building depends on the number of building, and how much cash is generated each tick is also dependent on how many buildings there are).</li>
 <li>create a function that will be used every tick (to gain currency)</li>
 </ul>
-
 <p>Let&rsquo;s keep track of cash in our game : <code>let money = 20</code> and start with 20 units of it. And by modifying a bit the <code>Hello World</code> example, you can show the amount of money.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">6
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
 &lt;/<span style="color:#f92672">script</span>&gt;
 
-&lt;<span style="color:#f92672">h1</span>&gt; You have {money} $ &lt;/<span style="color:#f92672">h1</span>&gt;</code></pre></td></tr></table>
+&lt;<span style="color:#f92672">h1</span>&gt; You have {money} $ &lt;/<span style="color:#f92672">h1</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>Next to represent a building, we will use a button. If you click on it, you buy it, deducting its price from your money.</p>
-
+</div><p>Next to represent a building, we will use a button. If you click on it, you buy it, deducting its price from your money.</p>
 <p>We need two variables: one for the price and one for the number of building bought:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">6
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>And then we can use those variable in the template with curly braces syntax <code>{}</code> we saw earlier:</p>
+</div><p>And then we can use those variable in the template with curly braces syntax <code>{}</code> we saw earlier:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">button</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} building bought, next one cost {cost}$&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>So far so good :)</p>
-
+</div><p>So far so good :)</p>
 <p>Now we need to actually do something when we click on the button.</p>
-
-<h3 id="buying-a-building-with-event-and-event-handler">Buying a building  with event and event handler</h3>
-
+<h3 id="buying-a-building--with-event-and-event-handler">Buying a building  with event and event handler</h3>
 <p>We add an event handler to do something when you click on the button. In Svelte you can intercept any event with <code>on:</code> followed by the event name. Here the event is <code>click</code> so we use <code>on:click={clickHandler}</code>. <code>clickHandler</code> is a function that is called when a click is registered.  For example:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{()=</span>&gt;alert(&#39;The button was clicked&#39;)}&gt;
-    &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} building bought, next one cost {cost}$&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+	&lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} building bought, next one cost {cost}$&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>Will trigger a JS alert each time the button is clicked.</p>
-
+</div><p>Will trigger a JS alert each time the button is clicked.</p>
 <p>In our case we want to update our cash, the number of building and the cost of the next building. Let&rsquo;s define a function <code>updateNumbers</code> that do exactly that. *Note that for now we use a linear growth function to calculate building cost, but usually idle games define a cost with exponential growth. We will change that later.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    
-    <span style="color:#75715e">// function called when clicking on the building button
+	
+	<span style="color:#75715e">// function called when clicking on the building button
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateNumbers</span>(){
     <span style="color:#a6e22e">money</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">cost</span>; <span style="color:#75715e">//shorthand for money = money - cost
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">//numberOfBuilding = numberOfBuilding + 1
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>; 
-  } 
-&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></td></tr></table>
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">//numberOfBuilding = numberOfBuilding + 1
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>; 
+  }	
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>And the template for the button:</p>
+</div><p>And the template for the button:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} building bought, next one cost {cost}$&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>This seems to works :) But if you click more than three times on the button you will see that our money goes into negative value :( We need to restrict buying only when we have enough money.</p>
-
+</div><p>This seems to works :) But if you click more than three times on the button you will see that our money goes into negative value :( We need to restrict buying only when we have enough money.</p>
 <figure>
     <img src="/img/blog_3_svelte_negative_money.png"
          alt="Money goes into negative"/> 
 </figure>
 
-
 <h3 id="restrict-buying-building-only-when-we-have-the-money">Restrict buying building only when we have the money</h3>
-
 <p>What we want is to block the button when we have less money than the cost. We could write it that way:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{cost &gt; money}&#34;</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} building bought, next one cost {cost}$&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>But maybe we will need the boolean condition <code>cost &gt; money</code> in other places as well, and it is better not to repeat many times the same logic (see DRY principle). If later on we need to change it, we&rsquo;d have to find all the places we used it. (Spoiler alert: we will need to have that condition in more than one place, and we will also need to change it slightly later).
-To solve that little problem, we are going to use reactive declarations<sup class="footnote-ref" id="fnref:19"><a href="#fn:19">5</a></sup>.</p>
-
+</div><p>But maybe we will need the boolean condition <code>cost &gt; money</code> in other places as well, and it is better not to repeat many times the same logic (see DRY principle). If later on we need to change it, we&rsquo;d have to find all the places we used it. (Spoiler alert: we will need to have that condition in more than one place, and we will also need to change it slightly later). 
+To solve that little problem, we are going to use reactive declarations<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
 <h3 id="refactoring-using-reactive-declarations">Refactoring using reactive declarations</h3>
-
 <p>Reactive declarations are a way to declare variable that depends on other variables.  When the value of the variables they depend on change, their own value will be recomputed (they react to change hence the name).</p>
-
 <p>Here we are going to write one such reactive declaration</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">8
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   ... <span style="color:#75715e">// here goes the code for the variable declarations
@@ -405,48 +353,46 @@ To solve that little problem, we are going to use reactive declarations<sup clas
   <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cantBuy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">money</span>
 
   ... <span style="color:#75715e">// here goes the rest of the code
-</span><span style="color:#75715e"></span>&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></td></tr></table>
+</span><span style="color:#75715e"></span>&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>And now we can use it in our button:</p>
+</div><p>And now we can use it in our button:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} bought, next one cost {cost}$&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>Below you can see the result, we can no longer click on the button when we can&rsquo;t afford it.</p>
-
+</div><p>Below you can see the result, we can no longer click on the button when we can&rsquo;t afford it.</p>
 <figure>
     <img src="/img/blog_3_svelte_no_more_negative_money.png"
          alt="Money goes into negative"/> 
 </figure>
 
-
 <p>Another place we can use reactive declarations is with the <code>cost</code> variable. Remember that to update the cost we used <code>cost = (numberOfBuilding + 1) * 5;</code>. That too can be expressed as a reactive declaration.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#75715e">//instead of let cost = 5, replace it by
@@ -457,94 +403,87 @@ To solve that little problem, we are going to use reactive declarations<sup clas
     <span style="color:#a6e22e">money</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">cost</span>;
     <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
   }
-&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>We no longer need to update the cost here, reactive declaration does it for us when we update <code>numberOfBuilding</code>.</p>
-
+</div><p>We no longer need to update the cost here, reactive declaration does it for us when we update <code>numberOfBuilding</code>.</p>
 <h3 id="mid-tutorial-recap">Mid tutorial recap</h3>
-
 <p>Let&rsquo;s have a look at the full code until now and see how far we got.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">21
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-    
+	
   <span style="color:#75715e">// Reactive declarations
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cantBuy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">money</span>;
   <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>;
-    
+	
   <span style="color:#75715e">// function called when clicking on the building button
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateNumbers</span>(){
-    <span style="color:#a6e22e">money</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">cost</span>; <span style="color:#75715e">//shorthand for money = money - cost
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">//numberOfBuilding = numberOfBuilding + 1 
-</span><span style="color:#75715e"></span>  } 
+	<span style="color:#a6e22e">money</span> <span style="color:#f92672">-=</span> <span style="color:#a6e22e">cost</span>; <span style="color:#75715e">//shorthand for money = money - cost
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e">//numberOfBuilding = numberOfBuilding + 1 
+</span><span style="color:#75715e"></span>  }	
 &lt;/<span style="color:#f92672">script</span>&gt;
 
 &lt;<span style="color:#f92672">h1</span>&gt;You have {money} $!&lt;/<span style="color:#f92672">h1</span>&gt;
 
 &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} bought, next one cost {cost}$&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>We can buy buildings, can&rsquo;t buy them when we don&rsquo;t have the money. We need now to make them generate money!</p>
-
+</div><p>We can buy buildings, can&rsquo;t buy them when we don&rsquo;t have the money. We need now to make them generate money!</p>
 <h3 id="making-buildings-generates-money">Making buildings generates money</h3>
-
 <p>To do that, we need to trigger a function every X millisecond. In JS we can use <code>setTimeout</code>.</p>
-
 <p>We will declare a <code>tickSpeed</code> variable that will be the X for the interval for <code>setTimeout</code>. Later on it will allow us to increase or decrease (mostly decrease) the value of <code>tickSpeed</code> to accelerate the game.</p>
-
 <p>We will also declare a variable <code>buildingProduction</code> to represent how much money each building produce every tick.</p>
-
 <p>And last we declare a new function <code>updateMoney</code> that will update the amount of money we have and trigger a <code>timeOut</code> to get called again after <code>tickSpeed</code> milliseconds.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">17
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   ... <span style="color:#75715e">//variable declarations
@@ -558,71 +497,64 @@ To solve that little problem, we are going to use reactive declarations<sup clas
     <span style="color:#a6e22e">money</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">buildingProduction</span>;
     <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">updateMoney</span>, <span style="color:#a6e22e">tickSpeed</span>);
   }
-    
+	
   <span style="color:#a6e22e">updateMoney</span>(); <span style="color:#75715e">// Call the function to start the update loop.
 </span><span style="color:#75715e"></span>  
-&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>And <em>voilà</em>! Now when you buy buildings, you should see the money going up each second!</p>
-
+</div><p>And <em>voilà</em>! Now when you buy buildings, you should see the money going up each second!</p>
 <h3 id="changes-to-the-ui">Changes to the UI</h3>
-
 <p>For the first part of the tutorial we implemented all the feature we planned to but we could add some visual changes.</p>
-
 <h4 id="add-more-stats">Add more stats</h4>
-
 <p>Now that we earn money each tick, wouldn&rsquo;t that be nice to see how much we earn?</p>
-
 <p>In the template we can just add <code>&lt;p&gt;You gain {numberOfBuilding * buildingProduction}$ / tick.&lt;/p&gt;</code> to have more information:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} buildings bought, next one cost {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;You gain {numberOfBuilding * buildingProduction}$ / tick.&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>NOTE: yes I inserted two <code>&lt;p&gt;</code> inside the <code>&lt;button</code>. It is not the recommended way to make two lines of text one below the other in a button but for now it will do. (I checked a w3c validator<sup class="footnote-ref" id="fnref:20"><a href="#fn:20">6</a></sup> and indeed it is not valid.)</p>
-
+</div><p>NOTE: yes I inserted two <code>&lt;p&gt;</code> inside the <code>&lt;button</code>. It is not the recommended way to make two lines of text one below the other in a button but for now it will do. (I checked a w3c validator<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> and indeed it is not valid.)</p>
 <p>Now you can test it, buy a couple buildings and you&rsquo;ll see how much money you get each tick.</p>
-
 <p>But by doing that, we introduced some redundancy. We used <code>numberOfBuilding * buildingProduction</code> which is already used in the function <code>updateMoney</code>. We can utilize a reactive declaration again to not repeat this operation in multiple place, and also replace it in the code in all the places it was used.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">25
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#75715e">// variable declarations
@@ -638,7 +570,7 @@ To solve that little problem, we are going to use reactive declarations<sup clas
   
   <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">updateMoney</span>(){
     <span style="color:#a6e22e">money</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">productionPerTick</span>;
-    <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">updateMoney</span>, <span style="color:#a6e22e">tickSpeed</span>);
+	<span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">updateMoney</span>, <span style="color:#a6e22e">tickSpeed</span>);
   }
 &lt;/<span style="color:#f92672">script</span>&gt;  
 
@@ -647,40 +579,35 @@ To solve that little problem, we are going to use reactive declarations<sup clas
 &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
   ...
   &lt;<span style="color:#f92672">p</span>&gt;You gain {productionPerTick}$ / tick.&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>But when you replace everything that way, you get an error: <code>can't access lexical declaration 'productionPerTick' before initialization</code>. What is means it that we try to use <code>productionPerTick</code> (which rely on other variables) before Svelte has even initialized those variables.</p>
-
+</div><p>But when you replace everything that way, you get an error: <code>can't access lexical declaration 'productionPerTick' before initialization</code>. What is means it that we try to use <code>productionPerTick</code> (which rely on other variables) before Svelte has even initialized those variables.</p>
 <p>To resolve this problem, we will have to use some lifecycle functions.</p>
-
 <h4 id="introducing-lifecycle-functions-onmount">Introducing lifecycle functions: <code>onMount</code></h4>
-
 <p>Svelte (like React and Angular) provides function that you can redefine to customize the comportment of the components.</p>
-
 <p>Here we can use <code>onMount</code> to only call the function <code>updateMoney</code> (and consequently use <code>productionPerTick</code>) only once Svelte has been initialized. (Or rather, once Svelte has initialized the <code>App</code> <em>component</em>).</p>
-
 <p>To be able to use <code>onMount</code> we need to import it first.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#75715e">// imports declaration
@@ -694,44 +621,39 @@ To solve that little problem, we are going to use reactive declarations<sup clas
 </span><span style="color:#75715e"></span>  ...
   <span style="color:#75715e">// lifecycle functions 
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">onMount</span>(() =&gt; {
-    <span style="color:#a6e22e">updateMoney</span>();
+	<span style="color:#a6e22e">updateMoney</span>();
   });
-&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>Once we do that the error disappear and the application works again. :)</p>
-
+</div><p>Once we do that the error disappear and the application works again. :)</p>
 <p>For more information on <code>onMount</code> and other lifecycle functions, see the <a href="https://svelte.dev/docs#onMount">documentation</a> and the <a href="https://svelte.dev/tutorial/onmount">onMount tutorial</a>.</p>
-
 <h4 id="adding-some-visual-cues">Adding some visual cues</h4>
-
 <p>And to finish this tutorial, let&rsquo;s add some visual cues for the button.</p>
-
 <p>We are going to change the background color for the button and change the mouse cursor depending on if we can buy it or not.</p>
-
 <p>We can style elements directly into our <code>.svelte</code> files with the <code>&lt;style&gt;</code> tag.  We are defining a default style for the <code>&lt;button&gt;</code> tag then a style for <code>&lt;button&gt;</code> that has the <code>cantbuy</code> class</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">18
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   ...
@@ -739,112 +661,109 @@ To solve that little problem, we are going to use reactive declarations<sup clas
 
 &lt;<span style="color:#f92672">style</span>&gt;
   <span style="color:#f92672">button</span> {
-    <span style="color:#66d9ef">outline</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">black</span>;
-    <span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">aliceblue</span>;
-    <span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">pointer</span>;
+	<span style="color:#66d9ef">outline</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">black</span>;
+	<span style="color:#66d9ef">background</span>: <span style="color:#66d9ef">aliceblue</span>;
+	<span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">pointer</span>;
   }
 
   <span style="color:#f92672">button</span>.<span style="color:#a6e22e">cantbuy</span> {
-    <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#555</span>;
-    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#DDD</span>;
+	<span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#555</span>;
+	<span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#DDD</span>;
     <span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">default</span>;
   }
-&lt;/<span style="color:#f92672">style</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">style</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>Then we need to add this <code>cantbuy</code> class to the <code>&lt;button&gt;</code> only when we cannot buy it. Luckily we can re-use the <em>reactive declaration</em> <code>cantBuy</code>.</p>
+</div><p>Then we need to add this <code>cantbuy</code> class to the <code>&lt;button&gt;</code> only when we cannot buy it. Luckily we can re-use the <em>reactive declaration</em> <code>cantBuy</code>.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">4
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
-  ...
-&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+ ...
+&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>Here <code>class:cantbuy={cantBuy}</code> means Svelte will add the class <code>cantbuy</code> to the element only when the variable <code>cantBuy</code> is true. You can also write it with a ternary expression: <code>class={cantBuy ? 'cantbuy' : ''}</code>.</p>
-
+</div><p>Here <code>class:cantbuy={cantBuy}</code> means Svelte will add the class <code>cantbuy</code> to the element only when the variable <code>cantBuy</code> is true. You can also write it with a ternary expression: <code>class={cantBuy ? 'cantbuy' : ''}</code>.</p>
 <h3 id="conclusion">Conclusion</h3>
-
 <p>This close the first part of this tutorial.</p>
-
 <p>Below is the full code:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">43
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">44
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">45
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">46
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">47
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">48
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">49
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">50
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">51
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">52
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">53
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">54
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">55
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">56
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- App.svelte --&gt;</span>
 &lt;<span style="color:#f92672">script</span>&gt;
   <span style="color:#75715e">// import declarations
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">onMount</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;svelte&#39;</span>;
-    
+	
   <span style="color:#75715e">// variable declarations
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">buildingProduction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// $ produced per building per tick
 </span><span style="color:#75715e"></span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tickSpeed</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
-    
+	
   <span style="color:#75715e">// reactive declarations
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cantBuy</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">money</span>;
   <span style="color:#a6e22e">$</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cost</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">numberOfBuilding</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>;
@@ -889,35 +808,38 @@ To solve that little problem, we are going to use reactive declarations<sup clas
 &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">on:click</span><span style="color:#f92672">=</span><span style="color:#e6db74">{updateNumbers}</span> <span style="color:#a6e22e">class:cantbuy</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span> <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span><span style="color:#e6db74">{cantBuy}</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;{numberOfBuilding} buildings bought, next one cost {cost}$.&lt;/<span style="color:#f92672">p</span>&gt;
   &lt;<span style="color:#f92672">p</span>&gt;You gain {productionPerTick}$ / tick.&lt;/<span style="color:#f92672">p</span>&gt;
-&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></td></tr></table>
+&lt;/<span style="color:#f92672">button</span>&gt;
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>You can play with the example <a href="https://svelte.dev/repl/4181423ac05b4041ad9e449c666828d5?version=3.4.2">in the Svelte REPL</a> yourself.</p>
-
-<p>You can also <a href="http://tuto-derivative-clicker-part1.surge.sh/">play the game we made so far here</a> (hosted by Surge<sup class="footnote-ref" id="fnref:21"><a href="#fn:21">7</a></sup>).</p>
-
+</div><p>You can play with the example <a href="https://svelte.dev/repl/4181423ac05b4041ad9e449c666828d5?version=3.4.2">in the Svelte REPL</a> yourself.</p>
+<p>You can also <a href="http://tuto-derivative-clicker-part1.surge.sh/">play the game we made so far here</a> (hosted by Surge<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>).</p>
 <p>To continue the tutorial, <a href="/blog/tutorial-for-idle-game-svelte-part2/">part2: Going further with Svelte using components and props</a> :) We will build more than one building, create components to isolate our logic around buildings and continue to implement the game mechanics.</p>
-<div class="footnotes">
-
-<hr />
-
+<section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:1"><a href="https://svelte.dev/">https://svelte.dev/</a>
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
-<li id="fn:0"><a href="http://gzgreg.github.io/DerivativeClicker/">http://gzgreg.github.io/DerivativeClicker/</a>
- <a class="footnote-return" href="#fnref:0"><sup>[return]</sup></a></li>
-<li id="fn:4"><a href="https://svelte.dev/repl/hello-world?version=3.5.1">https://svelte.dev/repl/hello-world?version=3.5.1</a>
- <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
-<li id="fn:8"><a href="https://svelte.dev/blog/the-easiest-way-to-get-started">https://svelte.dev/blog/the-easiest-way-to-get-started</a>
- <a class="footnote-return" href="#fnref:8"><sup>[return]</sup></a></li>
-<li id="fn:19"><a href="https://svelte.dev/tutorial/reactive-declarations">https://svelte.dev/tutorial/reactive-declarations</a>
- <a class="footnote-return" href="#fnref:19"><sup>[return]</sup></a></li>
-<li id="fn:20"><a href="https://validator.w3.org">https://validator.w3.org</a>
- <a class="footnote-return" href="#fnref:20"><sup>[return]</sup></a></li>
-<li id="fn:21"><a href="https://surge.sh/">https://surge.sh/</a>
- <a class="footnote-return" href="#fnref:21"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://svelte.dev/">https://svelte.dev/</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="http://gzgreg.github.io/DerivativeClicker/">http://gzgreg.github.io/DerivativeClicker/</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://svelte.dev/repl/hello-world?version=3.5.1">https://svelte.dev/repl/hello-world?version=3.5.1</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p><a href="https://svelte.dev/blog/the-easiest-way-to-get-started">https://svelte.dev/blog/the-easiest-way-to-get-started</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p><a href="https://svelte.dev/tutorial/reactive-declarations">https://svelte.dev/tutorial/reactive-declarations</a> <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p><a href="https://validator.w3.org">https://validator.w3.org</a> <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7" role="doc-endnote">
+<p><a href="https://surge.sh/">https://surge.sh/</a> <a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 
     
     <ul class="tags">

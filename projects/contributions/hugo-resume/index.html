@@ -20,7 +20,7 @@
   
   <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
   <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.80.0" />
   
    
   
@@ -100,23 +100,16 @@
   <div class="my-auto">
     <h2 class="mb-0"><span class="text-primary">hugo-resume fix some css</span></h2>
     <p>It feels good to fix the theme I use for the blog, I give back to a tool I will use for some time hopefully :)</p>
-
 <p>The problem was that when looking at blog post with full resolution on my laptop, it displayed nicely. But when viewing it with smartphone resolution, it looked like this:</p>
-
 <figure>
     <img src="/img/contributions_width_overflow.png"
          alt="blog post with text overflowing"/> 
 </figure>
 
-
 <p>After some duckduckgoing, I stumbled upon <code>box-sizing: border-box</code>, an element I have not used before.I went to MDN to see what is was <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">MDN page on box-sizing</a>, then looked around if it could be that element tripping me up.</p>
-
 <p>But according to that doc, because the CSS used <code>border-box</code> instead of <code>content-box</code>, my content should have behaved nicely and not overflowing.</p>
-
 <p>After more time looking around, <a href="https://stackoverflow.com/a/38892861/3729797">a StackOverflow response</a> once again saved the day. When using <code>border-box</code> on a container, you have to set the width on the inner child.</p>
-
 <p>I added <code>width: 100%</code> on the inner child, and &ldquo;voila&rdquo;:</p>
-
 <figure>
     <img src="/img/contributions_without_width_overflow.png"
          alt="blog post with text overflowing"/> 

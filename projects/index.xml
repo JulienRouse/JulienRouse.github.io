@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on I break things often. Sometimes I manage to fix them</title>
@@ -6,9 +5,30 @@
     <description>Recent content in Projects on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 15 May 2019 12:00:00 -0500</lastBuildDate>
     
         <atom:link href="https://www.julienrouse.com/projects/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Creations</title>
+      <link>https://www.julienrouse.com/projects/creations/</link>
+      <pubDate>Wed, 15 May 2019 12:00:00 -0500</pubDate>
+      
+      <guid>https://www.julienrouse.com/projects/creations/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Open Source Contributions</title>
+      <link>https://www.julienrouse.com/projects/contributions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/projects/contributions/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;
+</description>
+    </item>
     
   </channel>
 </rss>	

@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lisp on I break things often. Sometimes I manage to fix them</title>
+    <title>lisp on I break things often. Sometimes I manage to fix them</title>
     <link>https://www.julienrouse.com/tags/lisp/</link>
-    <description>Recent content in Lisp on I break things often. Sometimes I manage to fix them</description>
+    <description>Recent content in lisp on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -17,11 +16,8 @@
       
       <guid>https://www.julienrouse.com/projects/contributions/cl-string/</guid>
       <description>&lt;p&gt;First contribution to another project on Github ever! :)&lt;/p&gt;
-
 &lt;p&gt;It was very small, the library was a very small and new library that wanted to groups lots of functionalities pertaining to strings for Common Lisp.&lt;/p&gt;
-
 &lt;p&gt;The creator/maintener asked for help on the lisp subreddit and I gave it a try.&lt;/p&gt;
-
 &lt;p&gt;It was a good way to get my feet wet, a very small project with a responsive maintainer that took the time to explains things to me on how to contribute on Github and such.&lt;/p&gt;
 </description>
     </item>
