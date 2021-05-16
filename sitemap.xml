@@ -29,13 +29,32 @@
   </url>
   
   <url>
-    <loc>https://www.julienrouse.com/blog/emacs-again/</loc>
-    <lastmod>2021-05-15T19:00:00+00:00</lastmod>
+    <loc>https://www.julienrouse.com/blog/systemctl_not_found_while_installing_mongodb_server/</loc>
+    <lastmod>2020-11-22T19:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.julienrouse.com/blog/systemctl_not_found_while_installing_mongodb_server/</loc>
+    <loc>https://www.julienrouse.com/blog/</loc>
     <lastmod>2020-11-22T19:00:00+00:00</lastmod>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/tags/</loc>
+    <lastmod>2020-11-22T19:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/tags/nanowrimo2020/</loc>
+    <lastmod>2020-11-22T19:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/tags/post-mortem/</loc>
+    <lastmod>2020-11-22T19:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -44,7 +63,18 @@
   </url>
   
   <url>
+    <loc>https://www.julienrouse.com/tags/writing/</loc>
+    <lastmod>2020-11-01T19:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.julienrouse.com/blog/open-invite/</loc>
+    <lastmod>2020-10-17T19:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/tags/open-invite/</loc>
     <lastmod>2020-10-17T19:00:00+00:00</lastmod>
   </url>
   
@@ -79,8 +109,14 @@
   </url>
   
   <url>
-    <loc>https://www.julienrouse.com/blog/webpack-cli-crashes-only-on-monday/</loc>
-    <lastmod>2019-07-06T20:00:00+00:00</lastmod>
+    <loc>https://www.julienrouse.com/tags/short/</loc>
+    <lastmod>2020-06-16T19:00:00+04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.julienrouse.com/blog/introduction_to_mutation_testing/</loc>
+    <lastmod>2020-05-09T19:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -200,14 +236,8 @@
   </url>
   
   <url>
-    <loc>https://www.julienrouse.com/tags/idle/</loc>
-    <lastmod>2019-10-18T20:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.julienrouse.com/tags/improving/</loc>
-    <lastmod>2020-10-10T19:00:00+00:00</lastmod>
+    <loc>https://www.julienrouse.com/tags/webpack/</loc>
+    <lastmod>2019-07-06T20:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -241,13 +271,8 @@
   </url>
   
   <url>
-    <loc>https://www.julienrouse.com/tags/not-the-onion/</loc>
-    <lastmod>2019-07-06T20:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.julienrouse.com/tags/ocaml/</loc>
+    <loc>https://www.julienrouse.com/tags/scrum/</loc>
+    <lastmod>2019-05-18T18:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
