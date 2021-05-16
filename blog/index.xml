@@ -6,10 +6,102 @@
     <description>Recent content in Blog on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Nov 2020 19:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 May 2021 19:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://www.julienrouse.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Emacs again</title>
+      <link>https://www.julienrouse.com/blog/emacs-again/</link>
+      <pubDate>Sat, 15 May 2021 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/emacs-again/</guid>
+      <description>
+
+&lt;h1 id=&#34;emacs&#34;&gt;Emacs&lt;/h1&gt;
+
+&lt;p&gt;Since the start of January, I am trying to switch back to
+&lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;Here are some modes (packages/plugins in Emacs lingo) that I want to
+try.&lt;/p&gt;
+
+&lt;h2 id=&#34;org-mode&#34;&gt;org-mode&lt;/h2&gt;
+
+&lt;p&gt;I am really drawn out to &lt;a href=&#34;https://orgmode.org/&#34;&gt;Org Mode&lt;/a&gt;, a major mode
+(a mode is a plugin in Emacs) to help with todo-lists, planning,
+agendas, literate programming and a lot more!&lt;/p&gt;
+
+&lt;p&gt;I used it in the past with
+various success, but because I could not use Emacs at work. I stopped using Emacs altogether
+to stop switching between editor. I had
+settled for the &lt;a href=&#34;https://foambubble.github.io/foam/&#34;&gt;Foam plugin&lt;/a&gt; for
+VSCode, which offers some nices todo-list capabilities, an also a good
+base for growing a knowledge base in the
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Zettelkasten&#34;&gt;Zettelkasten&lt;/a&gt; way.&lt;/p&gt;
+
+&lt;p&gt;Since then, an extension for org-mode appeared:
+&lt;a href=&#34;https://www.orgroam.com/&#34;&gt;org-roam&lt;/a&gt;, wich looks like a serious
+contender I would like to try.&lt;/p&gt;
+
+&lt;p&gt;(And actually this post is written with org-mode, and exported to
+Markdown with &lt;a href=&#34;https://github.com/kawabata/ox-pandoc&#34;&gt;ox-pandoc&lt;/a&gt;, an
+extension to use the magnificent &lt;a href=&#34;https://pandoc.org/&#34;&gt;pandoc&lt;/a&gt; to export
+org files to various format.)&lt;/p&gt;
+
+&lt;h2 id=&#34;magit&#34;&gt;Magit&lt;/h2&gt;
+
+&lt;p&gt;This one is totally new to me, a
+&lt;a href=&#34;https://stackoverflow.com/a/6976506/3729797&#34;&gt;porcelain&lt;/a&gt; for Git really
+well integrated in Emacs.&lt;/p&gt;
+
+&lt;p&gt;I have heard a lot of good things on &lt;a href=&#34;https://magit.vc/&#34;&gt;Magit&lt;/a&gt;, so it
+is on my lists of packages to try!&lt;/p&gt;
+
+&lt;h2 id=&#34;lsp-mode&#34;&gt;lsp-mode&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://emacs-lsp.github.io/lsp-mode/&#34;&gt;lsp-mode&lt;/a&gt; add support for
+&lt;a href=&#34;https://microsoft.github.io/language-server-protocol/&#34;&gt;language server
+protocol&lt;/a&gt; in
+Emacs. I think this idea came originally from Microsoft/VSCode to
+simplify the development of tooling for new language and editors. This
+looks nice and should allow to have a good experience for most
+programming language.&lt;/p&gt;
+
+&lt;p&gt;Additionally, there is some integration with popular packages like Helm,
+Ivy and other as well so it might help me to discover new packages.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/joaotavora/eglot&#34;&gt;eglot&lt;/a&gt; also add support for lsp in
+Emacs, but looks less complete at first glance.&lt;/p&gt;
+
+&lt;h2 id=&#34;other-packages-that-look-promising&#34;&gt;Other packages that look promising&lt;/h2&gt;
+
+&lt;p&gt;And some less well known packages:&lt;/p&gt;
+
+&lt;h3 id=&#34;docker-el&#34;&gt;docker.el&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/Silex/docker.el&#34;&gt;docker.el&lt;/a&gt; is unsurprinsigly a mode
+to work with Docker container in Emacs.&lt;/p&gt;
+
+&lt;h3 id=&#34;kubel&#34;&gt;kubel&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/abrochard/kubel&#34;&gt;kubel&lt;/a&gt;
+is a package for managing Kubernetes cluster.&lt;/p&gt;
+
+&lt;p&gt;I discovered it while watching this very very good video: &lt;a href=&#34;https://www.youtube.com/watch?v=w3krYEeqnyk&#34;&gt;Conquering
+Kubernetes with Emacs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I am back in Emacs land, so much to (re)discover.&lt;/p&gt;
+
+&lt;p&gt;And if you never heard of org-mode before (or
+&lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Emacs&lt;/a&gt;), make yourself a favor and
+go try it for yourself. It is such a different experience that you will
+learn something for sure.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>&#34;Systemctl not found&#34; while installing MongoDB server</title>
@@ -58,12 +150,12 @@
 &lt;p&gt;First tries did not work. Now I had to dig into the error message a little more.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;6
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;6
 &lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lib&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dpkg&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;info&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;mongodb&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;org&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;server&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;postinst&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;43&lt;/span&gt;: &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;lib&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dpkg&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;info&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;mongodb&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;org&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;server&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;postinst&lt;/span&gt;: &lt;span style=&#34;color:#a6e22e&#34;&gt;systemctl&lt;/span&gt;: &lt;span style=&#34;color:#a6e22e&#34;&gt;not&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;found&lt;/span&gt;
@@ -98,8 +190,8 @@
 &lt;p&gt;After reading it a bit and searching for &lt;code&gt;systemctl&lt;/code&gt;, I found this line in the Dockerfile&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# starting with MongoDB 4.3, the postinst for server includes &amp;#34;systemctl daemon-reload&amp;#34; (and we don&amp;#39;t have &amp;#34;systemctl&amp;#34;)&lt;/span&gt;
@@ -117,8 +209,8 @@
 &lt;p&gt;The part that failed is here&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;2
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Check for changes to the service file&lt;/span&gt;
@@ -137,7 +229,7 @@ systemctl daemon-reload&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table
 &lt;p&gt;I knew about &lt;code&gt;ln&lt;/code&gt; for links between files on the system before but I never saw it used to replace the comportment of a command by another one.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;ln -s /bin/true /usr/local/bin/systemctl&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -158,10 +250,10 @@ systemctl daemon-reload&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table
 &lt;p&gt;As it turns out, looking around in the repository for the Dockerfile for MongoDB where I found the trick to solve my problem, there is a comment&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;4
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# starting with MongoDB 4.3 (and backported to 4.0 and 4.2??),&lt;/span&gt;
