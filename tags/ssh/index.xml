@@ -1,0 +1,50 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssh on I break things often. Sometimes I manage to fix them</title>
+    <link>https://www.julienrouse.com/tags/ssh/</link>
+    <description>Recent content in ssh on I break things often. Sometimes I manage to fix them</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 May 2021 19:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.julienrouse.com/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Wrong domain to test SSH setup (Gitlab)</title>
+      <link>https://www.julienrouse.com/blog/wrong-domain-to-test-ssh-setup/</link>
+      <pubDate>Sat, 22 May 2021 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/wrong-domain-to-test-ssh-setup/</guid>
+      <description>&lt;h1 id=&#34;wrong-server-address-for-ssh&#34;&gt;Wrong server address for SSH&lt;/h1&gt;
+&lt;h2 id=&#34;story-time&#34;&gt;Story time&lt;/h2&gt;
+&lt;p&gt;I was setting up SSH to be able to contact Gitlab repositories.&lt;/p&gt;
+&lt;p&gt;But at the very end, when comes the step to test if the connection is
+succesful, I followed the &lt;a href=&#34;https://docs.gitlab.com/ee/ssh/#verify-that-you-can-connect&#34;&gt;Gitlab
+documentation&lt;/a&gt;
+(use the command &lt;code&gt;ssh -T git@gitlab.example.com&lt;/code&gt;) and it was
+not working.&lt;/p&gt;
+&lt;p&gt;I had no trouble setting it up for Github a few days before, and the
+setup is pretty similar. I could not pinpoint what was going on at
+first.&lt;/p&gt;
+&lt;p&gt;I figured I must have gone a bit fast following the docs, recreated a
+new pair of keys, tried again, and still no luck.&lt;/p&gt;
+&lt;p&gt;I went to the &lt;a href=&#34;https://docs.github.com/en/enterprise-server@2.22/github/authenticating-to-github/testing-your-ssh-connection&#34;&gt;Github
+documentation&lt;/a&gt;
+to set up SSH, started from scratch again. And still, when it was time
+to test the connection, it would not be working.&lt;/p&gt;
+&lt;p&gt;And then, after at least 30min of trying to understand why, the
+realisation came to me (and maybe you understand as soon as you saw the
+command): the domain in the doc is not a real one, so I was trying again
+and again to test my SSH connection again a non-existent domain.&lt;/p&gt;
+&lt;p&gt;So if I had skipped that step and went straight to cloning a repository,
+it would have worked!&lt;/p&gt;
+&lt;h2 id=&#34;conclusion-read-carefully&#34;&gt;Conclusion: read carefully&lt;/h2&gt;
+&lt;p&gt;Lesson for this time: even when following a step-by-step guide for
+something that should be trivial, pay attention to what the command
+contains to not waste time debugging afterward.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>	
