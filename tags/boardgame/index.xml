@@ -1,0 +1,55 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>boardgame on I break things often. Sometimes I manage to fix them</title>
+    <link>https://www.julienrouse.com/tags/boardgame/</link>
+    <description>Recent content in boardgame on I break things often. Sometimes I manage to fix them</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Oct 2021 19:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="https://www.julienrouse.com/tags/boardgame/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Race for the galaxy milestone</title>
+      <link>https://www.julienrouse.com/blog/race_for_the_galazy_milestone/</link>
+      <pubDate>Sun, 17 Oct 2021 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/race_for_the_galazy_milestone/</guid>
+      <description>&lt;h1 id=&#34;race-for-the-galaxy-milestone&#34;&gt;Race for the galaxy milestone&lt;/h1&gt;
+&lt;p&gt;Since 2019, I played almost 1000 games of Race for the Galaxy (online on &lt;a href=&#34;https://boardgamearena.com/&#34;&gt;boardgamearena&lt;/a&gt;). So to mark this milestone, I am writing down a few tips and observations, and hopefully when I&amp;rsquo;ll hit 2000, 5000 or even 10 000 games I&amp;rsquo;ll be able to see if I still agree.&lt;/p&gt;
+&lt;p&gt;I am currently around 350ELO on boardgamearena, with a top around 420 last year. Best players are at least 550 I think, so I have a long way to go.&lt;/p&gt;
+&lt;p&gt;Disclaimer: all discussions in this post are about the base Race for the Galaxy game, two-players only and with the &amp;ldquo;New Worlds&amp;rdquo; variant. (at the start of the game, choose between two worlds instead of being locked with only one).&lt;/p&gt;
+&lt;p&gt;Note that I won&amp;rsquo;t explain what Race for the Galaxy is in this post, maybe another time. But your favorite search engine will help you find out all about this wonderful card game ;)&lt;/p&gt;
+&lt;h2 id=&#34;tips&#34;&gt;Tips&lt;/h2&gt;
+&lt;h3 id=&#34;first-turn-settle-surfing&#34;&gt;First turn settle &amp;ldquo;surfing&amp;rdquo;&lt;/h3&gt;
+&lt;p&gt;I&amp;rsquo;m not actually sure what&amp;rsquo;s the actual term for this action, but I call &amp;ldquo;surfing&amp;rdquo; when you bet on the other player choosing a specific action, so you don&amp;rsquo;t take it and choose another one to speed you up.&lt;/p&gt;
+&lt;p&gt;A very common way to do this (and quite powerful too), on the first turn is to select the &amp;ldquo;trade&amp;rdquo;/&amp;ldquo;produce&amp;rdquo; phase without selecting the &amp;ldquo;settle&amp;rdquo; phase. This way, if your opponent select &amp;ldquo;settle&amp;rdquo;, you get to draw cards immediately, and because often the first world played is a windfall one, you get to &amp;ldquo;trade&amp;rdquo; the next turn but your opponent won&amp;rsquo;t be able to. So you gain some tempo on him.&lt;/p&gt;
+&lt;p&gt;This works better if your starting world is a producing one, because then you produce one good at least, and two in the best case.&lt;/p&gt;
+&lt;p&gt;I climbed from 300 to 350ELO recently in large part because I had the opportunity to use this opener, and that helped me snowball faster to the finish line than my opponent.&lt;/p&gt;
+&lt;h3 id=&#34;lost-species-ark-card-is-a-trap-early-mid-game&#34;&gt;&amp;ldquo;Lost Species Ark&amp;rdquo; card is a trap early-mid game&lt;/h3&gt;
+&lt;p&gt;&amp;ldquo;Lost Species Ark&amp;rdquo; is a green card costing 5, producing genes good and allowing to draw two cards on the &amp;ldquo;produce&amp;rdquo; phase. For a long time, I thought this card was marvelous and would try to keep it in my opening hand and playing it as soon as possible, because I thought the payoff would be so worth it.&lt;/p&gt;
+&lt;p&gt;In reality, what it did most of the time was getting me in a situation where I would spend all my cards to play this one, then desperately &amp;ldquo;trade&amp;rdquo;/&amp;ldquo;produce&amp;rdquo; for a couple turn because I was card starved, and if my opponents were half-decent, they would &amp;ldquo;develop&amp;rdquo;/&amp;ldquo;settle&amp;rdquo; so much in the meantime that I would be too much behind.&lt;/p&gt;
+&lt;p&gt;Almost the only way to play this card is toward the endgame, or when you have the 2-cost development that allows you to play any world for free. And having both in your starting hand can sometimes be a great opener if you &amp;ldquo;develop&amp;rdquo;/&amp;ldquo;produce&amp;rdquo; and you surf on your opponent &amp;ldquo;settle&amp;rdquo;. But this is a lot of &amp;ldquo;ifs&amp;rdquo;, most of the time, avoid playing this card early at any cost, it&amp;rsquo;s very rarely worth it.&lt;/p&gt;
+&lt;h3 id=&#34;two-rare-productionwindfall-worlds--the-6-rare-development&#34;&gt;Two rare production/windfall worlds + the 6 rare development&lt;/h3&gt;
+&lt;p&gt;Two rare production/windfall worlds + the 6 rare development can be an opener to &amp;ldquo;consume x2&amp;rdquo;/&amp;ldquo;produce&amp;rdquo; very early and consume 6VPs per round, hopefully closing the game early enough that your opponent will still be trying to find a strategy.&lt;/p&gt;
+&lt;p&gt;The downside is that you won&amp;rsquo;t draw any card once you are starting with this, so it&amp;rsquo;s a sink or swin strategy.&lt;/p&gt;
+&lt;p&gt;One way to make it work is to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;have your opening world be the rare windfall world that discounts other rare worlds, one rare world costing one (or two) (preferably a windfall one) and the 6-cost development. This will require you have 8-9 cards in hand to put everythings&lt;/li&gt;
+&lt;li&gt;first turn: &amp;ldquo;explore +1/+1&amp;rdquo; / &amp;ldquo;trade&amp;rdquo; to get 5 cards. Hopefully, your opponent &amp;ldquo;settle&amp;rdquo; so you can play you rare world.&lt;/li&gt;
+&lt;li&gt;second turn: &amp;ldquo;develop&amp;rdquo; / &amp;ldquo;produce&amp;rdquo;. If your opponent did not settle the turn before, you hope he does now.&lt;/li&gt;
+&lt;li&gt;If your opponent did settle on turn 1 or 2, you now have 2 goods and the development, so you hammer down the &amp;ldquo;consume x2&amp;rdquo; / &amp;ldquo;produce&amp;rdquo; phase to end in 4 turns. If not, you have to waster another turn to settle but usually, people play at least one world early on so I think in most cases you could expect to be set up.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;recording-games-to-review-your-play&#34;&gt;Recording games to review your play&lt;/h2&gt;
+&lt;p&gt;This one is also a tip, but I&amp;rsquo;ll put it in its own category.&lt;/p&gt;
+&lt;p&gt;In various fields, you can read that recording yourself and reviewing your plays can help you see mistakes and correct them. It&amp;rsquo;s true for sports, videogames, and probably a bunch of other activities so let&amp;rsquo;s try it for this game! Also when I face better opponents, that could help me review their game instead of mine to see if I can grab some strategies or tricks from them.&lt;/p&gt;
+&lt;p&gt;I am only trying this one for the past five games, so I will need to report on the results later on, but what I see right now is that by putting the energy to record myself, I play more focused, which increase my odds of winning.&lt;/p&gt;
+&lt;p&gt;This is also very easy to set up, I use simplescreenrecorder myself but a bunch of alternatives exists (Kazam, OBS to quote a few).&lt;/p&gt;
+&lt;h2 id=&#34;final-words&#34;&gt;Final words&lt;/h2&gt;
+&lt;p&gt;I would like to write a bit more about Race for the Galaxy, it&amp;rsquo;s a very fun game (most of the time). We&amp;rsquo;ll see how the next 1000 games will go!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>	
