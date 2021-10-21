@@ -5,10 +5,35 @@
     <description>Recent content in Blog on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Oct 2021 19:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 20 Oct 2021 19:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://www.julienrouse.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Resources about compilers and interpreters</title>
+      <link>https://www.julienrouse.com/blog/resources-about-compilers-and-interpreters/</link>
+      <pubDate>Wed, 20 Oct 2021 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/resources-about-compilers-and-interpreters/</guid>
+      <description>&lt;p&gt;I have been more interested in how compilers, interpreters and programming language are designed lately so I am putting together a list of resources I am using or might use someday. Maybe you can find something interesting too.&lt;/p&gt;
+&lt;p&gt;This document is intended to be updated infrequently to add feedback about those resources.&lt;/p&gt;
+&lt;p&gt;One of the reason I am interested in knowing more about that subject (beside the fact that it looks fun) is that I want to learn more about Python in general, and the interpreters is a part of that. So the list might be skewed in that direction.&lt;/p&gt;
+&lt;h2 id=&#34;generic-resources&#34;&gt;Generic resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.reddit.com/r/Compilers/&#34;&gt;/r/compilers&lt;/a&gt; Subreddit about compilers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://craftinginterpreters.com&#34;&gt;Crafting interpreters&lt;/a&gt; A book that is available online for free, with possibility to buy it on ebook or paper format. Looks really good to get a start and was recommended on /r/compilers.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.reddit.com/r/Compilers/comments/nc3kt4/followup_resources_to_crafting_interpreters/&#34;&gt;thread about followup after reading &amp;ldquo;Crafting interpreters&amp;rdquo;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/aalhour/awesome-compilers#courses&#34;&gt;Awesome compiler&lt;/a&gt; Awesome-style list for compilers. Probably contains more resources than I can consume in a few years.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;python&#34;&gt;Python&lt;/h2&gt;
+&lt;h3 id=&#34;python-used-for-implemention&#34;&gt;Python used for implemention&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://norvig.com/lispy.html&#34;&gt;(How to write a (Lisp) interpreter (in Python))&lt;/a&gt; Tutorial by Peter Norvig on writing a simple Lisp interpreter&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://norvig.com/lispy2.html&#34;&gt;(An ((even better) Lisp) interpreter (in Python))&lt;/a&gt; Followup tutorial on a Lisp interpreter by Peter Norvig&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Race for the galaxy milestone</title>
