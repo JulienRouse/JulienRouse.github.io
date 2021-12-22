@@ -5,10 +5,50 @@
     <description>Recent content in short on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 May 2021 19:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Dec 2021 19:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://www.julienrouse.com/tags/short/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Some thoughts about documentation</title>
+      <link>https://www.julienrouse.com/blog/some-thoughts-about-documentation/</link>
+      <pubDate>Tue, 21 Dec 2021 19:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/blog/some-thoughts-about-documentation/</guid>
+      <description>&lt;p&gt;Writing down a few thoughts about documentation, as I realized a few things in the past two years that I did not write down yet, so here we go.&lt;/p&gt;
+&lt;h2 id=&#34;knowing-the-audience&#34;&gt;Knowing the audience&lt;/h2&gt;
+&lt;p&gt;As software developers, we write documentation but we don&amp;rsquo;t often reflect on who is targeted by the documentation. Sometimes, it&amp;rsquo;s the end user that will read it, sometimes it&amp;rsquo;s a colleague from another team, sometimes it&amp;rsquo;s a non-technical person, sometimes it&amp;rsquo;s us in the future.&lt;/p&gt;
+&lt;p&gt;Depending on who is the most likely reader, we should adapt how we write. A user and/or non-technical person does not need internal or technical details about the system, but might need a glossary, a tutorial and non-technical vocabulary.&lt;/p&gt;
+&lt;p&gt;On the other end, for technical colleagues or for ourselves, we can probably skip the glossary, and we probably wants to dig deeper in details, because that is usually what matters most.&lt;/p&gt;
+&lt;h2 id=&#34;knowing-the-needs-of-the-audience&#34;&gt;Knowing the needs of the audience&lt;/h2&gt;
+&lt;p&gt;Related but not quite the same, the same user can come to your documentation multiple time with multiple needs. One time he needs a &amp;ldquo;getting started&amp;rdquo; section to get up to speed quickly, the time after he might want to find some &amp;ldquo;tutorial&amp;rdquo; to get going, and the next time he would look out for &amp;ldquo;references&amp;rdquo; documents to help dig further.&lt;/p&gt;
+&lt;p&gt;Same could apply for internal documentation, writing a tutorial vs a getting-started guide is not the same and should be treated differently.&lt;/p&gt;
+&lt;h2 id=&#34;give-context&#34;&gt;Give context&lt;/h2&gt;
+&lt;p&gt;This is more for the technical documentation, either architectural decision record, design document, or most technical document you can think of. This is also applicable for commit message (if using Git).&lt;/p&gt;
+&lt;p&gt;Giving context about the system or a change is probably one of the most important things to do.&lt;/p&gt;
+&lt;p&gt;If you give enough context (requirements, constraints, how the system behave at time of writing), other people should be able to understand why the solution made sense at that time. It is also a good idea to talk about alternative solution, why they were not chosen (a little list of pros/cons can help).&lt;/p&gt;
+&lt;h2 id=&#34;diagram-are-important&#34;&gt;Diagram are important&lt;/h2&gt;
+&lt;p&gt;A picture is worth a thousand words. Use diagrams/schemas.&lt;/p&gt;
+&lt;p&gt;And if you do use diagram, please include the source of the diagram to make sure anybody can update it later.&lt;/p&gt;
+&lt;h2 id=&#34;write-more-documentation&#34;&gt;Write more documentation&lt;/h2&gt;
+&lt;p&gt;We usually are reluctant to write documentation, but it is very rare in my experience that we write enough of it.&lt;/p&gt;
+&lt;p&gt;Something that can help you write documentation is &lt;a href=&#34;https://www.hanselman.com/blog/do-they-deserve-the-gift-of-your-keystrokes&#34;&gt;Scott Hanselman&amp;rsquo;s take on keystrokes&lt;/a&gt;.
+Instead of responding on your messaging app or in a mail to one person asking a question, write a blog post or in a wiki or in whatever format make sense, then share it. Overtime, you should be able to link people to your posts instead of responding over and over to the same questions.&lt;/p&gt;
+&lt;h2 id=&#34;can-there-be-too-much-documentation&#34;&gt;Can there be too much documentation?&lt;/h2&gt;
+&lt;p&gt;Yes. Documentation has a maintenance cost. Outdated documentation can even be dangerous because it can lead to false impression on a system.&lt;/p&gt;
+&lt;p&gt;But with a little discipline, and dating the documentation you write to easily spot text that was written a few years ago versus text written last week, that should not be a problem.&lt;/p&gt;
+&lt;p&gt;And frankly, it&amp;rsquo;s rare enough to have too much documentation anyway so this should not be a problem in most cases.&lt;/p&gt;
+&lt;h2 id=&#34;more-material&#34;&gt;More material&lt;/h2&gt;
+&lt;p&gt;Some links to learn about documentation in various forms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=t4vKPhjcMZg&#34;&gt;What nobody tells you about documentation - Daniele Procida - PyCon AU&lt;/a&gt;. Wonderful presentation, from the experience the Django team has with having great documentation for their project.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.djangoproject.com/en/4.0&#34;&gt;Django documentation&lt;/a&gt;.  Goes well with the presentation above, can give a good idea of what user-facing documentation can look like when done well.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://notes.portebois.net/2021/03/23.html&#34;&gt;Sébastien Portebois&amp;rsquo;s tips for better architecture diagrams&lt;/a&gt;. One of the architect on the project I work for put up together a really thorough post about diagram. Cherry on top is the checklist at the end to evaluate your diagram quickly against common mistakes.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cbea.ms/git-commit/&#34;&gt;How to write a great commit message&lt;/a&gt; A classic, to be on top of your git-commit game.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Emacs again</title>
