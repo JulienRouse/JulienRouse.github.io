@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Print the Go syntax representation of a value</title>
+  <meta property="og:title" content="Print the Go syntax representation of a value" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="I break things often. Sometimes I manage to fix them">
+  <meta property="og:description" content="I break things often. Sometimes I manage to fix them" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.80.0" />
+  
+   
+  
+  
+  <script async defer data-domain="julienrouse.com" src="https://plausible.io/js/plausible.js"></script>
+
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/print-the-go-syntax-representation-of-a-value/">Print the Go syntax representation of a value</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">Print the Go syntax representation of a value</span></h2>
+    <span class="text-primary">February 15, 2024</span>
+	
+	
+    
+	<p>I learned a new trick: <code>fmt.Sprintf</code> (and <code>fmt.Printf</code>) support a format verb <code>%#v</code> that prints out a &ldquo;Go-syntax representation of the value&rdquo; (quoting the documentation).</p>
+<p>What this mean: you can ouput a value the way you would write it in valid Go source code.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Go" data-lang="Go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">s</span> = []<span style="color:#66d9ef">string</span>{<span style="color:#e6db74">&#34;string in the slice&#34;</span>}
+
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%v\n&#34;</span>, <span style="color:#a6e22e">s</span>) <span style="color:#75715e">// output [string in the slice]
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%#v\n&#34;</span>, <span style="color:#a6e22e">s</span>) <span style="color:#75715e">// output: []string{&#34;string in the slice&#34;}
+</span><span style="color:#75715e"></span>	<span style="color:#75715e">// To output only the type, you can use `%T` instead
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;%T\n&#34;</span>, <span style="color:#a6e22e">s</span>) <span style="color:#75715e">// output: []string
+</span><span style="color:#75715e"></span>}
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="why-is-it-useful">Why is it useful?</h2>
+<p>For me it was useful when using Go template to generate Go code (generating CLI commands from OpenAPI specification).</p>
+<p>In my input file, I had a slice I wanted to insert into the generated code, but I can&rsquo;t use the value directly, because it&rsquo;s not valid Go code. There is a few workaround (like iterating on the slice to output each value inside and reconstructing the slice) but using <code>%#v</code> is by far the best approach.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Documentation for <a href="https://pkg.go.dev/text/template">text/template</a></li>
+<li>Documentation for <a href="https://pkg.go.dev/fmt">fmt</a></li>
+</ul>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/golang">golang</a></li>
+    
+      <li><a class="tag" href="/tags/short">short</a></li>
+    
+</ul>
+
+
+  <div class="open-invite-blog">If you have questions, suggestions or want to discuss about this subject, 
+    I'd be more than happy if you reach me at <a href="mailto:conta-remove-ct@julienrouse.com">conta<span style="display:none">-remove-</span>ct@julienrouse.com</a>. See also my <a href="/blog/open-invite">open invite</a></div>
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+
+  
+
+  
+</body>
+</html>
