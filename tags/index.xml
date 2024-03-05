@@ -5,10 +5,28 @@
     <description>Recent content in Tags on I break things often. Sometimes I manage to fix them</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Feb 2024 19:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 05 Mar 2024 07:00:00 +0000</lastBuildDate>
     
         <atom:link href="https://www.julienrouse.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>knowledge-management</title>
+      <link>https://www.julienrouse.com/tags/knowledge-management/</link>
+      <pubDate>Tue, 05 Mar 2024 07:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/knowledge-management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>writing</title>
+      <link>https://www.julienrouse.com/tags/writing/</link>
+      <pubDate>Tue, 05 Mar 2024 07:00:00 +0000</pubDate>
+      
+      <guid>https://www.julienrouse.com/tags/writing/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>golang</title>
@@ -124,15 +142,6 @@
       <pubDate>Sun, 22 Nov 2020 19:00:00 +0000</pubDate>
       
       <guid>https://www.julienrouse.com/tags/post-mortem/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>writing</title>
-      <link>https://www.julienrouse.com/tags/writing/</link>
-      <pubDate>Sun, 01 Nov 2020 19:00:00 +0000</pubDate>
-      
-      <guid>https://www.julienrouse.com/tags/writing/</guid>
       <description></description>
     </item>
     
