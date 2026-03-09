@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>New addition to the Go sync package since Go v1.25</title>
+  <meta property="og:title" content="New addition to the Go sync package since Go v1.25" />
+  <meta property="og:image" content="https://www.julienrouse.com/img/me.png" />
+  <meta name="description" content="I break things often. Sometimes I manage to fix them">
+  <meta property="og:description" content="I break things often. Sometimes I manage to fix them" />
+  <meta name="author" content="Julien Rousé">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+  
+  <link href="https://www.julienrouse.com/css/resume.css" rel="stylesheet">
+  <link href="https://www.julienrouse.com/css/tweaks.css" rel="stylesheet">
+  <meta name="generator" content="Hugo 0.80.0" />
+  
+   
+  
+  
+  <script async defer data-domain="julienrouse.com" src="https://plausible.io/js/plausible.js"></script>
+
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Julien Rousé</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/me.png" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/">Julien Rousé&#39;s home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="https://www.julienrouse.com/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="https://www.julienrouse.com/blog/sync-waitgroup-go/">New addition to the Go sync package since Go v1.25</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">New addition to the Go sync package since Go v1.25</span></h2>
+    <span class="text-primary">March 7, 2026</span>
+	
+	
+    
+	<p>Something I missed previously when reading the Go 1.25 release note in the <a href="https://go.dev/doc/go1.25#minor_library_changes">&ldquo;minor changes to the library&rdquo;</a> section: an entry for the <a href="https://go.dev/doc/go1.25#syncpkgsync">sync package</a>:</p>
+<blockquote>
+<p>sync</p>
+<p>The new WaitGroup.Go method makes the common pattern of creating and counting Goroutines more convenient.</p>
+</blockquote>
+<p>It&rsquo;s a small improvement that makes it harder to make mistakes so this is more than just convenience! Let&rsquo;s see how it looks.</p>
+<h2 id="example">Example</h2>
+<p>Below I am assuming that you are already slightly familiar with Go concurrency and the <code>sync</code> package in the Go standard library. If not, you should start there first :)</p>
+<h3 id="the-classic-way-syncwaitgroupadd--defer-syncwaitgroupdone">The &ldquo;classic&rdquo; way: <code>sync.WaitGroup.Add()</code> + <code>defer sync.WaitGroup.Done()</code></h3>
+<p>Before Go 1.25, the way to use <code>sync.WaitGroup</code> to count Goroutines was as follow:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;sync&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Add</span>(<span style="color:#ae81ff">2</span>)
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#a6e22e">run</span>(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;A&#34;</span>)
+	}()
+	<span style="color:#66d9ef">go</span> <span style="color:#66d9ef">func</span>() {
+		<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Done</span>()
+		<span style="color:#a6e22e">run</span>(<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;B&#34;</span>)
+	}()
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">run</span>(<span style="color:#a6e22e">iter</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>) {
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">iter</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">name</span>)
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>The example is borrowed from Rob Reid&rsquo;s blog post <em>runtime.Goexit</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> where he discusses a few alternatives way to implement this pattern, with the tools available in 2018.</p>
+<p>One additional note: this code is assuming we don&rsquo;t have access to the <code>run</code> function.</p>
+<h3 id="the-new-way-syncwaitgroupgo">The &ldquo;new&rdquo; way: <code>sync.WaitGroup.Go()</code></h3>
+<p>Rewriting the previous example for Go v1.25 and newer versions. This is also now the preferred way to use <code>sync.WaitGroup</code> according to the docs for <a href="https://pkg.go.dev/sync#WaitGroup.Add">Add</a> and <a href="https://pkg.go.dev/sync#WaitGroup.Done">Done</a></p>
+<blockquote>
+<p>Callers should prefer [WaitGroup.Go]</p>
+</blockquote>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#e6db74">&#34;sync&#34;</span>
+	<span style="color:#e6db74">&#34;time&#34;</span>
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">wg</span> <span style="color:#a6e22e">sync</span>.<span style="color:#a6e22e">WaitGroup</span>
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Go</span>(<span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">run</span>(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;A&#34;</span>)
+	}())
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Go</span>(<span style="color:#66d9ef">func</span>() {
+		<span style="color:#a6e22e">run</span>(<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;B&#34;</span>)
+	}())
+	<span style="color:#a6e22e">wg</span>.<span style="color:#a6e22e">Wait</span>()
+}
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">run</span>(<span style="color:#a6e22e">iter</span> <span style="color:#66d9ef">int</span>, <span style="color:#a6e22e">name</span> <span style="color:#66d9ef">string</span>) {
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> &lt; <span style="color:#a6e22e">iter</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> {
+		<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Sleep</span>(<span style="color:#a6e22e">time</span>.<span style="color:#a6e22e">Second</span>)
+		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">name</span>)
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="comparison">Comparison</h2>
+<p>The good things</p>
+<ul>
+<li>we can get rid of the manual counting with <code>sync.WaitGroup.Add(n)</code> in the main Goroutine, this is automatically handled for you.</li>
+<li>we can remove the call to <code>defer sync.WaitGroup.Done()</code> in each of the Goroutines, this is automatically handled for you.</li>
+<li>the code looks the same wether we have access to the <code>run</code> function or not.</li>
+</ul>
+<p>The negative I think is that by not using the keyword <code>go</code> directly, but instead using a normal library function that wraps it, when quickly looking over the code (like diagonal reading), you might miss the Goroutine creation since we are so used to see the <code>go</code> keyword highlighted in our favorite IDE. Would that be enough to not use it though? I don&rsquo;t think so!</p>
+<h2 id="the-end">The end</h2>
+<p>A few more links to stay on the topic of Go concurrency</p>
+<ul>
+<li><a href="https://robreid.io">https://robreid.io</a> has some post about Golang concurrency patterns</li>
+<li><a href="https://cs.opensource.google/go/go/+/refs/tags/go1.26.1:src/sync/waitgroup.go;l=236">Implementation of sync.WaitGroup.Go()</a> to see how it&rsquo;s implemented. Nothing fancy to see here but it is always interesting to peek.</li>
+<li>A much more interesting function to look at is <a href="https://cs.opensource.google/go/go/+/refs/tags/go1.24.9:src/sync/waitgroup.go;l=45">sync.WaitGroup.Add() in Go v1.24</a> and its subsequent evolution <a href="https://cs.opensource.google/go/go/+/refs/tags/go1.25.0:src/sync/waitgroup.go;l=77">sync.WaitGroup.Add() in Go v1.25+</a> with the introduction of the <a href="https://pkg.go.dev/testing/synctest">test/synctest package</a> to test concurrent/asynchronous code.</li>
+<li><a href="https://go.dev/blog/pipelines">Go Concurrency Paterns: Pipelines and cancellation</a> from the Go blog</li>
+<li><a href="https://antonz.org/go-concurrency/">Gist of Go concurrency</a> book, available online freely.</li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://robreid.io/runtime-goexit/">runtime.Goexit by Rob Reid(2018)</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/golang">golang</a></li>
+    
+      <li><a class="tag" href="/tags/short">short</a></li>
+    
+</ul>
+
+
+  <div class="open-invite-blog">If you have questions, suggestions or want to discuss about this subject, 
+    I'd be more than happy if you reach me at <a href="mailto:conta-remove-ct@julienrouse.com">conta<span style="display:none">-remove-</span>ct@julienrouse.com</a>. See also my <a href="/blog/open-invite">open invite</a></div>
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script src="js/resume.js"></script>
+
+  
+
+  
+</body>
+</html>
